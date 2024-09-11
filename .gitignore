@@ -1,0 +1,12 @@
+# editors / ides
+
+*.vscode
+*.idea
+
+# private documents
+
+private
+
+# env files
+
+*.env
