@@ -29,3 +29,17 @@
 
 - Définir des scripts Makefile pour chaque point de lancement
 - Configuration sous forme de conteneur si possible
+
+## Structure des branches
+
+> Chaque branche est contenue dans un dossier du même nom.
+
+- **main** : branche principale, contient des versions utilisables des éléments
+- **documentation** : branche de documentation du projet
+
+## Version du projet
+
+> Le dossier "versions" contient des dossiers représentant les versions d'un projet
+
+- **nommage** : date de la version
+- **contenu** : élements executable 
