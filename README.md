@@ -3,17 +3,19 @@
 ## Membres :
 
 - Bathily Yahaya
-- Belarif Louiza
-- Vigneau Pierlovisi Pascal
 - Kilimou Ambroise
+- Renkas Vitalii
+- Vigneau Pierlovisi Pascal
+
+## Description du projet
+
+> Application mobile pour la gestion du tourisme
 
 ## Informations du projet
 
 - Date de début : 11-09-2024
 - Version actuelle : 11.09.24
-- Nom du projet dans la version courante : 
-
-## Description du projet
+- Nom du projet dans la version courante :
 
 ## Règles de fonctionnement
 
@@ -24,10 +26,11 @@
     - But de la fonction
     - Lien vers les ressources de documentations externes si nécessaire
     - Description des paramètres
+- Classes au format [psr-4](https://en.wikipedia.org/wiki/PHP_Standard_Recommendation) *même hors contexte PHP*
 
 ### Scripts utilitaires
 
-- Définir des scripts Makefile pour chaque point de lancement
+- Définir des scripts Makefile pour chaque point de lancement (*ces scripts doivent permettre à un autre membre n'ayant pas de connaissance sur la partie concernée de lancer le projet*)
 - Configuration sous forme de conteneur si possible
 
 ## Structure des branches
@@ -36,6 +39,7 @@
 
 - **main** : branche principale, contient des versions utilisables des éléments
 - **documentation** : branche de documentation du projet
+- **shared-documents** : branche de gestion des documents du projet
 
 ## Version du projet
 
