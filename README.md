@@ -42,6 +42,8 @@
 - **documentation** : branche de documentation du projet
 - **shared-documents** : branche de gestion des documents du projet
 - **tests** : branche de stockage des différents tests menés
+- **front-end** : branche de développement du front end de l'application
+- **api** : branche de développement de l'api
 
 ## Version du projet
 
