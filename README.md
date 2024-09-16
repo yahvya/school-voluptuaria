@@ -27,6 +27,7 @@
     - Lien vers les ressources de documentations externes si nécessaire
     - Description des paramètres
 - Classes au format [psr-4](https://en.wikipedia.org/wiki/PHP_Standard_Recommendation) *même hors contexte PHP*
+- Se plier aux patterns définis
 
 ### Scripts utilitaires
 
@@ -40,6 +41,7 @@
 - **main** : branche principale, contient des versions utilisables des éléments
 - **documentation** : branche de documentation du projet
 - **shared-documents** : branche de gestion des documents du projet
+- **tests** : branche de stockage des différents tests menés
 
 ## Version du projet
 
