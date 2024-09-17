@@ -3,8 +3,15 @@
         SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
 
 <instance-profile id="m2-non-internship-project-documentation"
-                 name="m2-non-internship-project-documentation"
+                 name="Voluptuaria"
                  start-page="starter-topic.md">
 
-    <toc-element topic="starter-topic.md"/>
+    <toc-element topic="starter-topic.md">
+        <toc-element topic="require-resources-and-constraints.md"/>
+        <toc-element topic="functionalities.md">
+        </toc-element>
+        <toc-element topic="application-structure.md"/>
+        <toc-element topic="planification-and-tools.md"/>
+        <toc-element topic="tests-organisation.md"/>
+    </toc-element>
 </instance-profile>

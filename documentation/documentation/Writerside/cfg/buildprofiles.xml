@@ -6,6 +6,7 @@
     <build-profile instance="m2-non-internship-project-documentation">
         <variables>
             <noindex-content>true</noindex-content>
+            <resizable-sidebar>true</resizable-sidebar>
         </variables>
     </build-profile>
 
