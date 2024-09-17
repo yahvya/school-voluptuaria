@@ -44,6 +44,7 @@
 - **tests** : branche de stockage des différents tests menés
 - **front-end** : branche de développement du front end de l'application
 - **api** : branche de développement de l'api
+- **database** : branche de structuration et développement de la base de données
 
 ## Version du projet
 
