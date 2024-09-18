@@ -3,10 +3,6 @@
     "type": "object",
     "title": "Application registered places Mongodb schema",
     "properties": {
-        "access-id": {
-            "type": "number",
-            "format": "guid"
-        },
         "location-getter": {
             "$comment": "Way to access the place datas",
             "properties": {
@@ -27,7 +23,7 @@
                 "type": "object",
                 "properties": {
                     "user-id" : {
-                        "type": "integer",
+                        "type": "string",
                         "format": "guid",
                         "description": "user unique identifier"
                     },
@@ -41,6 +37,11 @@
                         "minimum": 1,
                         "maximum": 5,
                         "$comment": "Count of rating stars"
+                    },
+                    "wrote-at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "examples": ["1980-12-03 10:10:20"]
                     }
                 },
                 "required": ["user-id","comment","rating"]

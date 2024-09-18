@@ -4,7 +4,7 @@
     "type": "object",
     "properties": {
         "id": {
-            "type": "integer",
+            "type": "string",
             "format": "guid",
             "description": "user unique identifier"
         },
@@ -41,13 +41,51 @@
             "format": "date",
             "examples": ["1980-12-03"]
         },
+        "gender": {
+            "type": "number",
+            "$comment": "Enumeration as int"
+        },
         "social-profile": {
-            "liked-places-categories" : {
-
+            "properties": {
+                "liked-places-categories" : {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "category-name": {
+                                "type": "string"
+                            },
+                            "count-of-presence" : {
+                                "type": "number",
+                                "minimum": 0
+                            }
+                        },
+                        "required": ["category-name","count-of-presence"]
+                    }
+                },
+                "searched-categories" : {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "category-name": {
+                                "type": "string"
+                            },
+                            "count-of-search" : {
+                                "type": "number",
+                                "minimum": 0
+                            },
+                            "last-search-date": {
+                                "type": "string",
+                                "format": "date",
+                                "examples": ["2000-08-18"]
+                            }
+                        },
+                        "required": ["category-name","count-of-search"]
+                    }
+                }
             },
-            "searched-categories" : {
-
-            }
+            "required": ["liked-places-categories","searched-categories"]
         },
         "visited-places": {
             "type": "array",
@@ -55,7 +93,7 @@
                 "type": "object",
                 "properties": {
                     "place-access-id": {
-                        "type": "number",
+                        "type": "string",
                         "format": "guid"
                     },
                     "visited-at": {
@@ -74,7 +112,7 @@
                 "type": "object",
                 "properties": {
                     "place-access-id": {
-                        "type": "number",
+                        "type": "string",
                         "format": "guid"
                     }
                 },
@@ -123,9 +161,13 @@
                                         }
                                     },
                                     "required": ["type","datas"]
+                                },
+                                "is-completed": {
+                                    "type": "boolean",
+                                    "default": false
                                 }
                             },
-                            "required": ["order","location-getter"]
+                            "required": ["order","location-getter","is-completed"]
                         }
                     }
                 },
@@ -133,5 +175,5 @@
             }
         }
     },
-    "required": ["name","firstname","birthdate","id","linked-social-medias","social-profile","visited-places","travel-routes"]
+    "required": ["name","gender","firstname","birthdate","id","social-profile","visited-places","travel-routes"]
 }
