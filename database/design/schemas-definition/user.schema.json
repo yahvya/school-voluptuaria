@@ -8,6 +8,15 @@
             "format": "uuid",
             "description": "user unique identifier"
         },
+        "email" : {
+            "type": "string",
+            "format": "email",
+            "description": "user existing email"
+        },
+        "password" : {
+            "type" : "string",
+            "description": "user hashed password"
+        },
         "name" : {
             "type": "string",
             "description": "user family name",
