@@ -1,0 +1,25 @@
+{
+  "content": {
+    "application/json" : {
+      "schema": {
+        "properties": {
+          "comments" : {
+            "properties": {
+              "user-comment" : {
+                "type": "string",
+                "description": "the user comment"
+              },
+              "authentification-token" : {
+                "type": ["string"],
+                "description" : "authentication jwt token"
+              }
+            },
+            "$ref": "../components/place-datas.json"
+          }
+        }
+      }
+    }
+  }
+}
+
+

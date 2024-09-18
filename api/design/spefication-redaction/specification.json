@@ -79,6 +79,25 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "description": "Post a comment on a given place",
+                "requestBody": {
+                    "$ref" : "request-bodies/place-comments.json"
+                },
+
+                "responses": {
+                    "200": {
+                        "description": "comment succesfully posted",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/place-comments.json"
+                                }
+                            }
+                        }
+                    }
+                }
             }
         },
         "/register" : {
@@ -200,6 +219,81 @@
                     }
                 }
             }
+        },
+        "/user/profil-image" : {
+            "post" :
+            {
+                "description": "Change the user profil image",
+                "requestBody":
+                {
+                    "$ref": "request-bodies/user.profil-image.json"
+                },
+                "responses":
+                {
+                    "200" :
+                    {
+                        "description": "Image edited successfully",
+                        "content":
+                        {
+                            "application/json" :
+                            {
+                                "schema":
+                                {
+                                    "$ref": "responses/post/user.profil-image.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profil": {
+            "post":
+            {
+                "description": "edit the user profil",
+                "requestBody":
+                {
+                    "$ref" : "request-bodies/user.profil.json"
+                },
+                "responses":
+                {
+                    "200" :
+                    {
+                        "description": "profil edited succesfully",
+                        "content":
+                        {
+                            "application/json" :
+                            {
+                                "schema":
+                                {
+                                    "$ref": "responses/post/user.profil.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/change-password": {
+            "post": {
+                "description": "change the user password",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.change-password.json"
+                },
+                "responses": {
+                    "200": {
+                        "description": "password edited succesfully",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/user.change-password.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

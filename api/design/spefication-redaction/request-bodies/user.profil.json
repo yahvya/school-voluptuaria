@@ -1,0 +1,49 @@
+{
+  "content":
+  {
+    "application/json" :
+    {
+      "schema":
+      {
+        "properties":
+        {
+          "authentification-token" : {
+            "type": ["string"],
+            "description" : "authentication jwt token"
+          },
+          "url" :
+          {
+            "type": "string",
+            "description": "the profil image url"
+          },
+          "email" :
+          {
+            "type" : "string",
+            "description" : "user email"
+          },
+          "name" :
+          {
+            "type": "string",
+            "description": "the user name"
+          },
+          "firstname":
+          {
+            "type" : "string",
+            "description": "user firstname "
+          },
+          "birthday":
+          {
+            "type" : "string",
+            "description": "user birthday"
+          },
+          "phonenumber":
+          {
+            "type" : "string",
+            "description": "user phone number"
+          }
+        },
+        "required" : "authentification-token"
+      }
+    }
+  }
+}

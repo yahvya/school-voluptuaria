@@ -1,0 +1,29 @@
+{
+  "content":
+  {
+    "application/json" :
+    {
+      "schema":
+      {
+        "properties":
+        {
+          "authentification-token" : {
+            "type": ["string"],
+            "description" : "authentication jwt token"
+          },
+          "url" :
+          {
+            "type": "string",
+            "description": "the profil image url"
+          },
+          "name" :
+          {
+            "type": "string",
+            "description": "the image name"
+          }
+        },
+        "required" : ["url","authentification-token"]
+      }
+    }
+  }
+}
