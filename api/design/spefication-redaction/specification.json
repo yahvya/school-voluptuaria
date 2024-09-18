@@ -1,0 +1,36 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+        "title": "Voluptuaria Api",
+        "description": "Voluptuaria Api",
+        "version": "11.09.24"
+    },
+    "servers": [
+      {
+        "url": "{{host}}",
+        "variables": {
+            "host" : {
+                "default": "https://127.0.0.1:8080"
+            }
+        }
+      }
+    ],
+    "paths": {
+        "/search/place" : {
+            "get": {
+                "description": "Search a touristic place",
+                "parameters": [
+                    {
+                        "name": "research",
+                        "required": true,
+                        "description": "Research string",
+                        "in": "query",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
