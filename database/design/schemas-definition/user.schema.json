@@ -1,11 +1,11 @@
 {
-    "$schema" : "http://json-schema.org/draft-07/schema#",
+    "$schema" : "https://json-schema.org/draft/2020-12/schema",
     "title": "User Mongodb schema",
     "type": "object",
     "properties": {
         "id": {
             "type": "string",
-            "format": "guid",
+            "format": "uuid",
             "description": "user unique identifier"
         },
         "name" : {
@@ -46,6 +46,7 @@
             "$comment": "Enumeration as int"
         },
         "social-profile": {
+            "type": "object",
             "properties": {
                 "liked-places-categories" : {
                     "type": "array",
@@ -94,7 +95,7 @@
                 "properties": {
                     "place-access-id": {
                         "type": "string",
-                        "format": "guid"
+                        "format": "uuid"
                     },
                     "visited-at": {
                         "type": "string",
@@ -113,7 +114,7 @@
                 "properties": {
                     "place-access-id": {
                         "type": "string",
-                        "format": "guid"
+                        "format": "uuid"
                     }
                 },
                 "required": ["place-access-id"]
@@ -135,8 +136,7 @@
                         "examples": ["1980-12-03"]
                     },
                     "budget" : {
-                        "type": "number",
-                        "format": "float"
+                        "type": "number"
                     },
                     "proposals" : {
                         "type": "array",
@@ -145,13 +145,13 @@
                             "properties": {
                                 "order": {
                                     "type": "number",
-                                    "format": "integer",
                                     "$comment": "order in the route"
                                 },
                                 "location-getter": {
+                                    "type": "object",
                                     "$comment": "Way to access the place datas",
                                     "properties": {
-                                        "type": {
+                                        "location-type": {
                                             "type": "number",
                                             "$comment": "Enumeration as int"
                                         },
@@ -160,7 +160,7 @@
                                             "$comment": "datas linked to the access type"
                                         }
                                     },
-                                    "required": ["type","datas"]
+                                    "required": ["location-type","datas"]
                                 },
                                 "is-completed": {
                                     "type": "boolean",

@@ -1,12 +1,18 @@
 {
-    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
     "title": "Application registered places Mongodb schema",
     "properties": {
+        "access-id": {
+            "type": "string",
+            "format": "uuid",
+            "description": "user unique identifier"
+        },
         "location-getter": {
+            "type": "object",
             "$comment": "Way to access the place datas",
             "properties": {
-                "type": {
+                "location-type": {
                     "type": "number",
                     "$comment": "Enumeration as int"
                 },
@@ -15,7 +21,7 @@
                     "$comment": "datas linked to the access type"
                 }
             },
-            "required": ["type","datas"]
+            "required": ["location-type","datas"]
         },
         "comments" : {
             "type": "array",
@@ -24,7 +30,7 @@
                 "properties": {
                     "user-id" : {
                         "type": "string",
-                        "format": "guid",
+                        "format": "uuid",
                         "description": "user unique identifier"
                     },
                     "comment": {
@@ -48,5 +54,5 @@
             }
         }
     },
-    "required": ["location","comments","access-id"]
+    "required": ["access-id","comments","location-getter"]
 }

@@ -1,0 +1,3 @@
+## is-completed Type
+
+`boolean`
