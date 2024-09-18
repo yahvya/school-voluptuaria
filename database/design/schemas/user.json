@@ -1,0 +1,137 @@
+{
+    "$schema" : "http://json-schema.org/draft-07/schema#",
+    "title": "User Mongodb schema",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer",
+            "format": "guid",
+            "description": "user unique identifier"
+        },
+        "name" : {
+            "type": "string",
+            "description": "user family name",
+            "minLength": 2,
+            "maxLength": 25,
+            "examples": ["svel","yahaya"]
+        },
+        "firstname" : {
+            "type": "string",
+            "description": "user firstname",
+            "minLength": 2,
+            "maxLength": 25,
+            "examples": ["svel","yahaya"]
+        },
+        "birthdate" : {
+            "type": "string",
+            "format": "date",
+            "examples": ["1980-12-03"]
+        },
+        "phonenumber": {
+            "type": "string",
+            "format": "phonenumber",
+            "examples": ["+3307689024"]
+        },
+        "profile-picture-access-link" : {
+            "type": "string",
+            "examples": ["/profiles/user-profile.jpg"]
+        },
+        "account-creation-date": {
+            "type": "string",
+            "format": "date",
+            "examples": ["1980-12-03"]
+        },
+        "social-profile": {
+            "liked-places-categories" : {
+
+            },
+            "searched-categories" : {
+
+            }
+        },
+        "visited-places": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "place-access-id": {
+                        "type": "number",
+                        "format": "guid"
+                    },
+                    "visited-at": {
+                        "type": "string",
+                        "format": "date",
+                        "examples": ["1980-12-03"]
+                    }
+                },
+                "required": ["place-access-id","visited-at"]
+            }
+        },
+        "places-wish-list" : {
+            "$comment": "user wanted places to visit",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "place-access-id": {
+                        "type": "number",
+                        "format": "guid"
+                    }
+                },
+                "required": ["place-access-id"]
+            }
+        },
+        "travel-routes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "start-date": {
+                        "type": "string",
+                        "format": "date",
+                        "examples": ["1980-12-03"]
+                    },
+                    "end-date" : {
+                        "type": "string",
+                        "format": "date",
+                        "examples": ["1980-12-03"]
+                    },
+                    "budget" : {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "proposals" : {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "order": {
+                                    "type": "number",
+                                    "format": "integer",
+                                    "$comment": "order in the route"
+                                },
+                                "location-getter": {
+                                    "$comment": "Way to access the place datas",
+                                    "properties": {
+                                        "type": {
+                                            "type": "number",
+                                            "$comment": "Enumeration as int"
+                                        },
+                                        "datas": {
+                                            "type": "object",
+                                            "$comment": "datas linked to the access type"
+                                        }
+                                    },
+                                    "required": ["type","datas"]
+                                }
+                            },
+                            "required": ["order","location-getter"]
+                        }
+                    }
+                },
+                "required": ["start-date","end-date","budget","proposals"]
+            }
+        }
+    },
+    "required": ["name","firstname","birthdate","id","linked-social-medias","social-profile","visited-places","travel-routes"]
+}
