@@ -1,44 +1,33 @@
 {
   "type": ["array"],
-  "items":
-  {
+  "items": {
     "type": "object",
     "title": "Place data's",
-    "properties":
-    {
-      "access-id":
-      {
+    "properties": {
+      "access-id": {
         "type": "string",
         "format": "uuid",
         "description": "user unique identifier"
       },
-      "place-datas" :
-      {
+      "place-datas" : {
         "type": "object",
-        "properties":
-        {
-          "place-name" :
-          {
+        "properties": {
+          "place-name" : {
             "type" : "string"
           },
-          "is-opened-now" :
-          {
+          "is-opened-now" : {
             "type" : "boolean"
           },
-          "images":
-          {
+          "images": {
             "type": "array",
             "items": {
               "type": "object",
-              "properties":
-              {
-                "url":
-                {
+              "properties": {
+                "url": {
                   "type": "string",
                   "description": "URL of the image"
                 },
-                "description":
-                {
+                "description": {
                   "type": "string",
                   "description": "Description of the image"
                 }
@@ -46,50 +35,39 @@
             },
             "description": "List of images related to the place"
           },
-          "coordinates":
-          {
+          "coordinates": {
             "type": "object",
-            "properties":
-            {
-              "latitude":
-              {
+            "properties": {
+              "latitude": {
                 "type": "number",
                 "format": "float",
                 "description": "Latitude of the place"
               },
-              "longitude":
-
-              {
+              "longitude": {
                 "type": "number",
                 "format": "float",
                 "description": "Longitude of the place"
               },
-              "full-address" :
-              {
-                "type": ["string",null],
+              "full-address" : {
+                "type": ["string","null"],
                 "description": "the location full address or null if not provided"
               }
             },
             "description": "Geographical coordinates of the place"
           },
-          "categories":
-          {
+          "categories": {
             "type": "array",
-            "items":
-            {
+            "items": {
               "type": "object",
-              "properties":
-              {
-                "name" :
-                {
+              "properties": {
+                "name" : {
                   "type": "string",
                   "description": "The category name"
                 }
               }
             }
           },
-          "callback-datas" :
-          {
+          "callback-datas" : {
             "type": "object",
             "description": "datas to send to the back end for a research on this place"
           }
@@ -98,49 +76,38 @@
       "comments": {
         "$ref" : "../../components/comments.json"
       },
-      "weather":
-      {
+      "weather": {
         "type": "object",
-        "properties":
-        {
-          "forecast":
-
-          {
+        "properties": {
+          "forecast": {
             "type": "array",
             "items": {
               "type": "object",
-              "properties":
-              {
-                "date":
-                {
+              "properties": {
+                "date": {
                   "type": "string",
                   "format": "date",
                   "description": "Date of the forecast"
                 },
-                "temperature":
-                {
+                "temperature": {
                   "type": "number",
                   "format": "float",
-                  "description": "Temperature forecast for the date in celcius"
+                  "description": "Temperature forecast for the date in Celsius"
                 },
-                "main":
-                {
+                "main": {
                   "type": "number",
                   "description": "Enumeration as int, provide the sky condition"
                 },
-                "sunrise" :
-                {
+                "sunrise" : {
                   "type": "number",
                   "description": "sunrise timestamp"
                 },
-                "pressure" :
-                {
+                "pressure" : {
                   "type": "number",
                   "description": "the pressure measure"
                 },
-                "alert" :
-                {
-                  "type": ["string",null],
+                "alert" : {
+                  "type": ["string","null"],
                   "description": "An alert about the zone or null if there is nothing"
                 }
 

@@ -1,53 +1,40 @@
 {
     "openapi": "3.1.0",
-    "info":
-    {
+    "info": {
         "title": "Voluptuaria Api",
         "description": "Voluptuaria Api",
         "version": "11.09.24"
     },
     "servers":
-    [
-      {
+    [ {
         "url": "{{host}}",
-        "variables":
-        {
-            "host" :
-            {
+        "variables": {
+            "host" : {
                 "default": "https://127.0.0.1:8080"
             }
         }
       }
     ],
-    "paths":
-    {
-        "/search/place" :
-        {
-            "get":
-            {
+    "paths": {
+        "/search/place" : {
+            "get": {
                 "description": "Search a touristic place",
                 "parameters":
-                [
-                    {
+                [ {
                         "name": "research",
                         "required": true,
                         "description": "Research string",
                         "in": "query",
-                        "schema":
-                        {
+                        "schema": {
                             "type": ["string"]
                         }
                     }
                 ],
-                "responses":
-                {
-                    "200" :
-                    {
+                "responses": {
+                    "200" : {
                         "description": "Founded results",
-                        "content":
-                        {
-                            "application/json" :
-                            {
+                        "content": {
+                            "application/json" : {
                                 "schema": {
                                     "$ref": "responses/get/search.place.json"
                                 }
@@ -57,46 +44,35 @@
                 }
             }
         },
-        "/place/comments" :
-        {
-            "get" :
-            {
+        "/place/comments" : {
+            "get" : {
                 "description": "Provide the comments on a given place with pagination",
                 "parameters":
-                [
-                    {
+                [ {
                         "name": "paging",
                         "description": "Pagination number",
                         "required": true,
                         "in" : "query",
-                        "schema":
-                        {
+                        "schema": {
                             "type": ["number"]
                         }
-                    },
-                    {
+                    }, {
                         "name" : "callback-datas",
                         "description": "The received callback datas from the place details - json string",
                         "required" : true,
                         "in" : "query",
-                        "schema":
-                        {
+                        "schema": {
                             "type": ["string"],
                             "description": "json string"
                         }
                     }
                 ],
-                "responses" :
-                {
-                    "200" :
-                    {
+                "responses" : {
+                    "200" : {
                         "description": "Provide the founded comments",
-                        "content" :
-                        {
-                            "application/json" :
-                            {
-                                "schema" :
-                                {
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
                                     "$ref" : "responses/get/place.comments.json"
                                 }
                             }
@@ -105,67 +81,18 @@
                 }
             }
         },
-        "/register" :
-        {
-            "post":
-            {
+        "/register" : {
+            "post": {
                 "description": "Validate user registration datas",
-                "requestBody":
-                {
-                    "content":
-                    {
-                        "application/json" :
-                        {
-                            "schema":
-                            {
-                                "properties": {
-                                    "email":
-                                    {
-                                        "type" : "string",
-                                        "description": "user email"
-                                    },
-                                    "name":
-                                    {
-                                        "type" : "string",
-                                        "description": "user name"
-                                    },
-                                    "firstname":
-                                    {
-                                        "type" : "string",
-                                        "description": "user firstname "
-                                    },
-                                    "birthday":
-                                    {
-                                        "type" : "string",
-                                        "description": "user birthday"
-                                    },
-                                    "phonenumber":
-                                    {
-                                        "type" : "string",
-                                        "description": "user phone number"
-                                    },
-                                    "password":
-                                    {
-                                        "type" : "string",
-                                        "description": "user password"
-                                    }
-                                },
-                                "required": ["email","firstname","birthday","phonenumber","password","name"]
-                            }
-                        }
-                    }
+                "requestBody": {
+                    "$ref": "request-bodies/register.json"
                 },
-                "responses":
-                {
-                    "200" :
-                    {
+                "responses": {
+                    "200" : {
                         "description": "user registration",
-                        "content":
-                        {
-                            "application/json":
-                            {
-                                "schema":
-                                {
+                        "content": {
+                            "application/json": {
+                                "schema": {
                                     "$ref" : "responses/post/register.json"
                                 }
                             }
@@ -174,77 +101,79 @@
                 }
             }
         },
-        "/register/confirmation" :
-        {
+        "/register/confirmation" : {
             "post": {
                 "description": "Confirm a user registration",
-                "requestBody":
-                {
-                    "content":
-                    {
-                        "application/json" :
-                        {
-                            "schema":
-                            {
-                                "properties": {
-                                    "email":
-                                    {
-                                        "type" : "string",
-                                        "description": "user email"
-                                    },
-                                    "name":
-                                    {
-                                        "type" : "string",
-                                        "description": "user name"
-                                    },
-                                    "firstname":
-                                    {
-                                        "type" : "string",
-                                        "description": "user firstname "
-                                    },
-                                    "birthday":
-                                    {
-                                        "type" : "string",
-                                        "description": "user birthday"
-                                    },
-                                    "phonenumber":
-                                    {
-                                        "type" : "string",
-                                        "description": "user phone number"
-                                    },
-                                    "password":
-                                    {
-                                        "type" : "string",
-                                        "description": "user password"
-                                    },
-                                    "encrypted-confirmation-code":
-                                    {
-                                        "type" : "string",
-                                        "description": "the received encrypted confirmation code during the validation step"
-                                    },
-                                    "user-confirmation-code":
-                                    {
-                                        "type" : "string",
-                                        "description": "the inputed confirmation code by user"
-                                    }
-                                },
-                                "required": ["email","firstname","birthday","phonenumber","password","name","encrypted-confirmation-code","user-confirmation-code"]
+                "requestBody": {
+                    "$ref": "request-bodies/register.confirmation.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "registration confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/register.confirmation.json"
+                                }
                             }
                         }
                     }
+                }
+            }
+        },
+        "/login" : {
+            "post" : {
+                "description": "Log the user",
+                "requestBody": {
+                    "$ref": "request-bodies/login.json"
                 },
-                "responses":
-                {
-                    "200" :
-                    {
-                        "description": "registration confirmed",
-                        "content":
-                        {
-                            "application/json" :
-                            {
-                                "schema":
-                                {
-                                    "$ref" : "responses/post/register.confirmation.json"
+                "responses": {
+                    "200" : {
+                        "description": "login confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/login.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/forgot-password" : {
+            "post" : {
+                "description": "Validate the forgot password starting process",
+                "requestBody": {
+                    "$ref" : "request-bodies/login.forgot-password.json"
+                },
+                "responses": {
+                    "200": {
+                        "description": "forgot password starting process confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "responses/post/login.forgot-password.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/forgot-password/confirmation" : {
+            "post" : {
+                "description": "Confirm the forgot password verification and update password",
+                "requestBody": {
+                    "$ref": "request-bodies/login.forgot-password.confirmation.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "forgot password process confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/login.forgot-password.confirmation.json"
                                 }
                             }
                         }

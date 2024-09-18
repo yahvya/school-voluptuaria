@@ -1,0 +1,35 @@
+{
+    "content": {
+        "application/json" : {
+            "schema": {
+                "properties": {
+                    "email": {
+                        "type" : "string",
+                        "description": "user email"
+                    },
+                    "name": {
+                        "type" : "string",
+                        "description": "user name"
+                    },
+                    "firstname": {
+                        "type" : "string",
+                        "description": "user firstname "
+                    },
+                    "birthday": {
+                        "type" : "string",
+                        "description": "user birthday"
+                    },
+                    "phonenumber": {
+                        "type" : "string",
+                        "description": "user phone number"
+                    },
+                    "password": {
+                        "type" : "string",
+                        "description": "user password"
+                    }
+                },
+                "required": ["email","firstname","birthday","phonenumber","password","name"]
+            }
+        }
+    }
+}
