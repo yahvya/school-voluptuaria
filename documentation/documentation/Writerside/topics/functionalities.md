@@ -25,6 +25,8 @@ Les fonctionnalités sont séparées en deux parties, celles disponibles hors co
 
 <note>Les fonctionnalités nécessitant un compte intègrent celles sans compte.</note>
 
+- Définition d'une photo de profil (non obligatoire)
+- Créer une liste de lieu à visiter
 - Construire son [profil](#profil-utilisateur) (*fonctionnalité interne*)
   - via réseaux sociaux pouvant être liés (instagram)
   - via un questionnaire rapide
@@ -35,6 +37,8 @@ Les fonctionnalités sont séparées en deux parties, celles disponibles hors co
   - la date de fin
   - le budget
   - [profil](#profil-utilisateur)
+- Voir l'historique des lieux visités 
+- Voir la liste des parcours générés enregistrés
 
 ### Fonctionnalités futures
 
