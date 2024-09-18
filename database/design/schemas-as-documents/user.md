@@ -7,6 +7,8 @@
 | Property                                                    | Type     | Required | Nullable       | Defined by                                                                                                                |
 | :---------------------------------------------------------- | :------- | :------- | :------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | [id](#id)                                                   | `string` | Required | cannot be null | [User Mongodb schema](user-properties-id.md "undefined#/properties/id")                                                   |
+| [email](#email)                                             | `string` | Optional | cannot be null | [User Mongodb schema](user-properties-email.md "undefined#/properties/email")                                             |
+| [password](#password)                                       | `string` | Optional | cannot be null | [User Mongodb schema](user-properties-password.md "undefined#/properties/password")                                       |
 | [name](#name)                                               | `string` | Required | cannot be null | [User Mongodb schema](user-properties-name.md "undefined#/properties/name")                                               |
 | [firstname](#firstname)                                     | `string` | Required | cannot be null | [User Mongodb schema](user-properties-firstname.md "undefined#/properties/firstname")                                     |
 | [birthdate](#birthdate)                                     | `string` | Required | cannot be null | [User Mongodb schema](user-properties-birthdate.md "undefined#/properties/birthdate")                                     |
@@ -40,6 +42,46 @@ user unique identifier
 ### id Constraints
 
 **UUID**: the string must be a UUID, according to [RFC 4122](https://tools.ietf.org/html/rfc4122 "check the specification")
+
+## email
+
+user existing email
+
+`email`
+
+* is optional
+
+* Type: `string`
+
+* cannot be null
+
+* defined in: [User Mongodb schema](user-properties-email.md "undefined#/properties/email")
+
+### email Type
+
+`string`
+
+### email Constraints
+
+**email**: the string must be an email address, according to [RFC 5322, section 3.4.1](https://tools.ietf.org/html/rfc5322 "check the specification")
+
+## password
+
+user hashed password
+
+`password`
+
+* is optional
+
+* Type: `string`
+
+* cannot be null
+
+* defined in: [User Mongodb schema](user-properties-password.md "undefined#/properties/password")
+
+### password Type
+
+`string`
 
 ## name
 
