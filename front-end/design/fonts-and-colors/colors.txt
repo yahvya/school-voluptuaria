@@ -1,0 +1,21 @@
+Dark theme:
+
+Light theme:
+
+background-color: #FFFFFF
+primary-text: #000000
+
+button-background-color: #F5754E
+button-text-color: #FFFFFF
+button-border-color: #F5754E
+button-shadow-color: #FFFFFF
+
+upper-background-color: #f2f3f7
+upper-text-color: #000000
+upper-border-color: #f2f3f7
+upper-shadow-color: #FFFFFF
+
+special-color: #F5754E
+
+icon-color: #f2f3f7
+icon-hover-color: #f2f3f7 opacity: 0.8
