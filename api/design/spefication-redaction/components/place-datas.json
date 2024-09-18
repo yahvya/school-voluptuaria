@@ -1,0 +1,64 @@
+{
+    "type": "object",
+    "properties": {
+        "place-name" : {
+            "type" : "string"
+        },
+        "is-opened-now" : {
+            "type" : "boolean"
+        },
+        "images": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "description": "URL of the image"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the image"
+                    }
+                }
+            },
+            "description": "List of images related to the place"
+        },
+        "coordinates": {
+            "type": "object",
+            "properties": {
+                "latitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Latitude of the place"
+                },
+                "longitude": {
+                    "type": "number",
+                    "format": "float",
+                    "description": "Longitude of the place"
+                },
+                "full-address" : {
+                    "type": ["string","null"],
+                    "description": "the location full address or null if not provided"
+                }
+            },
+            "description": "Geographical coordinates of the place"
+        },
+        "categories": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name" : {
+                        "type": "string",
+                        "description": "The category name"
+                    }
+                }
+            }
+        },
+        "callback-datas" : {
+            "type": "object",
+            "description": "datas to send to the back end for a research on this place"
+        }
+    }
+}

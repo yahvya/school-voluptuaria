@@ -28,7 +28,7 @@
                         "description": "user password"
                     }
                 },
-                "required": ["email","firstname","birthday","phonenumber","password","name"]
+                "required": ["email","firstname","birthday","password","name"]
             }
         }
     }

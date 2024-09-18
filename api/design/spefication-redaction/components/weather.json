@@ -1,0 +1,42 @@
+{
+    "type": "object",
+    "properties": {
+        "forecast": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "date": {
+                        "type": "string",
+                        "format": "date",
+                        "description": "Date of the forecast"
+                    },
+                    "temperature": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Temperature forecast for the date in Celsius"
+                    },
+                    "main": {
+                        "type": "number",
+                        "description": "Enumeration as int, provide the sky condition"
+                    },
+                    "sunrise" : {
+                        "type": "number",
+                        "description": "sunrise timestamp"
+                    },
+                    "pressure" : {
+                        "type": "number",
+                        "description": "the pressure measure"
+                    },
+                    "alert" : {
+                        "type": ["string","null"],
+                        "description": "An alert about the zone or null if there is nothing"
+                    }
+
+                }
+            },
+            "description": "Weather forecast for the next 3 days"
+        }
+    },
+    "description": "Weather information"
+}

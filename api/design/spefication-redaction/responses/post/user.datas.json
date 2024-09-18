@@ -1,0 +1,120 @@
+{
+    "type": ["object"],
+    "description" : "the object will be indexed by the enumeration integer value and will contain as value the request elements - only the asked ones will be provided",
+    "properties": {
+        "identity-datas" : {
+            "type": ["object"],
+            "properties": {
+                "id" : {
+                    "type": ["string"],
+                    "format": "uuid",
+                    "description": "user unique identifier"
+                },
+                "name" : {
+                    "type": "string",
+                    "description": "user family name"
+                },
+                "firstname" : {
+                    "type": "string",
+                    "description": "user family name"
+                },
+                "birthdate" : {
+                    "type": "string",
+                    "format": "date"
+                },
+                "phonenumber": {
+                    "type": "string"
+                },
+                "profile-picture-access-link" : {
+                    "type": "string"
+                },
+                "account-creation-date": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "gender": {
+                    "type": "number",
+                    "description" : "Enumeration as int"
+                }
+            }
+        },
+        "visited-places": {
+            "description" : "already visited places",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "place-data": {
+                        "$ref" : "../../components/place-datas.json"
+                    },
+                    "visited-at": {
+                        "type": "string",
+                        "format": "date"
+                    }
+                }
+            }
+        },
+        "places-wish-list" : {
+            "description" : "user wanted places to visit",  "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "place-data": {
+                        "$ref" : "../../components/place-datas.json"
+                    }
+                },
+                "required": ["place-access-id"]
+            }
+        },
+        "travel-routes": {
+            "description" : "user registered generated travel route",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "start-date": {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "end-date" : {
+                        "type": "string",
+                        "format": "date"
+                    },
+                    "budget" : {
+                        "type": "number"
+                    },
+                    "proposals" : {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "order": {
+                                    "type": "number",
+                                    "description": "order in the route"
+                                },
+                                "place" : {
+                                    "type" : "object",
+                                    "properties" : {
+                                        "datas" : {
+                                            "$ref" : "../../components/place-datas.json"
+                                        },
+                                        "weather" : {
+                                            "$ref": "../../components/weather.json"
+                                        },
+                                        "comments": {
+                                            "$ref" : "../../components/comments.json"
+                                        }
+                                    }
+                                },
+                                "is-completed": {
+                                    "type": "boolean",
+                                    "default": false
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

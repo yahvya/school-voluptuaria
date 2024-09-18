@@ -180,6 +180,26 @@
                     }
                 }
             }
+        },
+        "/user/datas" : {
+            "post" : {
+                "description": "Provide user datas",
+                "requestBody": {
+                    "$ref": "request-bodies/user.datas.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "User fetched datas",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/user.datas.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -10,113 +10,13 @@
         "description": "user unique identifier"
       },
       "place-datas" : {
-        "type": "object",
-        "properties": {
-          "place-name" : {
-            "type" : "string"
-          },
-          "is-opened-now" : {
-            "type" : "boolean"
-          },
-          "images": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "url": {
-                  "type": "string",
-                  "description": "URL of the image"
-                },
-                "description": {
-                  "type": "string",
-                  "description": "Description of the image"
-                }
-              }
-            },
-            "description": "List of images related to the place"
-          },
-          "coordinates": {
-            "type": "object",
-            "properties": {
-              "latitude": {
-                "type": "number",
-                "format": "float",
-                "description": "Latitude of the place"
-              },
-              "longitude": {
-                "type": "number",
-                "format": "float",
-                "description": "Longitude of the place"
-              },
-              "full-address" : {
-                "type": ["string","null"],
-                "description": "the location full address or null if not provided"
-              }
-            },
-            "description": "Geographical coordinates of the place"
-          },
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "name" : {
-                  "type": "string",
-                  "description": "The category name"
-                }
-              }
-            }
-          },
-          "callback-datas" : {
-            "type": "object",
-            "description": "datas to send to the back end for a research on this place"
-          }
-        }
+        "$ref" : "../../components/place-datas.json"
       },
       "comments": {
         "$ref" : "../../components/comments.json"
       },
       "weather": {
-        "type": "object",
-        "properties": {
-          "forecast": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "date": {
-                  "type": "string",
-                  "format": "date",
-                  "description": "Date of the forecast"
-                },
-                "temperature": {
-                  "type": "number",
-                  "format": "float",
-                  "description": "Temperature forecast for the date in Celsius"
-                },
-                "main": {
-                  "type": "number",
-                  "description": "Enumeration as int, provide the sky condition"
-                },
-                "sunrise" : {
-                  "type": "number",
-                  "description": "sunrise timestamp"
-                },
-                "pressure" : {
-                  "type": "number",
-                  "description": "the pressure measure"
-                },
-                "alert" : {
-                  "type": ["string","null"],
-                  "description": "An alert about the zone or null if there is nothing"
-                }
-
-              }
-            },
-            "description": "Weather forecast for the next 3 days"
-          }
-        },
-        "description": "Weather information"
+        "$ref" : "../../components/weather.json"
       }
     }
   }
