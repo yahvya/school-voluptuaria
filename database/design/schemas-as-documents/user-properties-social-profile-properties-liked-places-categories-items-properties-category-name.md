@@ -1,0 +1,3 @@
+## category-name Type
+
+`string`

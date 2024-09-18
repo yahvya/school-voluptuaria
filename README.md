@@ -15,7 +15,7 @@
 
 - Date de début : 11-09-2024
 - Version actuelle : 11.09.24
-- Nom du projet dans la version courante :
+- Nom du projet dans la version courante : Voluptuaria
 
 ## Règles de fonctionnement
 
@@ -44,6 +44,7 @@
 - **tests** : branche de stockage des différents tests menés
 - **front-end** : branche de développement du front end de l'application
 - **api** : branche de développement de l'api
+- **database** : branche de structuration et développement de la base de données
 
 ## Version du projet
 

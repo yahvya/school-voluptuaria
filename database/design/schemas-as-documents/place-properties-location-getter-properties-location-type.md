@@ -1,0 +1,3 @@
+## location-type Type
+
+`number`
