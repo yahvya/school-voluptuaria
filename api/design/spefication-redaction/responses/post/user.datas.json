@@ -65,56 +65,7 @@
         },
         "travel-routes": {
             "description" : "user registered generated travel route",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "start-date": {
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "end-date" : {
-                        "type": "string",
-                        "format": "date"
-                    },
-                    "budget" : {
-                        "type": "number"
-                    },
-                    "proposals" : {
-                        "type": "array",
-                        "items": {
-                            "type": "object",
-                            "properties": {
-                                "order": {
-                                    "type": "number",
-                                    "description": "order in the route"
-                                },
-                                "place" : {
-                                    "type" : "object",
-                                    "properties" : {
-                                        "datas" : {
-                                            "$ref" : "../../components/place-datas.json"
-                                        },
-                                        "weather" : {
-                                            "$ref": "../../components/weather.json"
-                                        },
-                                        "comments": {
-                                            "$ref" : "../../components/comments.json"
-                                        }
-                                    },
-                                    "required" : ["datas","weather","comments"]
-                                },
-                                "is-completed": {
-                                    "type": "boolean",
-                                    "default": false
-                                }
-                            },
-                            "required" : ["order","place","is-completed"]
-                        }
-                    }
-                },
-                "required" : ["start-date","end-date","budget","proposals"]
-            }
+            "$ref" : "../../components/travel-routes.json"
         }
     }
 }

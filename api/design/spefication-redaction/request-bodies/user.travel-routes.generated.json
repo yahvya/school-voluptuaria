@@ -1,0 +1,19 @@
+{
+    "content": {
+        "application/json" : {
+            "schema": {
+                "type": ["object"],
+                "properties": {
+                    "travel-routes" : {
+                        "type" : ["array"],
+                        "description": "Callback datas received from the travel route",
+                        "items" : {
+                            "type" : ["object"]
+                        }
+                    }
+                },
+                "required" : ["travel-routes"]
+            }
+        }
+    }
+}

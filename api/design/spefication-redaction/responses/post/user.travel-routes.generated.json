@@ -1,0 +1,10 @@
+{
+    "type" : ["object"],
+    "properties": {
+        "error-message" : {
+            "type" : ["string","null"],
+            "description" : "error message or null on success"
+        }
+    },
+    "required" : ["error-message"]
+}

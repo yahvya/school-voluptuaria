@@ -4,6 +4,9 @@
             "schema": {
                 "type": ["object"],
                 "properties": {
+                    "paging" : {
+                        "type" : "number"
+                    },
                     "token" : {
                         "type" : ["string"],
                         "description" : "user authentication jwt token"
@@ -21,7 +24,7 @@
                         "required" : ["longitude","latitude"]
                     }
                 },
-                "required" : ["token","user-location"]
+                "required" : ["token","user-location","paging"]
             }
         }
     }

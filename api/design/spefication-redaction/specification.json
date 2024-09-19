@@ -402,6 +402,81 @@
                     }
                 }
             }
+        },
+        "/user/travel-routes/generated" : {
+            "get" : {
+                "description": "Provide some generated travel routes for a user",
+                "parameters": [
+                    {
+                        "name" : "authentication-token",
+                        "description": "user jwt authentication token",
+                        "required": true,
+                        "in" : "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "start-date",
+                        "description" : "the expected start date",
+                        "required": true,
+                        "in" : "query",
+                        "schema": {
+                            "type": ["string"],
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name" : "end-date",
+                        "description" : "the expected end date",
+                        "required": true,
+                        "in" : "query",
+                        "schema": {
+                            "type": ["string"],
+                            "format": "date"
+                        }
+                    },
+                    {
+                        "name" : "budget",
+                        "description" : "budget in euro",
+                        "required": true,
+                        "in" : "query",
+                        "schema": {
+                            "type": ["number"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Generated travel routes",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/get/user.travel-routes.generated.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post" : {
+                "description": "Register generated travel routes",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.travel-routes.generated.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Registration confirmation",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/user.travel-routes.generated.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
