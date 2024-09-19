@@ -1,0 +1,17 @@
+{
+  "type": ["object"],
+  "properties": {
+    "error-message": {
+      "type": ["string",null],
+      "description": "Indicates if the request was successful or failed"
+    },
+    "user_search_results": {
+      "type": "array",
+      "properties" : {
+        "type" : "object",
+        "$ref" : "../../components/place-datas.json"
+      }
+    }
+  },
+  "required": ["error-message", "user_search_results"]
+}

@@ -16,7 +16,7 @@ Les fonctionnalités sont séparées en deux parties, celles disponibles hors co
 - Voir les évaluations sur un lieu 
   - avis de l'application
   - avis externes via google
-- Recommandation de lieu à visiter (proche et non proche)
+- recommandation de lieu à visiter (proche et non proche)
   - en fonction des recherches faîtes sur les derniers jours (fréquence, temps passé à regarder)
   - en fonction des notes sur les lieux
 - Pouvoir lancer le trajet jusqu'au lieu recherché
@@ -31,7 +31,7 @@ Les fonctionnalités sont séparées en deux parties, celles disponibles hors co
   - via réseaux sociaux pouvant être liés (instagram)
   - via un questionnaire rapide
 - Construire [une similarité](#similarit-utilisateur) avec d'autres utilisateurs (*fonctionnalité interne*)
-- Recommandation de lieu à visiter à partir [du profil](#profil-utilisateur) (proche et non proche)
+- recommandation de lieu à visiter à partir [du profil](#profil-utilisateur) (proche et non proche)
 - Création / proposition de parcours de visite à partir de :
   - la date de début du parcours
   - la date de fin

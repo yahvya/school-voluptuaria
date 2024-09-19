@@ -351,6 +351,27 @@
                     }
                 }
             }
+        },
+        "/user/recommendations/noauth" : {
+            "post": {
+                "description": " the recommendation for user with no authentification",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.recommendations-noauth.json"
+                },
+                "responses": {
+                    "200": {
+                        "description": "user recommendation list",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/user.recommendations-noauth.json"
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

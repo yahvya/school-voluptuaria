@@ -1,0 +1,38 @@
+{
+  "content":
+  {
+    "application/json" :
+    {
+      "schema":
+      {
+        "type" : ["object"],
+        "properties":
+        {
+          "location": {
+            "type" : "string",
+            "description" : "the user location"
+          },
+          "user_search": {
+            "type": "array",
+            "description": "A list of search terms with frequency of usage",
+            "items": {
+              "type": "object",
+              "properties": {
+                "term": {
+                  "type": "string",
+                  "description": "The search term"
+                },
+                "frequency": {
+                  "type": "integer",
+                  "description": "Number of times the term was searched"
+                }
+              },
+              "required": ["term", "frequency"]
+            }
+          }
+        },
+        "required" : ["location","user_search"]
+      }
+    }
+  }
+}
