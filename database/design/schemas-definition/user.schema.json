@@ -134,6 +134,12 @@
             "items": {
                 "type": "object",
                 "properties": {
+                    "name" : {
+                        "type": "string",
+                        "description": "given name to the route",
+                        "minLength": 2,
+                        "maxLength": 20
+                    },
                     "start-date": {
                         "type": "string",
                         "format": "date",
@@ -180,7 +186,7 @@
                         }
                     }
                 },
-                "required": ["start-date","end-date","budget","proposals"]
+                "required": ["start-date","end-date","budget","proposals","name"]
             }
         }
     },
