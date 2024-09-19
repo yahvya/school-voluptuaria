@@ -4,7 +4,7 @@
       "schema": {
         "type": ["object"],
         "properties": {
-          "comments" : {
+          "comment" : {
             "type" : ["object"],
             "properties": {
               "rating" : {
@@ -27,7 +27,7 @@
             "description" : "authentication jwt token"
           }
         },
-        "required" : ["comments","authentication-token"]
+        "required" : ["comment","authentication-token"]
       }
     }
   }

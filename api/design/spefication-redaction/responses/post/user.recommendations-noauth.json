@@ -1,16 +1,6 @@
 {
-  "type": ["object"],
-  "properties": {
-    "error-message": {
-      "type": ["string","null"],
-      "description": "Indicates if the request was successful or failed"
-    },
-    "recommendation_results": {
-      "type": ["array"],
-      "items": {
-        "$ref" : "../../components/place-datas.json"
-      }
-    }
-  },
-  "required": ["error-message", "recommendation_results"]
+  "type": ["array"],
+  "items": {
+    "$ref" : "../../components/place-datas.json"
+  }
 }

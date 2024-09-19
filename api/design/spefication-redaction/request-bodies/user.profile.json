@@ -11,10 +11,9 @@
             "type": ["string"],
             "description" : "authentication jwt token"
           },
-          "url" :
+          "image" :
           {
-            "type": "string",
-            "description": "the profile image url"
+            "description": "The new profile picture image"
           },
           "email" :
           {

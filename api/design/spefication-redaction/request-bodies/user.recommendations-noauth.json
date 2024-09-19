@@ -8,11 +8,19 @@
         "type" : ["object"],
         "properties":
         {
-          "location": {
-            "type" : "string",
-            "description" : "the user location"
+          "user-location": {
+            "type" : "object",
+            "properties": {
+              "longitude" : {
+                "type": ["string"]
+              },
+              "latitude" : {
+                "type": ["string"]
+              }
+            },
+            "required" : ["longitude","latitude"]
           },
-          "user_search": {
+          "user-searches": {
             "type": "array",
             "description": "A list of search terms with frequency of usage",
             "items": {
@@ -31,7 +39,7 @@
             }
           }
         },
-        "required" : ["location","user_search"]
+        "required" : ["user-location","user-searches"]
       }
     }
   }

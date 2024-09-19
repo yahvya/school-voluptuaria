@@ -20,11 +20,21 @@
             "get": {
                 "description": "Search a touristic place",
                 "parameters":
-                [ {
+                [
+                    {
                         "name": "research",
                         "required": true,
                         "description": "Research string",
                         "in": "query",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "token",
+                        "required": false,
+                        "description": "User authentication jwt token if authenticated - allow to register user searches",
+                        "in": "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -88,7 +98,7 @@
 
                 "responses": {
                     "200": {
-                        "description": "comment succesfully posted",
+                        "description": "Comment successfully posted",
                         "content": {
                             "application/json" : {
                                 "schema": {
@@ -354,13 +364,13 @@
         },
         "/user/recommendations/noauth" : {
             "post": {
-                "description": " the recommendation for user with no authentification",
+                "description": "Provide the recommandations for a unauthenticated user",
                 "requestBody": {
                     "$ref" : "request-bodies/user.recommendations-noauth.json"
                 },
                 "responses": {
                     "200": {
-                        "description": "user recommendation list",
+                        "description": "Recommendation list",
                         "content": {
                             "application/json" : {
                                 "schema": {
@@ -370,6 +380,26 @@
                         }
                     }
 
+                }
+            }
+        },
+        "/user/recommendations/auth" : {
+            "post" : {
+                "description" : "Provide the recommendations for a authenticated user",
+                "requestBody": {
+                    "$ref": "request-bodies/user.recommendations.auth.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Recommendation list",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/user.recommendations.auth.json"
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

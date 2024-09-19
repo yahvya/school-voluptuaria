@@ -13,7 +13,6 @@
           },
           "image" :
           {
-            "type": "string",
             "description": "the uploaded image"
           },
           "name" :

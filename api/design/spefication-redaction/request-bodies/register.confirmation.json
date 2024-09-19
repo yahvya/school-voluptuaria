@@ -36,7 +36,7 @@
                         "description": "the input confirmation code by user"
                     }
                 },
-                "required": ["email","firstname","birthday","phonenumber","password","name","encrypted-confirmation-code","user-confirmation-code"]
+                "required": ["email","firstname","birthday","password","name","encrypted-confirmation-code","user-confirmation-code"]
             }
         }
     }

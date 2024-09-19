@@ -1,6 +1,10 @@
 {
     "type": "object",
     "properties": {
+        "access-id" : {
+            "type" : ["string","null"],
+            "format" : "uuid"
+        },
         "place-name": {
             "type": "string"
         },
@@ -65,7 +69,13 @@
         "callback-datas": {
             "type": "object",
             "description": "datas to send to the back end for a research on this place"
+        },
+        "comments" : {
+            "$ref" : "./comments.json"
+        },
+        "weather" : {
+            "$ref" : "./weather.json"
         }
     },
-    "required": ["place-name","is-opened-now","images","coordinates","categories","callback-datas"]
+    "required": ["access-id","place-name","is-opened-now","images","coordinates","categories","callback-datas","comments","weather"]
 }

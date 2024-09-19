@@ -1,19 +1,11 @@
 {
-  "type" : ["object"],
+  "type": ["object"],
   "properties" :
   {
-    "status" :
-    {
-      "type": "object",
-      "properties" :
-      {
-        "error-message" : {
-          "type": ["string","null"],
-          "description": "Error message or null on success"
-        }
-      },
-      "required" : ["error-message"]
+    "error-message" : {
+      "type": ["string","null"],
+      "description": "Error message or null on success"
     }
   },
-  "required": ["status"]
+  "required" : ["error-message"]
 }
