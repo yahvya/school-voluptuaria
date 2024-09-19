@@ -293,6 +293,64 @@
                     }
                 }
             }
+        },
+        "/user/places-wish-list/update" : {
+            "post" : {
+                "description": "Add a place in the user wish list",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.places-wish-list.update.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Add success",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/user.places-wish-list.update.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete a place in the user wish list",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.places-wish-list.update.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Deletion success",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/user.places-wish-list.update.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/load-social-profile" : {
+            "post" : {
+                "description": "Load user social profile from his social medias",
+                "requestBody": {
+                    "$ref" : "request-bodies/user.load-social-profile.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Load confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/user.load-social-profile.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
