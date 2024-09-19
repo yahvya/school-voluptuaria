@@ -220,13 +220,13 @@
                 }
             }
         },
-        "/user/profil-image" : {
+        "/user/profile-image" : {
             "post" :
             {
-                "description": "Change the user profil image",
+                "description": "Change the user profile image",
                 "requestBody":
                 {
-                    "$ref": "request-bodies/user.profil-image.json"
+                    "$ref": "request-bodies/user.profile-image.json"
                 },
                 "responses":
                 {
@@ -239,7 +239,7 @@
                             {
                                 "schema":
                                 {
-                                    "$ref": "responses/post/user.profil-image.json"
+                                    "$ref": "responses/post/user.profile-image.json"
                                 }
                             }
                         }
@@ -247,26 +247,26 @@
                 }
             }
         },
-        "/user/profil": {
+        "/user/profile": {
             "post":
             {
                 "description": "edit the user profil",
                 "requestBody":
                 {
-                    "$ref" : "request-bodies/user.profil.json"
+                    "$ref" : "request-bodies/user.profile.json"
                 },
                 "responses":
                 {
                     "200" :
                     {
-                        "description": "profil edited succesfully",
+                        "description": "profile edited successfully",
                         "content":
                         {
                             "application/json" :
                             {
                                 "schema":
                                 {
-                                    "$ref": "responses/post/user.profil.json"
+                                    "$ref": "responses/post/user.profile.json"
                                 }
                             }
                         }
@@ -282,7 +282,7 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "password edited succesfully",
+                        "description": "password edited successfully",
                         "content": {
                             "application/json" : {
                                 "schema": {
@@ -293,7 +293,6 @@
                     }
                 }
             }
-
         }
     }
 }

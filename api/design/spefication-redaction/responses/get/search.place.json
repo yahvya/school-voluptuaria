@@ -18,6 +18,7 @@
       "weather": {
         "$ref" : "../../components/weather.json"
       }
-    }
+    },
+    "required" : ["access-id","place-datas","comments","weather"]
   }
 }

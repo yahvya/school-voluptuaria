@@ -3,7 +3,7 @@
         "application/json" : {
             "schema": {
                 "properties": {
-                    "authentification-token" : {
+                    "authentication-token" : {
                         "type": ["string"],
                         "description" : "authentication jwt token"
                     },
@@ -15,7 +15,7 @@
                         }
                     }
                 },
-                "required" : ["authentification-token"]
+                "required" : ["authentication-token","to-fetch"]
             }
         }
     }

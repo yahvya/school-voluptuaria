@@ -5,10 +5,11 @@
             "type": ["string","null"],
             "description": "Error message or null on success"
         },
-        "token" :
+        "authentification-token" :
         {
             "type" : ["string","null"],
             "description": "jwt token for the user authentication or null on error"
         }
-    }
+    },
+    "required" : ["error-message","authentification-token"]
 }

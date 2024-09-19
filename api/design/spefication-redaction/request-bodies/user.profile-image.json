@@ -7,14 +7,14 @@
       {
         "properties":
         {
-          "authentification-token" : {
+          "authentication-token" : {
             "type": ["string"],
             "description" : "authentication jwt token"
           },
-          "url" :
+          "image" :
           {
             "type": "string",
-            "description": "the profil image url"
+            "description": "the uploaded image"
           },
           "name" :
           {
@@ -22,7 +22,7 @@
             "description": "the image name"
           }
         },
-        "required" : ["url","authentification-token"]
+        "required" : ["image","authentication-token"]
       }
     }
   }

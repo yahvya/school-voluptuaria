@@ -36,7 +36,8 @@
                     "type": "number",
                     "description" : "Enumeration as int"
                 }
-            }
+            },
+            "required" : ["gender","account-creation-date","profile-picture-access-link","phonenumber","birthdate","firstname","name","id"]
         },
         "visited-places": {
             "description" : "already visited places",
@@ -51,19 +52,25 @@
                         "type": "string",
                         "format": "date"
                     }
-                }
+                },
+                "required" : ["place-data","visited-at"]
             }
         },
         "places-wish-list" : {
-            "description" : "user wanted places to visit",  "type": "array",
+            "description" : "user wanted places to visit",
+            "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
+                    "place-access-id" : {
+                        "type" : "string",
+                        "description" : "place access guid"
+                    },
                     "place-data": {
                         "$ref" : "../../components/place-datas.json"
                     }
                 },
-                "required": ["place-access-id"]
+                "required": ["place-access-id","place-data"]
             }
         },
         "travel-routes": {
@@ -104,16 +111,19 @@
                                         "comments": {
                                             "$ref" : "../../components/comments.json"
                                         }
-                                    }
+                                    },
+                                    "required" : ["datas","weather","comments"]
                                 },
                                 "is-completed": {
                                     "type": "boolean",
                                     "default": false
                                 }
-                            }
+                            },
+                            "required" : ["order","place","is-completed"]
                         }
                     }
-                }
+                },
+                "required" : ["start-date","end-date","budget","proposals"]
             }
         }
     }

@@ -7,14 +7,14 @@
       {
         "properties":
         {
-          "authentification-token" : {
+          "authentication-token" : {
             "type": ["string"],
             "description" : "authentication jwt token"
           },
           "url" :
           {
             "type": "string",
-            "description": "the profil image url"
+            "description": "the profile image url"
           },
           "email" :
           {
@@ -42,7 +42,7 @@
             "description": "user phone number"
           }
         },
-        "required" : "authentification-token"
+        "required" : "authentication-token"
       }
     }
   }

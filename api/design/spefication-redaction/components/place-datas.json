@@ -1,11 +1,11 @@
 {
     "type": "object",
     "properties": {
-        "place-name" : {
-            "type" : "string"
+        "place-name": {
+            "type": "string"
         },
-        "is-opened-now" : {
-            "type" : "boolean"
+        "is-opened-now": {
+            "type": "boolean"
         },
         "images": {
             "type": "array",
@@ -20,7 +20,8 @@
                         "type": "string",
                         "description": "Description of the image"
                     }
-                }
+                },
+                "required" : ["url","description"]
             },
             "description": "List of images related to the place"
         },
@@ -37,11 +38,15 @@
                     "format": "float",
                     "description": "Longitude of the place"
                 },
-                "full-address" : {
-                    "type": ["string","null"],
+                "full-address": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
                     "description": "the location full address or null if not provided"
                 }
             },
+            "required" : ["longitude","latitude","full-address"],
             "description": "Geographical coordinates of the place"
         },
         "categories": {
@@ -49,16 +54,18 @@
             "items": {
                 "type": "object",
                 "properties": {
-                    "name" : {
+                    "name": {
                         "type": "string",
                         "description": "The category name"
                     }
-                }
+                },
+                "required" : ["name"]
             }
         },
-        "callback-datas" : {
+        "callback-datas": {
             "type": "object",
             "description": "datas to send to the back end for a research on this place"
         }
-    }
+    },
+    "required": ["place-name","is-opened-now","images","coordinates","categories","callback-datas"]
 }

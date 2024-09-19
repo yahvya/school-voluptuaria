@@ -4,5 +4,6 @@
     "comments": {
       "$ref" : "../../components/comments.json"
     }
-  }
+  },
+  "required" : ["comments"]
 }

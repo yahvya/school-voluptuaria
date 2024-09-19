@@ -15,7 +15,9 @@
           "type": ["string","null"],
           "description": "the url image to send back on succesfull edited or null on error"
         }
-      }
+      },
+      "required" : ["error-message","image-url"]
     }
-  }
+  },
+  "required" : ["status"]
 }

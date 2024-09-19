@@ -35,11 +35,6 @@
         ]
       }
     },
-    "required":
-    [
-      "user-id",
-      "comment",
-      "rating"
-    ]
+    "required": ["user-datas","comment","rating","wrote-at"]
   }
 }
