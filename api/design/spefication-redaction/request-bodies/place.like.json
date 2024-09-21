@@ -11,9 +11,13 @@
                     "authentication-token" : {
                         "type": ["string"],
                         "description" : "the authentication token"
+                    },
+                    "like-state" : {
+                        "type": ["boolean"],
+                        "description" : "If the user like this place or not"
                     }
                 },
-                "required" : ["callback-datas","authentication-token"]
+                "required" : ["callback-datas","authentication-token","like-state"]
             }
         }
     }

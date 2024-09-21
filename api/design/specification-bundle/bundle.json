@@ -451,11 +451,18 @@
                                             "string"
                                         ],
                                         "description": "the authentication token"
+                                    },
+                                    "like-state": {
+                                        "type": [
+                                            "boolean"
+                                        ],
+                                        "description": "If the user like this place or not"
                                     }
                                 },
                                 "required": [
                                     "callback-datas",
-                                    "authentication-token"
+                                    "authentication-token",
+                                    "like-state"
                                 ]
                             }
                         }

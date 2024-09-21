@@ -292,7 +292,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"callback-datas\": \"<string>\",\n \"authentication-token\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback-datas\": \"<string>\",\n \"authentication-token\": \"<string>\",\n \"like-state\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
