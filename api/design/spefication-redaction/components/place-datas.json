@@ -33,13 +33,12 @@
             "type": "object",
             "properties": {
                 "latitude": {
-                    "type": "number",
+                    "type": "string",
                     "format": "float",
                     "description": "Latitude of the place"
                 },
                 "longitude": {
-                    "type": "number",
-                    "format": "float",
+                    "type": "string",
                     "description": "Longitude of the place"
                 },
                 "full-address": {

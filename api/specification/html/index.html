@@ -201,6 +201,7 @@ font-style: italic;
   <li><a href="#loginPost"><code><span class="http-method">post</span> /login</code></a></li>
   <li><a href="#placeCommentsGet"><code><span class="http-method">get</span> /place/comments</code></a></li>
   <li><a href="#placeCommentsPost"><code><span class="http-method">post</span> /place/comments</code></a></li>
+  <li><a href="#placeLikePost"><code><span class="http-method">post</span> /place/like</code></a></li>
   <li><a href="#registerConfirmationPost"><code><span class="http-method">post</span> /register/confirmation</code></a></li>
   <li><a href="#registerPost"><code><span class="http-method">post</span> /register</code></a></li>
   <li><a href="#searchPlaceGet"><code><span class="http-method">get</span> /search/place</code></a></li>
@@ -414,7 +415,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -422,7 +423,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ]
 }</code></pre>
@@ -490,6 +491,58 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Comment successfully posted
         <a href="#_place_comments_post_200_response">_place_comments_post_200_response</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="placeLikePost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /place/like</code></pre></div>
+    <div class="method-summary">Post the user notice on a place (<span class="nickname">placeLikePost</span>)</div>
+    <div class="method-notes">Post the user notice on a place</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">_place_like_post_request <a href="#_place_like_post_request">_place_like_post_request</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "error-message" : "error-message"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Post confirmation
+        <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="registerConfirmationPost"/>
@@ -649,7 +702,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -657,29 +710,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -705,7 +758,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -713,29 +766,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -862,7 +915,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -870,7 +923,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "datas" : {
@@ -888,7 +941,7 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           }, {
             "user-datas" : {
@@ -896,29 +949,29 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           } ],
           "coordinates" : {
             "full-address" : "full-address",
-            "latitude" : 0.8008282,
-            "longitude" : 6.0274563
+            "latitude" : "latitude",
+            "longitude" : "longitude"
           },
           "weather" : {
             "forecast" : [ {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             }, {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             } ]
           },
           "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -933,18 +986,18 @@ font-style: italic;
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         }
       },
@@ -958,7 +1011,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -966,7 +1019,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "datas" : {
@@ -984,7 +1037,7 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           }, {
             "user-datas" : {
@@ -992,29 +1045,29 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           } ],
           "coordinates" : {
             "full-address" : "full-address",
-            "latitude" : 0.8008282,
-            "longitude" : 6.0274563
+            "latitude" : "latitude",
+            "longitude" : "longitude"
           },
           "weather" : {
             "forecast" : [ {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             }, {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             } ]
           },
           "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1029,18 +1082,18 @@ font-style: italic;
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         }
       },
@@ -1060,7 +1113,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -1068,7 +1121,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "datas" : {
@@ -1086,7 +1139,7 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           }, {
             "user-datas" : {
@@ -1094,29 +1147,29 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           } ],
           "coordinates" : {
             "full-address" : "full-address",
-            "latitude" : 0.8008282,
-            "longitude" : 6.0274563
+            "latitude" : "latitude",
+            "longitude" : "longitude"
           },
           "weather" : {
             "forecast" : [ {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             }, {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             } ]
           },
           "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1131,18 +1184,18 @@ font-style: italic;
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         }
       },
@@ -1156,7 +1209,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -1164,7 +1217,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "datas" : {
@@ -1182,7 +1235,7 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           }, {
             "user-datas" : {
@@ -1190,29 +1243,29 @@ font-style: italic;
               "fullname" : "fullname"
             },
             "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-            "rating" : 1.586325192201178,
+            "rating" : 1.3203312761844046,
             "comment" : "comment"
           } ],
           "coordinates" : {
             "full-address" : "full-address",
-            "latitude" : 0.8008282,
-            "longitude" : 6.0274563
+            "latitude" : "latitude",
+            "longitude" : "longitude"
           },
           "weather" : {
             "forecast" : [ {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             }, {
               "date" : "2000-01-23",
-              "sunrise" : 2.3021358869347655,
+              "sunrise" : 5.962133916683182,
               "alert" : "alert",
-              "temperature" : 5.962134,
-              "main" : 5.637376656633329,
-              "pressure" : 7.061401241503109
+              "temperature" : 6.0274563,
+              "main" : 1.4658129805029452,
+              "pressure" : 5.637376656633329
             } ]
           },
           "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1227,18 +1280,18 @@ font-style: italic;
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         }
       },
@@ -1273,7 +1326,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -1281,29 +1334,29 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "coordinates" : {
         "full-address" : "full-address",
-        "latitude" : 0.8008282,
-        "longitude" : 6.0274563
+        "latitude" : "latitude",
+        "longitude" : "longitude"
       },
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       },
       "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1332,7 +1385,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -1340,29 +1393,29 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "coordinates" : {
         "full-address" : "full-address",
-        "latitude" : 0.8008282,
-        "longitude" : 6.0274563
+        "latitude" : "latitude",
+        "longitude" : "longitude"
       },
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       },
       "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1390,7 +1443,7 @@ font-style: italic;
         "fullname" : "fullname"
       },
       "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-      "rating" : 1.586325192201178,
+      "rating" : 1.3203312761844046,
       "comment" : "comment"
     }, {
       "user-datas" : {
@@ -1398,29 +1451,29 @@ font-style: italic;
         "fullname" : "fullname"
       },
       "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-      "rating" : 1.586325192201178,
+      "rating" : 1.3203312761844046,
       "comment" : "comment"
     } ],
     "coordinates" : {
       "full-address" : "full-address",
-      "latitude" : 0.8008282,
-      "longitude" : 6.0274563
+      "latitude" : "latitude",
+      "longitude" : "longitude"
     },
     "weather" : {
       "forecast" : [ {
         "date" : "2000-01-23",
-        "sunrise" : 2.3021358869347655,
+        "sunrise" : 5.962133916683182,
         "alert" : "alert",
-        "temperature" : 5.962134,
-        "main" : 5.637376656633329,
-        "pressure" : 7.061401241503109
+        "temperature" : 6.0274563,
+        "main" : 1.4658129805029452,
+        "pressure" : 5.637376656633329
       }, {
         "date" : "2000-01-23",
-        "sunrise" : 2.3021358869347655,
+        "sunrise" : 5.962133916683182,
         "alert" : "alert",
-        "temperature" : 5.962134,
-        "main" : 5.637376656633329,
-        "pressure" : 7.061401241503109
+        "temperature" : 6.0274563,
+        "main" : 1.4658129805029452,
+        "pressure" : 5.637376656633329
       } ]
     },
     "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1446,7 +1499,7 @@ font-style: italic;
         "fullname" : "fullname"
       },
       "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-      "rating" : 1.586325192201178,
+      "rating" : 1.3203312761844046,
       "comment" : "comment"
     }, {
       "user-datas" : {
@@ -1454,29 +1507,29 @@ font-style: italic;
         "fullname" : "fullname"
       },
       "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-      "rating" : 1.586325192201178,
+      "rating" : 1.3203312761844046,
       "comment" : "comment"
     } ],
     "coordinates" : {
       "full-address" : "full-address",
-      "latitude" : 0.8008282,
-      "longitude" : 6.0274563
+      "latitude" : "latitude",
+      "longitude" : "longitude"
     },
     "weather" : {
       "forecast" : [ {
         "date" : "2000-01-23",
-        "sunrise" : 2.3021358869347655,
+        "sunrise" : 5.962133916683182,
         "alert" : "alert",
-        "temperature" : 5.962134,
-        "main" : 5.637376656633329,
-        "pressure" : 7.061401241503109
+        "temperature" : 6.0274563,
+        "main" : 1.4658129805029452,
+        "pressure" : 5.637376656633329
       }, {
         "date" : "2000-01-23",
-        "sunrise" : 2.3021358869347655,
+        "sunrise" : 5.962133916683182,
         "alert" : "alert",
-        "temperature" : 5.962134,
-        "main" : 5.637376656633329,
-        "pressure" : 7.061401241503109
+        "temperature" : 6.0274563,
+        "main" : 1.4658129805029452,
+        "pressure" : 5.637376656633329
       } ]
     },
     "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1586,7 +1639,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#_user_places_wish_list_update_post_200_response">_user_places_wish_list_update_post_200_response</a>
+      <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
       
     </div>
 
@@ -1608,7 +1661,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Deletion success
-        <a href="#_user_places_wish_list_update_post_200_response">_user_places_wish_list_update_post_200_response</a>
+        <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="userPlacesWishListUpdatePost"/>
@@ -1638,7 +1691,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#_user_places_wish_list_update_post_200_response">_user_places_wish_list_update_post_200_response</a>
+      <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
       
     </div>
 
@@ -1660,7 +1713,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Add success
-        <a href="#_user_places_wish_list_update_post_200_response">_user_places_wish_list_update_post_200_response</a>
+        <a href="#_place_like_post_200_response">_place_like_post_200_response</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="userProfileImagePost"/>
@@ -1819,7 +1872,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -1827,29 +1880,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1875,7 +1928,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -1883,29 +1936,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -1981,7 +2034,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -1989,29 +2042,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2037,7 +2090,7 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   }, {
     "user-datas" : {
@@ -2045,29 +2098,29 @@ font-style: italic;
       "fullname" : "fullname"
     },
     "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-    "rating" : 1.586325192201178,
+    "rating" : 1.3203312761844046,
     "comment" : "comment"
   } ],
   "coordinates" : {
     "full-address" : "full-address",
-    "latitude" : 0.8008282,
-    "longitude" : 6.0274563
+    "latitude" : "latitude",
+    "longitude" : "longitude"
   },
   "weather" : {
     "forecast" : [ {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     }, {
       "date" : "2000-01-23",
-      "sunrise" : 2.3021358869347655,
+      "sunrise" : 5.962133916683182,
       "alert" : "alert",
-      "temperature" : 5.962134,
-      "main" : 5.637376656633329,
-      "pressure" : 7.061401241503109
+      "temperature" : 6.0274563,
+      "main" : 1.4658129805029452,
+      "pressure" : 5.637376656633329
     } ]
   },
   "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2146,7 +2199,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -2154,7 +2207,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "datas" : {
@@ -2172,7 +2225,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -2180,29 +2233,29 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "coordinates" : {
           "full-address" : "full-address",
-          "latitude" : 0.8008282,
-          "longitude" : 6.0274563
+          "latitude" : "latitude",
+          "longitude" : "longitude"
         },
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         },
         "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2217,18 +2270,18 @@ font-style: italic;
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       }
     },
@@ -2242,7 +2295,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -2250,7 +2303,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "datas" : {
@@ -2268,7 +2321,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -2276,29 +2329,29 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "coordinates" : {
           "full-address" : "full-address",
-          "latitude" : 0.8008282,
-          "longitude" : 6.0274563
+          "latitude" : "latitude",
+          "longitude" : "longitude"
         },
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         },
         "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2313,18 +2366,18 @@ font-style: italic;
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       }
     },
@@ -2344,7 +2397,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -2352,7 +2405,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "datas" : {
@@ -2370,7 +2423,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -2378,29 +2431,29 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "coordinates" : {
           "full-address" : "full-address",
-          "latitude" : 0.8008282,
-          "longitude" : 6.0274563
+          "latitude" : "latitude",
+          "longitude" : "longitude"
         },
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         },
         "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2415,18 +2468,18 @@ font-style: italic;
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       }
     },
@@ -2440,7 +2493,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       }, {
         "user-datas" : {
@@ -2448,7 +2501,7 @@ font-style: italic;
           "fullname" : "fullname"
         },
         "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-        "rating" : 1.586325192201178,
+        "rating" : 1.3203312761844046,
         "comment" : "comment"
       } ],
       "datas" : {
@@ -2466,7 +2519,7 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         }, {
           "user-datas" : {
@@ -2474,29 +2527,29 @@ font-style: italic;
             "fullname" : "fullname"
           },
           "wrote-at" : "2000-01-23T04:56:07.000+00:00",
-          "rating" : 1.586325192201178,
+          "rating" : 1.3203312761844046,
           "comment" : "comment"
         } ],
         "coordinates" : {
           "full-address" : "full-address",
-          "latitude" : 0.8008282,
-          "longitude" : 6.0274563
+          "latitude" : "latitude",
+          "longitude" : "longitude"
         },
         "weather" : {
           "forecast" : [ {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           }, {
             "date" : "2000-01-23",
-            "sunrise" : 2.3021358869347655,
+            "sunrise" : 5.962133916683182,
             "alert" : "alert",
-            "temperature" : 5.962134,
-            "main" : 5.637376656633329,
-            "pressure" : 7.061401241503109
+            "temperature" : 6.0274563,
+            "main" : 1.4658129805029452,
+            "pressure" : 5.637376656633329
           } ]
         },
         "access-id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
@@ -2511,18 +2564,18 @@ font-style: italic;
       "weather" : {
         "forecast" : [ {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         }, {
           "date" : "2000-01-23",
-          "sunrise" : 2.3021358869347655,
+          "sunrise" : 5.962133916683182,
           "alert" : "alert",
-          "temperature" : 5.962134,
-          "main" : 5.637376656633329,
-          "pressure" : 7.061401241503109
+          "temperature" : 6.0274563,
+          "main" : 1.4658129805029452,
+          "pressure" : 5.637376656633329
         } ]
       }
     },
@@ -2610,6 +2663,8 @@ font-style: italic;
     <li><a href="#_place_comments_post_200_response"><code>_place_comments_post_200_response</code> - </a></li>
     <li><a href="#_place_comments_post_request"><code>_place_comments_post_request</code> - </a></li>
     <li><a href="#_place_comments_post_request_comment"><code>_place_comments_post_request_comment</code> - </a></li>
+    <li><a href="#_place_like_post_200_response"><code>_place_like_post_200_response</code> - </a></li>
+    <li><a href="#_place_like_post_request"><code>_place_like_post_request</code> - </a></li>
     <li><a href="#_register_confirmation_post_200_response"><code>_register_confirmation_post_200_response</code> - </a></li>
     <li><a href="#_register_confirmation_post_request"><code>_register_confirmation_post_request</code> - </a></li>
     <li><a href="#_register_post_200_response"><code>_register_post_200_response</code> - </a></li>
@@ -2633,7 +2688,6 @@ font-style: italic;
     <li><a href="#_user_load_social_profile_post_200_response"><code>_user_load_social_profile_post_200_response</code> - </a></li>
     <li><a href="#_user_load_social_profile_post_200_response_next_step"><code>_user_load_social_profile_post_200_response_next_step</code> - </a></li>
     <li><a href="#_user_load_social_profile_post_request_inner"><code>_user_load_social_profile_post_request_inner</code> - </a></li>
-    <li><a href="#_user_places_wish_list_update_post_200_response"><code>_user_places_wish_list_update_post_200_response</code> - </a></li>
     <li><a href="#_user_places_wish_list_update_post_request"><code>_user_places_wish_list_update_post_request</code> - </a></li>
     <li><a href="#_user_profile_image_post_200_response"><code>_user_profile_image_post_200_response</code> - </a></li>
     <li><a href="#_user_profile_image_post_request"><code>_user_profile_image_post_request</code> - </a></li>
@@ -2712,6 +2766,21 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="_place_like_post_200_response"><code>_place_like_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">errorMinusmessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the error message or null on success </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_place_like_post_request"><code>_place_like_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">callbackMinusdatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> the given callback datas for the place </div>
+<div class="param">authenticationMinustoken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the authentication token </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="_register_confirmation_post_200_response"><code>_register_confirmation_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -2726,8 +2795,6 @@ font-style: italic;
       <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user email </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user name </div>
 <div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user firstname </div>
-<div class="param">birthday </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user birthday </div>
-<div class="param">phonenumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user phone number </div>
 <div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user password </div>
 <div class="param">encryptedMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the received encrypted confirmation code during the validation step </div>
 <div class="param">userMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the input confirmation code by user </div>
@@ -2748,8 +2815,6 @@ font-style: italic;
       <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user email </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user name </div>
 <div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user firstname </div>
-<div class="param">birthday </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user birthday </div>
-<div class="param">phonenumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user phone number </div>
 <div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user password </div>
     </div>  <!-- field-items -->
   </div>
@@ -2798,7 +2863,7 @@ font-style: italic;
     <div class='model-description'>Geographical coordinates of the place</div>
     <div class="field-items">
       <div class="param">latitude </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> Latitude of the place format: float</div>
-<div class="param">longitude </div><div class="param-desc"><span class="param-type"><a href="#float">Float</a></span> Longitude of the place format: float</div>
+<div class="param">longitude </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Longitude of the place </div>
 <div class="param">fullMinusaddress </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the location full address or null if not provided </div>
     </div>  <!-- field-items -->
   </div>
@@ -2931,13 +2996,6 @@ font-style: italic;
       <div class="param">socialMinusmedia </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Enumeration as int to represent the social media to get </div>
 <div class="param">actionMinustype </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Enumeration as int , the action to do for this social media. The to 1 to represent the initialisation </div>
 <div class="param">datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> expected datas for the step </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="_user_places_wish_list_update_post_200_response"><code>_user_places_wish_list_update_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
-    <div class='model-description'></div>
-    <div class="field-items">
-      <div class="param">errorMinusmessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the error message or null on success </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
