@@ -73,6 +73,13 @@
                         "required": ["category-name","count-of-presence"]
                     }
                 },
+                "unliked-places-categories" : {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description" : "category name"
+                    }
+                },
                 "searched-categories" : {
                     "type": "array",
                     "items": {
@@ -190,5 +197,5 @@
             }
         }
     },
-    "required": ["name","gender","firstname","email","password","id","social-profile","account-creation-date","visited-places","travel-routes"]
+    "required": ["name","gender","firstname","email","password","id","social-profile","account-creation-date","visited-places","travel-routes","places-wish-list"]
 }

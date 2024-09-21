@@ -18,7 +18,7 @@
 | [gender](#gender)                                           | `number` | Required | cannot be null | [User Mongodb schema](user-properties-gender.md "undefined#/properties/gender")                                           |
 | [social-profile](#social-profile)                           | `object` | Required | cannot be null | [User Mongodb schema](user-properties-social-profile.md "undefined#/properties/social-profile")                           |
 | [visited-places](#visited-places)                           | `array`  | Required | cannot be null | [User Mongodb schema](user-properties-visited-places.md "undefined#/properties/visited-places")                           |
-| [places-wish-list](#places-wish-list)                       | `array`  | Optional | cannot be null | [User Mongodb schema](user-properties-places-wish-list.md "undefined#/properties/places-wish-list")                       |
+| [places-wish-list](#places-wish-list)                       | `array`  | Required | cannot be null | [User Mongodb schema](user-properties-places-wish-list.md "undefined#/properties/places-wish-list")                       |
 | [travel-routes](#travel-routes)                             | `array`  | Required | cannot be null | [User Mongodb schema](user-properties-travel-routes.md "undefined#/properties/travel-routes")                             |
 
 ## id
@@ -323,7 +323,7 @@ user firstname
 
 `places-wish-list`
 
-* is optional
+* is required
 
 * Type: `object[]` ([Details](user-properties-places-wish-list-items.md))
 
