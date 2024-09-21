@@ -1,0 +1,20 @@
+{
+    "content": {
+        "application/json" : {
+            "schema": {
+                "type": ["object"],
+                "properties": {
+                    "callback-datas" : {
+                        "type": ["object"],
+                        "description" : "the given callback datas for the place"
+                    },
+                    "authentication-token" : {
+                        "type": ["string"],
+                        "description" : "the authentication token"
+                    }
+                },
+                "required" : ["callback-datas","authentication-token"]
+            }
+        }
+    }
+}

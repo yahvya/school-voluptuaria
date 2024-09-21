@@ -115,6 +115,27 @@
                 }
             }
         },
+        "/place/like" : {
+            "post": {
+                "summary": "Post the user notice on a place",
+                "description": "Post the user notice on a place",
+                "requestBody": {
+                    "$ref" : "request-bodies/place.like.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Post confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/place.like.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/register" : {
             "post": {
                 "summary": "Validate user registration datas",
