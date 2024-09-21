@@ -269,6 +269,56 @@
                             ]
                         },
 	                        {
+    "name": "/place/like",
+                "description": "Post the user notice on a place",
+                 "item": [
+                            {
+                                "name": "Post the user notice on a place",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"callback-datas\": \"<string>\",\n \"authentication-token\": \"<string>\",\n \"like-state\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/place/like",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "place",
+                                            "like"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Post the user notice on a place"
+                                }
+                            }
+                            ]
+                        },
+	                        {
     "name": "/register",
                 "description": "Validate user registration datas",
                  "item": [
@@ -292,7 +342,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"password\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -341,7 +391,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

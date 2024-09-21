@@ -94,13 +94,12 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "latitude": {
-                                                        "type": "number",
+                                                        "type": "string",
                                                         "format": "float",
                                                         "description": "Latitude of the place"
                                                     },
                                                     "longitude": {
-                                                        "type": "number",
-                                                        "format": "float",
+                                                        "type": "string",
                                                         "description": "Longitude of the place"
                                                     },
                                                     "full-address": {
@@ -429,6 +428,74 @@
                 }
             }
         },
+        "/place/like": {
+            "post": {
+                "summary": "Post the user notice on a place",
+                "description": "Post the user notice on a place",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": [
+                                    "object"
+                                ],
+                                "properties": {
+                                    "callback-datas": {
+                                        "type": [
+                                            "object"
+                                        ],
+                                        "description": "the given callback datas for the place"
+                                    },
+                                    "authentication-token": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": "the authentication token"
+                                    },
+                                    "like-state": {
+                                        "type": [
+                                            "boolean"
+                                        ],
+                                        "description": "If the user like this place or not"
+                                    }
+                                },
+                                "required": [
+                                    "callback-datas",
+                                    "authentication-token",
+                                    "like-state"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Post confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": [
+                                        "object"
+                                    ],
+                                    "properties": {
+                                        "error-message": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "the error message or null on success"
+                                        }
+                                    },
+                                    "required": [
+                                        "error-message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/register": {
             "post": {
                 "summary": "Validate user registration datas",
@@ -450,14 +517,6 @@
                                         "type": "string",
                                         "description": "user firstname "
                                     },
-                                    "birthday": {
-                                        "type": "string",
-                                        "description": "user birthday"
-                                    },
-                                    "phonenumber": {
-                                        "type": "string",
-                                        "description": "user phone number"
-                                    },
                                     "password": {
                                         "type": "string",
                                         "description": "user password"
@@ -466,7 +525,6 @@
                                 "required": [
                                     "email",
                                     "firstname",
-                                    "birthday",
                                     "password",
                                     "name"
                                 ]
@@ -531,14 +589,6 @@
                                         "type": "string",
                                         "description": "user firstname "
                                     },
-                                    "birthday": {
-                                        "type": "string",
-                                        "description": "user birthday"
-                                    },
-                                    "phonenumber": {
-                                        "type": "string",
-                                        "description": "user phone number"
-                                    },
                                     "password": {
                                         "type": "string",
                                         "description": "user password"
@@ -555,7 +605,6 @@
                                 "required": [
                                     "email",
                                     "firstname",
-                                    "birthday",
                                     "password",
                                     "name",
                                     "encrypted-confirmation-code",
@@ -924,13 +973,12 @@
                                                                 "type": "object",
                                                                 "properties": {
                                                                     "latitude": {
-                                                                        "type": "number",
+                                                                        "type": "string",
                                                                         "format": "float",
                                                                         "description": "Latitude of the place"
                                                                     },
                                                                     "longitude": {
-                                                                        "type": "number",
-                                                                        "format": "float",
+                                                                        "type": "string",
                                                                         "description": "Longitude of the place"
                                                                     },
                                                                     "full-address": {
@@ -1134,13 +1182,12 @@
                                                         "type": "object",
                                                         "properties": {
                                                             "latitude": {
-                                                                "type": "number",
+                                                                "type": "string",
                                                                 "format": "float",
                                                                 "description": "Latitude of the place"
                                                             },
                                                             "longitude": {
-                                                                "type": "number",
-                                                                "format": "float",
+                                                                "type": "string",
                                                                 "description": "Longitude of the place"
                                                             },
                                                             "full-address": {
@@ -1360,13 +1407,12 @@
                                                                                     "type": "object",
                                                                                     "properties": {
                                                                                         "latitude": {
-                                                                                            "type": "number",
+                                                                                            "type": "string",
                                                                                             "format": "float",
                                                                                             "description": "Latitude of the place"
                                                                                         },
                                                                                         "longitude": {
-                                                                                            "type": "number",
-                                                                                            "format": "float",
+                                                                                            "type": "string",
                                                                                             "description": "Longitude of the place"
                                                                                         },
                                                                                         "full-address": {
@@ -2195,13 +2241,12 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "latitude": {
-                                                        "type": "number",
+                                                        "type": "string",
                                                         "format": "float",
                                                         "description": "Latitude of the place"
                                                     },
                                                     "longitude": {
-                                                        "type": "number",
-                                                        "format": "float",
+                                                        "type": "string",
                                                         "description": "Longitude of the place"
                                                     },
                                                     "full-address": {
@@ -2458,13 +2503,12 @@
                                                 "type": "object",
                                                 "properties": {
                                                     "latitude": {
-                                                        "type": "number",
+                                                        "type": "string",
                                                         "format": "float",
                                                         "description": "Latitude of the place"
                                                     },
                                                     "longitude": {
-                                                        "type": "number",
-                                                        "format": "float",
+                                                        "type": "string",
                                                         "description": "Longitude of the place"
                                                     },
                                                     "full-address": {
@@ -2746,13 +2790,12 @@
                                                                             "type": "object",
                                                                             "properties": {
                                                                                 "latitude": {
-                                                                                    "type": "number",
+                                                                                    "type": "string",
                                                                                     "format": "float",
                                                                                     "description": "Latitude of the place"
                                                                                 },
                                                                                 "longitude": {
-                                                                                    "type": "number",
-                                                                                    "format": "float",
+                                                                                    "type": "string",
                                                                                     "description": "Longitude of the place"
                                                                                 },
                                                                                 "full-address": {

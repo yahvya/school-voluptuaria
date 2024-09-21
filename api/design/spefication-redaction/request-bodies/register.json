@@ -15,20 +15,12 @@
                         "type" : "string",
                         "description": "user firstname "
                     },
-                    "birthday": {
-                        "type" : "string",
-                        "description": "user birthday"
-                    },
-                    "phonenumber": {
-                        "type" : "string",
-                        "description": "user phone number"
-                    },
                     "password": {
                         "type" : "string",
                         "description": "user password"
                     }
                 },
-                "required": ["email","firstname","birthday","password","name"]
+                "required": ["email","firstname","password","name"]
             }
         }
     }
