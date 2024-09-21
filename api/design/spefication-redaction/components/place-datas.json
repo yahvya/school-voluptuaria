@@ -5,6 +5,10 @@
             "type" : ["string","null"],
             "format" : "uuid"
         },
+        "prices" : {
+            "type" : "object",
+            "description" : "prices description"
+        },
         "place-name": {
             "type": "string"
         },
@@ -76,5 +80,5 @@
             "$ref" : "./weather.json"
         }
     },
-    "required": ["access-id","place-name","is-opened-now","images","coordinates","categories","callback-datas","comments","weather"]
+    "required": ["access-id","place-name","is-opened-now","images","coordinates","categories","callback-datas","comments","weather","prices"]
 }

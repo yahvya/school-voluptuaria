@@ -63,6 +63,10 @@
                                                 ],
                                                 "format": "uuid"
                                             },
+                                            "prices": {
+                                                "type": "object",
+                                                "description": "prices description"
+                                            },
                                             "place-name": {
                                                 "type": "string"
                                             },
@@ -245,7 +249,8 @@
                                             "categories",
                                             "callback-datas",
                                             "comments",
-                                            "weather"
+                                            "weather",
+                                            "prices"
                                         ]
                                     }
                                 }
@@ -942,6 +947,10 @@
                                                                 ],
                                                                 "format": "uuid"
                                                             },
+                                                            "prices": {
+                                                                "type": "object",
+                                                                "description": "prices description"
+                                                            },
                                                             "place-name": {
                                                                 "type": "string"
                                                             },
@@ -1124,7 +1133,8 @@
                                                             "categories",
                                                             "callback-datas",
                                                             "comments",
-                                                            "weather"
+                                                            "weather",
+                                                            "prices"
                                                         ]
                                                     },
                                                     "visited-at": {
@@ -1150,6 +1160,10 @@
                                                             "null"
                                                         ],
                                                         "format": "uuid"
+                                                    },
+                                                    "prices": {
+                                                        "type": "object",
+                                                        "description": "prices description"
                                                     },
                                                     "place-name": {
                                                         "type": "string"
@@ -1333,7 +1347,8 @@
                                                     "categories",
                                                     "callback-datas",
                                                     "comments",
-                                                    "weather"
+                                                    "weather",
+                                                    "prices"
                                                 ]
                                             }
                                         },
@@ -1375,6 +1390,10 @@
                                                                                         "null"
                                                                                     ],
                                                                                     "format": "uuid"
+                                                                                },
+                                                                                "prices": {
+                                                                                    "type": "object",
+                                                                                    "description": "prices description"
                                                                                 },
                                                                                 "place-name": {
                                                                                     "type": "string"
@@ -1558,7 +1577,8 @@
                                                                                 "categories",
                                                                                 "callback-datas",
                                                                                 "comments",
-                                                                                "weather"
+                                                                                "weather",
+                                                                                "prices"
                                                                             ]
                                                                         },
                                                                         "weather": {
@@ -2210,6 +2230,10 @@
                                                 ],
                                                 "format": "uuid"
                                             },
+                                            "prices": {
+                                                "type": "object",
+                                                "description": "prices description"
+                                            },
                                             "place-name": {
                                                 "type": "string"
                                             },
@@ -2392,7 +2416,8 @@
                                             "categories",
                                             "callback-datas",
                                             "comments",
-                                            "weather"
+                                            "weather",
+                                            "prices"
                                         ]
                                     }
                                 }
@@ -2472,6 +2497,10 @@
                                                 ],
                                                 "format": "uuid"
                                             },
+                                            "prices": {
+                                                "type": "object",
+                                                "description": "prices description"
+                                            },
                                             "place-name": {
                                                 "type": "string"
                                             },
@@ -2654,7 +2683,8 @@
                                             "categories",
                                             "callback-datas",
                                             "comments",
-                                            "weather"
+                                            "weather",
+                                            "prices"
                                         ]
                                     }
                                 }
@@ -2758,6 +2788,10 @@
                                                                                 "null"
                                                                             ],
                                                                             "format": "uuid"
+                                                                        },
+                                                                        "prices": {
+                                                                            "type": "object",
+                                                                            "description": "prices description"
                                                                         },
                                                                         "place-name": {
                                                                             "type": "string"
@@ -2941,7 +2975,8 @@
                                                                         "categories",
                                                                         "callback-datas",
                                                                         "comments",
-                                                                        "weather"
+                                                                        "weather",
+                                                                        "prices"
                                                                     ]
                                                                 },
                                                                 "weather": {
