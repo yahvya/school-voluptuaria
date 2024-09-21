@@ -32,17 +32,17 @@
             "examples": ["svel","yahaya"]
         },
         "birthdate" : {
-            "type": "string",
+            "type": ["string","null"],
             "format": "date",
             "examples": ["1980-12-03"]
         },
         "phonenumber": {
-            "type": "string",
+            "type": ["string","null"],
             "format": "phonenumber",
             "examples": ["+3307689024"]
         },
         "profile-picture-access-link" : {
-            "type": "string",
+            "type": ["string","null"],
             "examples": ["/profiles/user-profile.jpg"]
         },
         "account-creation-date": {
@@ -71,6 +71,13 @@
                             }
                         },
                         "required": ["category-name","count-of-presence"]
+                    }
+                },
+                "unliked-places-categories" : {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description" : "category name"
                     }
                 },
                 "searched-categories" : {
@@ -190,5 +197,5 @@
             }
         }
     },
-    "required": ["name","gender","firstname","birthdate","id","social-profile","visited-places","travel-routes"]
+    "required": ["name","gender","firstname","email","password","id","social-profile","account-creation-date","visited-places","travel-routes","places-wish-list"]
 }
