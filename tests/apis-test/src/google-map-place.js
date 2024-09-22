@@ -6,22 +6,37 @@ console.log(
     AFFICHAGE DES DONNEES D'UN LIEU
     
         LIEU : ${place.displayName.text}
-        IDENTIFIANT : ${place.id}
+        IDENTIFIANT : ${place.id ?? "Id non défini"}
         CATEGORISATIONS : ${place.types.join(",")}
         NUMERO DE TELEPHONE : ${place.internationalPhoneNumber ?? "Non fourni"}
-        ADRESSE COMPLETE : ${place.formattedAddress}
+        ADRESSE COMPLETE : ${place.formattedAddress ?? "Non fourni"}
         COORDONNES UTILISABLE PAR L'APPLICATION : ${JSON.stringify(place.location)}
-        NOTE DE L'ENDROIT : ${place.rating}
-        URL D'OUVERTURE SUR GOOGLE MAPS : ${place.googleMapsUri}
+        NOTE DE L'ENDROIT : ${place.rating ?? "Non fourni"}
+        URL D'OUVERTURE SUR GOOGLE MAPS : ${place.googleMapsUri ?? "Non fourni"}
         OK POUR LES ENFANTS ? : ${place.goodForChildren ? "Oui" : "Non"}
-        ON PEUT Y ACCEDER EN FAUTEUIL ? : 
+`)
+    if(
+        place.accessibilityOptions !== null && place.accessibilityOptions !== undefined  &&
+        (
+            "wheelchairAccessibleParking" in place.accessibilityOptions && "wheelchairAccessibleEntrance" in place.accessibilityOptions && "wheelchairAccessibleRestroom" in place.accessibilityOptions
+        )
+    ){
+console.log(
+`
+        ON PEUT Y ACCEDER EN FAUTEUIL ? :
             PARKING : ${place.accessibilityOptions.wheelchairAccessibleParking ? "Oui" : "Non"}
             ENTREE : ${place.accessibilityOptions.wheelchairAccessibleEntrance ? "Oui" : "Non"}
             REPOS : ${place.accessibilityOptions.wheelchairAccessibleRestroom ? "Oui" : "Non"}
+            
         INFORMATIONS SUR LES DATES D'OUVERTURE COMMUNES :
-`)
+`
+)
+    }
 
-    place.regularOpeningHours.weekdayDescriptions.forEach(description => console.log(`\t\t\t${description}`))
+    try{
+        place.regularOpeningHours.weekdayDescriptions.forEach(description => console.log(`\t\t\t${description}`))
+    }
+    catch(_){}
 
 console.log(
 `
