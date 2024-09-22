@@ -79,7 +79,7 @@ TEST DE RECUPERATION DE LIEUX DE TYPES <${categories.join(",")}>
 
 console.log(
 `
-FIN DU TEST
+    FIN D'AFFICHAGE
 `
 )
 }

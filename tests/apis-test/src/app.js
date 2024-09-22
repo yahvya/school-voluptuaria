@@ -1,5 +1,6 @@
 import {loadSomePlacesFromCategories} from "./google-map-place.js";
 import {config} from "dotenv";
+import {loadInstagramDetails} from "./instagram.js";
 
 (async () => {
 
@@ -21,11 +22,6 @@ INFORMATIONS :
 )
 
 await loadSomePlacesFromCategories("musées")
-
-console.log(
-`-------------------------------------------------------------------
-FIN DU TEST
--------------------------------------------------------------------`
-)
+await loadInstagramDetails()
 
 })()
