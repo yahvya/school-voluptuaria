@@ -1,6 +1,7 @@
 import {loadSomePlacesFromCategories} from "./google-map-place.js";
 import {config} from "dotenv";
 import {loadInstagramDetails} from "./instagram.js";
+import {loadMeteoOf} from "./openweathermap.js";
 
 (async () => {
 
@@ -23,5 +24,5 @@ INFORMATIONS :
 
 await loadSomePlacesFromCategories("musées")
 await loadInstagramDetails()
-
+await loadMeteoOf("-3.998823","17.579758")
 })()
