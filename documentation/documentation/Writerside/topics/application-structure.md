@@ -83,20 +83,13 @@ Chacune de ses technologies est équivalent, dû au fait d'être construit sur l
 
 ## Base de données
 
-**Choix MongoDb**
+**Choix mysql**
 
-Les besoins au niveau de la base de données sont :
+Pour les fonctionnalités majeures de l'application comme la recommandation par similarité entre utilisateurs, énormément de jointures sont nécessaires, ces jointures sont le point fort des bases de données relationnelles.
 
-- grosse quantité de données dû à la récupération de données de tailles exponentielles (en rapport avec la construction de profil des utilisateurs) et performances sur l'utilisation de ces données
-- non nécessité de relation entre les données (le tout pouvant être regroupés sous forme de structure utilisateur)
-- gestion de l'augmentation de charge
-- flexibilité au niveau de la structure des données
+Le choix du type de base de données entre NoSql et relationnel s'est fait à partir de ce critère.
 
-Basé sur ces critères une base de données NoSql est plus adapté dû à la structuration ne nécessitant pas forcément des relations, le principe de scalabilité horizontale nativement offert sur la majeure partie des bases qui permet de faciliter la gestion de la charge, et une structure plus flexible dû à l'absence du côté "relationnel".
-
-Notre choix s'est porté sur MongoDb dû à structure JSON autorisant la flexibilité, sa manière de faire des requêtes permettant la greffe d'outils externes pour les potentiels calculs.
-
-D'autres candidats comme **cassandra** sont également adaptés, mais intègrent des fonctionnalités non nécessaires au projet.
+Quant au choix du système précis (Mysql, Postgres, Oracle) nous sommes partis sur un système libre et implémentant chacun de nos besoins en termes de requêtes. 
 
 ## Récapitulatif des technologies
 

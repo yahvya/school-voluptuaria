@@ -13,5 +13,6 @@
         <toc-element topic="application-structure.md"/>
         <toc-element topic="planification-and-tools.md"/>
         <toc-element topic="tests-organisation.md"/>
+        <toc-element topic="interactions-structure.md"/>
     </toc-element>
 </instance-profile>
