@@ -54,6 +54,7 @@ console.log(
                 MOMENT DE PUBLICATION GENERAL : ${review.relativePublishTimeDescription} 
                 MOMENT DE PUBLICATION PRECIS : ${review.publishTime} 
                 TEXTE : ${review.text.text}
+                NOTE EN ETOILES : ${review.rating}
 `
 )
     })
