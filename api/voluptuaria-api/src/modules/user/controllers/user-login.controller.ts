@@ -1,6 +1,6 @@
-import {Body, Controller, Get, Post, UseGuards} from "@nestjs/common";
+import { Controller, Post, UseGuards, Request, Body, Get } from '@nestjs/common';
+import { UserLoginService } from '../services/user-login.service'
 import {JwtAuthGuard} from "../../../commons/guards/jwt-auth.guard";
-import {UserLoginService} from "../services/user-login.service";
 
 @Controller('login')
 export class UserLoginController {
@@ -18,7 +18,7 @@ export class UserLoginController {
     // Route protégée
     @UseGuards(JwtAuthGuard)
     @Get()
-    getProtected({req}: { req: any }) {
+    getProtected(@Request() req) {
         return {message: 'This is protected data', user: req['user']};
     }
 
