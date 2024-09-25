@@ -3,6 +3,7 @@
 *.vscode
 *.idea
 *node_modules
+*dist
 
 # private documents
 
