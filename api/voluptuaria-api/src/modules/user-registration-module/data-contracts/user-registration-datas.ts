@@ -1,3 +1,6 @@
+/**
+ * @brief User registration form datas.
+ */
 export class UserRegistrationDatas {
     public email: string;
     public name: string;
