@@ -1,10 +1,10 @@
 import {Module} from "@nestjs/common";
-import {UserRegistrationService} from "./services/user-registration-service";
-import {UserLoginController} from "./controllers/user-login-controller";
-import {UserRegistrationController} from "./controllers/user-registration-controller";
-import {UserLoginService} from "./services/user-login.service";
 import {JwtModule} from "@nestjs/jwt";
 import {ConfigModule, ConfigService} from "@nestjs/config";
+import {UserRegistrationService} from "./services/user-registration.service";
+import {UserLoginService} from "./services/user-login.service";
+import {UserLoginController} from "./controllers/user-login.controller";
+import {UserRegistrationController} from "./controllers/user-registration.controller";
 
 @Module({
     imports: [
