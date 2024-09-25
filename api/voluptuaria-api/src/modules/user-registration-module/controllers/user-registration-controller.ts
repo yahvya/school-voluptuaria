@@ -1,4 +1,4 @@
-import {Body, Controller, Post} from "@nestjs/common";
+import {Body, Controller, Inject, Post} from "@nestjs/common";
 import {UserRegistrationDatas} from "../data-contracts/user-registration-datas";
 import {UserRegistrationResponse} from "../data-contracts/user-registration-response";
 import {UserRegistrationService} from "../services/user-registration-service";
@@ -8,15 +8,22 @@ import {UserRegistrationService} from "../services/user-registration-service";
  */
 @Controller('register')
 export class UserRegistrationController {
+
+    constructor(
+        protected readonly userRegistrationService: UserRegistrationService
+    ) {
+    }
+
     /**
      * @brief Validate user registration datas.
      * @param userRegistrationDatas User registration datas.
-     * @param userRegistrationService User registration service.
      * @returns {UserRegistrationResponse} Validation's Result.
      */
     @Post()
-    public register(@Body() userRegistrationDatas : UserRegistrationDatas, userRegistrationService : UserRegistrationService) : UserRegistrationResponse {
-        return userRegistrationService.register(userRegistrationDatas);
+    public register(
+        @Body() userRegistrationDatas : UserRegistrationDatas
+    ) : UserRegistrationResponse {
+        return this.userRegistrationService.register(userRegistrationDatas);
     }
 
 }

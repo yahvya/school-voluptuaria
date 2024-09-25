@@ -1,13 +1,15 @@
 import { DataSource } from 'typeorm';
 import {EnvConfigService} from "../../../core/configs/env-config";
 
-var databaseConf = new EnvConfigService()
+/**
+ * @brief Type orm config
+ */
 export const databaseService = [
     {
         provide: 'DATA_SOURCE',
-        useFactory: async () => {
+        useFactory: async (databaseConf:EnvConfigService) => {
             const dataSource = new DataSource({
-                type: 'mysql',
+                type: "mysql",
                 host: databaseConf.databaseHost,
                 port: parseInt(databaseConf.databasePort),
                 username: databaseConf.databaseUser,
