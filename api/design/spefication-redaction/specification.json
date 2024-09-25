@@ -484,6 +484,15 @@
                         "schema": {
                             "type": ["number"]
                         }
+                    },
+                    {
+                        "name" : "zone",
+                        "description" : "Country, City names",
+                        "required": true,
+                        "in" : "query",
+                        "schema": {
+                            "type": ["string"]
+                        }
                     }
                 ],
                 "responses": {
