@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import {EnvConfigService} from "../../../core/configs/env-config";
+import {EnvConfigService} from "../../../core/configs/env-config-service";
 
 /**
  * @brief Type orm config

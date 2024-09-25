@@ -17,6 +17,21 @@ export class EnvConfigService{
     }
 
     /**
+     * @returns {string|null} the secret key for the jwt token
+     */
+    public get jwtSecret(): string|null {
+        return process.env.JWT_SECRET || null;
+    }
+
+    /**
+     * @returns {string|null} the secret key for the jwt token
+     */
+    public get jwtExpired(): string|null {
+        return process.env.JWT_EXPIRES_IN || null;
+    }
+
+
+    /**
      * @returns {string|null} The database host or null if it is not defined.
      */
     public get databaseHost(): string|null {
