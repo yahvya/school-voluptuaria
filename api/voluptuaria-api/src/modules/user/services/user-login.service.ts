@@ -1,20 +1,30 @@
 import {Injectable} from "@nestjs/common";
 import {JwtService} from "@nestjs/jwt";
-import {userLoginData} from "../data-contracts/user-login-datas";
+import {UserLoginDatas} from "../data-contracts/user-login-datas";
 import {UserLoginResponse} from "../data-contracts/user-login-responses";
 
+/**
+ * @brief Login service
+ */
 @Injectable()
 export class UserLoginService {
-    constructor(private readonly jwtService: JwtService) {}
+    constructor(
+        protected readonly jwtService: JwtService
+    ) {}
 
-    validateUser(userLogin: userLoginData) {
-
-        const user = { id: 1, email: 'John@gmail.com', password: 'password' };
-        if (user.email === userLogin.email && user.password === userLogin.password) {
-            return user;
-        }
-        return UserLoginResponse ;
+    /**
+     * @brief try to log the user
+     * @param options options
+     * @returns {UserLoginResponse} login response
+     */
+    public login(options: {userLoginDatas: UserLoginDatas}):UserLoginResponse{
+        return new UserLoginResponse({
+            authenticationToken: this.generateToken({
+                email: options.userLoginDatas.email
+            })
+        });
     }
+
     generateToken(payload: any): string {
         return this.jwtService.sign(payload);
     }

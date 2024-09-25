@@ -1,25 +1,22 @@
 import { Controller, Post, UseGuards, Request, Body, Get } from '@nestjs/common';
 import { UserLoginService } from '../services/user-login.service'
 import {JwtAuthGuard} from "../../../commons/guards/jwt-auth.guard";
+import {UserLoginResponse} from "../data-contracts/user-login-responses";
+import {UserLoginDatas} from "../data-contracts/user-login-datas";
 
 @Controller('login')
 export class UserLoginController {
-    constructor(private readonly UserLoginService: UserLoginService) {}
-
-    @Post()
-    async login(@Body() body: any) {
-        const user = await this.UserLoginService.validateUser(body.username, body.password);
-        if (!user) {
-            return { message: 'Invalid credentials' };
-        }
-        return this.UserLoginService.generateToken(user);
+    constructor(private readonly userLoginService: UserLoginService) {
     }
 
-    // Route protégée
-    @UseGuards(JwtAuthGuard)
-    @Get()
-    getProtected(@Request() req) {
-        return {message: 'This is protected data', user: req['user']};
+    /**
+     * @brief try to log the user
+     * @param userLoginDatas login form datas
+     * @returns {UserLoginResponse} login response
+     */
+    public login(@Body() userLoginDatas:UserLoginDatas):UserLoginResponse{
+        return this.userLoginService.login({
+            userLoginDatas: userLoginDatas
+        });
     }
-
 }

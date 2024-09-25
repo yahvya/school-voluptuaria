@@ -23,17 +23,24 @@ export class JwtAuthGuard implements CanActivate {
         }
 
         request['user'] = validToken;
+
         return true;
     }
 
-    private extractTokenFromHeader(request: Request): string | null {
+    /**
+     * @brief extract the token from the request headers
+     * @param request request
+     * @returns {string|null} the token or null
+     */
+    protected extractTokenFromHeader(request: Request): string | null {
         const authorizationHeader = request.headers.authorization;
         if (!authorizationHeader) {
             return null;
         }
 
-        // Le token est envoyé comme : "Bearer <token>"
+        // token sent as Bearer
         const parts = authorizationHeader.split(' ');
+
         if (parts.length === 2 && parts[0] === 'Bearer') {
             return parts[1];
         }

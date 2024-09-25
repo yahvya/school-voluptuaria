@@ -3,7 +3,7 @@ import {IsEmail, IsNotEmpty, IsString, IsStrongPassword} from "class-validator";
 /**
  * @brief User login form datas.
  */
-export class userLoginData {
+export class UserLoginDatas {
     @IsString({
         always : true,
         message: "error.bad-fields"
@@ -12,7 +12,7 @@ export class userLoginData {
         always: true,
         message: "error.bad-fields"
     })
-        @IsEmail()
+    @IsEmail()
     public email: string;
 
     @IsString({

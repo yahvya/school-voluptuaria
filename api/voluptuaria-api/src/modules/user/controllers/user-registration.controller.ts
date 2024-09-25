@@ -8,7 +8,6 @@ import {UserRegistrationResponseDatas} from "../data-contracts/user-registration
  */
 @Controller('register')
 export class UserRegistrationController {
-
     constructor(
         protected readonly userRegistrationService: UserRegistrationService
     ) {
@@ -23,6 +22,8 @@ export class UserRegistrationController {
     public register(
         @Body() userRegistrationDatas : UserRegistrationDatas
     ) : UserRegistrationResponseDatas {
-        return this.userRegistrationService.register(userRegistrationDatas);
+        return this.userRegistrationService.register({
+            userRegistrationDatas: userRegistrationDatas
+        });
     }
 }

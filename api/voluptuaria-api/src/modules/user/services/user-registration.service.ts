@@ -9,10 +9,12 @@ import {UserRegistrationResponseDatas} from "../data-contracts/user-registration
 export class UserRegistrationService {
     /**
      * @brief Validate user registration datas.
-     * @param userRegistrationDatas User registration datas.
+     * @param options registration options
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      */
-    public register(userRegistrationDatas: UserRegistrationDatas): UserRegistrationResponseDatas {
+    public register(
+        options: {userRegistrationDatas: UserRegistrationDatas}
+    ): UserRegistrationResponseDatas {
         return new UserRegistrationResponseDatas();
     }
 }
