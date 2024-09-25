@@ -1,14 +1,22 @@
 import { Controller, Post, UseGuards, Request, Body, Get } from '@nestjs/common';
 import { UserLoginService } from '../services/user-login.service'
 import {JwtAuthGuard} from "../../../commons/guards/jwt-auth.guard";
+import {userLoginData} from "../data-contracts/user-login-datas";
 
+/**
+ * @brief Manage users login process.
+ */
 @Controller('login')
 export class UserLoginController {
     constructor(private readonly UserLoginService: UserLoginService) {}
 
+    /**
+     * @brief Validate user login datas.
+     */
+
     @Post()
-    async login(@Body() body: any) {
-        const user = await this.UserLoginService.validateUser(body.username, body.password);
+    async login(@Body() userLogin: userLoginData) {
+        const user = this.UserLoginService.validateUser(userLogin);
         if (!user) {
             return { message: 'Invalid credentials' };
         }
