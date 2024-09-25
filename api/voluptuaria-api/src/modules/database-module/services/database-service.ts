@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import {EnvConfigService} from "../../../core/configs/env-config-service";
+import {ConfigService} from "@nestjs/config";
 
 /**
  * @brief Type orm config
@@ -7,14 +7,14 @@ import {EnvConfigService} from "../../../core/configs/env-config-service";
 export const databaseService = [
     {
         provide: 'DATA_SOURCE',
-        useFactory: async (databaseConf:EnvConfigService) => {
+        useFactory: async (envConfig: ConfigService) => {
             const dataSource = new DataSource({
                 type: "mysql",
-                host: databaseConf.databaseHost,
-                port: parseInt(databaseConf.databasePort),
-                username: databaseConf.databaseUser,
-                password: databaseConf.databasePassword,
-                database: databaseConf.databaseName,
+                host: envConfig.getOrThrow("DATABASE_HOST"),
+                port: parseInt(envConfig.getOrThrow("DATABASE_PORT")),
+                username: envConfig.getOrThrow("DATABASE_USER"),
+                password: envConfig.getOrThrow("DATABASE_PASSWORD"),
+                database: envConfig.getOrThrow("DATABASE_NAME"),
                 entities: [
                     __dirname + '**/*.entity{.ts,.js}',
                 ]

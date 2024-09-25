@@ -1,4 +1,4 @@
-import {Body, Controller, Inject, Post} from "@nestjs/common";
+import {Body, Controller, Post} from "@nestjs/common";
 import {UserRegistrationDatas} from "../data-contracts/user-registration-datas";
 import {UserRegistrationResponse} from "../data-contracts/user-registration-response";
 import {UserRegistrationService} from "../services/user-registration-service";

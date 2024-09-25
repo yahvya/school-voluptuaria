@@ -2,6 +2,9 @@ import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from
 import { UserLoginService } from '../../modules/user/services/user-login.service'
 import { Request } from 'express';
 
+/**
+ * @brief Jwt token verification
+ */
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
     constructor(private readonly UserLoginService: UserLoginService) {}
@@ -11,12 +14,12 @@ export class JwtAuthGuard implements CanActivate {
         const token = this.extractTokenFromHeader(request);
 
         if (!token) {
-            throw new UnauthorizedException('Token missing');
+            throw new UnauthorizedException();
         }
 
         const validToken = this.UserLoginService.validateToken(token);
         if (!validToken) {
-            throw new UnauthorizedException('Invalid token');
+            throw new UnauthorizedException();
         }
 
         request['user'] = validToken;
