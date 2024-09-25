@@ -25,5 +25,4 @@ export class UserRegistrationController {
     ) : UserRegistrationResponse {
         return this.userRegistrationService.register(userRegistrationDatas);
     }
-
 }

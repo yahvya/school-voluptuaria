@@ -17,11 +17,10 @@ export const databaseService = [
                 database: databaseConf.databaseName,
                 entities: [
                     __dirname + '**/*.entity{.ts,.js}',
-                ],
-                synchronize: true,
+                ]
             });
 
             return dataSource.initialize();
-        },
+        }
     },
 ];
