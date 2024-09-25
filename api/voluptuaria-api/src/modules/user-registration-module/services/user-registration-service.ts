@@ -1,5 +1,5 @@
 import {UserRegistrationDatas} from "../data-contracts/user-registration-datas";
-import {Injectable, Scope} from "@nestjs/common";
+import {Injectable,} from "@nestjs/common";
 import {UserRegistrationResponse} from "../data-contracts/user-registration-response";
 
 /**
