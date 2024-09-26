@@ -9,7 +9,8 @@ CREATE TABLE app_users(
    profile_picture VARCHAR(50) ,
    created_at DATETIME NOT NULL,
    gender TINYINT NOT NULL,
-   PRIMARY KEY(id)
+   PRIMARY KEY(id),
+   UNIQUE(email)
 );
 
 CREATE TABLE places(
@@ -19,7 +20,7 @@ CREATE TABLE places(
    PRIMARY KEY(id)
 );
 
-CREATE TABLE Social_profile(
+CREATE TABLE social_profile(
    id VARCHAR(50) ,
    crated_at DATETIME NOT NULL,
    liked_categories JSON NOT NULL,
