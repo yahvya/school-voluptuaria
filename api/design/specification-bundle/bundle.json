@@ -42,6 +42,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "responses": {
@@ -266,6 +277,17 @@
                 "description": "Provide the comments on a given place with pagination",
                 "parameters": [
                     {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
                         "name": "paging",
                         "description": "Pagination number",
                         "required": true,
@@ -356,6 +378,19 @@
             "post": {
                 "summary": "Post a comment on a given place",
                 "description": "Post a comment on a given place",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -437,6 +472,19 @@
             "post": {
                 "summary": "Post the user notice on a place",
                 "description": "Post the user notice on a place",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -505,6 +553,30 @@
             "post": {
                 "summary": "Validate user registration datas",
                 "description": "Validate user registration datas",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "description": " Name of the lang file",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -577,6 +649,19 @@
             "post": {
                 "summary": "Confirm a user registration",
                 "description": "Confirm a user registration",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -659,6 +744,19 @@
             "post": {
                 "summary": "Log the user",
                 "description": "Log the user",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -721,6 +819,30 @@
             "post": {
                 "summary": "Validate the forgot password starting process",
                 "description": "Validate the forgot password starting process",
+                "parameters": [
+                    {
+                        "name": "lang",
+                        "description": " Name of the lang file",
+                        "in": "header",
+                        "required": true,
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -778,6 +900,19 @@
             "post": {
                 "summary": "Confirm the forgot password verification and update password",
                 "description": "Confirm the forgot password verification and update password",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -842,6 +977,19 @@
             "post": {
                 "summary": "Provide user datas",
                 "description": "Provide user datas",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1727,6 +1875,19 @@
             "post": {
                 "summary": "Change the user profile image",
                 "description": "Change the user profile image",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1794,6 +1955,19 @@
             "post": {
                 "summary": "Edit the user profil",
                 "description": "edit the user profil",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1873,6 +2047,19 @@
             "post": {
                 "summary": "Change the user password",
                 "description": "change the user password",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1939,6 +2126,19 @@
             "post": {
                 "summary": "Add a place in the user wish list",
                 "description": "Add a place in the user wish list",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -1998,6 +2198,19 @@
             "delete": {
                 "summary": "Delete a place in the user wish list",
                 "description": "Delete a place in the user wish list",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2059,6 +2272,19 @@
             "post": {
                 "summary": "Load user social profile from his social medias",
                 "description": "Load user social profile from his social medias",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2150,6 +2376,19 @@
             "post": {
                 "summary": "Provide the recommandations for a unauthenticated user",
                 "description": "Provide the recommandations for a unauthenticated user",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2430,6 +2669,19 @@
         "/user/recommendations/auth": {
             "post": {
                 "description": "Provide the recommendations for a authenticated user",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -2699,6 +2951,17 @@
                 "summary": "Provide some generated travel routes for a user",
                 "description": "Provide some generated travel routes for a user",
                 "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
                     {
                         "name": "authentication-token",
                         "description": "user jwt authentication token",
@@ -3132,6 +3395,19 @@
             "post": {
                 "summary": "Register generated travel routes",
                 "description": "Register generated travel routes",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
