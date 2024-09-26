@@ -2,7 +2,7 @@ FROM node:22-alpine AS dev
 
 # meta datas
 
-LABEL authors = "Yahaya Bathily - Pascal Perilovisi Vigneau - Ambroise Pouwedeou Kilimou"
+LABEL authors = "Yahaya Bathily - Pascal Perilovisi Vigneau - Ambroise Pouwedeou Kilimou, Renkas Vitalii"
 LABEL api-version = "11.09.24"
 
 # setup workspace and project
