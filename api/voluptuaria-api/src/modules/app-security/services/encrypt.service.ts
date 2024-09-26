@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import { createCipheriv, randomBytes, scrypt } from 'crypto';
+import { createCipheriv, createDecipheriv, randomBytes, scrypt } from 'crypto';
 import { promisify } from 'util'
 
 /**
@@ -23,6 +23,32 @@ export class EncryptService{
                 cipher.final()
             ]).toString("base64"),
             iv: iv.toString("base64")
+        }
+    }
+
+    /**
+     * @brief decrypt from the given datas
+     * @param options options
+     * @returns {Promise<string,null>} the decrypted string or null on error
+     */
+    public async decrypt(options: {toDecrypt: string,secretKey: string,iv: string}):Promise<string|null>{
+        try{
+            const iv = Buffer.from(options.iv, "base64")
+            const encryptedBuffer = Buffer.from(options.toDecrypt, "base64")
+
+            const key = (await promisify(scrypt)(options.secretKey, "salt", 32)) as Buffer
+
+            const decipher = createDecipheriv("aes-256-ctr", key, iv)
+
+            const decrypted = Buffer.concat([
+                decipher.update(encryptedBuffer),
+                decipher.final()
+            ])
+
+            return decrypted.toString()
+        }
+        catch(_){
+            return null
         }
     }
 }

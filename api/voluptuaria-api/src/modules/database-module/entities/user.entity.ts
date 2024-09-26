@@ -83,3 +83,12 @@ export class UserEntity {
     })
     gender: number
 }
+
+/**
+ * @brief app genders
+ */
+export enum Gender{
+    UNDEFINED = 0,
+    MAN = 1,
+    WOMAN = 2,
+}

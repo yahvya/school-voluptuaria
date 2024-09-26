@@ -2,11 +2,16 @@ import {Injectable} from "@nestjs/common";
 import {UserRegistrationDatas} from "../data-contracts/user-registration.datas";
 import {UserRegistrationResponseDatas} from "../data-contracts/user-registration-response.datas";
 import {Repository} from "typeorm"
-import { UserEntity } from "../../database-module/entities/user.entity"
+import { Gender, UserEntity } from "../../database-module/entities/user.entity"
 import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
 import { InjectRepository } from "@nestjs/typeorm"
 import { EncryptService } from "../../app-security/services/encrypt.service"
+import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration-confirmation.datas"
+import {
+    UserRegistrationConfirmationResponseDatas
+} from "../data-contracts/user-registration-confirmation-response.datas"
+import { UserLoginService } from "./user-login.service"
 
 /**
  * @brief User registration service.
@@ -18,7 +23,8 @@ export class UserRegistrationService {
         protected readonly userRepository:Repository<UserEntity>,
         protected readonly mailService:MailerService,
         protected readonly langService:LangService,
-        protected readonly encryptService: EncryptService
+        protected readonly encryptService: EncryptService,
+        protected readonly loginService: UserLoginService
     ) {
     }
 
@@ -63,6 +69,73 @@ export class UserRegistrationService {
 
         return response
     }
+
+    /**
+     * @brief try to confirm and create user account
+     * @param options options
+     * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
+     */
+    public async confirmRegistration(options: {userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas}):Promise<UserRegistrationConfirmationResponseDatas> {
+        const response = new UserRegistrationConfirmationResponseDatas()
+        const userRegistrationConfirmationDatas = options.userRegistrationConfirmationDatas
+        const {
+            email,
+            iv,
+            firstname,
+            encryptedConfirmationCode,
+            userConfirmationCode,
+            password,
+            name
+        } = userRegistrationConfirmationDatas
+
+        // check if the account already exists
+        if (await this.userRepository.findOneBy({ email: userRegistrationConfirmationDatas.email }) !== null) {
+            response.errorMessage = "error.account-already-exist"
+            return response
+        }
+
+        // check confirmation code
+        const decryptedPassword = await this.encryptService.decrypt({
+            toDecrypt: encryptedConfirmationCode,
+            secretKey: "temporary secret key",
+            iv: iv
+        })
+
+        if (userConfirmationCode !== decryptedPassword) {
+            response.errorMessage = "error.bad-confirmation-code"
+            return response
+        }
+
+        try {
+            await this.userRepository.save({
+                email: email,
+                password: password,
+                name: name,
+                firstName: firstname,
+                gender: Gender.UNDEFINED
+            })
+
+            const loginResponse = await this.loginService.login({
+                userLoginDatas: {
+                    email: email,
+                    password: password
+                }
+            })
+
+            if(loginResponse.errorMessage !== null){
+                response.errorMessage = loginResponse.errorMessage
+                return response
+            }
+
+            response.authenticationToken = loginResponse.authenticationToken
+        }
+        catch(_){
+            response.errorMessage = "error.technical"
+        }
+
+        return response
+    }
+
 
     /**
      * @brief send the confirmation mail

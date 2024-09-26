@@ -3,6 +3,9 @@ import {UserRegistrationService} from "../services/user-registration.service"
 import {UserRegistrationDatas} from "../data-contracts/user-registration.datas"
 import {UserRegistrationResponseDatas} from "../data-contracts/user-registration-response.datas"
 import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration-confirmation.datas"
+import {
+    UserRegistrationConfirmationResponseDatas
+} from "../data-contracts/user-registration-confirmation-response.datas"
 
 /**
  * @brief Manage users registration process.
@@ -35,12 +38,15 @@ export class UserRegistrationController {
     /**
      * @brief try to confirm and create user account
      * @param userRegistrationConfirmationDatas confirmation datas
+     * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
      */
     @Post("confirmation")
     @HttpCode(200)
     public async registerConfirmation(
         @Body() userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas
-    ):Promise<string>{
-        return "bonjour"
+    ):Promise<UserRegistrationConfirmationResponseDatas>{
+        return this.userRegistrationService.confirmRegistration({
+            userRegistrationConfirmationDatas: userRegistrationConfirmationDatas
+        })
     }
 }
