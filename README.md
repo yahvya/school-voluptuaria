@@ -27,7 +27,9 @@
     - Lien vers les ressources de documentations externes si nécessaire
     - Description des paramètres
 - Classes au format [psr-4](https://en.wikipedia.org/wiki/PHP_Standard_Recommendation) *même hors contexte PHP*
+- Les paramètres des fonctions doivent être définies sous forme d'un objet, de manière à pouvoir nommer les paramètres
 - Se plier aux patterns définis
+- Avant de reprendre son code faire un pull de sa branche 
 
 ### Scripts utilitaires
 
