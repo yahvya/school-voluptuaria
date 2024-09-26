@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column,BeforeInsert, CreateDateColumn, } from "typeorm"
 
 /**
  * @brief app users entity
@@ -51,7 +51,7 @@ export class UserEntity {
         type: "date",
         nullable: true,
     })
-    birthdate: string
+    birthdate: Date
 
     @Column({
         name: "phonenumber",
@@ -69,10 +69,10 @@ export class UserEntity {
     })
     profilePictureLink: string
 
-    @Column({
+    @CreateDateColumn({
         name: "created_at",
         type: "datetime",
-        nullable: false,
+        nullable: false
     })
     createdAt: Date
 

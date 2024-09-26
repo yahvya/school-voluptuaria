@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from "typeorm"
 import { UserEntity } from "./user.entity"
 
 /**
@@ -14,7 +14,7 @@ export class SocialProfileEntity {
     })
     id: string
 
-    @Column({
+    @CreateDateColumn({
         name: "crated_at",
         type: "datetime",
         nullable: false,

@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn } from "typeorm"
+import { Entity, PrimaryColumn, ManyToOne, JoinColumn, CreateDateColumn } from "typeorm"
 import { UserEntity } from "./user.entity"
 import { PlacesEntity } from "./places.entity"
 
@@ -23,7 +23,7 @@ export class PlacesCommentsEntity {
     })
     placeId: string
 
-    @Column({
+    @CreateDateColumn({
         name: "commented_at",
         type: "datetime",
         nullable: false,

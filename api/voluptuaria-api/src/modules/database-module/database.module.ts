@@ -1,12 +1,6 @@
 import { Global, Module } from "@nestjs/common"
 import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm"
-import { ConfigModule, ConfigService } from "@nestjs/config"
-import { UserEntity } from "./entities/user.entity"
-import { PlacesEntity } from "./entities/places.entity"
-import { SocialProfileEntity } from "./entities/social-profile.entity"
-import { TravelRoutesEntity } from "./entities/travel-routes.entity"
-import { VisitedPlacesEntity } from "./entities/visited-places.entity"
-import { WishLists } from "./entities/wish-list.entity"
+import { ConfigService } from "@nestjs/config"
 
 @Module({
     imports: [
@@ -21,15 +15,7 @@ import { WishLists } from "./entities/wish-list.entity"
                     password: configService.getOrThrow("DATABASE_PASSWORD"),
                     database: configService.getOrThrow("DATABASE_NAME"),
                     synchronize: configService.getOrThrow("DATABASE_SYNC") === "true",
-                    entities: [
-                        UserEntity,
-                        PlacesEntity,
-                        SocialProfileEntity,
-                        TravelRoutesEntity,
-                        PlacesEntity,
-                        VisitedPlacesEntity,
-                        WishLists
-                    ]
+                    autoLoadEntities: true
                 }
 
                 return options

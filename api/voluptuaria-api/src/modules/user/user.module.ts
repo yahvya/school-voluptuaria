@@ -5,6 +5,8 @@ import {UserRegistrationService} from "./services/user-registration.service";
 import {UserLoginService} from "./services/user-login.service";
 import {UserLoginController} from "./controllers/user-login.controller";
 import {UserRegistrationController} from "./controllers/user-registration.controller";
+import { TypeOrmModule } from "@nestjs/typeorm"
+import { UserEntity } from "../database-module/entities/user.entity"
 
 @Module({
     imports: [
@@ -17,7 +19,8 @@ import {UserRegistrationController} from "./controllers/user-registration.contro
                     expiresIn: configService.getOrThrow("JWT_EXPIRES_IN"),
                 },
             }),
-        })
+        }),
+        TypeOrmModule.forFeature([UserEntity])
     ],
     providers: [
         UserRegistrationService,

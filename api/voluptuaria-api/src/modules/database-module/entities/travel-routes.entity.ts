@@ -27,14 +27,14 @@ export class TravelRoutesEntity {
         type: "date",
         nullable: false,
     })
-    startDate: string
+    startDate: Date
 
     @Column({
         name: "end_date",
         type: "date",
         nullable: false,
     })
-    endDate: string
+    endDate: Date
 
     @Column({
         name: "budget",
