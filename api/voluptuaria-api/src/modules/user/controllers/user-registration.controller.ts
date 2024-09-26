@@ -19,9 +19,9 @@ export class UserRegistrationController {
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      */
     @Post()
-    public async register(
+    public register(
         @Body() userRegistrationDatas : UserRegistrationDatas
-    ) : Promise<UserRegistrationResponseDatas> {
+    ) : UserRegistrationResponseDatas {
         return this.userRegistrationService.register({
             userRegistrationDatas: userRegistrationDatas
         });
