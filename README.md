@@ -34,6 +34,7 @@
 - Les fichiers modules doivent se finir par : ".module.ts".
 - Les fichiers controllers doivent se finir par : ".controller.ts".
 - Les fichiers d'entités de base de données doivent se finir par : ".entity.ts".
+- Les fichiers d'exceptions de base de données doivent se finir par : ".exception.ts".
 
 ### Scripts utilitaires
 
