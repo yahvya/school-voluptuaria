@@ -11,7 +11,7 @@ import { MailModule } from "./modules/mail-module/mail.module"
     ConfigModule.forRoot({isGlobal: true}),
     LangModule,
     DatabaseModule,
-    MailModule
+    MailModule,
   ]
 })
 export class AppModule {}
