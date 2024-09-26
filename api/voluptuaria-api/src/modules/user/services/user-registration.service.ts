@@ -49,7 +49,7 @@ export class UserRegistrationService {
         })
 
         if(!sendSuccess){
-            response.errorMessage = "error.account-already-exist"
+            response.errorMessage = "error.technical"
             return response
         }
 

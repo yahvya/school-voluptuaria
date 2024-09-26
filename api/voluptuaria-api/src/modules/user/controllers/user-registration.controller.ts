@@ -1,7 +1,8 @@
-import {Body, Controller, Post,Headers} from "@nestjs/common"
+import { Body, Controller, Post, Headers, HttpCode } from "@nestjs/common"
 import {UserRegistrationService} from "../services/user-registration.service"
 import {UserRegistrationDatas} from "../data-contracts/user-registration.datas"
 import {UserRegistrationResponseDatas} from "../data-contracts/user-registration-response.datas"
+import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration-confirmation.datas"
 
 /**
  * @brief Manage users registration process.
@@ -20,6 +21,7 @@ export class UserRegistrationController {
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      */
     @Post()
+    @HttpCode(200)
     public async register(
         @Body() userRegistrationDatas : UserRegistrationDatas,
         @Headers("lang") lang:string
@@ -28,5 +30,17 @@ export class UserRegistrationController {
             userRegistrationDatas: userRegistrationDatas,
             lang: lang
         })
+    }
+
+    /**
+     * @brief try to confirm and create user account
+     * @param userRegistrationConfirmationDatas confirmation datas
+     */
+    @Post("confirmation")
+    @HttpCode(200)
+    public async registerConfirmation(
+        @Body() userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas
+    ):Promise<string>{
+        return "bonjour"
     }
 }
