@@ -1,0 +1,1205 @@
+{
+	"info": {
+		"name": "Voluptuaria Api",
+		"description": {
+		    "content": "Voluptuaria Api",
+		    "type": "text/markdown"
+		},
+		"version": "11.09.24",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+	        {
+	            "name": "default",
+	            "item": [
+	                        {
+    "name": "/login",
+                "description": "Log the user",
+                 "item": [
+                            {
+                                "name": "Log the user",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"password\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/login",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "login"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Log the user"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/login/forgot-password",
+                "description": "Validate the forgot password starting process",
+                 "item": [
+                            {
+                                "name": "Validate the forgot password starting process",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "lang",
+                                            "value": "",
+                                            "description": " Name of the lang file",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/login/forgot-password",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "login",
+                                            "forgot-password"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Validate the forgot password starting process"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/login/forgot-password/confirmation",
+                "description": "Confirm the forgot password verification and update password",
+                 "item": [
+                            {
+                                "name": "Confirm the forgot password verification and update password",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\",\n \"new-password\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/login/forgot-password/confirmation",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "login",
+                                            "forgot-password",
+                                            "confirmation"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Confirm the forgot password verification and update password"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/place/comments",
+                "description": "Provide the comments on a given place with pagination",
+                 "item": [
+                            {
+                                "name": "Place comments",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/place/comments",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "place",
+                                            "comments"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "paging",
+                                                "value": "8.14",
+                                                "description": "Pagination number",
+                                                "disabled": false
+                                            },
+                                            {
+                                                "key": "callbackDatas",
+                                                "value": "callbackDatas_example",
+                                                "description": "The received callback datas from the place details - json string",
+                                                "disabled": false
+                                            }
+                                        ]
+                                    },
+                                    "description": "Provide the comments on a given place with pagination"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/place/comments",
+                "description": "Post a comment on a given place",
+                 "item": [
+                            {
+                                "name": "Post a comment on a given place",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"comment\": \"<string>\",\n \"authentication-token\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/place/comments",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "place",
+                                            "comments"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Post a comment on a given place"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/place/like",
+                "description": "Post the user notice on a place",
+                 "item": [
+                            {
+                                "name": "Post the user notice on a place",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"callback-datas\": \"<string>\",\n \"authentication-token\": \"<string>\",\n \"like-state\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/place/like",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "place",
+                                            "like"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Post the user notice on a place"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/register",
+                "description": "Validate user registration datas",
+                 "item": [
+                            {
+                                "name": "Validate user registration datas",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "lang",
+                                            "value": "",
+                                            "description": " Name of the lang file",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Validate user registration datas"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/register/confirmation",
+                "description": "Confirm a user registration",
+                 "item": [
+                            {
+                                "name": "Confirm a user registration",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register/confirmation",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register",
+                                            "confirmation"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Confirm a user registration"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/search/place",
+                "description": "Search a touristic place",
+                 "item": [
+                            {
+                                "name": "Search",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "token",
+                                            "value": "",
+                                            "description": "User authentication jwt token if authenticated - allow to register user searches",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/search/place",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "search",
+                                            "place"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "research",
+                                                "value": "research_example",
+                                                "description": "Research string",
+                                                "disabled": false
+                                            }
+                                        ]
+                                    },
+                                    "description": "Search a touristic place"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/change-password",
+                "description": "change the user password",
+                 "item": [
+                            {
+                                "name": "Change the user password",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"old-password\": \"<string>\",\n \"new-password\": \"<string>\",\n \"confirm-new-password\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/change-password",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "change-password"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "change the user password"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/datas",
+                "description": "Provide user datas",
+                 "item": [
+                            {
+                                "name": "Provide user datas",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"to-fetch\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/datas",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "datas"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Provide user datas"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/load-social-profile",
+                "description": "Load user social profile from his social medias",
+                 "item": [
+                            {
+                                "name": "Load user social profile from his social medias",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/load-social-profile",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "load-social-profile"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Load user social profile from his social medias"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/places-wish-list/update",
+                "description": "Delete a place in the user wish list",
+                 "item": [
+                            {
+                                "name": "Delete a place in the user wish list",
+                                "request": {
+                                    "method": "DELETE",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/places-wish-list/update",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "places-wish-list",
+                                            "update"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Delete a place in the user wish list"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/places-wish-list/update",
+                "description": "Add a place in the user wish list",
+                 "item": [
+                            {
+                                "name": "Add a place in the user wish list",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/places-wish-list/update",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "places-wish-list",
+                                            "update"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Add a place in the user wish list"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/profile",
+                "description": "edit the user profil",
+                 "item": [
+                            {
+                                "name": "Edit the user profil",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/profile",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "profile"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "edit the user profil"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/profile-image",
+                "description": "Change the user profile image",
+                 "item": [
+                            {
+                                "name": "Change the user profile image",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"name\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/profile-image",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "profile-image"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Change the user profile image"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/recommendations/auth",
+                "description": "Provide the recommendations for a authenticated user",
+                 "item": [
+                            {
+                                "name": "userRecommendationsAuthPost",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"token\": \"<string>\",\n \"user-location\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/recommendations/auth",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "recommendations",
+                                            "auth"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Provide the recommendations for a authenticated user"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/recommendations/noauth",
+                "description": "Provide the recommandations for a unauthenticated user",
+                 "item": [
+                            {
+                                "name": "Provide the recommandations for a unauthenticated user",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"user-location\": \"<string>\",\n \"user-searches\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/recommendations/noauth",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "recommendations",
+                                            "noauth"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Provide the recommandations for a unauthenticated user"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/travel-routes/generated",
+                "description": "Provide some generated travel routes for a user",
+                 "item": [
+                            {
+                                "name": "Provide some generated travel routes for a user",
+                                "request": {
+                                    "method": "GET",
+                                    "header": [
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "user jwt authentication token",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/travel-routes/generated",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "travel-routes",
+                                            "generated"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                            {
+                                                "key": "startDate",
+                                                "value": "2013-10-20",
+                                                "description": "the expected start date",
+                                                "disabled": false
+                                            },
+                                            {
+                                                "key": "endDate",
+                                                "value": "2013-10-20",
+                                                "description": "the expected end date",
+                                                "disabled": false
+                                            },
+                                            {
+                                                "key": "budget",
+                                                "value": "8.14",
+                                                "description": "budget in euro",
+                                                "disabled": false
+                                            },
+                                            {
+                                                "key": "zone",
+                                                "value": "zone_example",
+                                                "description": "Country, City names",
+                                                "disabled": false
+                                            }
+                                        ]
+                                    },
+                                    "description": "Provide some generated travel routes for a user"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/user/travel-routes/generated",
+                "description": "Register generated travel routes",
+                 "item": [
+                            {
+                                "name": "Register generated travel routes",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"travel-routes\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/user/travel-routes/generated",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "user",
+                                            "travel-routes",
+                                            "generated"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Register generated travel routes"
+                                }
+                            }
+                            ]
+                        }
+	                    ]
+	        }
+    ],
+    
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "{{host}}",
+			"type": "string"
+        },
+		{
+			"key": "host",
+			"value": "https://127.0.0.1:8080",
+			"type": "string"
+		}
+	]
+}
+
