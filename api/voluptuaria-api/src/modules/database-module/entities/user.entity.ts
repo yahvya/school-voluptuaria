@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column,BeforeInsert, CreateDateColumn, } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm"
 
 /**
  * @brief app users entity

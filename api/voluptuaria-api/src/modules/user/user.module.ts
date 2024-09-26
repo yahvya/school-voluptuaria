@@ -1,5 +1,5 @@
 import {Module} from "@nestjs/common";
-import {JwtModule} from "@nestjs/jwt";
+import {JwtModule, JwtService} from "@nestjs/jwt";
 import {ConfigModule, ConfigService} from "@nestjs/config";
 import {UserRegistrationService} from "./services/user-registration.service";
 import {UserLoginService} from "./services/user-login.service";
@@ -24,7 +24,8 @@ import { UserEntity } from "../database-module/entities/user.entity"
     ],
     providers: [
         UserRegistrationService,
-        UserLoginService
+        UserLoginService,
+        JwtService
     ],
     controllers: [
         UserLoginController,

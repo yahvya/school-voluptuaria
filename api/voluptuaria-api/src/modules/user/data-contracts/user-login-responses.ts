@@ -6,7 +6,7 @@ import {ResponseDataContract} from "./response-data-contract";
  */
 export class UserLoginResponse extends ResponseDataContract{
     @Expose({ name: 'error-message' })
-    public errorMessage: string|null;
+    public errorMessage: string|null ;
 
     @Expose({name: "authentification-token"})
     public authenticationToken:string|null;
