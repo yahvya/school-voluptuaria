@@ -23,12 +23,16 @@
                         "type" : "string",
                         "description": "the received encrypted confirmation code during the validation step"
                     },
+                    "iv" : {
+                        "type" : "string",
+                        "description" : "received encryption iv"
+                    },
                     "user-confirmation-code": {
                         "type" : "string",
                         "description": "the input confirmation code by user"
                     }
                 },
-                "required": ["email","firstname","password","name","encrypted-confirmation-code","user-confirmation-code"]
+                "required": ["iv","email","firstname","password","name","encrypted-confirmation-code","user-confirmation-code"]
             }
         }
     }

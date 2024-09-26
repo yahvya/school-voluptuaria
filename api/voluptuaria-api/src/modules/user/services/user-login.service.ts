@@ -4,8 +4,8 @@ import {UserLoginDatas} from "../data-contracts/user-login-datas";
 import {UserLoginResponse} from "../data-contracts/user-login-responses";
 import { Repository } from "typeorm"
 import {UserEntity} from "../../database-module/entities/user.entity";
-import * as bcrypt from "bcrypt";
 import {InjectRepository} from "@nestjs/typeorm";
+import { HashService } from "../../app-security/services/hash.service"
 
 /**
  * @brief Login service
@@ -15,7 +15,8 @@ export class UserLoginService {
     constructor(
         protected readonly jwtService: JwtService,
         @InjectRepository(UserEntity)
-        protected readonly userRepository:Repository<UserEntity>
+        protected readonly userRepository:Repository<UserEntity>,
+        protected readonly hashService: HashService
     ) {}
 
     /**
@@ -26,29 +27,27 @@ export class UserLoginService {
     public async login(options: { userLoginDatas: UserLoginDatas }): Promise<UserLoginResponse> {
         const {email, password} = options.userLoginDatas;
         const user = await this.userRepository.findOneBy({email:email})
+        const response = new UserLoginResponse()
 
         if (user === null) {
-            return new UserLoginResponse({
-                errorMessage : 'error.unrecognized-email-password',
-                confirmationCode : null
-            })
+            response.errorMessage = 'error.unrecognized-email-password'
+            return response
         }
 
-        const passwordMatch = await bcrypt.compare(password,user.password )
+        const passwordMatch = await this.hashService.compare({
+            toCompare: user.password,
+            hash: password
+        })
+
         if (passwordMatch == false) {
-            return new UserLoginResponse({
-                errorMessage : 'error.unrecognized-email-password',
-                confirmationCode : null
-            })
+            response.errorMessage = 'error.unrecognized-email-password'
+            return response
         }
 
         const payload = {email : user.email, password: user.password}
-        const accessToken = this.generateToken(payload)
 
-
-        return new UserLoginResponse({
-            authenticationToken : accessToken
-        });
+        response.authenticationToken = this.generateToken(payload)
+        return response;
     }
 
     generateToken(payload: any): string {

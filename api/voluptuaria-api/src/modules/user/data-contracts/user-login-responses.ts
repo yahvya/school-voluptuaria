@@ -1,13 +1,12 @@
 import {Expose} from "class-transformer";
-import {ResponseDataContract} from "./response-data-contract";
 
 /**
  * @brief User login validation response
  */
-export class UserLoginResponse extends ResponseDataContract{
+export class UserLoginResponse{
     @Expose({ name: 'error-message' })
-    public errorMessage: string|null ;
+    public errorMessage: string|null = null;
 
     @Expose({name: "authentification-token"})
-    public authenticationToken:string|null;
+    public authenticationToken:string|null = null;
 }

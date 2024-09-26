@@ -6,6 +6,7 @@ import { UserEntity } from "../../database-module/entities/user.entity"
 import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
 import { InjectRepository } from "@nestjs/typeorm"
+import { EncryptService } from "../../app-security/services/encrypt.service"
 
 /**
  * @brief User registration service.
@@ -16,7 +17,8 @@ export class UserRegistrationService {
         @InjectRepository(UserEntity)
         protected readonly userRepository:Repository<UserEntity>,
         protected readonly mailService:MailerService,
-        protected readonly langService:LangService
+        protected readonly langService:LangService,
+        protected readonly encryptService: EncryptService
     ) {
     }
 
@@ -29,13 +31,12 @@ export class UserRegistrationService {
         options: {userRegistrationDatas: UserRegistrationDatas,lang: string}
     ): Promise<UserRegistrationResponseDatas> {
         const {lang,userRegistrationDatas} = options
+        const response = new UserRegistrationResponseDatas()
 
         // check if the account already exists
         if(await this.userRepository.findOneBy({email: userRegistrationDatas.email}) !== null){
-            return new UserRegistrationResponseDatas({
-                errorMessage: "error.account-already-exist",
-                confirmationCode: null
-            })
+            response.errorMessage = "error.account-already-exist"
+            return response
         }
 
         // send confirmation mail
@@ -48,16 +49,19 @@ export class UserRegistrationService {
         })
 
         if(!sendSuccess){
-            return new UserRegistrationResponseDatas({
-                errorMessage: "error.account-already-exist",
-                confirmationCode: null
-            })
+            response.errorMessage = "error.account-already-exist"
+            return response
         }
 
-        return new UserRegistrationResponseDatas({
-            confirmationCode: confirmationCode,
-            errorMessage: null
-        });
+        const encryptionResult = await this.encryptService.encrypt({
+            toEncrypt: confirmationCode,
+            secretKey: "temporary secret key"
+        })
+
+        response.confirmationCode = encryptionResult.encryptionResult
+        response.iv = encryptionResult.iv
+
+        return response
     }
 
     /**

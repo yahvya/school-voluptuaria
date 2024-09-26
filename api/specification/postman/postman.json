@@ -451,7 +451,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"iv\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

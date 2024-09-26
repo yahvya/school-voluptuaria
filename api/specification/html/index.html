@@ -315,7 +315,7 @@ font-style: italic;
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#_register_post_200_response">_register_post_200_response</a>
+      <a href="#_login_forgot_password_post_200_response">_login_forgot_password_post_200_response</a>
       
     </div>
 
@@ -338,7 +338,7 @@ font-style: italic;
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     forgot password starting process confirmation
-        <a href="#_register_post_200_response">_register_post_200_response</a>
+        <a href="#_login_forgot_password_post_200_response">_login_forgot_password_post_200_response</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="loginPost"/>
@@ -697,7 +697,8 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error-message" : "error-message",
-  "confirmation-code" : "confirmation-code"
+  "confirmation-code" : "confirmation-code",
+  "iv" : "iv"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -2814,6 +2815,7 @@ font-style: italic;
   <h3>Table of Contents</h3>
   <ol>
     <li><a href="#_login_forgot_password_confirmation_post_request"><code>_login_forgot_password_confirmation_post_request</code> - </a></li>
+    <li><a href="#_login_forgot_password_post_200_response"><code>_login_forgot_password_post_200_response</code> - </a></li>
     <li><a href="#_login_forgot_password_post_request"><code>_login_forgot_password_post_request</code> - </a></li>
     <li><a href="#_login_post_200_response"><code>_login_post_200_response</code> - </a></li>
     <li><a href="#_login_post_request"><code>_login_post_request</code> - </a></li>
@@ -2867,6 +2869,14 @@ font-style: italic;
 <div class="param">encryptedMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the received encrypted confirmation code during the validation step </div>
 <div class="param">userMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the input confirmation code by user </div>
 <div class="param">newMinuspassword </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user new password </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_login_forgot_password_post_200_response"><code>_login_forgot_password_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">errorMinusmessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message or null on success </div>
+<div class="param">confirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the encrypted confirmation code to send back on confirmation or null on error </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2956,6 +2966,7 @@ font-style: italic;
 <div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user firstname </div>
 <div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user password </div>
 <div class="param">encryptedMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the received encrypted confirmation code during the validation step </div>
+<div class="param">iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> received encryption iv </div>
 <div class="param">userMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the input confirmation code by user </div>
     </div>  <!-- field-items -->
   </div>
@@ -2965,6 +2976,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">errorMinusmessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message or null on success </div>
 <div class="param">confirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the encrypted confirmation code to send back on confirmation or null on error </div>
+<div class="param">iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> encryption iv in case of success </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

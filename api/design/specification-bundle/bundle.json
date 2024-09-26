@@ -632,11 +632,19 @@
                                                 "null"
                                             ],
                                             "description": "the encrypted confirmation code to send back on confirmation or null on error"
+                                        },
+                                        "iv": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "encryption iv in case of success"
                                         }
                                     },
                                     "required": [
                                         "error-message",
-                                        "confirmation-code"
+                                        "confirmation-code",
+                                        "iv"
                                     ]
                                 }
                             }
@@ -687,12 +695,17 @@
                                         "type": "string",
                                         "description": "the received encrypted confirmation code during the validation step"
                                     },
+                                    "iv": {
+                                        "type": "string",
+                                        "description": "received encryption iv"
+                                    },
                                     "user-confirmation-code": {
                                         "type": "string",
                                         "description": "the input confirmation code by user"
                                     }
                                 },
                                 "required": [
+                                    "iv",
                                     "email",
                                     "firstname",
                                     "password",
