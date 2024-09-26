@@ -6,6 +6,7 @@ import { Repository } from "typeorm"
 import {UserEntity} from "../../database-module/entities/user.entity";
 import {InjectRepository} from "@nestjs/typeorm";
 import { HashService } from "../../app-security/services/hash.service"
+import { ConfigService } from "@nestjs/config"
 
 /**
  * @brief Login service
@@ -16,7 +17,8 @@ export class UserLoginService {
         protected readonly jwtService: JwtService,
         @InjectRepository(UserEntity)
         protected readonly userRepository:Repository<UserEntity>,
-        protected readonly hashService: HashService
+        protected readonly hashService: HashService,
+        protected readonly configService:ConfigService
     ) {}
 
     /**
@@ -35,11 +37,11 @@ export class UserLoginService {
         }
 
         const passwordMatch = await this.hashService.compare({
-            toCompare: user.password,
-            hash: password
+            toCompare: password,
+            hash: user.password
         })
 
-        if (passwordMatch == false) {
+        if (passwordMatch === false) {
             response.errorMessage = 'error.unrecognized-email-password'
             return response
         }
@@ -50,10 +52,22 @@ export class UserLoginService {
         return response;
     }
 
+    /**
+     * @brief generate the login token
+     * @param payload datas
+     * @returns {string} the token
+     */
     generateToken(payload: any): string {
-        return this.jwtService.sign(payload);
+        return this.jwtService.sign(payload,{
+            secret: this.configService.getOrThrow("JWT_SECRET")
+        })
     }
 
+    /**
+     * @brief verify a token
+     * @param token token
+     * @returns {any} service verification
+     */
     validateToken(token: string): any {
         try {
             return this.jwtService.verify(token);

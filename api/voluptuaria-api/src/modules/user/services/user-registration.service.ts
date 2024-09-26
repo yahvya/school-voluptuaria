@@ -12,6 +12,7 @@ import {
     UserRegistrationConfirmationResponseDatas
 } from "../data-contracts/user-registration-confirmation-response.datas"
 import { UserLoginService } from "./user-login.service"
+import { HashService } from "../../app-security/services/hash.service"
 
 /**
  * @brief User registration service.
@@ -24,7 +25,8 @@ export class UserRegistrationService {
         protected readonly mailService:MailerService,
         protected readonly langService:LangService,
         protected readonly encryptService: EncryptService,
-        protected readonly loginService: UserLoginService
+        protected readonly loginService: UserLoginService,
+        protected readonly hashService: HashService
     ) {
     }
 
@@ -109,7 +111,7 @@ export class UserRegistrationService {
         try {
             await this.userRepository.save({
                 email: email,
-                password: password,
+                password: await this.hashService.hash({toHash: password,salt: 10}),
                 name: name,
                 firstName: firstname,
                 gender: Gender.UNDEFINED
