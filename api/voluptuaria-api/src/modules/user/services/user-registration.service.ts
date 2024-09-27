@@ -13,6 +13,7 @@ import {
 } from "../data-contracts/user-registration-confirmation-response.datas"
 import { UserLoginService } from "./user-login.service"
 import { HashService } from "../../app-security/services/hash.service"
+import { ConfigService } from "@nestjs/config"
 
 /**
  * @brief User registration service.
@@ -26,7 +27,8 @@ export class UserRegistrationService {
         protected readonly langService:LangService,
         protected readonly encryptService: EncryptService,
         protected readonly loginService: UserLoginService,
-        protected readonly hashService: HashService
+        protected readonly hashService: HashService,
+        protected readonly configService:ConfigService
     ) {
     }
 
@@ -34,6 +36,7 @@ export class UserRegistrationService {
      * @brief Validate user registration datas.
      * @param options registration options
      * @returns {UserRegistrationResponseDatas} Validation's Result.
+     * @throws {Error} in case of error
      */
     public async register(
         options: {userRegistrationDatas: UserRegistrationDatas,lang: string}
@@ -63,7 +66,7 @@ export class UserRegistrationService {
 
         const encryptionResult = await this.encryptService.encrypt({
             toEncrypt: confirmationCode,
-            secretKey: "temporary secret key"
+            secretKey: await this.configService.getOrThrow("REGISTRATION_ENCRYPTION_KEY")
         })
 
         response.confirmationCode = encryptionResult.encryptionResult
@@ -76,6 +79,7 @@ export class UserRegistrationService {
      * @brief try to confirm and create user account
      * @param options options
      * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
+     * @throws {Error} in case of error
      */
     public async confirmRegistration(options: {userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas}):Promise<UserRegistrationConfirmationResponseDatas> {
         const response = new UserRegistrationConfirmationResponseDatas()
@@ -99,7 +103,7 @@ export class UserRegistrationService {
         // check confirmation code
         const decryptedPassword = await this.encryptService.decrypt({
             toDecrypt: encryptedConfirmationCode,
-            secretKey: "temporary secret key",
+            secretKey: await this.configService.getOrThrow("REGISTRATION_ENCRYPTION_KEY"),
             iv: iv
         })
 

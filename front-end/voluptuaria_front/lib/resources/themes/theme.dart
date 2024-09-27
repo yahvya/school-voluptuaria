@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'colors.dart'; // Импортируем ваш файл с цветами
+import 'colors.dart';
 
 ThemeData lightThemeData() {
   return ThemeData(
