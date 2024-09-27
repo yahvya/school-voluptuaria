@@ -30,11 +30,6 @@ jobs:
           cd api/voluptuaria-api
           npm install --save-dev
 
-      - name: Run Prettier check
-        run: |
-          cd api/voluptuaria-api
-          npm run prettier:check
-
       - name: Run Prettier to format files
         run: |
           cd api/voluptuaria-api
