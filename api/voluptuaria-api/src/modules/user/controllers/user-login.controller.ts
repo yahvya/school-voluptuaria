@@ -1,4 +1,4 @@
-import { Controller, Body, Post, HttpCode } from "@nestjs/common"
+import { Controller, Body, Post, HttpCode, Headers } from "@nestjs/common"
 import { UserLoginService } from "../services/user-login.service"
 import { UserLoginResponse } from "../data-contracts/user-login-responses.datas"
 import { UserLoginDatas } from "../data-contracts/user-login.datas"
@@ -33,15 +33,18 @@ export class UserLoginController {
     /**
      * @brief initialise forgot password step
      * @param forgotPasswordDatas form datas
+     * @param lang lang file name
      * @returns {Promise<ForgotPasswordResponseDatas>} response
      */
     @Post("forgot-password")
     @HttpCode(200)
     public forgotPassword(
-        @Body() forgotPasswordDatas:ForgotPasswordDatas
+        @Body() forgotPasswordDatas:ForgotPasswordDatas,
+        @Headers("lang") lang:string
     ):Promise<ForgotPasswordResponseDatas>{
         return this.forgotPasswordService.init({
-            forgotPasswordDatas: forgotPasswordDatas
+            forgotPasswordDatas: forgotPasswordDatas,
+            lang: lang
         })
     }
 

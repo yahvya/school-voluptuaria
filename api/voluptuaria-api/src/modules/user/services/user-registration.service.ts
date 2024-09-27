@@ -12,6 +12,7 @@ import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/use
 import { UserLoginService } from "./user-login.service"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
+import { StringService } from "../../utils/services/string.service"
 
 /**
  * @brief User registration service.
@@ -27,6 +28,7 @@ export class UserRegistrationService {
         protected readonly loginService: UserLoginService,
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
+        protected readonly stringService: StringService
     ) {}
 
     /**
@@ -54,7 +56,7 @@ export class UserRegistrationService {
 
         // send confirmation mail
 
-        const confirmationCode: string = this.random({ length: 6 })
+        const confirmationCode: string = this.stringService.random({ length: 6 })
         const sendSuccess: boolean = await this.sendConfirmationMail({
             confirmationCode: confirmationCode,
             lang: lang,
@@ -191,28 +193,5 @@ export class UserRegistrationService {
         } catch (_) {
             return false
         }
-    }
-
-    /**
-     * @brief generate a random string
-     * @param options options
-     * @returns {string} the generated string
-     * @protected
-     */
-    protected random(options: { length: number }): string {
-        let result: string = ""
-        const characters: string =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-        const charactersLength: number = characters.length
-        let counter: number = 0
-
-        while (counter < options.length) {
-            result += characters.charAt(
-                Math.floor(Math.random() * charactersLength),
-            )
-            counter += 1
-        }
-
-        return result
     }
 }

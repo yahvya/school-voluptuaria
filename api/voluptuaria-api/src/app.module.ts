@@ -5,6 +5,7 @@ import { Module } from "@nestjs/common"
 import { DatabaseModule } from "./modules/database-module/database.module"
 import { MailModule } from "./modules/mail-module/mail.module"
 import { AppSecurityModule } from "./modules/app-security/app-security.module"
+import { UtilsModule } from "./modules/utils/utils.module"
 
 @Module({
     imports: [
@@ -14,6 +15,7 @@ import { AppSecurityModule } from "./modules/app-security/app-security.module"
         DatabaseModule,
         MailModule,
         AppSecurityModule,
+        UtilsModule
     ],
 })
 export class AppModule {}

@@ -7,6 +7,7 @@ import { UserLoginController } from "./controllers/user-login.controller"
 import { UserRegistrationController } from "./controllers/user-registration.controller"
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserEntity } from "../database-module/entities/user.entity"
+import { ForgotPasswordService } from "./services/forgot-password.service"
 
 @Module({
     imports: [
@@ -22,7 +23,15 @@ import { UserEntity } from "../database-module/entities/user.entity"
         }),
         TypeOrmModule.forFeature([UserEntity]),
     ],
-    providers: [UserRegistrationService, UserLoginService, JwtService],
-    controllers: [UserLoginController, UserRegistrationController],
+    providers: [
+        UserRegistrationService,
+        UserLoginService,
+        JwtService,
+        ForgotPasswordService
+    ],
+    controllers: [
+        UserLoginController,
+        UserRegistrationController
+    ],
 })
 export class UserModule {}
