@@ -11,6 +11,7 @@ import { StringService } from "../../utils/services/string.service"
 import { EncryptService } from "../../app-security/services/encrypt.service"
 import { ConfigService } from "@nestjs/config"
 import { LangService } from "../../lang-module/services/lang.service"
+import { HashService } from "../../app-security/services/hash.service"
 
 /**
  * @brief forgot password process manager service
@@ -24,7 +25,8 @@ export class ForgotPasswordService{
         protected readonly stringService: StringService,
         protected readonly encryptService: EncryptService,
         protected readonly configService: ConfigService,
-        protected readonly langService: LangService
+        protected readonly langService: LangService,
+        protected readonly hashService: HashService
     ){
     }
 
@@ -83,7 +85,44 @@ export class ForgotPasswordService{
     public async confirm(options: {
         forgotPasswordConfirmationDatas:ForgotPasswordConfirmationDatas
     }):Promise<ForgotPasswordConfirmationResponseDatas>{
-        return new ForgotPasswordConfirmationResponseDatas()
+        const response = new ForgotPasswordConfirmationResponseDatas()
+        const {email,newPassword,encryptedConfirmationCode,userConfirmationCode,iv} = options.forgotPasswordConfirmationDatas
+
+        // check if user exists
+        const user = await this.userRepository.findOneBy({
+            email: email
+        })
+
+        if(user === null){
+            response.errorMessage = "error.unrecognized-email-password"
+            return response
+        }
+
+        // check the confirmation code
+        const realConfirmationCode = await this.encryptService.decrypt({
+            toDecrypt: encryptedConfirmationCode,
+            iv: iv,
+            secretKey: this.configService.getOrThrow("CONFIRMATION_ENCRYPTION_KEY")
+        })
+
+        if(userConfirmationCode !== realConfirmationCode){
+            response.errorMessage = "error.bad-confirmation-code"
+            return response
+        }
+
+        user.password = await this.hashService.hash({
+            toHash: newPassword,
+            salt: 10
+        })
+
+        try{
+            await this.userRepository.save(user)
+        }
+        catch(_){
+            response.errorMessage = "error.technical"
+        }
+
+        return response
     }
 
     /**

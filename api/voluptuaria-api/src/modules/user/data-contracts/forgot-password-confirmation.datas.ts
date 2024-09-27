@@ -21,4 +21,8 @@ export class ForgotPasswordConfirmationDatas extends ForgotPasswordDatas{
     @IsString()
     @IsNotEmpty()
     public newPassword:string
+
+    @IsString()
+    @IsNotEmpty()
+    public iv:string
 }

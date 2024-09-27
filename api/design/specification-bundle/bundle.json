@@ -966,7 +966,8 @@
                                     "email",
                                     "encrypted-confirmation-code",
                                     "new-password",
-                                    "user-confirmation-code"
+                                    "user-confirmation-code",
+                                    "iv"
                                 ]
                             }
                         }
