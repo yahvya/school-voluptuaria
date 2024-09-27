@@ -1,12 +1,12 @@
 {
-  "tabWidth": 4,
-  "arrowParens": "always",
-  "bracketSpacing": true,
-  "editorconfig": true,
-  "embeddedLanguageFormatting": "auto",
-  "proseWrap": "preserve",
-  "trailingComma": "all",
-  "singleQuote": false,
-  "semi": false,
-  "quoteProps": "consistent"
+    "tabWidth": 4,
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "editorconfig": true,
+    "embeddedLanguageFormatting": "auto",
+    "proseWrap": "preserve",
+    "trailingComma": "all",
+    "singleQuote": false,
+    "semi": false,
+    "quoteProps": "consistent"
 }

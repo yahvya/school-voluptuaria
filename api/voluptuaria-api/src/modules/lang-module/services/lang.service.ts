@@ -1,47 +1,45 @@
-import {Injectable} from "@nestjs/common"
-import {LangServiceException} from "../exceptions/lang-service.exception"
+import { Injectable } from "@nestjs/common"
+import { LangServiceException } from "../exceptions/lang-service.exception"
 import * as fs from "node:fs"
-import {ConfigService} from "@nestjs/config"
+import { ConfigService } from "@nestjs/config"
 import { XMLParser } from "fast-xml-parser"
 
 /**
  * @brief lang files and lang manager service
  */
 @Injectable()
-export class LangService{
+export class LangService {
     /**
      * @brief the current loaded lang filename
      */
-    protected currentLang:string|null
+    protected currentLang: string | null
 
     /**
      * @brief lang values
      */
-    protected langValues:Record<string, string>
+    protected langValues: Record<string, string>
 
     /**
      * @brief lang name in French
      */
-    protected frenchName:string|null
+    protected frenchName: string | null
 
     /**
      * @brief map code
      */
-    protected googleMapCode:string|null
+    protected googleMapCode: string | null
 
     /**
      * @brief open weather map code
      */
-    protected openWeatherMapCode:string|null
+    protected openWeatherMapCode: string | null
 
     /**
      * @brief lang name in the lang
      */
-    protected langName:string|null
+    protected langName: string | null
 
-    constructor(
-        protected readonly configService:ConfigService
-    ) {
+    constructor(protected readonly configService: ConfigService) {
         this.currentLang = null
         this.langValues = {}
         this.langName = null
@@ -56,20 +54,23 @@ export class LangService{
      * @returns {string} the translated value
      * @throws {LangServiceException} in case of error
      */
-    public async translation(options:{
-        langFilename:string,
-        key: string,
+    public async translation(options: {
+        langFilename: string
+        key: string
         replaces?: Record<string, string>
-    }):Promise<string>{
-        if(!await this.loadLangFile({langFileName: options.langFilename}))
+    }): Promise<string> {
+        if (!(await this.loadLangFile({ langFileName: options.langFilename })))
             throw new LangServiceException("Fail to load lang file")
 
-        if(!(options.key in this.langValues))
+        if (!(options.key in this.langValues))
             throw new LangServiceException(`Unknown lang key <${options.key}>`)
 
-        return options.replaces !== undefined ?
-            this.replaceElements({replaces: options.replaces,str: this.langValues[options.key]}) :
-            this.langValues[options.key]
+        return options.replaces !== undefined
+            ? this.replaceElements({
+                  replaces: options.replaces,
+                  str: this.langValues[options.key],
+              })
+            : this.langValues[options.key]
     }
 
     /**
@@ -77,18 +78,23 @@ export class LangService{
      * @param options options
      * @returns {string} the modified string
      */
-    protected replaceElements(options: { replaces: Record<string, string>, str: string }): string {
-        let modifiedString = options.str;
+    protected replaceElements(options: {
+        replaces: Record<string, string>
+        str: string
+    }): string {
+        let modifiedString = options.str
 
-        for (const key in options.replaces){
-            const regex = new RegExp(`\\[${key}\\]`, "g");
+        for (const key in options.replaces) {
+            const regex = new RegExp(`\\[${key}\\]`, "g")
 
-            modifiedString = modifiedString.replace(regex, options.replaces[key]);
+            modifiedString = modifiedString.replace(
+                regex,
+                options.replaces[key],
+            )
         }
 
-        return modifiedString;
+        return modifiedString
     }
-
 
     /**
      * @brief load a lang file in the service
@@ -96,15 +102,19 @@ export class LangService{
      * @returns {boolean} load success
      * @throws {Error} on error
      */
-    protected async loadLangFile(options: {langFileName: string}):Promise<boolean>{
-        if(this.currentLang !== null && options.langFileName === this.currentLang)
+    protected async loadLangFile(options: {
+        langFileName: string
+    }): Promise<boolean> {
+        if (
+            this.currentLang !== null &&
+            options.langFileName === this.currentLang
+        )
             return true
 
-        try{
+        try {
             const langSupposedFilePath = `${this.configService.getOrThrow("LANG_FILES_DIRECTORY_PATH")}/${options.langFileName}.xml`
 
-            if(!fs.existsSync(langSupposedFilePath))
-                return false
+            if (!fs.existsSync(langSupposedFilePath)) return false
 
             const langXml = fs.readFileSync(langSupposedFilePath)
             const parser = new XMLParser({
@@ -112,24 +122,31 @@ export class LangService{
                 attributeNamePrefix: "",
                 ignoreDeclaration: true,
                 ignorePiTags: true,
-                parseAttributeValue: true
+                parseAttributeValue: true,
             })
 
             const langFileContent = parser.parse(langXml)
-            const keysToRead = ["error-level","application-level","message-level"]
+            const keysToRead = [
+                "error-level",
+                "application-level",
+                "message-level",
+            ]
 
             this.langValues = {}
             this.currentLang = options.langFileName
 
             keysToRead.forEach((key) => {
-                const langElements:Array<any> = langFileContent.lang[key]["lang-element"]
+                const langElements: Array<any> =
+                    langFileContent.lang[key]["lang-element"]
 
-                langElements.forEach(langElement => this.langValues[langElement.key] = langElement.value)
+                langElements.forEach(
+                    (langElement) =>
+                        (this.langValues[langElement.key] = langElement.value),
+                )
             })
 
             return true
-        }
-        catch(_){
+        } catch (_) {
             return false
         }
     }
@@ -137,42 +154,42 @@ export class LangService{
     /**
      * @returns {string} lang name
      */
-    public getLangName():string{
+    public getLangName(): string {
         return this.langName
     }
 
     /**
      * @returns {string|null} lang name
      */
-    public getCurrentLang():string|null{
+    public getCurrentLang(): string | null {
         return this.currentLang
     }
 
     /**
      * @returns {Record<string, string>} lang values
      */
-    public getLangValues():Record<string, string>{
+    public getLangValues(): Record<string, string> {
         return this.langValues
     }
 
     /**
      * @returns {string|null} lang name in French
      */
-    public getFrenchName():string|null{
+    public getFrenchName(): string | null {
         return this.frenchName
     }
 
     /**
      * @returns {string|null} google map translation code
      */
-    public getGoogleMapCode():string|null{
+    public getGoogleMapCode(): string | null {
         return this.googleMapCode
     }
 
     /**
      * @returns {string|null} open weather map code
      */
-    public getOpenWeatherMapCode():string|null{
+    public getOpenWeatherMapCode(): string | null {
         return this.openWeatherMapCode
     }
 }

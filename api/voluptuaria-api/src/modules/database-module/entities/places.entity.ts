@@ -4,11 +4,10 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
  * @brief app registered places entity
  */
 @Entity({
-    name: "places"
+    name: "places",
 })
 export class PlacesEntity {
-    @PrimaryGeneratedColumn(
-        "uuid", {
+    @PrimaryGeneratedColumn("uuid", {
         name: "id",
     })
     id: string

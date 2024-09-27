@@ -1,10 +1,10 @@
-import {Module} from "@nestjs/common";
-import {JwtModule, JwtService} from "@nestjs/jwt";
-import {ConfigModule, ConfigService} from "@nestjs/config";
-import {UserRegistrationService} from "./services/user-registration.service";
-import {UserLoginService} from "./services/user-login.service";
-import {UserLoginController} from "./controllers/user-login.controller";
-import {UserRegistrationController} from "./controllers/user-registration.controller";
+import { Module } from "@nestjs/common"
+import { JwtModule, JwtService } from "@nestjs/jwt"
+import { ConfigModule, ConfigService } from "@nestjs/config"
+import { UserRegistrationService } from "./services/user-registration.service"
+import { UserLoginService } from "./services/user-login.service"
+import { UserLoginController } from "./controllers/user-login.controller"
+import { UserRegistrationController } from "./controllers/user-registration.controller"
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserEntity } from "../database-module/entities/user.entity"
 
@@ -20,17 +20,9 @@ import { UserEntity } from "../database-module/entities/user.entity"
                 },
             }),
         }),
-        TypeOrmModule.forFeature([UserEntity])
+        TypeOrmModule.forFeature([UserEntity]),
     ],
-    providers: [
-        UserRegistrationService,
-        UserLoginService,
-        JwtService
-    ],
-    controllers: [
-        UserLoginController,
-        UserRegistrationController
-    ]
+    providers: [UserRegistrationService, UserLoginService, JwtService],
+    controllers: [UserLoginController, UserRegistrationController],
 })
-export class UserModule{
-}
+export class UserModule {}

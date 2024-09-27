@@ -1,15 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from "typeorm"
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToOne,
+    JoinColumn,
+    CreateDateColumn,
+} from "typeorm"
 import { UserEntity } from "./user.entity"
 
 /**
  * @brief user social profiles
  */
 @Entity({
-    name: "social_profile"
+    name: "social_profile",
 })
 export class SocialProfileEntity {
-    @PrimaryGeneratedColumn(
-        "uuid", {
+    @PrimaryGeneratedColumn("uuid", {
         name: "id",
     })
     id: string

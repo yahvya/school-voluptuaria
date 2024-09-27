@@ -64,8 +64,11 @@
         <lang-element key="message.load-preferences" value="Charger vos préférences"/>
         <lang-element key="message.type-received-code" value="Veuillez saisir le code reçu"/>
         <lang-element key="message.welcome-user-intro" value="Bienvenue sur notre plateforme Voluptuaria [Username]"/>
-        <lang-element key="message.welcome-user" value="Pour terminer votre inscription veuillez cliquer sur le bouton ci-dessous"/>
-        <lang-element key="message.password-forgotten-intro" value="Mot de passe oublié ? Suivez les instructions pour le réinitialiser."/>
-        <lang-element key="message.password-forgotten" value="Veuillez cliquer sur ce lien [Lien de réinitialisation] !"/>
+        <lang-element key="message.welcome-user"
+                      value="Pour terminer votre inscription veuillez cliquer sur le bouton ci-dessous"/>
+        <lang-element key="message.password-forgotten-intro"
+                      value="Mot de passe oublié ? Suivez les instructions pour le réinitialiser."/>
+        <lang-element key="message.password-forgotten"
+                      value="Veuillez cliquer sur ce lien [Lien de réinitialisation] !"/>
     </message-level>
 </lang>

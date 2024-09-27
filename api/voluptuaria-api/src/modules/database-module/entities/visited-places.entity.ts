@@ -6,7 +6,7 @@ import { PlacesEntity } from "./places.entity"
  * @brief user visited places
  */
 @Entity({
-    name: "visited_places"
+    name: "visited_places",
 })
 export class VisitedPlacesEntity {
     @PrimaryColumn({

@@ -1,4 +1,10 @@
-import { Entity, PrimaryColumn, ManyToOne, JoinColumn, CreateDateColumn } from "typeorm"
+import {
+    Entity,
+    PrimaryColumn,
+    ManyToOne,
+    JoinColumn,
+    CreateDateColumn,
+} from "typeorm"
 import { UserEntity } from "./user.entity"
 import { PlacesEntity } from "./places.entity"
 
@@ -6,7 +12,7 @@ import { PlacesEntity } from "./places.entity"
  * @brief places comments
  */
 @Entity({
-    name: "places_comments"
+    name: "places_comments",
 })
 export class PlacesCommentsEntity {
     @PrimaryColumn({

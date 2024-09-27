@@ -1,11 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm"
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    ManyToOne,
+    JoinColumn,
+} from "typeorm"
 import { UserEntity } from "./user.entity"
 
 /**
  * @brief generated travel routes for users
  */
 @Entity({
-    name: "travel_routes"
+    name: "travel_routes",
 })
 export class TravelRoutesEntity {
     @PrimaryGeneratedColumn({

@@ -6,15 +6,8 @@ import { HashService } from "./services/hash.service"
  * @brief application security management module
  */
 @Module({
-    providers: [
-        EncryptService,
-        HashService
-    ],
-    exports: [
-        EncryptService,
-        HashService
-    ]
+    providers: [EncryptService, HashService],
+    exports: [EncryptService, HashService],
 })
 @Global()
-export class AppSecurityModule{
-}
+export class AppSecurityModule {}

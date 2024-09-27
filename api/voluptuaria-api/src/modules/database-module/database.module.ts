@@ -6,7 +6,9 @@ import { ConfigService } from "@nestjs/config"
     imports: [
         TypeOrmModule.forRootAsync({
             inject: [ConfigService],
-            useFactory: (configService:ConfigService):TypeOrmModuleOptions => {
+            useFactory: (
+                configService: ConfigService,
+            ): TypeOrmModuleOptions => {
                 const options = {
                     type: configService.getOrThrow("DATABASE_TYPE"),
                     host: configService.getOrThrow("DATABASE_HOST"),
@@ -14,15 +16,15 @@ import { ConfigService } from "@nestjs/config"
                     username: configService.getOrThrow("DATABASE_USER"),
                     password: configService.getOrThrow("DATABASE_PASSWORD"),
                     database: configService.getOrThrow("DATABASE_NAME"),
-                    synchronize: configService.getOrThrow("DATABASE_SYNC") === "true",
-                    autoLoadEntities: true
+                    synchronize:
+                        configService.getOrThrow("DATABASE_SYNC") === "true",
+                    autoLoadEntities: true,
                 }
 
                 return options
-            }
-        })
-    ]
+            },
+        }),
+    ],
 })
 @Global()
-export class DatabaseModule{
-}
+export class DatabaseModule {}

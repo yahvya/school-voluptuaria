@@ -1,10 +1,10 @@
-import {Injectable} from "@nestjs/common";
-import {JwtService} from "@nestjs/jwt";
-import {UserLoginDatas} from "../data-contracts/user-login.datas";
-import {UserLoginResponse} from "../data-contracts/user-login-responses.datas";
+import { Injectable } from "@nestjs/common"
+import { JwtService } from "@nestjs/jwt"
+import { UserLoginDatas } from "../data-contracts/user-login.datas"
+import { UserLoginResponse } from "../data-contracts/user-login-responses.datas"
 import { Repository } from "typeorm"
-import {UserEntity} from "../../database-module/entities/user.entity";
-import {InjectRepository} from "@nestjs/typeorm";
+import { UserEntity } from "../../database-module/entities/user.entity"
+import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 
@@ -16,9 +16,9 @@ export class UserLoginService {
     constructor(
         protected readonly jwtService: JwtService,
         @InjectRepository(UserEntity)
-        protected readonly userRepository:Repository<UserEntity>,
+        protected readonly userRepository: Repository<UserEntity>,
         protected readonly hashService: HashService,
-        protected readonly configService:ConfigService
+        protected readonly configService: ConfigService,
     ) {}
 
     /**
@@ -26,30 +26,32 @@ export class UserLoginService {
      * @param options options
      * @returns {UserLoginResponse} login response
      */
-    public async login(options: { userLoginDatas: UserLoginDatas }): Promise<UserLoginResponse> {
-        const {email, password} = options.userLoginDatas;
-        const user = await this.userRepository.findOneBy({email:email})
+    public async login(options: {
+        userLoginDatas: UserLoginDatas
+    }): Promise<UserLoginResponse> {
+        const { email, password } = options.userLoginDatas
+        const user = await this.userRepository.findOneBy({ email: email })
         const response = new UserLoginResponse()
 
         if (user === null) {
-            response.errorMessage = 'error.unrecognized-email-password'
+            response.errorMessage = "error.unrecognized-email-password"
             return response
         }
 
         const passwordMatch = await this.hashService.compare({
             toCompare: password,
-            hash: user.password
+            hash: user.password,
         })
 
         if (passwordMatch === false) {
-            response.errorMessage = 'error.unrecognized-email-password'
+            response.errorMessage = "error.unrecognized-email-password"
             return response
         }
 
-        const payload = {email : user.email, password: user.password}
+        const payload = { email: user.email, password: user.password }
 
         response.authenticationToken = this.generateToken(payload)
-        return response;
+        return response
     }
 
     /**
@@ -58,8 +60,8 @@ export class UserLoginService {
      * @returns {string} the token
      */
     generateToken(payload: any): string {
-        return this.jwtService.sign(payload,{
-            secret: this.configService.getOrThrow("JWT_SECRET")
+        return this.jwtService.sign(payload, {
+            secret: this.configService.getOrThrow("JWT_SECRET"),
         })
     }
 
@@ -70,9 +72,9 @@ export class UserLoginService {
      */
     validateToken(token: string): any {
         try {
-            return this.jwtService.verify(token);
+            return this.jwtService.verify(token)
         } catch (error) {
-            return null;
+            return null
         }
     }
 }

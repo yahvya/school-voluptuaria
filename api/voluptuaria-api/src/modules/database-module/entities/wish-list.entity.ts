@@ -6,7 +6,7 @@ import { PlacesEntity } from "./places.entity"
  * @brief user wished places to visit
  */
 @Entity({
-    name: "wish_lists"
+    name: "wish_lists",
 })
 export class WishLists {
     @PrimaryColumn({

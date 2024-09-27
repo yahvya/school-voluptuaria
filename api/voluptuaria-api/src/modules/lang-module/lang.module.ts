@@ -1,5 +1,5 @@
-import {Global, Module} from "@nestjs/common";
-import {LangService} from "./services/lang.service";
+import { Global, Module } from "@nestjs/common"
+import { LangService } from "./services/lang.service"
 
 /**
  * @brief Lang management module
@@ -7,7 +7,6 @@ import {LangService} from "./services/lang.service";
 @Global()
 @Module({
     providers: [LangService],
-    exports: [LangService]
+    exports: [LangService],
 })
-export class LangModule{
-}
+export class LangModule {}

@@ -1,14 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm"
+import {
+    Entity,
+    PrimaryGeneratedColumn,
+    Column,
+    CreateDateColumn,
+} from "typeorm"
 
 /**
  * @brief app users entity
  */
 @Entity({
-    name: "app_users"
+    name: "app_users",
 })
 export class UserEntity {
-    @PrimaryGeneratedColumn(
-        "uuid", {
+    @PrimaryGeneratedColumn("uuid", {
         name: "id",
     })
     id: string
@@ -72,7 +76,7 @@ export class UserEntity {
     @CreateDateColumn({
         name: "created_at",
         type: "datetime",
-        nullable: false
+        nullable: false,
     })
     createdAt: Date
 
@@ -87,7 +91,7 @@ export class UserEntity {
 /**
  * @brief app genders
  */
-export enum Gender{
+export enum Gender {
     UNDEFINED = 0,
     MAN = 1,
     WOMAN = 2,

@@ -7,7 +7,7 @@ import { ConfigService } from "@nestjs/config"
     imports: [
         MailerModule.forRootAsync({
             inject: [ConfigService],
-            useFactory: (configService:ConfigService):MailerOptions => {
+            useFactory: (configService: ConfigService): MailerOptions => {
                 const options = {
                     transport: configService.getOrThrow("MAILER_TRANSPORT"),
                     defaults: {
@@ -23,11 +23,10 @@ import { ConfigService } from "@nestjs/config"
                 }
 
                 return options
-            }
-        })
+            },
+        }),
     ],
-    providers: []
+    providers: [],
 })
 @Global()
-export class MailModule{
-}
+export class MailModule {}
