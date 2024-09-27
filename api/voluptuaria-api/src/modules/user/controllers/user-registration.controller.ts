@@ -22,11 +22,11 @@ export class UserRegistrationController {
      */
     @Post()
     @HttpCode(200)
-    public async register(
+    public register(
         @Body() userRegistrationDatas: UserRegistrationDatas,
         @Headers("lang") lang: string,
     ): Promise<UserRegistrationResponseDatas> {
-        return await this.userRegistrationService.register({
+        return this.userRegistrationService.register({
             userRegistrationDatas: userRegistrationDatas,
             lang: lang,
         })
@@ -39,7 +39,7 @@ export class UserRegistrationController {
      */
     @Post("confirmation")
     @HttpCode(200)
-    public async registerConfirmation(
+    public registerConfirmation(
         @Body()
         userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas,
     ): Promise<UserRegistrationConfirmationResponseDatas> {

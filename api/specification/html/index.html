@@ -325,7 +325,8 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "error-message" : "error-message",
-  "confirmation-code" : "confirmation-code"
+  "confirmation-code" : "confirmation-code",
+  "iv" : "iv"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -2869,6 +2870,7 @@ font-style: italic;
 <div class="param">encryptedMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the received encrypted confirmation code during the validation step </div>
 <div class="param">userMinusconfirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the input confirmation code by user </div>
 <div class="param">newMinuspassword </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> user new password </div>
+<div class="param">iv (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> received encryption iv </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2877,6 +2879,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">errorMinusmessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message or null on success </div>
 <div class="param">confirmationMinuscode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> the encrypted confirmation code to send back on confirmation or null on error </div>
+<div class="param">iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> encryption iv </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

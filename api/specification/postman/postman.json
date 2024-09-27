@@ -159,7 +159,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\",\n \"new-password\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\",\n \"new-password\": \"<string>\",\n \"iv\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"

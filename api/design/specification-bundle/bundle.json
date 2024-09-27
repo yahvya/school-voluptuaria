@@ -896,11 +896,19 @@
                                                 "null"
                                             ],
                                             "description": "the encrypted confirmation code to send back on confirmation or null on error"
+                                        },
+                                        "iv": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "encryption iv"
                                         }
                                     },
                                     "required": [
                                         "error-message",
-                                        "confirmation-code"
+                                        "confirmation-code",
+                                        "iv"
                                     ]
                                 }
                             }
@@ -946,6 +954,12 @@
                                     "new-password": {
                                         "type": "string",
                                         "description": "user new password"
+                                    },
+                                    "iv": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": "received encryption iv"
                                     }
                                 },
                                 "required": [
