@@ -10,22 +10,18 @@ import {
 export class UserLoginDatas {
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     @IsEmail()
     public email: string
 
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     public password: string
 }

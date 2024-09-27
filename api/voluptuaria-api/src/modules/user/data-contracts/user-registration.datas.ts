@@ -11,42 +11,34 @@ import {
 export class UserRegistrationDatas {
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     @IsEmail()
     public email: string
 
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     public name: string
 
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     public firstname: string
 
     @IsString({
         always: true,
-        message: "error.bad-fields",
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     @IsStrongPassword({
         minLength: 8,

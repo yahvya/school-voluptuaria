@@ -5,12 +5,10 @@ import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
  */
 export class GoogleRegistrationConfirmationDatas{
     @IsString({
-        always: true,
-        message: "error.bad-fields",
+        always: true
     })
     @IsNotEmpty({
         always: true,
-        message: "error.bad-fields",
     })
     @IsStrongPassword({
         minLength: 8,
