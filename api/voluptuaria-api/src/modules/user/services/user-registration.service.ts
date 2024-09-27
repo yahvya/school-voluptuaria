@@ -17,6 +17,7 @@ import { GoogleRegistrationResponseDatas } from "../data-contracts/google-regist
 import { GoogleRegistrationDatas } from "../data-contracts/google-registration.datas"
 import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
 import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration-confirmation.datas"
+import { GoogleAuthResponse } from "../../google-auth-module/data-contracts/google-auth-response"
 
 /**
  * @brief User registration service.
@@ -219,13 +220,68 @@ export class UserRegistrationService {
     /**
      * @brief confirmation google registration by creating account
      * @param options options
-     * @returns {Promise<UserRegistrationResponseDatas>} confirmation result
+     * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
+     * @todo remove bad fields on every contracts
+     * @todo add routes on specifications
      */
     public async confirmGoogleRegistration(options: {
         registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
-        state:string
-    }):Promise<UserRegistrationResponseDatas>{
-        const response = new UserRegistrationResponseDatas()
+    }):Promise<UserRegistrationConfirmationResponseDatas>{
+        const response = new UserRegistrationConfirmationResponseDatas()
+        const {registrationConfirmationDatas} = options
+        const {iv,password,datas} = registrationConfirmationDatas
+
+        // get encrypted datas
+        const decryptedDatas = await this.encryptService.decrypt({
+            secretKey: this.configService.getOrThrow("GOOGLE_REGISTRATION_ENCRYPTION_KEY"),
+            toDecrypt: datas,
+            iv: iv
+        })
+
+        const userDatas = JSON.parse(decryptedDatas) as GoogleAuthResponse
+
+        // check account don't exist
+        const user = await this.userRepository.findOneBy({
+            email: userDatas.email
+        })
+
+        if(user !== null){
+            response.errorMessage = "error.account-already-exist"
+            return response
+        }
+
+        // create and log user
+        try {
+            const {email,name,firstname} = userDatas
+
+            await this.userRepository.save({
+                email: email,
+                password: await this.hashService.hash({
+                    toHash: password,
+                    salt: 10,
+                }),
+                name: name,
+                firstName: firstname,
+                gender: Gender.UNDEFINED,
+            })
+
+            // log the registered user
+            const loginResponse = await this.loginService.login({
+                userLoginDatas: {
+                    email: email,
+                    password: password,
+                },
+            })
+
+            if (loginResponse.errorMessage !== null) {
+                response.errorMessage = loginResponse.errorMessage
+                return response
+            }
+
+            response.authenticationToken = loginResponse.authenticationToken
+        } catch (_) {
+            response.errorMessage = "error.technical"
+        }
 
         return response
     }

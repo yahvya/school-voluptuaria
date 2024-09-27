@@ -7,6 +7,7 @@ import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/use
 import { GoogleRegistrationDatas } from "../data-contracts/google-registration.datas"
 import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration-response.datas"
 import { AuthGuard } from "@nestjs/passport"
+import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration-confirmation.datas"
 
 /**
  * @brief Manage users registration process.
@@ -91,5 +92,28 @@ export class UserRegistrationController {
         }
 
         return res.redirect(uri)
+    }
+
+    /**
+     * @brief confirm user registration from Google
+     * @param registrationConfirmationDatas confirmation datas
+     * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
+     */
+    @Post("by-google/confirmation")
+    @HttpCode(200)
+    public async confirmGoogleRegistration(
+        @Body() registrationConfirmationDatas:GoogleRegistrationConfirmationDatas
+    ):Promise<UserRegistrationConfirmationResponseDatas>{
+        return this.userRegistrationService.confirmGoogleRegistration({
+            registrationConfirmationDatas: registrationConfirmationDatas
+        })
+    }
+
+    /**
+     * @todo remove tmp route
+     */
+    @Get("by-google/test")
+    public test(@Query() q){
+        return q
     }
 }
