@@ -89,8 +89,7 @@ export class UserRegistrationService {
         userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas
     }): Promise<UserRegistrationConfirmationResponseDatas> {
         const response = new UserRegistrationConfirmationResponseDatas()
-        const userRegistrationConfirmationDatas =
-            options.userRegistrationConfirmationDatas
+        const userRegistrationConfirmationDatas = options.userRegistrationConfirmationDatas
         const {
             email,
             iv,
@@ -126,6 +125,7 @@ export class UserRegistrationService {
         }
 
         try {
+            // create the user
             await this.userRepository.save({
                 email: email,
                 password: await this.hashService.hash({
@@ -137,6 +137,7 @@ export class UserRegistrationService {
                 gender: Gender.UNDEFINED,
             })
 
+            // log the registered user
             const loginResponse = await this.loginService.login({
                 userLoginDatas: {
                     email: email,
