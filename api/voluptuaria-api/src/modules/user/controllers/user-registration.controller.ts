@@ -1,9 +1,12 @@
-import { Body, Controller, Post, Headers, HttpCode } from "@nestjs/common"
+import { Body, Controller, Post, Headers, HttpCode, UseGuards, Get, Query, Res } from "@nestjs/common"
 import { UserRegistrationService } from "../services/user-registration.service"
 import { UserRegistrationDatas } from "../data-contracts/user-registration.datas"
 import { UserRegistrationResponseDatas } from "../data-contracts/user-registration-response.datas"
 import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration-confirmation.datas"
 import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/user-registration-confirmation-response.datas"
+import { GoogleRegistrationDatas } from "../data-contracts/google-registration.datas"
+import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration-response.datas"
+import { AuthGuard } from "@nestjs/passport"
 
 /**
  * @brief Manage users registration process.
@@ -11,7 +14,7 @@ import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/use
 @Controller("register")
 export class UserRegistrationController {
     constructor(
-        protected readonly userRegistrationService: UserRegistrationService,
+        protected readonly userRegistrationService: UserRegistrationService
     ) {}
 
     /**
@@ -47,5 +50,46 @@ export class UserRegistrationController {
             userRegistrationConfirmationDatas:
                 userRegistrationConfirmationDatas,
         })
+    }
+
+    /**
+     * @brief start the Google registration process
+     * @returns {GoogleRegistrationResponseDatas} response
+     */
+    @Post("by-google")
+    @HttpCode(200)
+    public startRegistrationFromGoogle(
+        @Body() googleRegistrationDatas:GoogleRegistrationDatas
+    ): GoogleRegistrationResponseDatas{
+        return this.userRegistrationService.startRegistrationFromGoogle({
+            googleRegistrationDatas: googleRegistrationDatas
+        })
+    }
+
+    /**
+     * @brief confirm google registration
+     * @param state added state in the datas
+     * @param res response
+     * @returns {} registration confirmation
+     */
+    @Get("by-google/redirect")
+    @HttpCode(200)
+    @UseGuards(AuthGuard("google"))
+    public async googleRegistrationConfirm(
+        @Query("state") state:string,
+        @Res() res
+    ):Promise<any>{
+        const uri = await this.userRegistrationService.manageGoogleRegistrationRedirect({
+            state: state
+        })
+
+        if(uri === null){
+            /**
+             * @todo render an error page
+             */
+            return "error page"
+        }
+
+        return res.redirect(uri)
     }
 }

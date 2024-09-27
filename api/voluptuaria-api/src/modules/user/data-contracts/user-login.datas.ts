@@ -1,8 +1,7 @@
 import {
     IsEmail,
     IsNotEmpty,
-    IsString,
-    IsStrongPassword,
+    IsString
 } from "class-validator"
 
 /**

@@ -8,6 +8,7 @@ import { UserRegistrationController } from "./controllers/user-registration.cont
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserEntity } from "../database-module/entities/user.entity"
 import { ForgotPasswordService } from "./services/forgot-password.service"
+import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 
 @Module({
     imports: [
@@ -22,6 +23,7 @@ import { ForgotPasswordService } from "./services/forgot-password.service"
             }),
         }),
         TypeOrmModule.forFeature([UserEntity]),
+        GoogleAuthModule
     ],
     providers: [
         UserRegistrationService,

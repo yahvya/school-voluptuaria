@@ -13,6 +13,10 @@ import { UserLoginService } from "./user-login.service"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { StringService } from "../../utils/services/string.service"
+import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration-response.datas"
+import { GoogleRegistrationDatas } from "../data-contracts/google-registration.datas"
+import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
+import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration-confirmation.datas"
 
 /**
  * @brief User registration service.
@@ -28,7 +32,8 @@ export class UserRegistrationService {
         protected readonly loginService: UserLoginService,
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
-        protected readonly stringService: StringService
+        protected readonly stringService: StringService,
+        protected readonly googleAuthService: GoogleAuthService
     ) {}
 
     /**
@@ -161,6 +166,71 @@ export class UserRegistrationService {
     }
 
     /**
+     * @brief init the Google authentication process
+     * @param options options
+     * @returns {GoogleRegistrationResponseDatas} initialization result
+     */
+    public startRegistrationFromGoogle(options: {
+        googleRegistrationDatas:GoogleRegistrationDatas
+    }):GoogleRegistrationResponseDatas{
+        const response = new GoogleRegistrationResponseDatas()
+        const {googleRegistrationDatas} = options
+        const {redirectUri} = googleRegistrationDatas
+
+        if(!this.isGoogleRedirectUriValid({uri: redirectUri})){
+            response.errorMessage = "error.bad-fields"
+            return response
+        }
+
+        response.link = this.googleAuthService.generateAuthUrl({
+            redirectUri: this.configService.getOrThrow("GOOGLE_CALLBACK_URL"),
+            state: Buffer.from(redirectUri).toString("base64")
+        })
+
+        return response
+    }
+
+    /**
+     * @brief get user datas from Google and create the uri to redirect on
+     * @param options options
+     * @returns {Promise<string|null>} the link to redirect on or null on error
+     */
+    public async manageGoogleRegistrationRedirect(options: {
+        state: string
+    }):Promise<string|null>{
+        const {state} = options
+        const redirectUri= Buffer.from(state,"base64").toString()
+
+        if(!this.isGoogleRedirectUriValid({uri: redirectUri}))
+            return null
+
+        const encryptionResult = await this.encryptService.encrypt({
+            toEncrypt: JSON.stringify(this.googleAuthService.getUserDatas()),
+            secretKey: this.configService.getOrThrow("GOOGLE_REGISTRATION_ENCRYPTION_KEY")
+        })
+        const params = new URLSearchParams({
+            iv: encryptionResult.iv,
+            datas: encryptionResult.encryptionResult
+        })
+
+        return `${redirectUri}?${params.toString()}`
+    }
+
+    /**
+     * @brief confirmation google registration by creating account
+     * @param options options
+     * @returns {Promise<UserRegistrationResponseDatas>} confirmation result
+     */
+    public async confirmGoogleRegistration(options: {
+        registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
+        state:string
+    }):Promise<UserRegistrationResponseDatas>{
+        const response = new UserRegistrationResponseDatas()
+
+        return response
+    }
+
+    /**
      * @brief send the confirmation mail
      * @param options options
      * @returns {Promise<boolean>} confirmation send success
@@ -193,5 +263,18 @@ export class UserRegistrationService {
         } catch (_) {
             return false
         }
+    }
+
+    /**
+     * @brief check if the redirect uri is valid for the application
+     * @param options options
+     * @todo update this function when the front ap will decide of the format
+     */
+    protected isGoogleRedirectUriValid(options: {
+        uri:string
+    }):boolean{
+        const {uri} = options
+
+        return uri === this.configService.getOrThrow("GOOGLE_CALLBACK_URL") || true
     }
 }

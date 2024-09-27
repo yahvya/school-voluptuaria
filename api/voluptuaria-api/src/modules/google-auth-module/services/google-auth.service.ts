@@ -1,4 +1,3 @@
-// google.strategy.ts
 import { Injectable } from "@nestjs/common"
 import { PassportStrategy } from "@nestjs/passport"
 import { Strategy, VerifyCallback } from "passport-google-oauth20"
@@ -16,7 +15,7 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
      */
     protected userDatas: GoogleAuthResponse
 
-    constructor(private configService: ConfigService) {
+    constructor(protected configService: ConfigService) {
         super({
             clientID: configService.getOrThrow("GOOGLE_CLIENT_ID"),
             clientSecret: configService.getOrThrow("GOOGLE_CLIENT_SECRET"),
@@ -58,5 +57,30 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
      */
     public getUserDatas(): GoogleAuthResponse {
         return this.userDatas
+    }
+
+    /**
+     * @brief generate the authentication uri
+     * @param options options
+     * @returns {string} generate the authentication uri
+     */
+    public generateAuthUrl(options: {
+        redirectUri:string,
+        state: string|null
+    }): string {
+        const {redirectUri,state} = options
+
+        const baseAuthUrl = this.configService.getOrThrow("GOOGLE_AUTH_BASE_URI")
+        const params = new URLSearchParams({
+            client_id: this.configService.getOrThrow("GOOGLE_CLIENT_ID"),
+            redirect_uri: redirectUri,
+            response_type: "code",
+            scope: ["email", "profile"].join(" "),
+            access_type: "offline",
+            prompt: "consent",
+            state: state ?? ""
+        })
+
+        return `${baseAuthUrl}?${params.toString()}`
     }
 }
