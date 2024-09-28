@@ -54,12 +54,12 @@ export class LangService {
      * @returns {string} the translated value
      * @throws {LangServiceException} in case of error
      */
-    public async translation(options: {
+    public translation(options: {
         langFilename: string
         key: string
         replaces?: Record<string, string>
-    }): Promise<string> {
-        if (!(await this.loadLangFile({ langFileName: options.langFilename })))
+    }): string {
+        if (!(this.loadLangFile({ langFileName: options.langFilename })))
             throw new LangServiceException("Fail to load lang file")
 
         if (!(options.key in this.langValues))
@@ -102,9 +102,9 @@ export class LangService {
      * @returns {boolean} load success
      * @throws {Error} on error
      */
-    protected async loadLangFile(options: {
+    protected loadLangFile(options: {
         langFileName: string
-    }): Promise<boolean> {
+    }): boolean {
         if (
             this.currentLang !== null &&
             options.langFileName === this.currentLang

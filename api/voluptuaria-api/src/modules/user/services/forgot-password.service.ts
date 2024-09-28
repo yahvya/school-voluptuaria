@@ -142,14 +142,17 @@ export class ForgotPasswordService{
                 .mailerService
                 .sendMail({
                     to: email,
-                    subject: await this.langService.translation({
+                    subject: this.langService.translation({
                         langFilename: lang,
                         key: "message.password-forgotten-intro"
                     }),
                     template: "forgot-password-confirmation.hbs",
                     context: {
-                        confirmationCode: confirmationCode
-                    }
+                        confirmationCode: confirmationCode,
+                        appName: this.configService.getOrThrow("APPLICATION_NAME"),
+                        websiteUri: this.configService.getOrThrow("APPLICATION_LINK"),
+                        lang: lang
+                    },
                 })
 
             return true

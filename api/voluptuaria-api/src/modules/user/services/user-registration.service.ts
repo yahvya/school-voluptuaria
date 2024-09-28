@@ -300,7 +300,7 @@ export class UserRegistrationService {
 
             await this.mailService.sendMail({
                 to: email,
-                subject: await this.langService.translation({
+                subject: this.langService.translation({
                     langFilename: lang,
                     key: "message.welcome-user-intro",
                     replaces: {
@@ -310,6 +310,10 @@ export class UserRegistrationService {
                 template: "registration-confirmation.hbs",
                 context: {
                     confirmationCode: confirmationCode,
+                    appName: this.configService.getOrThrow("APPLICATION_NAME"),
+                    websiteUri: this.configService.getOrThrow("APPLICATION_LINK"),
+                    username: `${name} ${firstname}`,
+                    lang: lang
                 },
             })
 

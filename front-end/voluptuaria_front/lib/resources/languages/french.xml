@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE lang SYSTEM "./rules.dtd">
 <lang
-    french-name="Français"
-    google-map-code="fr"
-    openweathermap-code="fr"
-    name="Français"
+        french-name="Français"
+        google-map-code="fr"
+        openweathermap-code="fr"
+        name="Français"
 >
     <error-level>
         <lang-element key="error.technical" value="Une erreur technique s'est produite"/>
@@ -64,12 +64,9 @@
         <lang-element key="message.load-preferences" value="Charger vos préférences"/>
         <lang-element key="message.type-received-code" value="Veuillez saisir le code reçu"/>
         <lang-element key="message.welcome-user-intro" value="Bienvenue sur notre plateforme Voluptuaria [Username]"/>
-        <lang-element key="message.welcome-user" value="Pour terminer votre inscription veuillez cliquer sur le boutton ci-dessous"/>
-        <lang-element key="message.password-forgotten-intro" value="Mot de passe oublié ? Suivez les instructions pour le réinitialiser."/>
-        <lang-element key="message.password-forgotten" value="Veuillez cliquer sur ce lien [Lien de réinitialisation] !"/>
-
-
-
-
+        <lang-element key="message.welcome-user"
+                      value="Pour terminer votre inscription veuillez saisir le code ci-dessous"/>
+        <lang-element key="message.password-forgotten-intro"
+                      value="Mot de passe oublié ? Veuillez saisir le code ci-dessous."/>
     </message-level>
 </lang>
