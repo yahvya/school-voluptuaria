@@ -221,8 +221,6 @@ export class UserRegistrationService {
      * @brief confirmation google registration by creating account
      * @param options options
      * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
-     * @todo remove bad fields on every contracts
-     * @todo add routes on specifications
      */
     public async confirmGoogleRegistration(options: {
         registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
