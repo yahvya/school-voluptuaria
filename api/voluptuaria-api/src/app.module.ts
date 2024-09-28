@@ -6,6 +6,7 @@ import { DatabaseModule } from "./modules/database-module/database.module"
 import { MailModule } from "./modules/mail-module/mail.module"
 import { AppSecurityModule } from "./modules/app-security/app-security.module"
 import { UtilsModule } from "./modules/utils/utils.module"
+import { TestController } from "./modules/application-dev-testing/controllers/test.controller"
 
 @Module({
     imports: [
@@ -15,7 +16,8 @@ import { UtilsModule } from "./modules/utils/utils.module"
         DatabaseModule,
         MailModule,
         AppSecurityModule,
-        UtilsModule
+        UtilsModule,
+        TestController
     ],
 })
 export class AppModule {}

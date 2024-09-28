@@ -78,7 +78,7 @@ export class UserRegistrationController {
     @UseGuards(AuthGuard("google"))
     public async googleRegistrationConfirm(
         @Query("state") state:string,
-        @Res() res
+        @Res() res:any
     ):Promise<any>{
         const uri = await this.userRegistrationService.manageGoogleRegistrationRedirect({
             state: state
@@ -113,7 +113,7 @@ export class UserRegistrationController {
      * @todo remove tmp route
      */
     @Get("by-google/test")
-    public test(@Query() q){
+    public test(@Query() q:any){
         return q
     }
 }

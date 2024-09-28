@@ -753,6 +753,170 @@
                 }
             }
         },
+        "/register/by-gooogle": {
+            "post": {
+                "summary": "Provide the google authentication link",
+                "description": "provide the google authentication link",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": [
+                                    "object"
+                                ],
+                                "properties": {
+                                    "redirectUri": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": " The url to redirect on depends on the type of application (have to be one the registered uri)"
+                                    }
+                                },
+                                "required": [
+                                    "redirectUri"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Authentication link",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": [
+                                        "object"
+                                    ],
+                                    "properties": {
+                                        "error-message": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "the error message or null on success"
+                                        },
+                                        "link": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "the link to redirect on or null"
+                                        }
+                                    },
+                                    "required": [
+                                        "link",
+                                        "error-message"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register/by-google/confirmation": {
+            "post": {
+                "summary": "Try to register the user from google datas",
+                "description": "Try to register the user from google datas",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": [
+                                    "object"
+                                ],
+                                "properties": {
+                                    "password": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": "user chosen password"
+                                    },
+                                    "iv": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": "the received iv from the redirection"
+                                    },
+                                    "datas": {
+                                        "type": [
+                                            "string"
+                                        ],
+                                        "description": "the received datas from the redirection"
+                                    }
+                                },
+                                "required": [
+                                    "password",
+                                    "datas",
+                                    "iv"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registration confirmation datas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": [
+                                        "object"
+                                    ],
+                                    "properties": {
+                                        "error-message": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "error message if the confirmation have failed or null on success"
+                                        },
+                                        "authentification-token": {
+                                            "type": [
+                                                "string",
+                                                "null"
+                                            ],
+                                            "description": "jwt token for the user authentication or null on error"
+                                        }
+                                    },
+                                    "required": [
+                                        "error-message",
+                                        "authentification-token"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/login": {
             "post": {
                 "summary": "Log the user",

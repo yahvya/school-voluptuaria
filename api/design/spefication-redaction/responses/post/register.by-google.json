@@ -1,0 +1,14 @@
+{
+    "type": ["object"],
+    "properties": {
+        "error-message" : {
+            "type": ["string","null"],
+            "description" : "the error message or null on success"
+        },
+        "link" : {
+            "type" : ["string","null"],
+            "description" : "the link to redirect on or null"
+        }
+    },
+    "required" : ["link","error-message"]
+}

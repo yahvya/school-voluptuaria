@@ -249,6 +249,70 @@
                 }
             }
         },
+        "/register/by-gooogle" : {
+            "post" : {
+                "summary": "Provide the google authentication link",
+                "description" : "provide the google authentication link",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref" : "request-bodies/register.by-google.json"
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Authentication link",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref": "responses/post/register.by-google.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register/by-google/confirmation" : {
+            "post" : {
+                "summary": "Try to register the user from google datas",
+                "description": "Try to register the user from google datas",
+                "parameters": [
+                    {
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "$ref" : "request-bodies/register.by-google.confirmation.json"
+                },
+                "responses" : {
+                    "200" : {
+                        "description" : "Registration confirmation datas",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "$ref" : "responses/post/register.by-google.confirmation.json"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/login" : {
             "post" : {
                 "summary": "Log the user",

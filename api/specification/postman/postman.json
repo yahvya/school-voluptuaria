@@ -422,6 +422,119 @@
                             ]
                         },
 	                        {
+    "name": "/register/by-google/confirmation",
+                "description": "Try to register the user from google datas",
+                 "item": [
+                            {
+                                "name": "Try to register the user from google datas",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"password\": \"<string>\",\n \"iv\": \"<string>\",\n \"datas\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register/by-google/confirmation",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register",
+                                            "by-google",
+                                            "confirmation"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Try to register the user from google datas"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/register/by-gooogle",
+                "description": "provide the google authentication link",
+                 "item": [
+                            {
+                                "name": "Provide the google authentication link",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptaria-token",
+                                            "value": "",
+                                            "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"redirectUri\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register/by-gooogle",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register",
+                                            "by-gooogle"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "provide the google authentication link"
+                                }
+                            }
+                            ]
+                        },
+	                        {
     "name": "/register/confirmation",
                 "description": "Confirm a user registration",
                  "item": [
