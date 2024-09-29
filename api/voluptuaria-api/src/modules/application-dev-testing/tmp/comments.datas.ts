@@ -1,31 +1,38 @@
-import {IsNotEmpty, IsNumber, IsObject, IsOptional, IsString, ValidateNested} from "class-validator";
-import {Type} from "class-transformer";
+import {
+    IsNotEmpty,
+    IsNumber,
+    IsObject,
+    IsOptional,
+    IsString,
+    ValidateNested,
+} from "class-validator"
+import { Type } from "class-transformer"
 
 export class CommentDatas {
     @IsObject()
     @ValidateNested()
     @Type(() => UserDatas)
-    public userDatas: UserDatas;
+    public userDatas: UserDatas
 
     @IsString()
     @IsNotEmpty()
-    public comment: string;
+    public comment: string
 
     @IsNumber()
     @IsNotEmpty()
-    public rating: number;
+    public rating: number
 
     @IsString()
     @IsNotEmpty()
-    public wroteAt: string;
+    public wroteAt: string
 }
 
 class UserDatas {
     @IsString()
     @IsOptional()
-    public profilePictureLink: string | null;  // Can be null without image
+    public profilePictureLink: string | null // Can be null without image
 
     @IsString()
     @IsNotEmpty()
-    public fullname: string;
+    public fullname: string
 }

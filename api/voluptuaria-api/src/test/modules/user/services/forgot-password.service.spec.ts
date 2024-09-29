@@ -8,14 +8,17 @@ import { UtilsModule } from "../../../../modules/utils/utils.module"
 import { MailModule } from "../../../../modules/mail-module/mail.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
-import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
+import {
+    Gender,
+    UserEntity,
+} from "../../../../modules/database-module/entities/user.entity"
 import { Repository } from "typeorm"
 import { HashService } from "../../../../modules/app-security/services/hash.service"
 
-describe("User.ForgotPasswordService",() => {
-    let forgotPasswordService:ForgotPasswordService
-    let testUserEntity:UserEntity
-    let testUserRepository:Repository<UserEntity>
+describe("User.ForgotPasswordService", () => {
+    let forgotPasswordService: ForgotPasswordService
+    let testUserEntity: UserEntity
+    let testUserRepository: Repository<UserEntity>
 
     beforeAll(async () => {
         const moduleRef = await Test.createTestingModule({
@@ -23,17 +26,21 @@ describe("User.ForgotPasswordService",() => {
                 UserModule,
                 LangModule,
                 AppSecurityModule,
-                ConfigModule.forRoot({isGlobal: true}),
+                ConfigModule.forRoot({ isGlobal: true }),
                 UtilsModule,
                 MailModule,
                 DatabaseModule,
-                TypeOrmModule.forFeature([UserEntity])
-            ]
+                TypeOrmModule.forFeature([UserEntity]),
+            ],
         }).compile()
 
-        forgotPasswordService = moduleRef.get<ForgotPasswordService>(ForgotPasswordService)
-        testUserRepository = moduleRef.get<Repository<UserEntity>>(getRepositoryToken(UserEntity))
-        const hashService:HashService = moduleRef.get<HashService>(HashService)
+        forgotPasswordService = moduleRef.get<ForgotPasswordService>(
+            ForgotPasswordService,
+        )
+        testUserRepository = moduleRef.get<Repository<UserEntity>>(
+            getRepositoryToken(UserEntity),
+        )
+        const hashService: HashService = moduleRef.get<HashService>(HashService)
 
         testUserEntity = new UserEntity()
 
@@ -43,30 +50,32 @@ describe("User.ForgotPasswordService",() => {
         testUserEntity.gender = Gender.UNDEFINED
         testUserEntity.password = await hashService.hash({
             toHash: "password",
-            salt: 10
+            salt: 10,
         })
 
         await testUserRepository.save(testUserEntity)
     })
 
-    describe("init",() => {
-        it("should return not exist message",async () => {
+    describe("init", () => {
+        it("should return not exist message", async () => {
             const result = await forgotPasswordService.init({
                 forgotPasswordDatas: {
-                    email: "not_exist_@exist.com"
+                    email: "not_exist_@exist.com",
                 },
-                lang: "french"
+                lang: "french",
             })
 
-            expect(result.errorMessage).toBe("error.unrecognized-email-password")
+            expect(result.errorMessage).toBe(
+                "error.unrecognized-email-password",
+            )
         })
 
-        it("should send confirmation mail",async () => {
+        it("should send confirmation mail", async () => {
             const result = await forgotPasswordService.init({
                 forgotPasswordDatas: {
-                    email: testUserEntity.email
+                    email: testUserEntity.email,
                 },
-                lang: "french"
+                lang: "french",
             })
 
             expect(result.confirmationCode).not.toBeNull()

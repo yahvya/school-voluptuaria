@@ -1,4 +1,14 @@
-import { Body, Controller, Post, Headers, HttpCode, UseGuards, Get, Query, Res } from "@nestjs/common"
+import {
+    Body,
+    Controller,
+    Post,
+    Headers,
+    HttpCode,
+    UseGuards,
+    Get,
+    Query,
+    Res,
+} from "@nestjs/common"
 import { UserRegistrationService } from "../services/user-registration.service"
 import { UserRegistrationDatas } from "../data-contracts/user-registration/user-registration.datas"
 import { UserRegistrationResponseDatas } from "../data-contracts/user-registration/user-registration-response.datas"
@@ -15,7 +25,7 @@ import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-re
 @Controller("register")
 export class UserRegistrationController {
     constructor(
-        protected readonly userRegistrationService: UserRegistrationService
+        protected readonly userRegistrationService: UserRegistrationService,
     ) {}
 
     /**
@@ -60,10 +70,10 @@ export class UserRegistrationController {
     @Post("by-google")
     @HttpCode(200)
     public startRegistrationFromGoogle(
-        @Body() googleRegistrationDatas:GoogleRegistrationDatas
-    ): GoogleRegistrationResponseDatas{
+        @Body() googleRegistrationDatas: GoogleRegistrationDatas,
+    ): GoogleRegistrationResponseDatas {
         return this.userRegistrationService.startRegistrationFromGoogle({
-            googleRegistrationDatas: googleRegistrationDatas
+            googleRegistrationDatas: googleRegistrationDatas,
         })
     }
 
@@ -77,14 +87,17 @@ export class UserRegistrationController {
     @HttpCode(200)
     @UseGuards(AuthGuard("google"))
     public async googleRegistrationConfirm(
-        @Query("state") state:string,
-        @Res() res:any
-    ):Promise<any>{
-        const uri = await this.userRegistrationService.manageGoogleRegistrationRedirect({
-            state: state
-        })
+        @Query("state") state: string,
+        @Res() res: any,
+    ): Promise<any> {
+        const uri =
+            await this.userRegistrationService.manageGoogleRegistrationRedirect(
+                {
+                    state: state,
+                },
+            )
 
-        if(uri === null){
+        if (uri === null) {
             /**
              * @todo render an error page
              */
@@ -102,10 +115,11 @@ export class UserRegistrationController {
     @Post("by-google/confirmation")
     @HttpCode(200)
     public async confirmGoogleRegistration(
-        @Body() registrationConfirmationDatas:GoogleRegistrationConfirmationDatas
-    ):Promise<UserRegistrationConfirmationResponseDatas>{
+        @Body()
+        registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
+    ): Promise<UserRegistrationConfirmationResponseDatas> {
         return this.userRegistrationService.confirmGoogleRegistration({
-            registrationConfirmationDatas: registrationConfirmationDatas
+            registrationConfirmationDatas: registrationConfirmationDatas,
         })
     }
 
@@ -113,7 +127,7 @@ export class UserRegistrationController {
      * @todo remove tmp route
      */
     @Get("by-google/test")
-    public test(@Query() q:any){
+    public test(@Query() q: any) {
         return q
     }
 }

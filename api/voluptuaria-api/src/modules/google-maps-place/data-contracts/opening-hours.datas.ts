@@ -1,3 +1,3 @@
-export class OpeningHoursDatas{
+export class OpeningHoursDatas {
     public s
 }

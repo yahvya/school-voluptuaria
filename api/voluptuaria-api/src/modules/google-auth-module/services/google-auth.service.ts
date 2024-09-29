@@ -65,12 +65,14 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
      * @returns {string} generate the authentication uri
      */
     public generateAuthUrl(options: {
-        redirectUri:string,
-        state: string|null
+        redirectUri: string
+        state: string | null
     }): string {
-        const {redirectUri,state} = options
+        const { redirectUri, state } = options
 
-        const baseAuthUrl = this.configService.getOrThrow("GOOGLE_AUTH_BASE_URI")
+        const baseAuthUrl = this.configService.getOrThrow(
+            "GOOGLE_AUTH_BASE_URI",
+        )
         const params = new URLSearchParams({
             client_id: this.configService.getOrThrow("GOOGLE_CLIENT_ID"),
             redirect_uri: redirectUri,
@@ -78,7 +80,7 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
             scope: ["email", "profile"].join(" "),
             access_type: "offline",
             prompt: "consent",
-            state: state ?? ""
+            state: state ?? "",
         })
 
         return `${baseAuthUrl}?${params.toString()}`

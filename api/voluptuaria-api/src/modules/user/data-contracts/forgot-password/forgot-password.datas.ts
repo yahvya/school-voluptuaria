@@ -3,8 +3,8 @@ import { IsNotEmpty, IsString } from "class-validator"
 /**
  * @brief forgot password form fields
  */
-export class ForgotPasswordDatas{
+export class ForgotPasswordDatas {
     @IsString()
     @IsNotEmpty()
-    public email:string
+    public email: string
 }

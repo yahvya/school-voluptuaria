@@ -3,8 +3,7 @@ import { StringService } from "./services/string.service"
 
 @Module({
     providers: [StringService],
-    exports: [StringService]
+    exports: [StringService],
 })
 @Global()
-export class UtilsModule{
-}
+export class UtilsModule {}

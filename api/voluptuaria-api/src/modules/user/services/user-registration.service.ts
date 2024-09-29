@@ -34,7 +34,7 @@ export class UserRegistrationService {
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
         protected readonly stringService: StringService,
-        protected readonly googleAuthService: GoogleAuthService
+        protected readonly googleAuthService: GoogleAuthService,
     ) {}
 
     /**
@@ -62,7 +62,9 @@ export class UserRegistrationService {
 
         // send confirmation mail
 
-        const confirmationCode: string = this.stringService.random({ length: 6 })
+        const confirmationCode: string = this.stringService.random({
+            length: 6,
+        })
         const sendSuccess: boolean = await this.sendConfirmationMail({
             confirmationCode: confirmationCode,
             lang: lang,
@@ -97,7 +99,8 @@ export class UserRegistrationService {
         userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas
     }): Promise<UserRegistrationConfirmationResponseDatas> {
         const response = new UserRegistrationConfirmationResponseDatas()
-        const userRegistrationConfirmationDatas = options.userRegistrationConfirmationDatas
+        const userRegistrationConfirmationDatas =
+            options.userRegistrationConfirmationDatas
         const {
             email,
             iv,
@@ -172,20 +175,20 @@ export class UserRegistrationService {
      * @returns {GoogleRegistrationResponseDatas} initialization result
      */
     public startRegistrationFromGoogle(options: {
-        googleRegistrationDatas:GoogleRegistrationDatas
-    }):GoogleRegistrationResponseDatas{
+        googleRegistrationDatas: GoogleRegistrationDatas
+    }): GoogleRegistrationResponseDatas {
         const response = new GoogleRegistrationResponseDatas()
-        const {googleRegistrationDatas} = options
-        const {redirectUri} = googleRegistrationDatas
+        const { googleRegistrationDatas } = options
+        const { redirectUri } = googleRegistrationDatas
 
-        if(!this.isGoogleRedirectUriValid({uri: redirectUri})){
+        if (!this.isGoogleRedirectUriValid({ uri: redirectUri })) {
             response.errorMessage = "error.bad-fields"
             return response
         }
 
         response.link = this.googleAuthService.generateAuthUrl({
             redirectUri: this.configService.getOrThrow("GOOGLE_CALLBACK_URL"),
-            state: Buffer.from(redirectUri).toString("base64")
+            state: Buffer.from(redirectUri).toString("base64"),
         })
 
         return response
@@ -198,20 +201,21 @@ export class UserRegistrationService {
      */
     public async manageGoogleRegistrationRedirect(options: {
         state: string
-    }):Promise<string|null>{
-        const {state} = options
-        const redirectUri= Buffer.from(state,"base64").toString()
+    }): Promise<string | null> {
+        const { state } = options
+        const redirectUri = Buffer.from(state, "base64").toString()
 
-        if(!this.isGoogleRedirectUriValid({uri: redirectUri}))
-            return null
+        if (!this.isGoogleRedirectUriValid({ uri: redirectUri })) return null
 
         const encryptionResult = await this.encryptService.encrypt({
             toEncrypt: JSON.stringify(this.googleAuthService.getUserDatas()),
-            secretKey: this.configService.getOrThrow("GOOGLE_REGISTRATION_ENCRYPTION_KEY")
+            secretKey: this.configService.getOrThrow(
+                "GOOGLE_REGISTRATION_ENCRYPTION_KEY",
+            ),
         })
         const params = new URLSearchParams({
             iv: encryptionResult.iv,
-            datas: encryptionResult.encryptionResult
+            datas: encryptionResult.encryptionResult,
         })
 
         return `${redirectUri}?${params.toString()}`
@@ -223,34 +227,36 @@ export class UserRegistrationService {
      * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
      */
     public async confirmGoogleRegistration(options: {
-        registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
-    }):Promise<UserRegistrationConfirmationResponseDatas>{
+        registrationConfirmationDatas: GoogleRegistrationConfirmationDatas
+    }): Promise<UserRegistrationConfirmationResponseDatas> {
         const response = new UserRegistrationConfirmationResponseDatas()
-        const {registrationConfirmationDatas} = options
-        const {iv,password,datas} = registrationConfirmationDatas
+        const { registrationConfirmationDatas } = options
+        const { iv, password, datas } = registrationConfirmationDatas
 
         // get encrypted datas
         const decryptedDatas = await this.encryptService.decrypt({
-            secretKey: this.configService.getOrThrow("GOOGLE_REGISTRATION_ENCRYPTION_KEY"),
+            secretKey: this.configService.getOrThrow(
+                "GOOGLE_REGISTRATION_ENCRYPTION_KEY",
+            ),
             toDecrypt: datas,
-            iv: iv
+            iv: iv,
         })
 
         const userDatas = JSON.parse(decryptedDatas) as GoogleAuthResponse
 
         // check account don't exist
         const user = await this.userRepository.findOneBy({
-            email: userDatas.email
+            email: userDatas.email,
         })
 
-        if(user !== null){
+        if (user !== null) {
             response.errorMessage = "error.account-already-exist"
             return response
         }
 
         // create and log user
         try {
-            const {email,name,firstname} = userDatas
+            const { email, name, firstname } = userDatas
 
             await this.userRepository.save({
                 email: email,
@@ -311,9 +317,10 @@ export class UserRegistrationService {
                 context: {
                     confirmationCode: confirmationCode,
                     appName: this.configService.getOrThrow("APPLICATION_NAME"),
-                    websiteUri: this.configService.getOrThrow("APPLICATION_LINK"),
+                    websiteUri:
+                        this.configService.getOrThrow("APPLICATION_LINK"),
                     username: `${name} ${firstname}`,
-                    lang: lang
+                    lang: lang,
                 },
             })
 
@@ -328,11 +335,11 @@ export class UserRegistrationService {
      * @param options options
      * @todo update this function when the front ap will decide of the format
      */
-    protected isGoogleRedirectUriValid(options: {
-        uri:string
-    }):boolean{
-        const {uri} = options
+    protected isGoogleRedirectUriValid(options: { uri: string }): boolean {
+        const { uri } = options
 
-        return uri === this.configService.getOrThrow("GOOGLE_CALLBACK_URL") || true
+        return (
+            uri === this.configService.getOrThrow("GOOGLE_CALLBACK_URL") || true
+        )
     }
 }

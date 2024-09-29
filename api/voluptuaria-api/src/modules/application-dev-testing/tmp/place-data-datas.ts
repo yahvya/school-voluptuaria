@@ -1,80 +1,89 @@
-import {IsArray, IsBoolean, IsNotEmpty, IsObject, IsOptional, IsString, IsUUID, ValidateNested} from "class-validator";
-import {Type} from "class-transformer";
-import {CommentDatas} from "./comments.datas";
-import {ForecastDatas} from "../../openwheatermap/data-contracts/forecast.datas";
+import {
+    IsArray,
+    IsBoolean,
+    IsNotEmpty,
+    IsObject,
+    IsOptional,
+    IsString,
+    IsUUID,
+    ValidateNested,
+} from "class-validator"
+import { Type } from "class-transformer"
+import { CommentDatas } from "./comments.datas"
+import { ForecastDatas } from "../../openwheatermap/data-contracts/forecast.datas"
 
 export class PlaceDataDatas {
     @IsUUID()
     @IsOptional()
-    public accesId: string | null;
+    public accesId: string | null
 
     @IsNotEmpty()
     @IsObject()
-    public prices: object;
+    public prices: object
 
     @IsString()
     @IsNotEmpty()
-    public placeName: string;
+    public placeName: string
 
     @IsBoolean()
     @IsNotEmpty()
-    public isOpenedNow: boolean;
+    public isOpenedNow: boolean
 
     @IsArray()
     @ValidateNested({ each: true })
     @Type(() => ImageDatas)
-    images: ImageDatas[];
+    images: ImageDatas[]
 
     @ValidateNested()
     @Type(() => CoordinatesDatas)
-    coordinates: CoordinatesDatas;
+    coordinates: CoordinatesDatas
 
     @IsArray()
     @ValidateNested({ each: true })
     @Type(() => CategoryDatas)
-    categories: CategoryDatas[];
+    categories: CategoryDatas[]
 
     @IsObject()
     @IsNotEmpty()
-    public callbackDatas: object;
+    public callbackDatas: object
 
     @IsArray()
     @ValidateNested({ each: true })
     @Type(() => CommentDatas)
-    public comments : CommentDatas
+    public comments: CommentDatas
 
     @IsObject()
     @ValidateNested({ each: true })
     @Type(() => ForecastDatas)
-    public weather : ForecastDatas[];
+    public weather: ForecastDatas[]
 }
 
 class ImageDatas {
     @IsString()
     @IsNotEmpty()
-    public url: string;
+    public url: string
 
     @IsNotEmpty()
     @IsString()
-    public description?: string;
+    public description?: string
 }
 
 class CoordinatesDatas {
     @IsNotEmpty()
     @IsObject()
-    latitude: number;
+    latitude: number
 
     @IsNotEmpty()
     @IsObject()
-    longitude: number;
+    longitude: number
 
     @IsOptional()
     @IsString()
-    public fullAddress: string | null;
+    public fullAddress: string | null
 }
 
 class CategoryDatas {
     @IsString()
     @IsNotEmpty()
-    public name: string;
+    public name: string
 }

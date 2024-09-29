@@ -12,7 +12,7 @@ import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-passwo
 export class UserLoginController {
     constructor(
         protected readonly userLoginService: UserLoginService,
-        protected readonly forgotPasswordService: ForgotPasswordService
+        protected readonly forgotPasswordService: ForgotPasswordService,
     ) {}
 
     /**
@@ -39,12 +39,12 @@ export class UserLoginController {
     @Post("forgot-password")
     @HttpCode(200)
     public forgotPassword(
-        @Body() forgotPasswordDatas:ForgotPasswordDatas,
-        @Headers("lang") lang:string
-    ):Promise<ForgotPasswordResponseDatas>{
+        @Body() forgotPasswordDatas: ForgotPasswordDatas,
+        @Headers("lang") lang: string,
+    ): Promise<ForgotPasswordResponseDatas> {
         return this.forgotPasswordService.init({
             forgotPasswordDatas: forgotPasswordDatas,
-            lang: lang
+            lang: lang,
         })
     }
 
@@ -56,10 +56,11 @@ export class UserLoginController {
     @Post("forgot-password/confirmation")
     @HttpCode(200)
     public forgotPasswordConfirmation(
-        @Body() forgotPasswordConfirmationDatas:ForgotPasswordConfirmationDatas
-    ):Promise<ForgotPasswordConfirmationResponseDatas>{
+        @Body()
+        forgotPasswordConfirmationDatas: ForgotPasswordConfirmationDatas,
+    ): Promise<ForgotPasswordConfirmationResponseDatas> {
         return this.forgotPasswordService.confirm({
-            forgotPasswordConfirmationDatas: forgotPasswordConfirmationDatas
+            forgotPasswordConfirmationDatas: forgotPasswordConfirmationDatas,
         })
     }
 }

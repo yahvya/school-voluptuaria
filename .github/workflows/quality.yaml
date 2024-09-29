@@ -1,0 +1,24 @@
+name: Quality manager
+
+on:
+  pull_request:
+    branches: [api]
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.3
+        with:
+          prettier_options: --write "src/**/*.ts" "src/test/**/*.ts"
+          working_directory: api/voluptuaria-api
+          same_commit: true
+          only_changed: True

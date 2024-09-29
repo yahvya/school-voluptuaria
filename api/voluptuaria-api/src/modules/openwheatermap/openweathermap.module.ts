@@ -1,10 +1,7 @@
-import {Module} from "@nestjs/common";
+import { Module } from "@nestjs/common"
 
 /**
  * @brief openweathermap api module
  */
-@Module({
-
-})
-export class OpenweathermapModule{
-}
+@Module({})
+export class OpenweathermapModule {}

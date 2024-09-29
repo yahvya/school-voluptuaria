@@ -7,14 +7,11 @@ import { LangService } from "../lang-module/services/lang.service"
 @Module({
     imports: [
         MailerModule.forRootAsync({
-            inject: [
-                ConfigService,
-                LangService
-            ],
+            inject: [ConfigService, LangService],
             useFactory: (
-                    configService: ConfigService,
-                    langService: LangService
-                ): MailerOptions => {
+                configService: ConfigService,
+                langService: LangService,
+            ): MailerOptions => {
                 const options = {
                     transport: configService.getOrThrow("MAILER_TRANSPORT"),
                     defaults: {
@@ -23,14 +20,15 @@ import { LangService } from "../lang-module/services/lang.service"
                     template: {
                         dir: configService.getOrThrow("MAIL_TEMPLATES"),
                         adapter: new HandlebarsAdapter({
-                            translation: (options:any):string => {
+                            translation: (options: any): string => {
                                 return langService.translation({
                                     langFilename: options.hash.langFilename,
                                     key: options.hash.key,
-                                    replaces: options.hash.replaces ?? {}
+                                    replaces: options.hash.replaces ?? {},
                                 })
                             },
-                            json: (options:any):Record<string,any> => options.hash
+                            json: (options: any): Record<string, any> =>
+                                options.hash,
                         }),
                         options: {
                             strict: true,

@@ -1,8 +1,8 @@
 /**
  * @brief weather temperature datas
  */
-export class TemperatureDatas{
-    public temperature:string
+export class TemperatureDatas {
+    public temperature: string
 
     public feltTemperature: string
 

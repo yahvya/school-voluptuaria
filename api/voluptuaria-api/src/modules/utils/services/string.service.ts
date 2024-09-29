@@ -4,7 +4,7 @@ import { Injectable } from "@nestjs/common"
  * @brief string utils service
  */
 @Injectable()
-export class StringService{
+export class StringService {
     /**
      * @brief generate a random string
      * @param options options
@@ -12,7 +12,8 @@ export class StringService{
      */
     public random(options: { length: number }): string {
         let result: string = ""
-        const characters: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@:;?"
+        const characters: string =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@:;?"
         const charactersLength: number = characters.length
         let counter: number = 0
 

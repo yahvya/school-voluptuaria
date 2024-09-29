@@ -4,7 +4,10 @@ import { Test } from "@nestjs/testing"
 import { UserModule } from "../../../../modules/user/user.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
 import { Repository } from "typeorm"
-import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
+import {
+    Gender,
+    UserEntity,
+} from "../../../../modules/database-module/entities/user.entity"
 import { ConfigModule } from "@nestjs/config"
 import { MailModule } from "../../../../modules/mail-module/mail.module"
 import { LangModule } from "../../../../modules/lang-module/lang.module"
@@ -13,28 +16,32 @@ import { UtilsModule } from "../../../../modules/utils/utils.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
 import { HashService } from "../../../../modules/app-security/services/hash.service"
 
-describe("User.UserRegistrationService",() => {
-    let userRegistrationService:UserRegistrationService
-    let testUserDatas:UserRegistrationDatas
-    let testUserEntity:UserEntity
-    let userRepository:Repository<UserEntity>
+describe("User.UserRegistrationService", () => {
+    let userRegistrationService: UserRegistrationService
+    let testUserDatas: UserRegistrationDatas
+    let testUserEntity: UserEntity
+    let userRepository: Repository<UserEntity>
 
     beforeAll(async () => {
         const moduleRef = await Test.createTestingModule({
             imports: [
                 UserModule,
                 DatabaseModule,
-                ConfigModule.forRoot({isGlobal: true}),
+                ConfigModule.forRoot({ isGlobal: true }),
                 MailModule,
                 LangModule,
                 AppSecurityModule,
                 UtilsModule,
-                TypeOrmModule.forFeature([UserEntity])
+                TypeOrmModule.forFeature([UserEntity]),
             ],
         }).compile()
 
-        userRegistrationService = moduleRef.get<UserRegistrationService>(UserRegistrationService)
-        userRepository = moduleRef.get<Repository<UserEntity>>(getRepositoryToken(UserEntity));
+        userRegistrationService = moduleRef.get<UserRegistrationService>(
+            UserRegistrationService,
+        )
+        userRepository = moduleRef.get<Repository<UserEntity>>(
+            getRepositoryToken(UserEntity),
+        )
 
         const hashService = moduleRef.get<HashService>(HashService)
 
@@ -42,7 +49,7 @@ describe("User.UserRegistrationService",() => {
             firstname: "svel",
             name: "zvheer",
             email: "voluptuaria.test@test.com",
-            password: "voluptuaria_test"
+            password: "voluptuaria_test",
         }
         testUserEntity = new UserEntity()
 
@@ -51,39 +58,39 @@ describe("User.UserRegistrationService",() => {
         testUserEntity.email = testUserDatas.email
         testUserEntity.password = await hashService.hash({
             toHash: testUserDatas.password,
-            salt: 10
+            salt: 10,
         })
         testUserEntity.gender = Gender.UNDEFINED
 
         await userRepository.save(testUserEntity)
     })
 
-    it("should found the test user",async () => {
+    it("should found the test user", async () => {
         const foundedUser = await userRepository.findOneBy({
-            email: testUserDatas.email
+            email: testUserDatas.email,
         })
         expect(foundedUser).not.toBeNull()
     })
 
-    describe("register",() => {
-        it("should not accept the initialization",async () => {
+    describe("register", () => {
+        it("should not accept the initialization", async () => {
             const result = await userRegistrationService.register({
                 userRegistrationDatas: testUserDatas,
-                lang: "french"
+                lang: "french",
             })
 
             expect(result.errorMessage).toBe("error.account-already-exist")
         })
 
-        it("should send the confirmation mail",async () => {
+        it("should send the confirmation mail", async () => {
             const result = await userRegistrationService.register({
                 lang: "french",
                 userRegistrationDatas: {
                     email: "non_existuser@gmail.com",
                     firstname: "non exist",
                     name: "non exist",
-                    password: "motDEpasse11@@"
-                }
+                    password: "motDEpasse11@@",
+                },
             })
 
             expect(result.confirmationCode).not.toBeNull()

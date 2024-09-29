@@ -25,19 +25,19 @@ import { UserInformationsController } from "./controllers/user-informations.cont
             }),
         }),
         TypeOrmModule.forFeature([UserEntity]),
-        GoogleAuthModule
+        GoogleAuthModule,
     ],
     providers: [
         UserRegistrationService,
         UserLoginService,
         JwtService,
         ForgotPasswordService,
-        UserInformationsService
+        UserInformationsService,
     ],
     controllers: [
         UserLoginController,
         UserRegistrationController,
-        UserInformationsController
+        UserInformationsController,
     ],
 })
 export class UserModule {}

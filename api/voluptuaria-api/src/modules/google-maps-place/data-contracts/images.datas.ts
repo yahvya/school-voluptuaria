@@ -1,8 +1,8 @@
 /**
  * @brief place image datas
  */
-export class ImagesDatas{
-    public url:string
+export class ImagesDatas {
+    public url: string
 
-    public description:string
+    public description: string
 }

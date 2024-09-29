@@ -59,7 +59,7 @@ export class LangService {
         key: string
         replaces?: Record<string, string>
     }): string {
-        if (!(this.loadLangFile({ langFileName: options.langFilename })))
+        if (!this.loadLangFile({ langFileName: options.langFilename }))
             throw new LangServiceException("Fail to load lang file")
 
         if (!(options.key in this.langValues))
@@ -102,9 +102,7 @@ export class LangService {
      * @returns {boolean} load success
      * @throws {Error} on error
      */
-    protected loadLangFile(options: {
-        langFileName: string
-    }): boolean {
+    protected loadLangFile(options: { langFileName: string }): boolean {
         if (
             this.currentLang !== null &&
             options.langFileName === this.currentLang

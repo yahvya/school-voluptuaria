@@ -17,18 +17,17 @@ import { HashService } from "../../app-security/services/hash.service"
  * @brief forgot password process manager service
  */
 @Injectable()
-export class ForgotPasswordService{
+export class ForgotPasswordService {
     constructor(
         @InjectRepository(UserEntity)
-        protected readonly userRepository:Repository<UserEntity>,
-        protected readonly mailerService:MailerService,
+        protected readonly userRepository: Repository<UserEntity>,
+        protected readonly mailerService: MailerService,
         protected readonly stringService: StringService,
         protected readonly encryptService: EncryptService,
         protected readonly configService: ConfigService,
         protected readonly langService: LangService,
-        protected readonly hashService: HashService
-    ){
-    }
+        protected readonly hashService: HashService,
+    ) {}
 
     /**
      * @brief initialise forgot password step
@@ -37,38 +36,42 @@ export class ForgotPasswordService{
      * @throws {Error} on error
      */
     public async init(options: {
-        forgotPasswordDatas:ForgotPasswordDatas,
-        lang:string
-    }):Promise<ForgotPasswordResponseDatas>{
-        const {forgotPasswordDatas,lang} = options
-        const {email} = forgotPasswordDatas
+        forgotPasswordDatas: ForgotPasswordDatas
+        lang: string
+    }): Promise<ForgotPasswordResponseDatas> {
+        const { forgotPasswordDatas, lang } = options
+        const { email } = forgotPasswordDatas
         const response = new ForgotPasswordResponseDatas()
 
         // check if user exists
         const user = await this.userRepository.findOneBy({
-            email: email
+            email: email,
         })
 
-        if(user === null){
+        if (user === null) {
             response.errorMessage = "error.unrecognized-email-password"
             return response
         }
 
         // generate and send confirmation code
-        const confirmationCode = this.stringService.random({length: 6})
+        const confirmationCode = this.stringService.random({ length: 6 })
 
-        if(!await this.sendConfirmationCode({
-            email: email,
-            confirmationCode: confirmationCode,
-            lang: lang
-        })){
+        if (
+            !(await this.sendConfirmationCode({
+                email: email,
+                confirmationCode: confirmationCode,
+                lang: lang,
+            }))
+        ) {
             response.errorMessage = "error.technical"
             return response
         }
 
         const encryptionResult = await this.encryptService.encrypt({
             toEncrypt: confirmationCode,
-            secretKey: this.configService.getOrThrow("CONFIRMATION_ENCRYPTION_KEY")
+            secretKey: this.configService.getOrThrow(
+                "CONFIRMATION_ENCRYPTION_KEY",
+            ),
         })
 
         response.confirmationCode = encryptionResult.encryptionResult
@@ -83,17 +86,23 @@ export class ForgotPasswordService{
      * @returns {Promise<ForgotPasswordConfirmationResponseDatas>} response
      */
     public async confirm(options: {
-        forgotPasswordConfirmationDatas:ForgotPasswordConfirmationDatas
-    }):Promise<ForgotPasswordConfirmationResponseDatas>{
+        forgotPasswordConfirmationDatas: ForgotPasswordConfirmationDatas
+    }): Promise<ForgotPasswordConfirmationResponseDatas> {
         const response = new ForgotPasswordConfirmationResponseDatas()
-        const {email,newPassword,encryptedConfirmationCode,userConfirmationCode,iv} = options.forgotPasswordConfirmationDatas
+        const {
+            email,
+            newPassword,
+            encryptedConfirmationCode,
+            userConfirmationCode,
+            iv,
+        } = options.forgotPasswordConfirmationDatas
 
         // check if user exists
         const user = await this.userRepository.findOneBy({
-            email: email
+            email: email,
         })
 
-        if(user === null){
+        if (user === null) {
             response.errorMessage = "error.unrecognized-email-password"
             return response
         }
@@ -102,23 +111,24 @@ export class ForgotPasswordService{
         const realConfirmationCode = await this.encryptService.decrypt({
             toDecrypt: encryptedConfirmationCode,
             iv: iv,
-            secretKey: this.configService.getOrThrow("CONFIRMATION_ENCRYPTION_KEY")
+            secretKey: this.configService.getOrThrow(
+                "CONFIRMATION_ENCRYPTION_KEY",
+            ),
         })
 
-        if(userConfirmationCode !== realConfirmationCode){
+        if (userConfirmationCode !== realConfirmationCode) {
             response.errorMessage = "error.bad-confirmation-code"
             return response
         }
 
         user.password = await this.hashService.hash({
             toHash: newPassword,
-            salt: 10
+            salt: 10,
         })
 
-        try{
+        try {
             await this.userRepository.save(user)
-        }
-        catch(_){
+        } catch (_) {
             response.errorMessage = "error.technical"
         }
 
@@ -131,33 +141,31 @@ export class ForgotPasswordService{
      * @returns {Promise<boolean>} send success
      */
     protected async sendConfirmationCode(options: {
-        email: string,
-        confirmationCode: string,
+        email: string
+        confirmationCode: string
         lang: string
-    }):Promise<boolean>{
-        try{
-            const {email,confirmationCode,lang} = options
+    }): Promise<boolean> {
+        try {
+            const { email, confirmationCode, lang } = options
 
-            await this
-                .mailerService
-                .sendMail({
-                    to: email,
-                    subject: this.langService.translation({
-                        langFilename: lang,
-                        key: "message.password-forgotten-intro"
-                    }),
-                    template: "forgot-password-confirmation.hbs",
-                    context: {
-                        confirmationCode: confirmationCode,
-                        appName: this.configService.getOrThrow("APPLICATION_NAME"),
-                        websiteUri: this.configService.getOrThrow("APPLICATION_LINK"),
-                        lang: lang
-                    },
-                })
+            await this.mailerService.sendMail({
+                to: email,
+                subject: this.langService.translation({
+                    langFilename: lang,
+                    key: "message.password-forgotten-intro",
+                }),
+                template: "forgot-password-confirmation.hbs",
+                context: {
+                    confirmationCode: confirmationCode,
+                    appName: this.configService.getOrThrow("APPLICATION_NAME"),
+                    websiteUri:
+                        this.configService.getOrThrow("APPLICATION_LINK"),
+                    lang: lang,
+                },
+            })
 
             return true
-        }
-        catch(_){
+        } catch (_) {
             return false
         }
     }

@@ -14,9 +14,7 @@ async function bootstrap() {
         }),
     )
 
-    app.useGlobalInterceptors(
-        new DtoExposeTransformInterceptor()
-    )
+    app.useGlobalInterceptors(new DtoExposeTransformInterceptor())
 
     await app.listen(3000)
 }

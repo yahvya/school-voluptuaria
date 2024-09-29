@@ -5,6 +5,6 @@ import { GoogleAuthService } from "./services/google-auth.service"
 @Module({
     imports: [PassportModule.register({ defaultStrategy: "google" })],
     providers: [GoogleAuthService],
-    exports: [GoogleAuthService]
+    exports: [GoogleAuthService],
 })
 export class GoogleAuthModule {}

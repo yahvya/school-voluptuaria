@@ -1,15 +1,15 @@
-import {IsBoolean, IsNotEmpty, IsNumber, IsObject} from "class-validator";
+import { IsBoolean, IsNotEmpty, IsNumber, IsObject } from "class-validator"
 
 export class ProposalDatas {
     @IsNumber()
     @IsNotEmpty()
-    public order : number
+    public order: number
 
     @IsObject()
     @IsNotEmpty()
-    public place : object
+    public place: object
 
     @IsBoolean()
     @IsNotEmpty()
-    public isCompleted : boolean
+    public isCompleted: boolean
 }

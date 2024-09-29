@@ -82,20 +82,15 @@ export class UserLoginService {
      * @brief Gets the hashed API token from the environment variables.
      * @returns {string} The hashed API token.
      */
-    async getHashedApiToken (apiToken : string): Promise<boolean>{
+    async getHashedApiToken(apiToken: string): Promise<boolean> {
         try {
-            const voluptuariaApiToken = await this.hashService.compare(
-                {
-                    toCompare: this.configService.getOrThrow("API_TOKEN"),
-                    hash: apiToken,
-                }
-            )
-            return voluptuariaApiToken;
-        }
-        catch (error) {
+            const voluptuariaApiToken = await this.hashService.compare({
+                toCompare: this.configService.getOrThrow("API_TOKEN"),
+                hash: apiToken,
+            })
+            return voluptuariaApiToken
+        } catch (error) {
             return null
         }
-
     }
-
 }

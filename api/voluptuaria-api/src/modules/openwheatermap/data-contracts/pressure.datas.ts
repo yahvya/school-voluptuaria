@@ -1,8 +1,8 @@
 /**
  * @brief pressure datas
  */
-export class PressureDatas{
-    public pressure:string
+export class PressureDatas {
+    public pressure: string
 
     public measureUnit: string
 }

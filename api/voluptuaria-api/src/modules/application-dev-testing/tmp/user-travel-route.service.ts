@@ -1,13 +1,12 @@
-import {InjectRepository} from "@nestjs/typeorm";
-import {UserEntity} from "../../database-module/entities/user.entity";
-import {Repository} from "typeorm";
-import {UserTravelRouteResponse} from "./user-travel-route-response";
+import { InjectRepository } from "@nestjs/typeorm"
+import { UserEntity } from "../../database-module/entities/user.entity"
+import { Repository } from "typeorm"
+import { UserTravelRouteResponse } from "./user-travel-route-response"
 
 export class UserTravelRouteService {
     constructor(
         @InjectRepository(UserEntity)
         protected readonly userRepository: Repository<UserEntity>,
-
     ) {}
 
     /**
@@ -17,18 +16,9 @@ export class UserTravelRouteService {
      * @throws {Error} in case of error
      */
 
-
     public async getGeneretedRoutes(options: {
         userTravelRouteDatas: UserTravelRouteResponse
-    }) : Promise<UserTravelRouteResponse[]> {
+    }): Promise<UserTravelRouteResponse[]> {
         return [new UserTravelRouteResponse()]
     }
-
-
-
-
-
-
-
-
 }

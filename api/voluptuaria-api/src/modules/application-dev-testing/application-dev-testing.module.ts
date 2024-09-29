@@ -6,7 +6,6 @@ import { TestController } from "./controllers/test.controller"
  * @todo remove at the end
  */
 @Module({
-    controllers: [TestController]
+    controllers: [TestController],
 })
-export class ApplicationDevTestingModule{
-}
+export class ApplicationDevTestingModule {}

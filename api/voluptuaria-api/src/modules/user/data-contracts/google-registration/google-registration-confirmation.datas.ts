@@ -3,9 +3,9 @@ import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
 /**
  * @brief google registration confirmation datas
  */
-export class GoogleRegistrationConfirmationDatas{
+export class GoogleRegistrationConfirmationDatas {
     @IsString({
-        always: true
+        always: true,
     })
     @IsNotEmpty({
         always: true,
@@ -16,13 +16,13 @@ export class GoogleRegistrationConfirmationDatas{
         minUppercase: 1,
         minNumbers: 1,
     })
-    public password:string
+    public password: string
 
     @IsString()
     @IsNotEmpty()
-    public iv:string
+    public iv: string
 
     @IsString()
     @IsNotEmpty()
-    public datas:string
+    public datas: string
 }

@@ -15,10 +15,10 @@ export class VoluptuariaAuthGuard implements CanActivate {
     constructor(private readonly UserLoginService: UserLoginService) {}
 
     canActivate(context: ExecutionContext): boolean {
-        const request = context.switchToHttp().getRequest();
-        const token = request.headers['authentication-token'];
+        const request = context.switchToHttp().getRequest()
+        const token = request.headers["authentication-token"]
 
-        if (token == null || token === '') {
+        if (token == null || token === "") {
             throw new UnauthorizedException()
         }
 
@@ -27,10 +27,8 @@ export class VoluptuariaAuthGuard implements CanActivate {
             throw new UnauthorizedException()
         }
 
-
         request["user"] = validToken
 
         return true
     }
-
 }

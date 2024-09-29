@@ -1,7 +1,7 @@
 /**
  * @brief place coordinates datas
  */
-export class CoordinatesDatas{
+export class CoordinatesDatas {
     public latitude: string
 
     public longitude: string

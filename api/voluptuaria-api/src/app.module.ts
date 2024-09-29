@@ -14,7 +14,7 @@ import { join } from "path"
     imports: [
         ConfigModule.forRoot({ isGlobal: true }),
         ServeStaticModule.forRoot({
-            rootPath: join(__dirname, "..", "resources/static")
+            rootPath: join(__dirname, "..", "resources/static"),
         }),
         UserModule,
         LangModule,

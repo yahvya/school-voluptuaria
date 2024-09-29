@@ -1,10 +1,7 @@
-import {Module} from "@nestjs/common";
+import { Module } from "@nestjs/common"
 
 /**
  * @brief google maps places api module
  */
-@Module({
-
-})
-export class GoogleMapsPlaceModule{
-}
+@Module({})
+export class GoogleMapsPlaceModule {}
