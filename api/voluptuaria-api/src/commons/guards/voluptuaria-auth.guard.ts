@@ -16,19 +16,18 @@ export class VoluptuariaAuthGuard implements CanActivate {
 
     canActivate(context: ExecutionContext): boolean {
         const request = context.switchToHttp().getRequest();
-        const token = request.headers['authentication-token'];
+        const voluptariaToken = request.headers['voluptaria-token'];
 
-        if (token == null || token === '') {
-            throw new UnauthorizedException()
-        }
-
-        const validToken = this.UserLoginService.validateToken(token)
-        if (!validToken) {
+        if(voluptariaToken == null || voluptariaToken === '') {
             throw new UnauthorizedException()
         }
 
 
-        request["user"] = validToken
+        const validApiToken = this.UserLoginService.getHashedApiToken()
+
+        if (validApiToken != voluptariaToken){
+            throw new UnauthorizedException()
+        }
 
         return true
     }
