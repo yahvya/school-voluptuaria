@@ -34,14 +34,3 @@ jobs:
         run: |
           cd api/voluptuaria-api
           npm run prettier:format
-
-      - name: Amend the commit with Prettier changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit --amend --no-edit
-
-      - name: Force-push the changes
-        run: |
-          git push origin ${{ github.ref }} --force-with-lease  # Force push the amended commit
