@@ -9,6 +9,8 @@ import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserEntity } from "../database-module/entities/user.entity"
 import { ForgotPasswordService } from "./services/forgot-password.service"
 import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
+import { UserInformationsService } from "./services/user-informations.service"
+import { UserInformationsController } from "./controllers/user-informations.controller"
 
 @Module({
     imports: [
@@ -29,11 +31,13 @@ import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
         UserRegistrationService,
         UserLoginService,
         JwtService,
-        ForgotPasswordService
+        ForgotPasswordService,
+        UserInformationsService
     ],
     controllers: [
         UserLoginController,
-        UserRegistrationController
+        UserRegistrationController,
+        UserInformationsController
     ],
 })
 export class UserModule {}
