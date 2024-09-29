@@ -77,4 +77,13 @@ export class UserLoginService {
             return null
         }
     }
+
+    /**
+     * @brief Gets the hashed API token from the environment variables.
+     * @returns {string} The hashed API token.
+     */
+    getHashedApiToken(): string {
+        return this.configService.getOrThrow("API_TOKEN")
+    }
+
 }
