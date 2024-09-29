@@ -1,12 +1,12 @@
 import { Controller, Body, Post, HttpCode, Headers } from "@nestjs/common"
 import { UserLoginService } from "../services/user-login.service"
-import { UserLoginResponse } from "../data-contracts/user-login-responses.datas"
-import { UserLoginDatas } from "../data-contracts/user-login.datas"
-import { ForgotPasswordDatas } from "../data-contracts/forgot-password.datas"
+import { UserLoginResponse } from "../data-contracts/user-login/user-login-responses.datas"
+import { UserLoginDatas } from "../data-contracts/user-login/user-login.datas"
+import { ForgotPasswordDatas } from "../data-contracts/forgot-password/forgot-password.datas"
 import { ForgotPasswordService } from "../services/forgot-password.service"
-import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password-response.datas"
-import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password-confirmation-response.datas"
-import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password-confirmation.datas"
+import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/forgot-password-response.datas"
+import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
+import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
 
 @Controller("login")
 export class UserLoginController {

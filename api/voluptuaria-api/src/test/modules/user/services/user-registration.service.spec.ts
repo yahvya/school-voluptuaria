@@ -1,5 +1,5 @@
 import { UserRegistrationService } from "../../../../modules/user/services/user-registration.service"
-import { UserRegistrationDatas } from "../../../../modules/user/data-contracts/user-registration.datas"
+import { UserRegistrationDatas } from "../../../../modules/user/data-contracts/user-registration/user-registration.datas"
 import { Test } from "@nestjs/testing"
 import { UserModule } from "../../../../modules/user/user.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
