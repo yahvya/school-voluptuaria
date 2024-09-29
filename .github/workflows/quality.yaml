@@ -34,3 +34,8 @@ jobs:
         run: |
           cd api/voluptuaria-api
           npm run prettier:format
+
+      - name: Push changes
+        if: success() && steps.prettier.outputs.commit_status == 'true'
+        run: |
+          git push origin ${{ github.ref }}
