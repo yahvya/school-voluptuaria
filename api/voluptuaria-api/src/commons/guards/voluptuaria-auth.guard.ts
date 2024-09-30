@@ -4,30 +4,57 @@ import {
     ExecutionContext,
     UnauthorizedException,
 } from "@nestjs/common"
-import { UserLoginService } from "../../modules/user/services/user-login.service"
-import { Request } from "express"
+import {EncryptService} from "../../modules/app-security/services/encrypt.service";
+import {ConfigService} from "@nestjs/config";
+import {AppRequest} from "../../modules/app-security/data-contracts/app-request.datas";
+
 
 /**
- * @brief Jwt token verification
+ * @brief Api token verification
  */
 @Injectable()
 export class VoluptuariaAuthGuard implements CanActivate {
-    constructor(private readonly UserLoginService: UserLoginService) {}
+    constructor(private readonly encryptService :EncryptService,
+                protected readonly configService: ConfigService,
+                ) {}
+
 
     canActivate(context: ExecutionContext): boolean {
-        const request = context.switchToHttp().getRequest()
-        const voluptariaToken = request.headers["voluptaria-token"]
+        const request = context.switchToHttp().getRequest();
+        const voluptariaToken = request.headers['voluptaria-token'];
 
-        if (voluptariaToken == null || voluptariaToken === "") {
+        if(voluptariaToken == null || voluptariaToken === '') {
             throw new UnauthorizedException()
         }
 
-        const validApiToken = this.UserLoginService.getHashedApiToken()
+        const validApiToken = this.getHashedApiToken(voluptariaToken)
 
-        if (validApiToken != voluptariaToken) {
+        if (validApiToken != voluptariaToken){
             throw new UnauthorizedException()
         }
 
         return true
     }
+
+    /**
+     * @brief Gets the hashed API token from the environment variables.
+     * @returns {string} The hashed API token.
+     */
+    public async getHashedApiToken (Options : { appRequest : AppRequest }): Promise<string>{
+        try {
+            const voluptuariaToken = await this.encryptService.decrypt(
+                {
+                   secretKey: this.configService.getOrThrow("API_TOKEN_SECRET"),
+                    iv: Options.appRequest.iv,
+                   toDecrypt: Options.appRequest.apiToken
+                }
+            )
+            return voluptuariaToken;
+        }
+        catch (error) {
+            return null
+        }
+
+    }
+
 }

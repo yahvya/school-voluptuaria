@@ -1,4 +1,4 @@
-import { Controller, Body, Post, HttpCode, Headers } from "@nestjs/common"
+import {Controller, Body, Post, HttpCode, Headers, UseGuards} from "@nestjs/common"
 import { UserLoginService } from "../services/user-login.service"
 import { UserLoginResponse } from "../data-contracts/user-login/user-login-responses.datas"
 import { UserLoginDatas } from "../data-contracts/user-login/user-login.datas"
@@ -7,6 +7,7 @@ import { ForgotPasswordService } from "../services/forgot-password.service"
 import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/forgot-password-response.datas"
 import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
 import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
+import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
 
 @Controller("login")
 export class UserLoginController {
@@ -22,6 +23,7 @@ export class UserLoginController {
      */
     @Post()
     @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
     public login(
         @Body() userLoginDatas: UserLoginDatas,
     ): Promise<UserLoginResponse> {
