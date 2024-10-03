@@ -8,7 +8,7 @@ import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/f
 import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
 import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
 import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
-
+@UseGuards(VoluptuariaAuthGuard)
 @Controller("login")
 export class UserLoginController {
     constructor(
@@ -23,7 +23,6 @@ export class UserLoginController {
      */
     @Post()
     @HttpCode(200)
-    @UseGuards(VoluptuariaAuthGuard)
     public login(
         @Body() userLoginDatas: UserLoginDatas,
     ): Promise<UserLoginResponse> {

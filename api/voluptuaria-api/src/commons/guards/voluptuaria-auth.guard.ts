@@ -27,9 +27,10 @@ export class VoluptuariaAuthGuard implements CanActivate {
             throw new UnauthorizedException()
         }
 
-        const validApiToken = this.getHashedApiToken(voluptariaToken)
+        const requestApiToken = this.getHashedApiToken(voluptariaToken)
+        const apiSecret = this.configService.getOrThrow("API_SECRET")
 
-        if (validApiToken != voluptariaToken){
+        if (requestApiToken != apiSecret){
             throw new UnauthorizedException()
         }
 

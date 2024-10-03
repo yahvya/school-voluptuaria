@@ -48,7 +48,7 @@ export class UserLoginService {
             return response
         }
 
-        const payload = { email: user.email, password: user.password }
+        const payload = {email: user.email}
 
         response.authenticationToken = this.generateToken(payload)
         return response

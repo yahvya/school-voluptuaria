@@ -5,13 +5,12 @@ import {
     UnauthorizedException,
 } from "@nestjs/common"
 import { UserLoginService } from "../../modules/user/services/user-login.service"
-import { Request } from "express"
 
 /**
  * @brief Jwt token verification
  */
 @Injectable()
-export class VoluptuariaAuthGuard implements CanActivate {
+export class JwtAuthGuard implements CanActivate {
     constructor(private readonly UserLoginService: UserLoginService) {}
 
     canActivate(context: ExecutionContext): boolean {

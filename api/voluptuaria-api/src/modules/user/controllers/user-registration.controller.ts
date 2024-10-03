@@ -18,6 +18,7 @@ import { GoogleRegistrationDatas } from "../data-contracts/google-registration/g
 import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration/google-registration-response.datas"
 import { AuthGuard } from "@nestjs/passport"
 import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration/google-registration-confirmation.datas"
+import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
 
 /**
  * @brief Manage users registration process.
@@ -36,6 +37,7 @@ export class UserRegistrationController {
      */
     @Post()
     @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
     public register(
         @Body() userRegistrationDatas: UserRegistrationDatas,
         @Headers("lang") lang: string,
@@ -53,6 +55,7 @@ export class UserRegistrationController {
      */
     @Post("confirmation")
     @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
     public registerConfirmation(
         @Body()
         userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas,
@@ -69,6 +72,7 @@ export class UserRegistrationController {
      */
     @Post("by-google")
     @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
     public startRegistrationFromGoogle(
         @Body() googleRegistrationDatas: GoogleRegistrationDatas,
     ): GoogleRegistrationResponseDatas {
