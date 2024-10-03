@@ -35,8 +35,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -74,8 +83,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -128,8 +146,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -170,8 +197,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -220,8 +256,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -252,8 +297,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -284,8 +338,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -316,8 +379,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -348,8 +420,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -389,8 +470,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -421,8 +511,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -453,8 +552,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -495,8 +603,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -543,8 +660,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -590,8 +716,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -631,8 +766,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -670,8 +814,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -711,8 +864,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -752,8 +914,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -784,8 +955,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -825,8 +1005,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }
@@ -899,8 +1088,17 @@
                     {
                         "name": "voluptaria-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "Application authentication token to confirm the application request encoded in base64",
                         "in": "header",
+                        "schema": {
+                            "type": ["string"]
+                        }
+                    },
+                    {
+                        "name": "iv",
+                        "required" : true,
+                        "description": "encryption used iv encoded in base64",
+                        "in" : "header",
                         "schema": {
                             "type": ["string"]
                         }

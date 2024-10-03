@@ -36,7 +36,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -97,7 +103,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -153,7 +165,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -204,7 +222,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -278,7 +302,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -340,7 +370,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -408,7 +444,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -463,7 +505,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -520,7 +568,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -576,7 +630,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -626,7 +686,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -694,7 +760,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -756,7 +828,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -818,7 +896,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -880,7 +964,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -943,7 +1033,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -1006,7 +1102,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -1068,7 +1170,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -1130,7 +1238,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -1193,7 +1307,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         }
                                     ],
@@ -1244,7 +1364,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
@@ -1331,7 +1457,13 @@
                                         {
                                             "key": "voluptaria-token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Application authentication token to confirm the application request encoded in base64",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "iv",
+                                            "value": "",
+                                            "description": "encryption used iv encoded in base64",
                                             "disabled": true
                                         },
                                         {
