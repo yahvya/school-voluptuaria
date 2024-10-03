@@ -206,6 +206,12 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
@@ -274,11 +280,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"comment\": \"<string>\",\n \"authentication-token\": \"<string>\"\n}",
+                                        "raw": "{\n \"comment\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -329,6 +341,12 @@
                                             "key": "voluptaria-token",
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
                                             "disabled": true
                                         }
                                     ],
@@ -606,15 +624,15 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "token",
-                                            "value": "",
-                                            "description": "User authentication jwt token if authenticated - allow to register user searches",
-                                            "disabled": true
-                                        },
-                                        {
                                             "key": "voluptaria-token",
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
                                             "disabled": true
                                         }
                                     ],
@@ -678,11 +696,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"old-password\": \"<string>\",\n \"new-password\": \"<string>\",\n \"confirm-new-password\": \"<string>\"\n}",
+                                        "raw": "{\n \"old-password\": \"<string>\",\n \"new-password\": \"<string>\",\n \"confirm-new-password\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -734,11 +758,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"to-fetch\": \"<string>\"\n}",
+                                        "raw": "{\n \"to-fetch\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -789,6 +819,12 @@
                                             "key": "voluptaria-token",
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
                                             "disabled": true
                                         }
                                     ],
@@ -846,11 +882,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback-datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -903,11 +945,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback-datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -960,11 +1008,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\"\n}",
+                                        "raw": "{\n \"image\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1016,11 +1070,17 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"name\": \"<string>\"\n}",
+                                        "raw": "{\n \"image\": \"<string>\",\n \"name\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1071,6 +1131,12 @@
                                             "key": "voluptaria-token",
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
                                             "disabled": true
                                         }
                                     ],
@@ -1267,6 +1333,12 @@
                                             "value": "",
                                             "description": "Application authentication token to confirm the application request",
                                             "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication-token",
+                                            "value": "",
+                                            "description": "User authentication token",
+                                            "disabled": true
                                         }
                                     ],
                                     "body": {
@@ -1310,7 +1382,7 @@
         },
 		{
 			"key": "host",
-			"value": "https://127.0.0.1:8080",
+			"value": "http://127.0.0.1:8080",
 			"type": "string"
 		}
 	]

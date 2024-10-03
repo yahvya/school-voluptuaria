@@ -11,7 +11,7 @@
             "url": "{{host}}",
             "variables": {
                 "host" : {
-                    "default": "https://127.0.0.1:8080"
+                    "default": "http://127.0.0.1:8080"
                 }
             }
         }
@@ -33,21 +33,21 @@
                         }
                     },
                     {
-                        "name": "token",
-                        "required": false,
-                        "description": "User authentication jwt token if authenticated - allow to register user searches",
-                        "in": "header",
-                        "schema": {
-                            "type": ["string"]
-                        }
-                    },
-                    {
                         "name": "voluptaria-token",
                         "required": true,
                         "description": "Application authentication token to confirm the application request",
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -78,6 +78,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     },
                     {
@@ -124,6 +133,15 @@
                         "schema": {
                             "type": ["string"]
                         }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -156,6 +174,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -431,6 +458,15 @@
                         "schema": {
                             "type": ["string"]
                         }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -463,6 +499,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -503,6 +548,15 @@
                         "schema": {
                             "type": ["string"]
                         }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
+                        }
                     }
                 ],
                 "requestBody":
@@ -541,6 +595,15 @@
                         "schema": {
                             "type": ["string"]
                         }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -573,6 +636,15 @@
                         "schema": {
                             "type": ["string"]
                         }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -602,6 +674,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -634,6 +715,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -698,6 +788,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],
@@ -804,6 +903,15 @@
                         "in": "header",
                         "schema": {
                             "type": ["string"]
+                        }
+                    },
+                    {
+                        "name" : "authentication-token",
+                        "required" : true,
+                        "description" : "User authentication token",
+                        "in" : "header",
+                        "schema": {
+                            "type" : ["string"]
                         }
                     }
                 ],

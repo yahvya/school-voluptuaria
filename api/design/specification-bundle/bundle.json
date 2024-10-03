@@ -10,7 +10,7 @@
             "url": "{{host}}",
             "variables": {
                 "host": {
-                    "default": "https://127.0.0.1:8080"
+                    "default": "http://127.0.0.1:8080"
                 }
             }
         }
@@ -33,9 +33,9 @@
                         }
                     },
                     {
-                        "name": "token",
-                        "required": false,
-                        "description": "User authentication jwt token if authenticated - allow to register user searches",
+                        "name": "voluptaria-token",
+                        "required": true,
+                        "description": "Application authentication token to confirm the application request",
                         "in": "header",
                         "schema": {
                             "type": [
@@ -44,9 +44,9 @@
                         }
                     },
                     {
-                        "name": "voluptaria-token",
+                        "name": "authentication-token",
                         "required": true,
-                        "description": "Application authentication token to confirm the application request",
+                        "description": "User authentication token",
                         "in": "header",
                         "schema": {
                             "type": [
@@ -288,6 +288,17 @@
                         }
                     },
                     {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
                         "name": "paging",
                         "description": "Pagination number",
                         "required": true,
@@ -389,6 +400,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -424,17 +446,10 @@
                                             "access-id",
                                             "user-comment"
                                         ]
-                                    },
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "authentication jwt token"
                                     }
                                 },
                                 "required": [
-                                    "comment",
-                                    "authentication-token"
+                                    "comment"
                                 ]
                             }
                         }
@@ -477,6 +492,17 @@
                         "name": "voluptaria-token",
                         "required": true,
                         "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
                         "in": "header",
                         "schema": {
                             "type": [
@@ -1180,6 +1206,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -1187,12 +1224,6 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "authentication jwt token"
-                                    },
                                     "to-fetch": {
                                         "type": [
                                             "array"
@@ -1204,7 +1235,6 @@
                                     }
                                 },
                                 "required": [
-                                    "authentication-token",
                                     "to-fetch"
                                 ]
                             }
@@ -2078,6 +2108,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2085,12 +2126,6 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "authentication jwt token"
-                                    },
                                     "image": {
                                         "description": "the uploaded image"
                                     },
@@ -2100,8 +2135,7 @@
                                     }
                                 },
                                 "required": [
-                                    "image",
-                                    "authentication-token"
+                                    "image"
                                 ]
                             }
                         }
@@ -2158,6 +2192,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2165,18 +2210,8 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "authentication jwt token"
-                                    },
                                     "image": {
                                         "description": "The new profile picture image"
-                                    },
-                                    "email": {
-                                        "type": "string",
-                                        "description": "user email"
                                     },
                                     "name": {
                                         "type": "string",
@@ -2194,8 +2229,7 @@
                                         "type": "string",
                                         "description": "user phone number"
                                     }
-                                },
-                                "required": "authentication-token"
+                                }
                             }
                         }
                     }
@@ -2250,6 +2284,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2257,12 +2302,6 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "authentication jwt token"
-                                    },
                                     "old-password": {
                                         "type": "string",
                                         "description": "the old user password"
@@ -2277,7 +2316,6 @@
                                     }
                                 },
                                 "required": [
-                                    "authentication-token",
                                     "old-password",
                                     "new-password",
                                     "confirm-new-password"
@@ -2329,6 +2367,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2339,12 +2388,6 @@
                                     "object"
                                 ],
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "user jwt authentication token"
-                                    },
                                     "callback-datas": {
                                         "type": [
                                             "object"
@@ -2353,7 +2396,6 @@
                                     }
                                 },
                                 "required": [
-                                    "authentication-token",
                                     "callback-datas"
                                 ]
                             }
@@ -2401,6 +2443,17 @@
                                 "string"
                             ]
                         }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
                     }
                 ],
                 "requestBody": {
@@ -2411,12 +2464,6 @@
                                     "object"
                                 ],
                                 "properties": {
-                                    "authentication-token": {
-                                        "type": [
-                                            "string"
-                                        ],
-                                        "description": "user jwt authentication token"
-                                    },
                                     "callback-datas": {
                                         "type": [
                                             "object"
@@ -2425,7 +2472,6 @@
                                     }
                                 },
                                 "required": [
-                                    "authentication-token",
                                     "callback-datas"
                                 ]
                             }
@@ -2469,6 +2515,17 @@
                         "name": "voluptaria-token",
                         "required": true,
                         "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
                         "in": "header",
                         "schema": {
                             "type": [
@@ -2866,6 +2923,17 @@
                         "name": "voluptaria-token",
                         "required": true,
                         "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
                         "in": "header",
                         "schema": {
                             "type": [
@@ -3592,6 +3660,17 @@
                         "name": "voluptaria-token",
                         "required": true,
                         "description": "Application authentication token to confirm the application request",
+                        "in": "header",
+                        "schema": {
+                            "type": [
+                                "string"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "authentication-token",
+                        "required": true,
+                        "description": "User authentication token",
                         "in": "header",
                         "schema": {
                             "type": [

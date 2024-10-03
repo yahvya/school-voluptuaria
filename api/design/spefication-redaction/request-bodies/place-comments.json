@@ -21,13 +21,9 @@
               }
             },
             "required" : ["rating","access-id","user-comment"]
-          },
-          "authentication-token" : {
-            "type": ["string"],
-            "description" : "authentication jwt token"
           }
         },
-        "required" : ["comment","authentication-token"]
+        "required" : ["comment"]
       }
     }
   }
