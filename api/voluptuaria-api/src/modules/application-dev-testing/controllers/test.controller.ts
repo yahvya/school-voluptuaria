@@ -1,15 +1,20 @@
-import { Controller, Get } from "@nestjs/common"
-import { EncryptService } from "../../app-security/services/encrypt.service"
+import { Controller } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 
 @Controller("test")
 export class TestController {
-    constructor(protected encryptservice : EncryptService,protected configService:ConfigService) {
+    constructor(
+                protected configService:ConfigService) {
 
     }
 
-    @Get()
-    public async test():Promise<any>{
+    /*
+    @Get('test')
+    public async test():Promise<{ encryptionResult: string; iv: string }> {
+        return this.userLoginService.test()
     }
+
+     */
+
 
 }

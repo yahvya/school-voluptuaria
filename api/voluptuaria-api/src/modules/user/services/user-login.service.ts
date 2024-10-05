@@ -7,6 +7,7 @@ import { UserEntity } from "../../database-module/entities/user.entity"
 import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
+import {EncryptService} from "../../app-security/services/encrypt.service";
 
 /**
  * @brief Login service
@@ -19,7 +20,9 @@ export class UserLoginService {
         protected readonly userRepository: Repository<UserEntity>,
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
+        protected readonly encryptService: EncryptService
     ) {}
+
 
     /**
      * @brief try to log the user
@@ -52,6 +55,18 @@ export class UserLoginService {
 
         response.authenticationToken = this.generateToken(payload)
         return response
+    }
+
+    public test(): Promise<{ encryptionResult: string; iv: string }> {
+
+        return  this.encryptService.encrypt(
+            {
+                toEncrypt : this.configService.getOrThrow("API_SECRET"),
+                secretKey : this.configService.getOrThrow("API_TOKEN_SECRET")
+            }
+        )
+
+
     }
 
     /**

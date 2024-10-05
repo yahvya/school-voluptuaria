@@ -8,12 +8,15 @@ import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/f
 import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
 import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
 import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
+import {ConfigService} from "@nestjs/config";
 @UseGuards(VoluptuariaAuthGuard)
 @Controller("login")
 export class UserLoginController {
     constructor(
         protected readonly userLoginService: UserLoginService,
         protected readonly forgotPasswordService: ForgotPasswordService,
+        protected readonly configService : ConfigService,
+
     ) {}
 
     /**
@@ -29,6 +32,7 @@ export class UserLoginController {
         return this.userLoginService.login({
             userLoginDatas: userLoginDatas,
         })
+
     }
 
     /**
@@ -64,4 +68,5 @@ export class UserLoginController {
             forgotPasswordConfirmationDatas: forgotPasswordConfirmationDatas,
         })
     }
+
 }
