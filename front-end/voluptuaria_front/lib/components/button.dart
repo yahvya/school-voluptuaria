@@ -28,9 +28,9 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10), // Ajoute des marges intérieures gauche et droite pour espacer le bouton des bords
       child: SizedBox(
-        width: width ?? double.infinity,
+        width: width ?? double.infinity, // Si `width` n'est pas défini, le bouton prend toute la largeur disponible
         height: height,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
@@ -38,10 +38,10 @@ class CustomButton extends StatelessWidget {
             foregroundColor: textColor,
             textStyle: TextStyle(fontSize: fontSize),
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(borderRadius),
+              borderRadius: BorderRadius.circular(borderRadius), // Applique un arrondi au bouton
             ),
           ),
-          onPressed: onPressed,
+          onPressed: onPressed, // Action déclenchée lors du clic sur le bouton
           child: Text(text),
         ),
       ),

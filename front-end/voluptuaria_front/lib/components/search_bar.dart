@@ -24,22 +24,23 @@ class CustomSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10), // Padding à l'intérieur pour espacer le contenu des bords
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(borderRadius), // Arrondir les coins de la barre de recherche
       ),
       child: Row(
         children: [
-          Icon(leftIcon, color: textColor),
-          SizedBox(width: 10),
+          Icon(leftIcon, color: textColor), // Icône à gauche
+          SizedBox(width: 10), // Espacement entre l'icône et le champ de texte
           Expanded(
+            // Expanded permet au TextField de prendre tout l'espace restant
             child: TextField(
               style: TextStyle(color: textColor, fontSize: textSize),
               decoration: InputDecoration(
                 hintText: hintText,
-                hintStyle: TextStyle(color: textColor.withOpacity(0.5)),
-                border: InputBorder.none,
+                hintStyle: TextStyle(color: textColor.withOpacity(0.5)), // Réduit l'opacité pour différencier le hint text
+                border: InputBorder.none, // Supprime la bordure par défaut du TextField
               ),
             ),
           ),
