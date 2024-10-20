@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
 
-import 'package:flutter/material.dart';
-import 'package:voluptuaria_front/resources/themes/colors.dart';
-
 // Stateful widget for a rating component
 class Rating extends StatefulWidget {
   final int starCount;
