@@ -15,10 +15,11 @@ import { LangModule } from "../../../../modules/lang-module/lang.module"
 import { UtilsModule } from "../../../../modules/utils/utils.module"
 import { Repository } from "typeorm"
 import { HashService } from "../../../../modules/app-security/services/hash.service"
+import {UserInformationsService} from "../../../../modules/user/services/user-informations.service";
 
-describe("User.UpdatePasswordService", () => {
+describe("User.UserInformationService", () => {
     let userLoginService: UserLoginService
-    let userEditPassword : UserEditPasswordService
+    let userInformationService : UserInformationsService
     let testUserEntity: UserEntity
     let testUserRepository: Repository<UserEntity>
 
@@ -67,57 +68,47 @@ describe("User.UpdatePasswordService", () => {
         await testUserRepository.save(testUserEntity)
 
         userLoginService = moduleRef.get<UserLoginService>(UserLoginService)
+
+        userInformationService = moduleRef.get<UserInformationsService>(UserInformationsService)
     })
 
     describe("update password", () => {
-        it("should not recognize the email", async () => {
-            const badAccount = {
-                email: "not_exist_1@email.com",
-                password: "password",
-            }
-
-            const response = await userLoginService.login({
-                userLoginDatas: badAccount,
-            })
-
-            expect(response.errorMessage).toBe(
-                "error.unrecognized-email-password",
-            )
-        })
-
-        it("should not recognize the password", async () => {
-            const response = await userLoginService.login({
-                userLoginDatas: {
-                    email: testUserEntity.email,
-                    password: "bad_password",
-                },
-            })
-
-            expect(response.errorMessage).toBe(
-                "error.unrecognized-email-password",
-            )
-        })
-
-        it("should provide a token", async () => {
-            const response = await userLoginService.login({
-                userLoginDatas: {
-                    email: testUserEntity.email,
-                    password: "password",
-                },
-            })
-
-            expect(response.authenticationToken).not.toBeNull()
-        })
 
         it("should update the password", async () => {
-            const response = await userEditPassword.editPassword({
-                userEditPasswordDatas: {
-                    email: testUserEntity.email,
-                    password: "password",
+            const editResponse = await userInformationService.editPassword({
+                editPasswordData: {
+                    old_password : "password",
+                    new_password : "new_password",
+                    confirm_new_password : "new_password",
                 },
             })
 
-            expect(response.authenticationToken).not.toBeNull()
+            expect(editResponse.errorMessage).toBeNull()
+
+
+            const loginResponse = await userLoginService.login({
+                userLoginDatas: {
+                    email: testUserEntity.email,
+                    password: "new_password",
+                },
+            })
+
+            expect(loginResponse.errorMessage).toBeNull()
+
+
+        })
+
+        it("should return the password isn't equal with the new password", async () => {
+            const response = await userInformationService.editPassword({
+                editPasswordData: {
+                    old_password : "password",
+                    new_password : "new_password",
+                    confirm_new_password : "password",
+                },
+            })
+
+            expect(response.errorMessage).toBe("error.matching-password")
+
         })
 
     })
