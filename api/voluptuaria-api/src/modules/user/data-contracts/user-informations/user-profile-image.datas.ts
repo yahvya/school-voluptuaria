@@ -5,7 +5,8 @@ import { IsNotEmpty, IsOptional, IsString } from "class-validator"
  */
 export class UserProfileImageDatas {
     @IsString()
-    @IsNotEmpty()
     @IsOptional()
     name: string
+
+    public authentication_token: string
 }

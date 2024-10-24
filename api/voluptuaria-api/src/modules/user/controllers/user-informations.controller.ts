@@ -12,8 +12,8 @@ import { EditPasswordResponse } from "../data-contracts/user-informations/edit-p
  * @brief user information's management controller
  */
 @Controller("user")
-@UseGuards(VoluptuariaAuthGuard)
-@UseGuards(JwtAuthGuard)
+// @UseGuards(VoluptuariaAuthGuard)
+// @UseGuards(JwtAuthGuard)
 export class UserInformationsController {
     constructor(
         protected readonly userInformationService: UserInformationsService,
