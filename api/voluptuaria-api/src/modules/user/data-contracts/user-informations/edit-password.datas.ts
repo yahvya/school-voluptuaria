@@ -3,7 +3,7 @@ import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
 /**
  * @brief Edit user password form datas.
  */
-export class EditPasswordData {
+export class EditPasswordDatas {
     @IsNotEmpty({
         always: true,
     })
@@ -39,12 +39,4 @@ export class EditPasswordData {
         always: true,
     })
     public old_password: string
-
-    @IsNotEmpty({
-        always: true,
-    })
-    @IsString({
-        always: true,
-    })
-    public authentification_token: string
 }
