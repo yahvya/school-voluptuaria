@@ -2,7 +2,10 @@ import { UserLoginService } from "../../../../modules/user/services/user-login.s
 import { Test } from "@nestjs/testing"
 import { UserModule } from "../../../../modules/user/user.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
-import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
+import {
+    Gender,
+    UserEntity,
+} from "../../../../modules/database-module/entities/user.entity"
 import { ConfigModule, ConfigService } from "@nestjs/config"
 import { AppSecurityModule } from "../../../../modules/app-security/app-security.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
@@ -13,8 +16,9 @@ import { UtilsModule } from "../../../../modules/utils/utils.module"
 import { Repository } from "typeorm"
 import { HashService } from "../../../../modules/app-security/services/hash.service"
 
-describe("User.UserLoginService", () => {
+describe("User.UpdatePasswordService", () => {
     let userLoginService: UserLoginService
+    let userEditPassword : UserEditPasswordService
     let testUserEntity: UserEntity
     let testUserRepository: Repository<UserEntity>
 
@@ -65,7 +69,7 @@ describe("User.UserLoginService", () => {
         userLoginService = moduleRef.get<UserLoginService>(UserLoginService)
     })
 
-    describe("login", () => {
+    describe("update password", () => {
         it("should not recognize the email", async () => {
             const badAccount = {
                 email: "not_exist_1@email.com",
@@ -104,6 +108,18 @@ describe("User.UserLoginService", () => {
 
             expect(response.authenticationToken).not.toBeNull()
         })
+
+        it("should update the password", async () => {
+            const response = await userEditPassword.editPassword({
+                userEditPasswordDatas: {
+                    email: testUserEntity.email,
+                    password: "password",
+                },
+            })
+
+            expect(response.authenticationToken).not.toBeNull()
+        })
+
     })
 
 
