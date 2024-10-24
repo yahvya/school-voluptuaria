@@ -27,4 +27,5 @@ import { ConfigService } from "@nestjs/config"
     ],
 })
 @Global()
-export class DatabaseModule {}
+export class DatabaseModule {
+}

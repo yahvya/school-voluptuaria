@@ -1,15 +1,25 @@
 {
-  "type": ["object"],
-  "properties" :
-  {
-    "error-message" : {
-      "type": ["string","null"],
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "error-message": {
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Error message or null on success"
     },
-    "image-url" : {
-      "type": ["string","null"],
+    "image-url": {
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "the url image to send back on successfully edited or null on error"
     }
   },
-  "required" : ["error-message","image-url"]
+  "required": [
+    "error-message",
+    "image-url"
+  ]
 }

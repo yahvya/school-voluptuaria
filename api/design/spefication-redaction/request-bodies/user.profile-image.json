@@ -1,23 +1,19 @@
 {
-  "content":
-  {
-    "application/json" :
-    {
-      "schema":
-      {
-        "properties":
-        {
-          "image" :
-          {
+  "content": {
+    "application/json": {
+      "schema": {
+        "properties": {
+          "image": {
             "description": "the uploaded image"
           },
-          "name" :
-          {
+          "name": {
             "type": "string",
             "description": "the image name"
           }
         },
-        "required" : ["image"]
+        "required": [
+          "image"
+        ]
       }
     }
   }

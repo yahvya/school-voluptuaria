@@ -1,16 +1,22 @@
 {
-    "content": {
-        "application/json" : {
-            "schema": {
-                "type": ["object"],
-                "properties": {
-                    "callback-datas" : {
-                        "type": ["object"],
-                        "description" : "the received callback datas in the place details"
-                    }
-                },
-                "required" : ["callback-datas"]
-            }
-        }
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "callback-datas": {
+            "type": [
+              "object"
+            ],
+            "description": "the received callback datas in the place details"
+          }
+        },
+        "required": [
+          "callback-datas"
+        ]
+      }
     }
+  }
 }

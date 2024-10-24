@@ -1,18 +1,22 @@
 {
-    "content": {
-        "application/json" : {
-            "schema": {
-                "properties": {
-                    "to-fetch" : {
-                        "type": ["array"],
-                        "items": {
-                            "type": "number",
-                            "description" : "Enumeration as int, to represent which type of datas to fetch"
-                        }
-                    }
-                },
-                "required" : ["to-fetch"]
+  "content": {
+    "application/json": {
+      "schema": {
+        "properties": {
+          "to-fetch": {
+            "type": [
+              "array"
+            ],
+            "items": {
+              "type": "number",
+              "description": "Enumeration as int, to represent which type of datas to fetch"
             }
-        }
+          }
+        },
+        "required": [
+          "to-fetch"
+        ]
+      }
     }
+  }
 }

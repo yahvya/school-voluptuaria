@@ -6,7 +6,8 @@ import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.g
 
 @Controller("edit_password")
 export class EditPasswordController {
-    constructor(protected readonly editPasswordService: EditPasswordService) {}
+    constructor(protected readonly editPasswordService: EditPasswordService) {
+    }
 
     /**
      * @brief valide the user edit password

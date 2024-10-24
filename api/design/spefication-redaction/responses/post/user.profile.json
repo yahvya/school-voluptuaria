@@ -1,15 +1,24 @@
 {
-  "type": ["object"],
-  "properties" :
-  {
-    "error-message" : {
-      "type": ["string","null"],
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "error-message": {
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Error message or null on success"
     },
-    "authentication-token" : {
-      "type": ["string"],
-      "description" : "the new authentication jwt token"
+    "authentication-token": {
+      "type": [
+        "string"
+      ],
+      "description": "the new authentication jwt token"
     }
   },
-  "required" : ["error-message","authentication-token"]
+  "required": [
+    "error-message",
+    "authentication-token"
+  ]
 }

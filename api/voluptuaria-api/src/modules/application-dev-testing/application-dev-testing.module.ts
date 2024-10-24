@@ -8,4 +8,5 @@ import { TestController } from "./controllers/test.controller"
 @Module({
     controllers: [TestController],
 })
-export class ApplicationDevTestingModule {}
+export class ApplicationDevTestingModule {
+}

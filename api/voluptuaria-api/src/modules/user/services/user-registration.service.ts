@@ -7,16 +7,24 @@ import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
 import { InjectRepository } from "@nestjs/typeorm"
 import { EncryptService } from "../../app-security/services/encrypt.service"
-import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration/user-registration-confirmation.datas"
-import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/user-registration/user-registration-confirmation-response.datas"
+import {
+    UserRegistrationConfirmationDatas,
+} from "../data-contracts/user-registration/user-registration-confirmation.datas"
+import {
+    UserRegistrationConfirmationResponseDatas,
+} from "../data-contracts/user-registration/user-registration-confirmation-response.datas"
 import { UserLoginService } from "./user-login.service"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { StringService } from "../../utils/services/string.service"
-import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration/google-registration-response.datas"
+import {
+    GoogleRegistrationResponseDatas,
+} from "../data-contracts/google-registration/google-registration-response.datas"
 import { GoogleRegistrationDatas } from "../data-contracts/google-registration/google-registration.datas"
 import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
-import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration/google-registration-confirmation.datas"
+import {
+    GoogleRegistrationConfirmationDatas,
+} from "../data-contracts/google-registration/google-registration-confirmation.datas"
 import { GoogleAuthResponse } from "../../google-auth-module/data-contracts/google-auth-response"
 
 /**
@@ -35,7 +43,8 @@ export class UserRegistrationService {
         protected readonly configService: ConfigService,
         protected readonly stringService: StringService,
         protected readonly googleAuthService: GoogleAuthService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief Validate user registration datas.

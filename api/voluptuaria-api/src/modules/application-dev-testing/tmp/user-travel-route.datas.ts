@@ -1,6 +1,7 @@
 /**
  * @brief User travel information.
- */ import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+ */
+import { IsNotEmpty, IsNumber, IsString } from "class-validator"
 import { Expose } from "class-transformer"
 
 export class UserTravelRoute {

@@ -21,7 +21,8 @@ export class UserLoginService {
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
         protected readonly encryptService: EncryptService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief try to log the user

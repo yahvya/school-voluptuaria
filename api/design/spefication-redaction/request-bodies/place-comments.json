@@ -1,29 +1,41 @@
 {
   "content": {
-    "application/json" : {
+    "application/json": {
       "schema": {
-        "type": ["object"],
+        "type": [
+          "object"
+        ],
         "properties": {
-          "comment" : {
-            "type" : ["object"],
+          "comment": {
+            "type": [
+              "object"
+            ],
             "properties": {
-              "rating" : {
+              "rating": {
                 "type": "number",
-                "description" : "count of stars"
+                "description": "count of stars"
               },
-              "access-id" : {
-                "type": ["string"],
-                "description" : "the guid linked to the place"
+              "access-id": {
+                "type": [
+                  "string"
+                ],
+                "description": "the guid linked to the place"
               },
-              "user-comment" : {
+              "user-comment": {
                 "type": "string",
                 "description": "the user comment"
               }
             },
-            "required" : ["rating","access-id","user-comment"]
+            "required": [
+              "rating",
+              "access-id",
+              "user-comment"
+            ]
           }
         },
-        "required" : ["comment"]
+        "required": [
+          "comment"
+        ]
       }
     }
   }

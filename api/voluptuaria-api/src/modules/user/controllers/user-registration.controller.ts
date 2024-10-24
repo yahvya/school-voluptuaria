@@ -1,23 +1,21 @@
-import {
-    Body,
-    Controller,
-    Post,
-    Headers,
-    HttpCode,
-    UseGuards,
-    Get,
-    Query,
-    Res,
-} from "@nestjs/common"
+import { Body, Controller, Get, Headers, HttpCode, Post, Query, Res, UseGuards } from "@nestjs/common"
 import { UserRegistrationService } from "../services/user-registration.service"
 import { UserRegistrationDatas } from "../data-contracts/user-registration/user-registration.datas"
 import { UserRegistrationResponseDatas } from "../data-contracts/user-registration/user-registration-response.datas"
-import { UserRegistrationConfirmationDatas } from "../data-contracts/user-registration/user-registration-confirmation.datas"
-import { UserRegistrationConfirmationResponseDatas } from "../data-contracts/user-registration/user-registration-confirmation-response.datas"
+import {
+    UserRegistrationConfirmationDatas,
+} from "../data-contracts/user-registration/user-registration-confirmation.datas"
+import {
+    UserRegistrationConfirmationResponseDatas,
+} from "../data-contracts/user-registration/user-registration-confirmation-response.datas"
 import { GoogleRegistrationDatas } from "../data-contracts/google-registration/google-registration.datas"
-import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration/google-registration-response.datas"
+import {
+    GoogleRegistrationResponseDatas,
+} from "../data-contracts/google-registration/google-registration-response.datas"
 import { AuthGuard } from "@nestjs/passport"
-import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration/google-registration-confirmation.datas"
+import {
+    GoogleRegistrationConfirmationDatas,
+} from "../data-contracts/google-registration/google-registration-confirmation.datas"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 
 /**
@@ -27,7 +25,8 @@ import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.g
 export class UserRegistrationController {
     constructor(
         protected readonly userRegistrationService: UserRegistrationService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief Validate user registration datas.
@@ -58,11 +57,11 @@ export class UserRegistrationController {
     @UseGuards(VoluptuariaAuthGuard)
     public registerConfirmation(
         @Body()
-        userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas,
+            userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas,
     ): Promise<UserRegistrationConfirmationResponseDatas> {
         return this.userRegistrationService.confirmRegistration({
             userRegistrationConfirmationDatas:
-                userRegistrationConfirmationDatas,
+            userRegistrationConfirmationDatas,
         })
     }
 
@@ -120,7 +119,7 @@ export class UserRegistrationController {
     @HttpCode(200)
     public async confirmGoogleRegistration(
         @Body()
-        registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
+            registrationConfirmationDatas: GoogleRegistrationConfirmationDatas,
     ): Promise<UserRegistrationConfirmationResponseDatas> {
         return this.userRegistrationService.confirmGoogleRegistration({
             registrationConfirmationDatas: registrationConfirmationDatas,

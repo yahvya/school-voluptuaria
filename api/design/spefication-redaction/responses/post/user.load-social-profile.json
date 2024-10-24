@@ -1,25 +1,42 @@
 {
-    "description" : "The object will be index with the social media enumeration value as int",
-    "type": ["object"],
-    "properties": {
-        "error-message" : {
-            "type": ["string","null"],
-            "description" : "the error message or null on success"
-        },
-        "next-step" : {
-            "type" : ["object"],
-            "properties": {
-                "action-type" : {
-                    "type": ["number"],
-                    "description" : "Enumeration as int to represent the action to do"
-                },
-                "next-action-datas" : {
-                    "type" : ["object"],
-                    "description" : "the required datas for the next action"
-                }
-            },
-            "required" : ["action-type","next-action-datas"]
-        }
+  "description": "The object will be index with the social media enumeration value as int",
+  "type": [
+    "object"
+  ],
+  "properties": {
+    "error-message": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "the error message or null on success"
     },
-    "required" : ["error-message","next-step"]
+    "next-step": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "action-type": {
+          "type": [
+            "number"
+          ],
+          "description": "Enumeration as int to represent the action to do"
+        },
+        "next-action-datas": {
+          "type": [
+            "object"
+          ],
+          "description": "the required datas for the next action"
+        }
+      },
+      "required": [
+        "action-type",
+        "next-action-datas"
+      ]
+    }
+  },
+  "required": [
+    "error-message",
+    "next-step"
+  ]
 }

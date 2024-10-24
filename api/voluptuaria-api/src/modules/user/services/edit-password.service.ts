@@ -17,7 +17,8 @@ export class EditPasswordService {
         protected readonly userRepository: Repository<UserEntity>,
         protected readonly userLoginService: UserLoginService,
         protected readonly hashService: HashService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief try to edit user password

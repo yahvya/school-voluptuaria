@@ -1,13 +1,12 @@
 import { UserRegistrationService } from "../../../../modules/user/services/user-registration.service"
-import { UserRegistrationDatas } from "../../../../modules/user/data-contracts/user-registration/user-registration.datas"
+import {
+    UserRegistrationDatas,
+} from "../../../../modules/user/data-contracts/user-registration/user-registration.datas"
 import { Test } from "@nestjs/testing"
 import { UserModule } from "../../../../modules/user/user.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
 import { Repository } from "typeorm"
-import {
-    Gender,
-    UserEntity,
-} from "../../../../modules/database-module/entities/user.entity"
+import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
 import { ConfigModule } from "@nestjs/config"
 import { MailModule } from "../../../../modules/mail-module/mail.module"
 import { LangModule } from "../../../../modules/lang-module/lang.module"

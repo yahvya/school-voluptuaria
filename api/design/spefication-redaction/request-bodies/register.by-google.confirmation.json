@@ -1,24 +1,36 @@
 {
-    "content": {
-        "application/json" : {
-            "schema": {
-                "type": ["object"],
-                "properties": {
-                    "password" : {
-                        "type": ["string"],
-                        "description" : "user chosen password"
-                    },
-                    "iv" : {
-                        "type": ["string"],
-                        "description" : "the received iv from the redirection"
-                    },
-                    "datas" : {
-                        "type": ["string"],
-                        "description" : "the received datas from the redirection"
-                    }
-                },
-                "required" : ["password","datas","iv"]
-            }
-        }
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "password": {
+            "type": [
+              "string"
+            ],
+            "description": "user chosen password"
+          },
+          "iv": {
+            "type": [
+              "string"
+            ],
+            "description": "the received iv from the redirection"
+          },
+          "datas": {
+            "type": [
+              "string"
+            ],
+            "description": "the received datas from the redirection"
+          }
+        },
+        "required": [
+          "password",
+          "datas",
+          "iv"
+        ]
+      }
     }
+  }
 }

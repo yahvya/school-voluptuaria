@@ -1,6 +1,8 @@
 {
-  "type" : ["array"],
-  "items" : {
-    "$ref" : "../../components/place-datas.json"
+  "type": [
+    "array"
+  ],
+  "items": {
+    "$ref": "../../components/place-datas.json"
   }
 }

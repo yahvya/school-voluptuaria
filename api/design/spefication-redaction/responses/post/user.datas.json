@@ -1,71 +1,88 @@
 {
-    "type": ["object"],
-    "description" : "the object will be indexed by the enumeration integer value and will contain as value the request elements - only the asked ones will be provided",
-    "properties": {
-        "identity-datas" : {
-            "type": ["object"],
-            "properties": {
-                "id" : {
-                    "type": ["string"],
-                    "format": "uuid",
-                    "description": "user unique identifier"
-                },
-                "name" : {
-                    "type": "string",
-                    "description": "user family name"
-                },
-                "firstname" : {
-                    "type": "string",
-                    "description": "user family name"
-                },
-                "birthdate" : {
-                    "type": "string",
-                    "format": "date"
-                },
-                "phonenumber": {
-                    "type": "string"
-                },
-                "profile-picture-access-link" : {
-                    "type": "string"
-                },
-                "account-creation-date": {
-                    "type": "string",
-                    "format": "date"
-                },
-                "gender": {
-                    "type": "number",
-                    "description" : "Enumeration as int"
-                }
-            },
-            "required" : ["gender","account-creation-date","profile-picture-access-link","birthdate","firstname","name","id"]
+  "type": [
+    "object"
+  ],
+  "description": "the object will be indexed by the enumeration integer value and will contain as value the request elements - only the asked ones will be provided",
+  "properties": {
+    "identity-datas": {
+      "type": [
+        "object"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "string"
+          ],
+          "format": "uuid",
+          "description": "user unique identifier"
         },
-        "visited-places": {
-            "description" : "already visited places",
-            "type": "array",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "place-data": {
-                        "$ref" : "../../components/place-datas.json"
-                    },
-                    "visited-at": {
-                        "type": "string",
-                        "format": "date"
-                    }
-                },
-                "required" : ["place-data","visited-at"]
-            }
+        "name": {
+          "type": "string",
+          "description": "user family name"
         },
-        "places-wish-list" : {
-            "description" : "user wanted places to visit",
-            "type": "array",
-            "items": {
-                "$ref": "../../components/place-datas.json"
-            }
+        "firstname": {
+          "type": "string",
+          "description": "user family name"
         },
-        "travel-routes": {
-            "description" : "user registered generated travel route",
-            "$ref" : "../../components/travel-routes.json"
+        "birthdate": {
+          "type": "string",
+          "format": "date"
+        },
+        "phonenumber": {
+          "type": "string"
+        },
+        "profile-picture-access-link": {
+          "type": "string"
+        },
+        "account-creation-date": {
+          "type": "string",
+          "format": "date"
+        },
+        "gender": {
+          "type": "number",
+          "description": "Enumeration as int"
         }
+      },
+      "required": [
+        "gender",
+        "account-creation-date",
+        "profile-picture-access-link",
+        "birthdate",
+        "firstname",
+        "name",
+        "id"
+      ]
+    },
+    "visited-places": {
+      "description": "already visited places",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "place-data": {
+            "$ref": "../../components/place-datas.json"
+          },
+          "visited-at": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "place-data",
+          "visited-at"
+        ]
+      }
+    },
+    "places-wish-list": {
+      "description": "user wanted places to visit",
+      "type": "array",
+      "items": {
+        "$ref": "../../components/place-datas.json"
+      }
+    },
+    "travel-routes": {
+      "description": "user registered generated travel route",
+      "$ref": "../../components/travel-routes.json"
     }
+  }
 }

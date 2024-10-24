@@ -1,56 +1,72 @@
 {
-    "type": "array",
-    "items": {
-        "type": "object",
-        "properties": {
-            "start-date": {
-                "type": "string",
-                "format": "date"
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "start-date": {
+        "type": "string",
+        "format": "date"
+      },
+      "end-date": {
+        "type": "string",
+        "format": "date"
+      },
+      "budget": {
+        "type": "number"
+      },
+      "proposals": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "number",
+              "description": "order in the route"
             },
-            "end-date" : {
-                "type": "string",
-                "format": "date"
-            },
-            "budget" : {
-                "type": "number"
-            },
-            "proposals" : {
-                "type": "array",
-                "items": {
-                    "type": "object",
-                    "properties": {
-                        "order": {
-                            "type": "number",
-                            "description": "order in the route"
-                        },
-                        "place" : {
-                            "type" : "object",
-                            "properties" : {
-                                "datas" : {
-                                    "$ref" : "./place-datas.json"
-                                },
-                                "weather" : {
-                                    "$ref": "./weather.json"
-                                },
-                                "comments": {
-                                    "$ref" : "./comments.json"
-                                }
-                            },
-                            "required" : ["datas","weather","comments"]
-                        },
-                        "is-completed": {
-                            "type": "boolean",
-                            "default": false
-                        }
-                    },
-                    "required" : ["order","place","is-completed"]
+            "place": {
+              "type": "object",
+              "properties": {
+                "datas": {
+                  "$ref": "./place-datas.json"
+                },
+                "weather": {
+                  "$ref": "./weather.json"
+                },
+                "comments": {
+                  "$ref": "./comments.json"
                 }
+              },
+              "required": [
+                "datas",
+                "weather",
+                "comments"
+              ]
             },
-            "callback-datas" : {
-                "type" : ["object"],
-                "description" : "Callback datas to send back"
+            "is-completed": {
+              "type": "boolean",
+              "default": false
             }
-        },
-        "required" : ["start-date","end-date","budget","proposals","callback-datas"]
-    }
+          },
+          "required": [
+            "order",
+            "place",
+            "is-completed"
+          ]
+        }
+      },
+      "callback-datas": {
+        "type": [
+          "object"
+        ],
+        "description": "Callback datas to send back"
+      }
+    },
+    "required": [
+      "start-date",
+      "end-date",
+      "budget",
+      "proposals",
+      "callback-datas"
+    ]
+  }
 }

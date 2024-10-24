@@ -1,12 +1,4 @@
-import {
-    Body,
-    Controller,
-    HttpCode,
-    Post,
-    UploadedFile,
-    UseGuards,
-    UseInterceptors,
-} from "@nestjs/common"
+import { Body, Controller, HttpCode, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common"
 import { FileInterceptor } from "@nestjs/platform-express"
 import { UserProfileImageDatas } from "../data-contracts/user-informations/user-profile-image.datas"
 import { UserProfileImageResponseDatas } from "../data-contracts/user-informations/user-profile-image-response.datas"
@@ -21,7 +13,9 @@ import { JwtAuthGuard } from "../../../commons/guards/jwt-auth.guard"
 export class UserInformationsController {
     constructor(
         protected readonly userInformationService: UserInformationsService,
-    ) {}
+    ) {
+    }
+
     /**
      * @brief update user profile image
      * @param image new image

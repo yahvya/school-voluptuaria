@@ -6,4 +6,5 @@ import { StringService } from "./services/string.service"
     exports: [StringService],
 })
 @Global()
-export class UtilsModule {}
+export class UtilsModule {
+}

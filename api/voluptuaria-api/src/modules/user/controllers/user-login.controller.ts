@@ -1,21 +1,17 @@
-import {
-    Controller,
-    Body,
-    Post,
-    HttpCode,
-    Headers,
-    UseGuards,
-} from "@nestjs/common"
+import { Body, Controller, Headers, HttpCode, Post, UseGuards } from "@nestjs/common"
 import { UserLoginService } from "../services/user-login.service"
 import { UserLoginResponse } from "../data-contracts/user-login/user-login-responses.datas"
 import { UserLoginDatas } from "../data-contracts/user-login/user-login.datas"
 import { ForgotPasswordDatas } from "../data-contracts/forgot-password/forgot-password.datas"
 import { ForgotPasswordService } from "../services/forgot-password.service"
 import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/forgot-password-response.datas"
-import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
+import {
+    ForgotPasswordConfirmationResponseDatas,
+} from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
 import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ConfigService } from "@nestjs/config"
+
 @UseGuards(VoluptuariaAuthGuard)
 @Controller("login")
 export class UserLoginController {
@@ -23,7 +19,8 @@ export class UserLoginController {
         protected readonly userLoginService: UserLoginService,
         protected readonly forgotPasswordService: ForgotPasswordService,
         protected readonly configService: ConfigService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief try to log the user
@@ -67,7 +64,7 @@ export class UserLoginController {
     @HttpCode(200)
     public forgotPasswordConfirmation(
         @Body()
-        forgotPasswordConfirmationDatas: ForgotPasswordConfirmationDatas,
+            forgotPasswordConfirmationDatas: ForgotPasswordConfirmationDatas,
     ): Promise<ForgotPasswordConfirmationResponseDatas> {
         return this.forgotPasswordService.confirm({
             forgotPasswordConfirmationDatas: forgotPasswordConfirmationDatas,

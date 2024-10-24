@@ -1,18 +1,33 @@
 {
-  "type": ["object"],
+  "type": [
+    "object"
+  ],
   "properties": {
-    "error-message" : {
-      "type": ["string","null"],
+    "error-message": {
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Error message or null on success"
     },
-    "confirmation-code" : {
-      "type": ["string","null"],
+    "confirmation-code": {
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "the encrypted confirmation code to send back on confirmation or null on error"
     },
-    "iv" : {
-      "type" : ["string","null"],
-      "description" : "encryption iv in case of success"
+    "iv": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "encryption iv in case of success"
     }
   },
-  "required" : ["error-message","confirmation-code","iv"]
+  "required": [
+    "error-message",
+    "confirmation-code",
+    "iv"
+  ]
 }

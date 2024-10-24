@@ -3,13 +3,13 @@
   "items": {
     "type": "object",
     "properties": {
-      "user-datas" : {
+      "user-datas": {
         "type": "object",
         "properties": {
-          "profile-picture-link" : {
+          "profile-picture-link": {
             "type": "string"
           },
-          "fullname" : {
+          "fullname": {
             "type": "string"
           }
         }
@@ -29,12 +29,16 @@
       "wrote-at": {
         "type": "string",
         "format": "date-time",
-        "examples":
-        [
+        "examples": [
           "1980-12-03 10:10:20"
         ]
       }
     },
-    "required": ["user-datas","comment","rating","wrote-at"]
+    "required": [
+      "user-datas",
+      "comment",
+      "rating",
+      "wrote-at"
+    ]
   }
 }

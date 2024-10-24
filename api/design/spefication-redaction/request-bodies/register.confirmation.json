@@ -1,39 +1,47 @@
 {
-    "content": {
-        "application/json" : {
-            "schema": {
-                "properties": {
-                    "email": {
-                        "type" : "string",
-                        "description": "user email"
-                    },
-                    "name": {
-                        "type" : "string",
-                        "description": "user name"
-                    },
-                    "firstname": {
-                        "type" : "string",
-                        "description": "user firstname "
-                    },
-                    "password": {
-                        "type" : "string",
-                        "description": "user password"
-                    },
-                    "encrypted-confirmation-code": {
-                        "type" : "string",
-                        "description": "the received encrypted confirmation code during the validation step"
-                    },
-                    "iv" : {
-                        "type" : "string",
-                        "description" : "received encryption iv"
-                    },
-                    "user-confirmation-code": {
-                        "type" : "string",
-                        "description": "the input confirmation code by user"
-                    }
-                },
-                "required": ["iv","email","firstname","password","name","encrypted-confirmation-code","user-confirmation-code"]
-            }
-        }
+  "content": {
+    "application/json": {
+      "schema": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "user email"
+          },
+          "name": {
+            "type": "string",
+            "description": "user name"
+          },
+          "firstname": {
+            "type": "string",
+            "description": "user firstname "
+          },
+          "password": {
+            "type": "string",
+            "description": "user password"
+          },
+          "encrypted-confirmation-code": {
+            "type": "string",
+            "description": "the received encrypted confirmation code during the validation step"
+          },
+          "iv": {
+            "type": "string",
+            "description": "received encryption iv"
+          },
+          "user-confirmation-code": {
+            "type": "string",
+            "description": "the input confirmation code by user"
+          }
+        },
+        "required": [
+          "iv",
+          "email",
+          "firstname",
+          "password",
+          "name",
+          "encrypted-confirmation-code",
+          "user-confirmation-code"
+        ]
+      }
     }
+  }
 }

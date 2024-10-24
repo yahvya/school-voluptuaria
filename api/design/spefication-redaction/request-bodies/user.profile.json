@@ -1,34 +1,25 @@
 {
-  "content":
-  {
-    "application/json" :
-    {
-      "schema":
-      {
-        "properties":
-        {
-          "image" :
-          {
+  "content": {
+    "application/json": {
+      "schema": {
+        "properties": {
+          "image": {
             "description": "The new profile picture image"
           },
-          "name" :
-          {
+          "name": {
             "type": "string",
             "description": "the user name"
           },
-          "firstname":
-          {
-            "type" : "string",
+          "firstname": {
+            "type": "string",
             "description": "user firstname "
           },
-          "birthday":
-          {
-            "type" : "string",
+          "birthday": {
+            "type": "string",
             "description": "user birthday"
           },
-          "phonenumber":
-          {
-            "type" : "string",
+          "phonenumber": {
+            "type": "string",
             "description": "user phone number"
           }
         }

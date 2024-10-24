@@ -40,4 +40,5 @@ import { UserInformationsController } from "./controllers/user-informations.cont
         UserInformationsController,
     ],
 })
-export class UserModule {}
+export class UserModule {
+}

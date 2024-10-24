@@ -1,21 +1,22 @@
 {
-    "content": {
-        "application/json" : {
-            "schema": {
-                "properties": {
-                    "email":
-                    {
-                        "type" : "string",
-                        "description": "user email"
-                    },
-                    "password":
-                    {
-                        "type" : "string",
-                        "description": "user password"
-                    }
-                },
-                "required": ["email","password"]
-            }
-        }
+  "content": {
+    "application/json": {
+      "schema": {
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "user email"
+          },
+          "password": {
+            "type": "string",
+            "description": "user password"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      }
     }
+  }
 }

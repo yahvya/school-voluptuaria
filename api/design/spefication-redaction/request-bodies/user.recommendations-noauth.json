@@ -1,27 +1,32 @@
 {
-  "content":
-  {
-    "application/json" :
-    {
-      "schema":
-      {
-        "type" : ["object"],
-        "properties":
-        {
-          "paging" : {
-            "type" : "number"
+  "content": {
+    "application/json": {
+      "schema": {
+        "type": [
+          "object"
+        ],
+        "properties": {
+          "paging": {
+            "type": "number"
           },
           "user-location": {
-            "type" : "object",
+            "type": "object",
             "properties": {
-              "longitude" : {
-                "type": ["string"]
+              "longitude": {
+                "type": [
+                  "string"
+                ]
               },
-              "latitude" : {
-                "type": ["string"]
+              "latitude": {
+                "type": [
+                  "string"
+                ]
               }
             },
-            "required" : ["longitude","latitude"]
+            "required": [
+              "longitude",
+              "latitude"
+            ]
           },
           "user-searches": {
             "type": "array",
@@ -38,11 +43,18 @@
                   "description": "Number of times the term was searched"
                 }
               },
-              "required": ["term", "frequency"]
+              "required": [
+                "term",
+                "frequency"
+              ]
             }
           }
         },
-        "required" : ["user-location","user-searches","paging"]
+        "required": [
+          "user-location",
+          "user-searches",
+          "paging"
+        ]
       }
     }
   }

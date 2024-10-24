@@ -67,9 +67,9 @@ export class LangService {
 
         return options.replaces !== undefined
             ? this.replaceElements({
-                  replaces: options.replaces,
-                  str: this.langValues[options.key],
-              })
+                replaces: options.replaces,
+                str: this.langValues[options.key],
+            })
             : this.langValues[options.key]
     }
 

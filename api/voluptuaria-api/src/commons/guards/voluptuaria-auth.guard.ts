@@ -1,9 +1,4 @@
-import {
-    Injectable,
-    CanActivate,
-    ExecutionContext,
-    UnauthorizedException,
-} from "@nestjs/common"
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common"
 import { EncryptService } from "../../modules/app-security/services/encrypt.service"
 import { ConfigService } from "@nestjs/config"
 import { AppRequest } from "../../modules/app-security/data-contracts/app-request.datas"
@@ -16,7 +11,8 @@ export class VoluptuariaAuthGuard implements CanActivate {
     constructor(
         private readonly encryptService: EncryptService,
         protected readonly configService: ConfigService,
-    ) {}
+    ) {
+    }
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
         const request = context.switchToHttp().getRequest()
@@ -50,12 +46,11 @@ export class VoluptuariaAuthGuard implements CanActivate {
         appRequest: AppRequest
     }): Promise<string> {
         try {
-            const voluptuariaToken = await this.encryptService.decrypt({
+            return await this.encryptService.decrypt({
                 secretKey: this.configService.getOrThrow("API_TOKEN_SECRET"),
                 iv: Options.appRequest.iv,
                 toDecrypt: Options.appRequest.apiToken,
             })
-            return voluptuariaToken
         } catch (error) {
             return null
         }

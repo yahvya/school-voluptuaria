@@ -1,9 +1,13 @@
 {
-  "type": ["object"],
+  "type": [
+    "object"
+  ],
   "properties": {
     "comments": {
-      "$ref" : "../../components/comments.json"
+      "$ref": "../../components/comments.json"
     }
   },
-  "required" : ["comments"]
+  "required": [
+    "comments"
+  ]
 }
