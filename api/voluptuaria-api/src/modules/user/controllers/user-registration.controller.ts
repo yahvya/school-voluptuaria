@@ -18,7 +18,7 @@ import { GoogleRegistrationDatas } from "../data-contracts/google-registration/g
 import { GoogleRegistrationResponseDatas } from "../data-contracts/google-registration/google-registration-response.datas"
 import { AuthGuard } from "@nestjs/passport"
 import { GoogleRegistrationConfirmationDatas } from "../data-contracts/google-registration/google-registration-confirmation.datas"
-import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
+import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 
 /**
  * @brief Manage users registration process.

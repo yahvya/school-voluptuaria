@@ -1,4 +1,4 @@
-import {IsNotEmpty, IsString, IsStrongPassword} from "class-validator";
+import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
 
 /**
  * @brief Edit user password form datas.
@@ -16,7 +16,7 @@ export class EditPasswordData {
         minUppercase: 1,
         minNumbers: 1,
     })
-    public new_password: string;
+    public new_password: string
 
     @IsNotEmpty({
         always: true,
@@ -30,7 +30,7 @@ export class EditPasswordData {
         minUppercase: 1,
         minNumbers: 1,
     })
-    public confirm_new_password: string;
+    public confirm_new_password: string
 
     @IsNotEmpty({
         always: true,
@@ -38,7 +38,7 @@ export class EditPasswordData {
     @IsString({
         always: true,
     })
-    public old_password: string;
+    public old_password: string
 
     @IsNotEmpty({
         always: true,
@@ -46,5 +46,5 @@ export class EditPasswordData {
     @IsString({
         always: true,
     })
-    public authentification_token: string;
+    public authentification_token: string
 }

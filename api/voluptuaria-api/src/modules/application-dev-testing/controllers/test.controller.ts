@@ -3,10 +3,7 @@ import { ConfigService } from "@nestjs/config"
 
 @Controller("test")
 export class TestController {
-    constructor(
-                protected configService:ConfigService) {
-
-    }
+    constructor(protected configService: ConfigService) {}
 
     /*
     @Get('test')
@@ -15,6 +12,4 @@ export class TestController {
     }
 
      */
-
-
 }

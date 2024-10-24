@@ -1,14 +1,14 @@
 /**
  * @brief Edit password service
  */
-import {InjectRepository} from "@nestjs/typeorm";
-import {UserEntity} from "../../database-module/entities/user.entity";
-import {Repository} from "typeorm";
-import {Injectable} from "@nestjs/common";
-import {EditPasswordData} from "../data-contracts/edit-password/edit-password.data";
-import {EditPasswordResponse} from "../data-contracts/edit-password/edit-password-response";
-import {UserLoginService} from "./user-login.service";
-import {HashService} from "../../app-security/services/hash.service";
+import { InjectRepository } from "@nestjs/typeorm"
+import { UserEntity } from "../../database-module/entities/user.entity"
+import { Repository } from "typeorm"
+import { Injectable } from "@nestjs/common"
+import { EditPasswordData } from "../data-contracts/edit-password/edit-password.data"
+import { EditPasswordResponse } from "../data-contracts/edit-password/edit-password-response"
+import { UserLoginService } from "./user-login.service"
+import { HashService } from "../../app-security/services/hash.service"
 
 @Injectable()
 export class EditPasswordService {
@@ -28,10 +28,19 @@ export class EditPasswordService {
     public async editPassword(options: {
         editPasswordData: EditPasswordData
     }): Promise<EditPasswordResponse> {
-        const {new_password, confirm_new_password, old_password, authentification_token} = options.editPasswordData;
-        const payload = this.userLoginService.validateToken(authentification_token)
-        const user = await this.userRepository.findOneBy({email: payload.email});
-        const response = new EditPasswordResponse();
+        const {
+            new_password,
+            confirm_new_password,
+            old_password,
+            authentification_token,
+        } = options.editPasswordData
+        const payload = this.userLoginService.validateToken(
+            authentification_token,
+        )
+        const user = await this.userRepository.findOneBy({
+            email: payload.email,
+        })
+        const response = new EditPasswordResponse()
 
         //Verify the user authentication token (JWT)
         if (!payload) {
@@ -39,7 +48,7 @@ export class EditPasswordService {
             return response
         }
         // User not exist case
-        if (!user){
+        if (!user) {
             response.errorMessage = "error.invalid-token"
             return response
         }
@@ -48,7 +57,7 @@ export class EditPasswordService {
         const oldPasswordMatch = await this.hashService.compare({
             toCompare: old_password,
             hash: user.password,
-        });
+        })
 
         if (!oldPasswordMatch) {
             response.errorMessage = "error.same-password"
@@ -68,15 +77,11 @@ export class EditPasswordService {
                     toHash: new_password,
                     salt: 10,
                 }),
-            });
-        }  catch (_){
+            })
+        } catch (_) {
             response.errorMessage = "error.technical"
         }
 
         return response
-
     }
-
-
-
 }

@@ -12,12 +12,10 @@ export class UserInformationsService {
      * @param options options
      * @returns {Promise<UserProfileImageResponseDatas>} upload response
      */
-    public async updateUserProfileImage(
-        options: {
-            image: Express.Multer.File,
-            profileImageDatas: UserProfileImageDatas
-        }
-    ):Promise<UserProfileImageResponseDatas>{
+    public async updateUserProfileImage(options: {
+        image: Express.Multer.File
+        profileImageDatas: UserProfileImageDatas
+    }): Promise<UserProfileImageResponseDatas> {
         console.log(options)
 
         return new UserProfileImageResponseDatas()

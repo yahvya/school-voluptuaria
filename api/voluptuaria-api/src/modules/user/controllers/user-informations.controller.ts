@@ -3,15 +3,16 @@ import {
     Controller,
     HttpCode,
     Post,
-    UploadedFile, UseGuards,
+    UploadedFile,
+    UseGuards,
     UseInterceptors,
 } from "@nestjs/common"
 import { FileInterceptor } from "@nestjs/platform-express"
 import { UserProfileImageDatas } from "../data-contracts/user-informations/user-profile-image.datas"
 import { UserProfileImageResponseDatas } from "../data-contracts/user-informations/user-profile-image-response.datas"
 import { UserInformationsService } from "../services/user-informations.service"
-import {VoluptuariaAuthGuard} from "../../../commons/guards/voluptuaria-auth.guard";
-import {JwtAuthGuard} from "../../../commons/guards/jwt-auth.guard";
+import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
+import { JwtAuthGuard } from "../../../commons/guards/jwt-auth.guard"
 
 /**
  * @brief user information's management controller
@@ -19,9 +20,8 @@ import {JwtAuthGuard} from "../../../commons/guards/jwt-auth.guard";
 @Controller("user")
 export class UserInformationsController {
     constructor(
-        protected readonly userInformationService:UserInformationsService
-    ){
-    }
+        protected readonly userInformationService: UserInformationsService,
+    ) {}
     /**
      * @brief update user profile image
      * @param image new image
@@ -38,7 +38,7 @@ export class UserInformationsController {
     ): Promise<UserProfileImageResponseDatas> {
         return this.userInformationService.updateUserProfileImage({
             image: image,
-            profileImageDatas: profileImageDatas
+            profileImageDatas: profileImageDatas,
         })
     }
 }
