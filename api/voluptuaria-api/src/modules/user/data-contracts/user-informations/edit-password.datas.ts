@@ -39,4 +39,12 @@ export class EditPasswordDatas {
         always: true,
     })
     public old_password: string
+
+    @IsNotEmpty({
+        always: true,
+    })
+    @IsString({
+        always: true,
+    })
+    public authentication_token: string
 }

@@ -3,12 +3,26 @@ import { UserProfileImageResponseDatas } from "../data-contracts/user-informatio
 import { UserProfileImageDatas } from "../data-contracts/user-informations/user-profile-image.datas"
 import { EditPasswordDatas } from "../data-contracts/user-informations/edit-password.datas"
 import { EditPasswordResponse } from "../data-contracts/user-informations/edit-password-response"
+import { UserLoginService } from "./user-login.service"
+import { InjectRepository } from "@nestjs/typeorm"
+import { UserEntity } from "../../database-module/entities/user.entity"
+import { Repository } from "typeorm"
+import { HashService } from "../../app-security/services/hash.service"
 
 /**
  * @brief user information management service
  */
 @Injectable()
 export class UserInformationsService {
+
+    constructor(
+        @InjectRepository(UserEntity)
+        protected readonly userRepository: Repository<UserEntity>,
+        protected readonly userLoginService: UserLoginService,
+        protected readonly hashService: HashService,
+
+    ) {
+    }
     /**
      * @brief update the user profile image
      * @param options options
@@ -36,8 +50,10 @@ export class UserInformationsService {
             new_password,
             confirm_new_password,
             old_password,
+            authentication_token,
         } = options.editPasswordData
 
+        const payload  = await this.userLoginService.validateToken(authentication_token)
 
         const user = await this.userRepository.findOneBy({
             email: payload.email,
