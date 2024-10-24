@@ -46,10 +46,7 @@ export class UserInformationsService {
                 return result
             }
 
-            // const payload = await this.userLoginService.validateToken(authentication_token)
-            const payload = {
-                email: "yahayabathily109@gmail.com"
-            }
+            const payload = await this.userLoginService.validateToken(profileImageDatas.authentication_token)
 
             if(payload === null){
                 result.errorMessage = "error.unrecognized-email-password"
