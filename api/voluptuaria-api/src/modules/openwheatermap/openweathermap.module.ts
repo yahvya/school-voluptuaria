@@ -1,7 +1,13 @@
-import { Injectable, Module } from "@nestjs/common";
-import { CoordinatesDatas } from "../google-maps-place/data-contracts/coordinates.datas";
-import {PlaceDatas} from "../google-maps-place/data-contracts/place.datas";
+import { Module } from "@nestjs/common";
+import {OpenWeatherMapService} from "./services/openweathermap.service";
 
-@Module({})
+/**
+ * @brief openweathermap api module
+ */
+@Module({
+    providers: [OpenWeatherMapService],
+    exports: [OpenWeatherMapService]
+})
 export class OpenWeatherMapModule {
+
 }
