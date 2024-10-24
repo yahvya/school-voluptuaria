@@ -57,6 +57,9 @@ export class UserLoginService {
         return response
     }
 
+    /**
+     * @todo dont forget to remove this method
+     */
     public test(): Promise<{ encryptionResult: string; iv: string }> {
         return this.encryptService.encrypt({
             toEncrypt: this.configService.getOrThrow("API_SECRET"),
