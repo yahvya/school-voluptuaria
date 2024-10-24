@@ -48,7 +48,7 @@ export class UserInformationsController {
     public edit_password(
         @Body() editPasswordData: EditPasswordDatas,
     ): Promise<EditPasswordResponse> {
-        return this.editPasswordService.editPassword({
+        return this.userInformationService.editPassword({
             editPasswordData: editPasswordData,
         })
     }

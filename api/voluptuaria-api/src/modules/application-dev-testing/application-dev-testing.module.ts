@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common"
 import { TestController } from "./controllers/test.controller"
+import { GoogleMapsPlaceModule } from "../google-maps-place/google-maps-place.module"
 
 /**
  * @brief application dev testing
@@ -7,6 +8,7 @@ import { TestController } from "./controllers/test.controller"
  */
 @Module({
     controllers: [TestController],
+    imports: [GoogleMapsPlaceModule]
 })
 export class ApplicationDevTestingModule {
 }

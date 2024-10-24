@@ -102,7 +102,7 @@ export class LangService {
      * @returns {boolean} load success
      * @throws {Error} on error
      */
-    protected loadLangFile(options: { langFileName: string }): boolean {
+    public loadLangFile(options: { langFileName: string }): boolean {
         if (
             this.currentLang !== null &&
             options.langFileName === this.currentLang
@@ -114,6 +114,7 @@ export class LangService {
 
             if (!fs.existsSync(langSupposedFilePath)) return false
 
+            // parsing xml file
             const langXml = fs.readFileSync(langSupposedFilePath)
             const parser = new XMLParser({
                 ignoreAttributes: false,
@@ -123,6 +124,7 @@ export class LangService {
                 parseAttributeValue: true,
             })
 
+            // loading content
             const langFileContent = parser.parse(langXml)
             const keysToRead = [
                 "error-level",
@@ -138,10 +140,15 @@ export class LangService {
                     langFileContent.lang[key]["lang-element"]
 
                 langElements.forEach(
-                    (langElement) =>
-                        (this.langValues[langElement.key] = langElement.value),
+                    (langElement) =>  (this.langValues[langElement.key] = langElement.value),
                 )
             })
+
+            // loading attributes
+            this.frenchName = langFileContent.lang["french-name"]
+            this.googleMapCode = langFileContent.lang["google-map-code"]
+            this.openWeatherMapCode = langFileContent.lang["openweathermap-code"]
+            this.langName = langFileContent.lang.name
 
             return true
         } catch (_) {
