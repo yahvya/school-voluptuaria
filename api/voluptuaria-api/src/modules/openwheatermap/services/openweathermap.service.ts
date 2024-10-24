@@ -2,8 +2,6 @@ import {Injectable} from "@nestjs/common";
 import {OpenWeatherCoordinatesDatas} from "../data-contracts/open-weather-coordinates.datas";
 import {WeatherDatas} from "../data-contracts/weather.datas";
 import axios from "axios"
-import {ForecastDatas} from "../data-contracts/forecast.datas";
-import {PressureDatas} from "../data-contracts/pressure.datas";
 
 @Injectable()
 export class OpenWeatherMapService {
