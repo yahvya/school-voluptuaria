@@ -78,7 +78,7 @@ export class GoogleMapsPlaceService{
         categories:string[],
         lang: string,
         minRating: number
-    }):Promise<PlaceDatas>{
+    }):Promise<PlaceDatas[]>{
         const {categories,lang,minRating} = options
 
         return this.getPlacesDatasBySearch({
