@@ -14,6 +14,7 @@ import 'components/custom_text_field.dart';
 import 'components/profile_picture.dart';
 import 'components/select_box.dart';
 import 'components/path_card.dart';
+import 'components/lottie_animation.dart';
 
 void main() {
   runApp(MyApp());
@@ -140,6 +141,14 @@ class MyApp extends StatelessWidget {
                           print('button pressed');
                         },
                     )
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: LottieAnimation(
+                  lottiePath: 'lib/resources/animations/road_animation.json',
+                  width: 200,
+                  height: 200,
                 ),
               ),
             ],
