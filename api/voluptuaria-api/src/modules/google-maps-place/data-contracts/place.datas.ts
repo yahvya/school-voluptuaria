@@ -16,7 +16,7 @@ export class PlaceDatas {
 
     public placeName: string
 
-    public phoneNumber: string
+    public phoneNumber: string|null
 
     public isOpenedNow: boolean
 
