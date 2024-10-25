@@ -146,7 +146,7 @@ class MyApp extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: LottieAnimation(
-                  lottiePath: 'lib/resources/animations/road_animation.json',
+                  lottiePath: 'lib/resources/animations/travel.json',
                   width: 200,
                   height: 200,
                 ),
