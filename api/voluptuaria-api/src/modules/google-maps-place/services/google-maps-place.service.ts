@@ -69,6 +69,26 @@ export class GoogleMapsPlaceService{
     }
 
     /**
+     * @brief provide place datas by categories
+     * @param options options
+     * @returns {Promise<PlaceDatas>} datas
+     * @throws {Error} on error
+     */
+    public getPlacesDatasByCategories(options: {
+        categories:string[],
+        lang: string,
+        minRating: number
+    }):Promise<PlaceDatas>{
+        const {categories,lang,minRating} = options
+
+        return this.getPlacesDatasBySearch({
+            search: categories.join(" or "),
+            lang: lang,
+            minRating: minRating
+        })
+    }
+
+    /**
      * @brief parse place datas
      * @param options options
      * @protected
