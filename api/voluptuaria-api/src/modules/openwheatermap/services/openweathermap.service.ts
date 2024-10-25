@@ -2,6 +2,7 @@ import {Injectable} from "@nestjs/common";
 import {OpenWeatherCoordinatesDatas} from "../data-contracts/open-weather-coordinates.datas";
 import {WeatherDatas} from "../data-contracts/weather.datas";
 import axios from "axios"
+require('dotenv').config();
 
 @Injectable()
 export class OpenWeatherMapService {
@@ -9,10 +10,11 @@ export class OpenWeatherMapService {
         const params = {
             lat: options.coordinates.latitude,
             lon: options.coordinates.longitude,
-            appid: process.env.OPENWEATHER_API_KEY,
+            appid: process.env.OPEN_WEATHERMAP_KEY,
             units: "metric",
             lang: "fr"
         }
+
         const response = await axios.get("https://api.openweathermap.org/data/2.5/weather",{
             params: params
         })
