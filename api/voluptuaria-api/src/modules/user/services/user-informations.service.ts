@@ -8,6 +8,10 @@ import { InjectRepository } from "@nestjs/typeorm"
 import { UserEntity } from "../../database-module/entities/user.entity"
 import { Repository } from "typeorm"
 import { HashService } from "../../app-security/services/hash.service"
+import { ConfigService } from "@nestjs/config"
+import * as fs from "node:fs"
+import { UserProfileResponseDatas } from "../data-contracts/user-informations/user-profile-response.datas"
+import { UserProfileDatas } from "../data-contracts/user-informations/user-profile.datas"
 
 /**
  * @brief user information management service
@@ -20,7 +24,7 @@ export class UserInformationsService {
         protected readonly userRepository: Repository<UserEntity>,
         protected readonly userLoginService: UserLoginService,
         protected readonly hashService: HashService,
-
+        protected readonly configService: ConfigService
     ) {
     }
     /**
@@ -32,9 +36,68 @@ export class UserInformationsService {
         image: Express.Multer.File
         profileImageDatas: UserProfileImageDatas
     }): Promise<UserProfileImageResponseDatas> {
-        console.log(options)
+        const result = new UserProfileImageResponseDatas()
 
-        return new UserProfileImageResponseDatas()
+        try{
+            const {image,profileImageDatas} = options
+
+            // check image type
+
+            if(!image.mimetype.match(/^image.*/)){
+                result.errorMessage = "error.bad-fields"
+                return result
+            }
+
+            const payload = await this.userLoginService.validateToken(profileImageDatas.authentication_token)
+
+            if(payload === null){
+                result.errorMessage = "error.unrecognized-email-password"
+                return result
+            }
+
+            const user = await this.userRepository.findOneBy({
+                email: payload.email,
+            })
+
+            if(user === null){
+                result.errorMessage = "error.unrecognized-email-password"
+                return result
+            }
+
+            const profilePicturesDirectory = this.configService.getOrThrow("USERS_PROFILE_PICTURES")
+
+            // remove the current profile picture
+            if(user.profilePictureLink !== null){
+                const currentProfilePicturePath = `${profilePicturesDirectory}/${user.profilePictureLink}`
+
+                fs.rmSync(currentProfilePicturePath)
+            }
+
+            // generate free name
+            let generatedName: string
+            const imageExtension = `.${image.originalname.split(/\./)[1]}`
+
+            do
+              generatedName = `${Date.now()}${imageExtension}`
+            while(fs.existsSync(`${profilePicturesDirectory}/${generatedName}`))
+
+            // saving image
+            const imageFullPath = `${profilePicturesDirectory}/${generatedName}`
+
+            fs.writeFileSync(imageFullPath,image.buffer)
+
+            // update path in database
+            user.profilePictureLink = generatedName
+
+            await this.userRepository.save(user)
+
+            result.imageUrl = `${this.configService.getOrThrow("APPLICATION_LINK")}/${this.configService.getOrThrow("USERS_PROFILE_PICTURES_FOR_LINK")}/${generatedName}`
+        }
+        catch(_){
+            result.errorMessage = "error.technical"
+        }
+
+        return result
     }
 
     /**
@@ -96,5 +159,70 @@ export class UserInformationsService {
         }
 
         return response
+    }
+
+    /**
+     * @brief update user profile datas
+     * @param options options
+     * @returns {Promise<UserProfileResponseDatas>} response
+     */
+    public async updateUserProfile(options: {userProfileDatas: UserProfileDatas}):Promise<UserProfileResponseDatas>{
+        const {authentication_token,firstname,name,phonenumber,birthday} = options.userProfileDatas
+        const result = new UserProfileResponseDatas()
+
+        try{
+            // find user
+            const payload = await this.userLoginService.validateToken(authentication_token)
+
+            if(payload === null){
+                result.errorMessage = "error.unrecognized-email-password"
+                return result
+            }
+
+            const user = await this.userRepository.findOneBy({
+                email: payload.email
+            })
+
+            if(user === undefined){
+                result.errorMessage = "error.unrecognized-email-password"
+                return result
+            }
+
+            // updating datas
+            if(firstname !== undefined)
+                user.firstName = firstname
+
+            if(name !== undefined)
+                user.name = name
+
+            if(phonenumber !== undefined)
+                user.phonenumber = phonenumber
+
+            if(birthday !== undefined){
+                if(isNaN(Date.parse(birthday))){
+                    result.errorMessage = "error.bad-fields"
+                    return result
+                }
+
+                // check if the birthday where already defined
+                if(user.birthdate !== null){
+                    result.errorMessage = "error.bad-fields"
+                    return result
+                }
+
+                user.birthdate = new Date(birthday)
+            }
+
+            await this.userRepository.save(user)
+
+            result.authenticationToken = this.userLoginService.generateToken({
+                email: user.email
+            })
+        }
+        catch(_){
+            result.errorMessage = "error.technical"
+        }
+
+        return result
     }
 }

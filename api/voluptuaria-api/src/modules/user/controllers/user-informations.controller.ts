@@ -7,13 +7,15 @@ import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.g
 import { JwtAuthGuard } from "../../../commons/guards/jwt-auth.guard"
 import { EditPasswordDatas } from "../data-contracts/user-informations/edit-password.datas"
 import { EditPasswordResponse } from "../data-contracts/user-informations/edit-password-response"
+import { UserProfileDatas } from "../data-contracts/user-informations/user-profile.datas"
+import { UserProfileResponseDatas } from "../data-contracts/user-informations/user-profile-response.datas"
 
 /**
  * @brief user information's management controller
  */
 @Controller("user")
-@UseGuards(VoluptuariaAuthGuard)
-@UseGuards(JwtAuthGuard)
+// @UseGuards(VoluptuariaAuthGuard)
+// @UseGuards(JwtAuthGuard)
 export class UserInformationsController {
     constructor(
         protected readonly userInformationService: UserInformationsService,
@@ -50,6 +52,16 @@ export class UserInformationsController {
     ): Promise<EditPasswordResponse> {
         return this.userInformationService.editPassword({
             editPasswordData: editPasswordData,
+        })
+    }
+
+    @Post("profile")
+    @HttpCode(200)
+    public updateProfile(
+        @Body() userProfileDatas: UserProfileDatas
+    ):Promise<UserProfileResponseDatas>{
+        return this.userInformationService.updateUserProfile({
+            userProfileDatas: userProfileDatas
         })
     }
 }

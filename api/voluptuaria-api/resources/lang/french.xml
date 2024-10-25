@@ -13,8 +13,7 @@
         <lang-element key="error.bad-confirmation-code" value="Code saisie incorrect"/>
         <lang-element key="error.account-already-exist" value="Ce compte existe déjà"/>
         <lang-element key="error.invalid-token" value="Token invalid"/>
-        <lang-element key="error.matching-password"
-                      value="Présence de difference entre le mot de passe et la confirmation"/>
+        <lang-element key="error.matching-password" value="Présence de difference entre le mot de passe et la confirmation"/>
         <lang-element key="error.same-password" value="Mot de passe similaire à l'ancien"/>
         <lang-element key="error.comments" value="Veuillez verifier le contenu de votre commentaire"/>
         <lang-element key="error.unrecognized-email-password" value="Email ou mot de passe incorrect"/>

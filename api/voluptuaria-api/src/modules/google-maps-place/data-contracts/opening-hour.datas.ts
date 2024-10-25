@@ -4,7 +4,7 @@
 export class OpeningHourDatas {
     public day: string
 
-    public openTime: string
+    public openTime: string|null
 
-    public closeTime: string
+    public closeTime: string|null
 }
