@@ -13,22 +13,18 @@ export class TestController {
     }
 
     @Get("test-google-map")
-    public async testGoogleMapApi(){
-        await this.googleMapPlaceService.getPlacesDatasBySearch({search: "recherche",lang: "french",minRating: 1})
-
-        return {}
+    public testGoogleMapApi(){
+        return this.googleMapPlaceService.getPlacesDatasBySearch({search: "recherche",lang: "french",minRating: 1})
     }
 
     @Get("test-place")
-    public async testSearchPlace(){
-        await this.searchPlaceService.searchPlace({
+    public testSearchPlace(){
+        return this.searchPlaceService.searchPlace({
             searchPlaceData : {
                 minRating : 2,
-                lang : "fr",
+                lang : "french",
                 research : "hotels"
             }
         })
-
-        return {}
     }
 }

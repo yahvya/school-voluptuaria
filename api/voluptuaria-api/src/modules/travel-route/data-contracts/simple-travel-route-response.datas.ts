@@ -36,7 +36,7 @@ export class SimpleTravelRouteResponseDatas {
     @IsNotEmpty({
         always: true,
     })
-    public proposal : Array<ProposalDatas>
+    public proposal : ProposalDatas[]
 }
 
 /**

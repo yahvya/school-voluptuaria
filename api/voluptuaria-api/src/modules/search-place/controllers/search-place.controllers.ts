@@ -8,7 +8,7 @@ import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.g
  * @brief controller du search place
  */
 @Controller("search-place")
-@UseGuards(VoluptuariaAuthGuard)
+//@UseGuards(VoluptuariaAuthGuard)
 export class SearchPlaceController {
     constructor(
         protected readonly searchPlaceService: SearchPlaceService,

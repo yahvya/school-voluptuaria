@@ -1,6 +1,6 @@
 import { SearchPlaceDatas } from "../data-contracts/search-place-datas"
 import { SearchPlaceResponseData } from "../data-contracts/search-place-response-datas"
-import { NotFoundException } from "@nestjs/common"
+import { Injectable, NotFoundException } from "@nestjs/common"
 import { PlaceDatas } from "../../google-maps-place/data-contracts/place.datas"
 import { GoogleMapsPlaceService } from "../../google-maps-place/services/google-maps-place.service"
 import { OpenWeatherMapService } from "../../openwheatermap/services/openweathermap.service"
@@ -8,11 +8,11 @@ import { OpenWeatherMapService } from "../../openwheatermap/services/openweather
 /**
  * @brief search place service
  */
+@Injectable()
 export class SearchPlaceService {
-
     constructor(
-        private readonly googleMapsPlaceService: GoogleMapsPlaceService,
-        private readonly openWeatherMapService: OpenWeatherMapService,
+        protected readonly googleMapsPlaceService: GoogleMapsPlaceService,
+        protected readonly openWeatherMapService: OpenWeatherMapService,
     ) {
     }
 
@@ -25,6 +25,7 @@ export class SearchPlaceService {
     public async searchPlace(options:{
         searchPlaceData : SearchPlaceDatas
     }): Promise<SearchPlaceResponseData[]> {
+        console.log("Données de recherche :", options.searchPlaceData); //
 
         if(!(options.searchPlaceData.research)){
             throw new NotFoundException("Research equal null")
@@ -45,10 +46,13 @@ export class SearchPlaceService {
                 minRating : options.searchPlaceData.minRating
             })
 
+            console.log("Données de placeDatas :", placeDatas); //
+
             const responsePromises = placeDatas.map(async (place) => {
                 const weatherData =  await this.openWeatherMapService.getMeteoDatas({
                     coordinates: place.coordinate
                 });
+
 
                 const response = new SearchPlaceResponseData()
                 response.place_name = place.placeName
@@ -65,12 +69,17 @@ export class SearchPlaceService {
                 return response
             });
 
+            console.log("Données de responsePromises :", responsePromises); //
+
             // Wait for all promises to resolve
             const responses: SearchPlaceResponseData[] = await Promise.all(responsePromises);
 
+            console.log("Données de responses :", responses); //
+
             return responses;
         }
-        catch (_){
+        catch (error){
+            console.error("Erreur lors de la recherche de lieu :", error);
             throw new NotFoundException("No research found")
         }
     }

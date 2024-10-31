@@ -236,7 +236,11 @@ export class GoogleMapsPlaceService{
         const {review} = options
 
         result.rating = Math.floor(review.rating)
-        result.comment = review.text.text
+        if("text" in review)
+            result.comment = review.text.text ?? ""
+        else
+            result.comment = ""
+
         result.wroteAt = review.publishTime
 
         return result
