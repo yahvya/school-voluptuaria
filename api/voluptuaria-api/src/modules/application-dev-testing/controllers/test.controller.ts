@@ -12,7 +12,7 @@ export class TestController {
 
     @Get("test-google-map")
     public async testGoogleMapApi(){
-        await this.googleMapPlaceService.getPlacesDatasBySearch({search: "recherche",lang: "french"})
+        await this.googleMapPlaceService.getPlacesDatasBySearch({search: "recherche",lang: "french",minRating: 1})
 
         return {}
     }

@@ -36,7 +36,7 @@ export class UserRegistrationController {
      */
     @Post()
     @HttpCode(200)
-    @UseGuards(VoluptuariaAuthGuard)
+    // @UseGuards(VoluptuariaAuthGuard)
     public register(
         @Body() userRegistrationDatas: UserRegistrationDatas,
         @Headers("lang") lang: string,
@@ -54,7 +54,7 @@ export class UserRegistrationController {
      */
     @Post("confirmation")
     @HttpCode(200)
-    @UseGuards(VoluptuariaAuthGuard)
+    // @UseGuards(VoluptuariaAuthGuard)
     public registerConfirmation(
         @Body()
             userRegistrationConfirmationDatas: UserRegistrationConfirmationDatas,
@@ -71,7 +71,7 @@ export class UserRegistrationController {
      */
     @Post("by-google")
     @HttpCode(200)
-    @UseGuards(VoluptuariaAuthGuard)
+    // @UseGuards(VoluptuariaAuthGuard)
     public startRegistrationFromGoogle(
         @Body() googleRegistrationDatas: GoogleRegistrationDatas,
     ): GoogleRegistrationResponseDatas {
