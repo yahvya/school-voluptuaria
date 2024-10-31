@@ -5,6 +5,8 @@ import { CommentDatas } from "../../application-dev-testing/tmp/comments.datas"
 import {ImagesDatas} from "../../google-maps-place/data-contracts/images.datas"
 import { Type } from "class-transformer"
 import { ForecastDatas } from "../../openwheatermap/data-contracts/forecast.datas"
+import { CommentsDatas } from "../../google-maps-place/data-contracts/comments.datas"
+import { WeatherDatas } from "../../openwheatermap/data-contracts/weather.datas"
 
 /**
  * @brief search place information response
@@ -33,7 +35,7 @@ export class SearchPlaceResponseData {
 
     @IsNotEmpty()
     @IsObject()
-    public coordinates: Array<CoordinatesDatas>
+    public coordinates: CoordinatesDatas
 
     @IsNotEmpty()
     @IsArray()
@@ -45,12 +47,12 @@ export class SearchPlaceResponseData {
 
     @IsNotEmpty()
     @IsArray()
-    public comments: Array<CommentDatas>
+    public comments: CommentsDatas[]
 
     @IsObject()
     @ValidateNested({ each: true })
     @Type(() => ForecastDatas)
-    public weather: ForecastDatas[]
+    public weather: WeatherDatas
 
 }
 

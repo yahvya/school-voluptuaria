@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post, UseGuards } from "@nestjs/common"
+import { Body, Controller, Get, HttpCode, Post, UseGuards } from "@nestjs/common"
 import { SearchPlaceDatas } from "../data-contracts/search-place-datas"
 import { SearchPlaceResponseData } from "../data-contracts/search-place-response-datas"
 import { SearchPlaceService } from "../services/search-place.service"
@@ -14,11 +14,11 @@ export class SearchPlaceController {
         protected readonly searchPlaceService: SearchPlaceService,
     ) {
     }
-    @Post()
+    @Get()
     @HttpCode(200)
     public searchPlace(
         @Body() searchPlaceDatas : SearchPlaceDatas
-    ): Promise<SearchPlaceResponseData> {
+    ): Promise<SearchPlaceResponseData[]> {
         return this.searchPlaceService.searchPlace({
             searchPlaceData: searchPlaceDatas
         })
