@@ -12,12 +12,12 @@ export class TestController {
     ) {
     }
 
-    /*@Get("test-google-map")
+    @Get("test-google-map")
     public async testGoogleMapApi(){
         await this.googleMapPlaceService.getPlacesDatasBySearch({search: "recherche",lang: "french",minRating:2})
 
         return {}
-    }*/
+    }
 
     @Get("test-place")
     public async testSearchPlace(){

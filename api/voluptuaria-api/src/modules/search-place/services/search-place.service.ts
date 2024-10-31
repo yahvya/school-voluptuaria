@@ -3,9 +3,7 @@ import { SearchPlaceResponseData } from "../data-contracts/search-place-response
 import { NotFoundException } from "@nestjs/common"
 import { PlaceDatas } from "../../google-maps-place/data-contracts/place.datas"
 import { GoogleMapsPlaceService } from "../../google-maps-place/services/google-maps-place.service"
-import { WeatherDatas } from "../../openwheatermap/data-contracts/weather.datas"
 import { OpenWeatherMapService } from "../../openwheatermap/services/openweathermap.service"
-import { OpenWeatherCoordinatesDatas } from "../../openwheatermap/data-contracts/open-weather-coordinates.datas"
 
 /**
  * @brief search place service
