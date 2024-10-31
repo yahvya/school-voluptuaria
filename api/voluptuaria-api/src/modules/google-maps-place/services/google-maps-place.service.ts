@@ -156,7 +156,7 @@ export class GoogleMapsPlaceService{
 
         resultPlaceDatas.accessId = placeDatas.id
 
-        // openingHours
+        // openingHoursregister
         resultPlaceDatas.openingHours = []
 
         if(
