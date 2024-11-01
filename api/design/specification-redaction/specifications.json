@@ -1,0 +1,1577 @@
+{
+    "openapi":"3.0.3",
+    "info": {
+        "title": "Voluptuaria Api",
+        "description": "Voluptuaria application's Api",
+        "version": "1.0",
+        "contact": {
+            "email": "voluptuaria.tourisma@gmail.com",
+            "name": "Voluptuaria"
+        }
+    },
+    "servers": [
+        {
+            "description": "Test server",
+            "url": "http://127.0.0.1:8080"
+        }
+    ],
+    "paths": {
+        "/search/place" : {
+            "get" : {
+                "summary": "Search place",
+                "description": "Allow to search a place from a text",
+                "parameters": [
+                    {
+                        "name" : "search",
+                        "required": true,
+                        "description": "Search string",
+                        "in" : "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "name" : "minRating",
+                        "description": "Minimum rating for on the place",
+                        "in" : "query",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Provide the founded results",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/placeDatas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/place/comments": {
+            "get" : {
+                "summary": "Get place comments",
+                "description" : "Provide the comments on a given place with pagination",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "name" : "paging",
+                        "description": "Pagination number",
+                        "required": true,
+                        "in" : "query",
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "name": "callbackDatas",
+                        "description": "Place callback data's",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "Provide the founded comments",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref" : "#/components/schemas/comments"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post" : {
+                "summary": "Post a command on a place",
+                "description": "Post a comment on a given place",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/authenticationToken"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "comment" : {
+                                        "type": "string",
+                                        "description" : "Comment text"
+                                    },
+                                    "rating": {
+                                        "type": "number",
+                                        "description": "Count of rating stars"
+                                    },
+                                    "callbackDatas" : {
+                                        "type": "object",
+                                        "description": "Place callback datas"
+                                    }
+                                },
+                                "required": ["comment","rating","callbackDatas"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Post success",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "type" : "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "The error message on error"
+                                        }
+                                    },
+                                    "required": ["errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }             
+            }
+        },
+        "/place/like/status" : {
+            "post" : {
+                "summary": "Set a user notice status",
+                "description": "Set a user notice status like or remove like on a place",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/authenticationToken"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "callbackDatas" : {
+                                        "type" : "object",
+                                        "description": "Place callback datas"
+                                    },
+                                    "likeState" : {
+                                        "type": "boolean",
+                                        "description": "Like state. true to like or remove the previous like , false to dislike"
+                                    }
+                                },
+                                "required": ["callbackDatas","likeState"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Post success state",
+                        "content": {
+                            "application/json" : {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        }
+                                    },
+                                    "required": ["errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register/voluptuaria" : {
+            "post" : {
+                "summary": "Initialize user registration",
+                "description": "Initialize user registration by validating data's and sending confirmation mail",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/lang"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content" : {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email" : {
+                                        "type": "string",
+                                        "description": "User email"
+                                    },
+                                    "name" : {
+                                        "type": "string",
+                                        "description": "User lastname"
+                                    },
+                                    "firstname" : {
+                                        "type": "string",
+                                        "description": "User firstname"
+                                    },
+                                    "password" : {
+                                        "type": "string",
+                                        "description": "User password"
+                                    }
+                                },
+                                "required": ["email","name","firstname","password"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "User registration initialization confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "confirmationCode" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "The encrypted confirmation code to send back on confirmation if success"
+                                        },
+                                        "iv" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Encryption iv to send back, in pair with the confirmation code if success"
+                                        }
+                                    },
+                                    "required": ["errorMessage","confirmationCode","iv"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register/confirmation": {
+            "post" : {
+                "summary": "User registration confirmation",
+                "description": "Try to confirm user registration",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/lang"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email" : {
+                                        "type": "string",
+                                        "description": "User email"
+                                    },
+                                    "name" : {
+                                        "type": "string",
+                                        "description": "User lastname"
+                                    },
+                                    "firstname" : {
+                                        "type": "string",
+                                        "description": "User firstname"
+                                    },
+                                    "password" : {
+                                        "type": "string",
+                                        "description": "User password"
+                                    },
+                                    "encryptedConfirmationCode" : {
+                                        "type": "string",
+                                        "description": "Encrypted code received on the initialization step"
+                                    },
+                                    "encryptionIv": {
+                                        "type": "string",
+                                        "description": "Encryption iv"
+                                    },
+                                    "userConfirmationCode" : {
+                                        "type": "string",
+                                        "description" : "The user provided confirmation code"
+                                    }
+                                },
+                                "required": ["email","name","firstname","password","encryptedConfirmationCode","encryptionIv","userConfirmationCode"]
+                            }
+                        }
+                    }
+                },
+                "responses" : {
+                    "200" : {
+                        "description": "Registration confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description" : "Error message on error"
+                                        },
+                                        "authenticationToken" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Authentication token"
+                                        }
+                                    },
+                                    "required": ["errorMessage","authenticationToken"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/register/by-google": {
+            "post" : {
+                "summary": "Initialize registration by google",
+                "description" : "Initialize the registration by google",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "redirectUrl": {
+                                        "type" : "string",
+                                        "description": "The url to redirect on depends on the type of application. Have to be one of the registered urls"
+                                    }
+                                },
+                                "required": ["redirectUrl"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Authentication link",
+                        "content" : {
+                            "application/json" : {
+                                "schema" : {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "link" : {
+                                            "type" : "string",
+                                            "nullable": true,
+                                            "description": "Redirection link to authenticate with google"
+                                        }
+                                    },
+                                    "required": ["link","errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login" : {
+            "post" : {
+                "summary": "Log user",
+                "description" : "Log the user",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content" : {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email" : {
+                                        "type": "string",
+                                        "description": "User email"
+                                    },
+                                    "password" : {
+                                        "type" : "string",
+                                        "description" : "User password"
+                                    }
+                                },
+                                "required": ["email","password"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Login confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "description": "Error message on error",
+                                            "nullable": true
+                                        },
+                                        "authenticationToken": {
+                                            "type" : "string",
+                                            "description": "Authentication token",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "required": ["errorMessage","authenticationToken"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/forgot-password": {
+            "post" : {
+                "summary": "Initialize forgot password process",
+                "description": "Initialize forgot password process, validate data's and send confirmation mail",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/lang"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content" : {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email" : {
+                                        "type": "string",
+                                        "description": "User email"
+                                    }
+                                },
+                                "required": ["email"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Forgot password initialization confirmation",
+                        "content" : {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "description": "Error message on error",
+                                            "nullable": true
+                                        },
+                                        "confirmationCode": {
+                                            "type": "string",
+                                            "description": "Encrypted confirmation code on success"
+                                        },
+                                        "encryptionIv" : {
+                                            "type": "string",
+                                            "description": "Encryption iv on success in pair with confirmationCode"
+                                        }
+                                    },
+                                    "required": ["errorMessage","confirmationCode","encryptionIv"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login/forgot-password/confirmaiton" : {
+            "post" : {
+                "summary": "Confirm forgot password process",
+                "description": "Confirm forgot password verification and update the password",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email" : {
+                                        "type": "string",
+                                        "description": "User email"
+                                    },
+                                    "encryptedConfirmationCode": {
+                                        "type": "string",
+                                        "description": "Encrypted confirmation code on success"
+                                    },
+                                    "encryptionIv" : {
+                                        "type": "string",
+                                        "description": "Encryption iv on success in pair with confirmationCode"
+                                    },
+                                    "userConfirmationCode": {
+                                        "type": "string",
+                                        "description": "The input confirmation code by user"
+                                    },
+                                    "newPassword" : {
+                                        "type" : "string",
+                                        "description": "User new password"
+                                    }
+                                },
+                                "required": ["email","newPassword","userConfirmationCode","encryptedConfirmationCode","encryptionIv"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Forgot password process confirmation",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "authenticationToken" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "New authentication token on success"
+                                        }
+                                    },
+                                    "required": ["errorMessage","authenticationToken"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/datas" : {
+            "get" : {
+                "summary": "Provide user data's",
+                "description": "Provide user data's",
+                "parameters": [
+                    {
+                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "$ref" : "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "name": "toFetch",
+                        "required": true,
+                        "in": "query",
+                        "description": "Data's to fetch",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "number",
+                                "description": "User data elements type from enumerationn value as int"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200" : {
+                        "description": "User fetched data's. The object will be indexed by the enumeration integer value and will contain as values the requested elements. Only the asked ones will be provided",
+                        "content": {
+                            "application/json" : {
+                                "schema": {
+                                    "type": "object",
+                                    "description": "The object will be indexed by the enumeration integer value and will contain as values the requested elements. Only the asked ones will be provided",
+                                    "properties": {
+                                        "identityDatas" : {
+                                            "type": "object",
+                                            "description": "User identity data's",
+                                            "properties": {
+                                                "id" : {
+                                                    "type": "string",
+                                                    "description": "User unique identifier"
+                                                },
+                                                "name" : {
+                                                    "type": "string",
+                                                    "description": "User name"
+                                                },
+                                                "firstname" : {
+                                                    "type": "string",
+                                                    "description": "User last name"
+                                                },
+                                                "birthdate": {
+                                                    "type": "string",
+                                                    "description": "User birthdate",
+                                                    "nullable": true
+                                                },
+                                                "phonenumber" : {
+                                                    "type": "string",
+                                                    "description": "User phonenumber",
+                                                    "nullable": true
+                                                },
+                                                "profilePictureLink" : {
+                                                    "type": "string",
+                                                    "description": "User profile picture access link"
+                                                },
+                                                "accountCreationDate": {
+                                                    "type": "string",
+                                                    "description": "User account creation date"
+                                                },
+                                                "gender": {
+                                                    "type": "number",
+                                                    "description": "Enumeration as int for gender"
+                                                }
+                                            },
+                                            "required": ["id","name","firstname","birthdate","phonenumber","profilePictureLink","accountCreationDate","gender"]
+                                        },
+                                        "visitedPlaces" : {
+                                            "type": "array",
+                                            "description": "User visited places",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "placeDatas" : {
+                                                        "$ref" : "#/components/schemas/placeDatas"
+                                                    },
+                                                    "visitedAt": {
+                                                        "type": "string",
+                                                        "description": "Place visit time"
+                                                    }
+                                                },
+                                                "required": ["placeDatas","visitedAt"]
+                                            }
+                                        },
+                                        "placeWishList" : {
+                                            "type": "array",
+                                            "description": "User wanted places to visit",
+                                            "items": {
+                                                "$ref" : "#/components/schemas/placeDatas"
+                                            }
+                                        },
+                                        "travelRoutes" : {
+                                            "type": "array",
+                                            "description" : "User registered travel routes",
+                                            "items": {
+                                                "$ref" : "#/components/schemas/travelRoutes"
+                                            }
+                                        }   
+                                    },
+                                    "required": ["identityDatas","visitedPlaces","placeWishList","travelRoutes"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profile-image": {
+            "post": {
+                "summary": "Update the user profile image",
+                "description": "Modify the user profile image or set it if there were no image",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "image": {
+                                        "description": "The new image"
+                                    }
+                                },
+                                "required": ["image"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update success state",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "imageUrl": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "The profile picture url on success"
+                                        }
+                                    },
+                                    "required": ["errorMessage","imageUrl"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/profile": {
+            "post": {
+                "summary": "Edit the user profile",
+                "description": "Edit the user profile from the provided fields. The birthdate can only be update the first time.",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "User name"
+                                    },
+                                    "firstname": {
+                                        "type": "string",
+                                        "description": "User firstname "
+                                    },
+                                    "birthdate": {
+                                        "type": "string",
+                                        "description": "User birthdate"
+                                    },
+                                    "phonenumber": {
+                                        "type": "string",
+                                        "description": "User phonenumber"
+                                    }
+                                },
+                                "required": []
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Profile edition confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "authenticationToken": {
+                                            "type": "string",
+                                            "description": "New authentication token"
+                                        }
+                                    },
+                                    "required": ["errorMessage","authenticationToken"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/change-password" : {
+            "post" : {
+                "summary": "Update the user password",
+                "description": "Update the user password",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "oldPassword": {
+                                        "type": "string",
+                                        "description": "The old user password"
+                                    },
+                                    "newPassword": {
+                                        "type": "string",
+                                        "description": "New password"
+                                    },
+                                    "newPasswordConfirmation": {
+                                        "type": "string",
+                                        "description": "New password confirmation"
+                                    }
+                                },
+                                "required": ["oldPassword","newPassword","newPasswordConfirmation"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Password edited successfuly",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        }
+                                    },
+                                    "required": [
+                                        "errorMessage"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/places-wish-list/update": {
+            "post": {
+                "summary": "Add a place in the user wish list",
+                "description": "Add a place in the user wish list",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "callbackDatas": {
+                                        "type": "object",
+                                        "description": "The received place's callback datas"
+                                    }
+                                },
+                                "required": ["callbackDatas"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Add success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "description": "Error message on error"
+                                        }
+                                    },
+                                    "required": ["errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Delete a place in the user wish list",
+                "description": "Delete a place in the user wish list",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "callbackDatas": {
+                                        "type": "object",
+                                        "description": "The received place's callback datas"
+                                    }
+                                },
+                                "required": ["callbackDatas"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Deletion success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "description": "Error message on error"
+                                        }
+                                    },
+                                    "required": ["errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/recommandations/not-auth": {
+            "post": {
+                "summary": "Provide recommandations for unauthenticated user",
+                "description": "Provide recommandations for unauthenticated user",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "paging": {
+                                        "type": "number",
+                                        "description": "Pagination number"
+                                    },
+                                    "userLocation": {
+                                        "type": "object",
+                                        "properties": {
+                                            "longitude": {
+                                                "type": "string",
+                                                "description": "Longitude"
+                                            },
+                                            "latitude": {
+                                                "type": "string",
+                                                "description": "Latitude"
+                                            }
+                                        },
+                                        "required": ["longitude","latitude"]
+                                    },
+                                    "userSearches": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "search": {
+                                                    "type": "string",
+                                                    "description": "Search string" 
+                                                },
+                                                "frequency": {
+                                                    "type": "number",
+                                                    "description": "Count of times the same search were made"
+                                                }
+                                            },
+                                            "required": ["search","frequency"]
+                                        }
+                                    }
+                                },
+                                "required": ["paging","userLocation","userSearches"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Recommendations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/placeDatas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/recommandations/auth": {
+            "post": {
+                "summary": "Provide recommandations for an authenticated user",
+                "description": "Provide recommandations for an authenticated user",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "paging": {
+                                        "type": "number",
+                                        "description": "Pagination number"
+                                    },
+                                    "userLocation": {
+                                        "type": "object",
+                                        "properties": {
+                                            "longitude": {
+                                                "type": "string",
+                                                "description": "Longitude"
+                                            },
+                                            "latitude": {
+                                                "type": "string",
+                                                "description": "Latitude"
+                                            }
+                                        },
+                                        "required": ["longitude","latitude"]
+                                    }
+                                },
+                                "required": ["paging","userLocation"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Recommendations",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/placeDatas"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/travel-routes/generate": {
+            "get": {
+                "summary": "Provide some generated travel routes",
+                "description": "Provide some generated travel routes",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    },
+                    {
+                        "name" : "startDate",
+                        "description": "Expected start date",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        } 
+                    },
+                    {
+                        "name" : "endDate",
+                        "description": "Expected end date",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        } 
+                    },
+                    {
+                        "name" : "budget",
+                        "description": "Available budget in euro",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "number"
+                        } 
+                    },
+                    {
+                        "name" : "zone",
+                        "description": "Country, City name",
+                        "required": true,
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        } 
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Generated travel routes",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "startDate": {
+                                                "type": "string",
+                                                "description": "Start date"
+                                            },
+                                            "endDate": {
+                                                "type": "string",
+                                                "description": "End date"
+                                            },
+                                            "budget": {
+                                                "type": "number",
+                                                "description": "Budget"
+                                            },
+                                            "proposals": {
+                                                "type": "array",
+                                                "items": {
+                                                    "$ref": "#/components/schemas/placeDatas"
+                                                }
+                                            },
+                                            "callbackDatas": {
+                                                "type": "object",
+                                                "description": "Callback data's to provide on every requests"
+                                            }
+                                        },
+                                        "required": ["callbackDatas","proposals","budget","endDate","startDate"]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "Register generated travel routes",
+                "description": "Register generated travel routes",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/authenticationToken"
+                    },
+                    {
+                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "travelRoutes": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "description": "Travel route received callback data's"
+                                        }
+                                    }
+                                },
+                                "required": ["travelRoutes"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registration confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "errorMessage": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message or null on error"
+                                        }
+                                    },
+                                    "required": ["errorMessage"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "voluptuariaAccessConfig" : {
+                "name": "voluptuariaAccessConfig",
+                "in": "header",
+                "description": "Voluptuaria api access configuration",
+                "allowEmptyValue": false,
+                "required": true,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "token" : {
+                            "type": "string",
+                            "description": "Encrypted token"
+                        },
+                        "iv" : {
+                            "type" : "string",
+                            "description": "Ecnryption iv"
+                        }
+                    },
+                    "required": ["token","iv"]
+                }
+            },
+            "authenticationToken" : {
+                "name" : "authenticationToken",
+                "in" : "header",
+                "description": "Authentication token",
+                "allowEmptyValue": false,
+                "required": true,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "notRequiredAuthenticationToken" : {
+                "name" : "authenticationToken",
+                "in" : "header",
+                "description": "Authentication token",
+                "allowEmptyValue": false,
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "lang" : {
+                "name": "lang",
+                "in" : "header",
+                "description": " Name of the lang file",
+                "required": true,
+                "schema": {
+                  "type": "string"
+                }
+            }
+        },
+        "schemas": {
+            "comments" : {
+                "type": "object",
+                "properties": {
+                    "userDatas" : {
+                        "type": "object",
+                        "nullable": true,
+                        "properties": {
+                            "profilePictureLink" : {
+                                "type": "string",
+                                "description": "User profile picture link"
+                            },
+                            "fullname": {
+                                "type": "string",
+                                "description": "User fullname"
+                            }
+                        },
+                        "required": ["profilePictureLink","fullname"]
+                    },
+                    "comment" : {
+                        "type": "string",
+                        "description": "Comment string"
+                    },
+                    "rating" : {
+                        "type": "number",
+                        "description": "Rating as count of stars"
+                    },
+                    "wroteAt": {
+                        "type": "string",
+                        "description": "Comment writing date"
+                    }
+                },
+                "required": ["comment","rating","wroteAt","userDatas"]
+            },
+            "placeDatas" : {
+                "type": "object",
+                "properties": {
+                    "prices": {
+                        "type": "array",
+                        "description": "Prices",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "price": {
+                                    "type": "number",
+                                    "description": "Price value"
+                                },
+                                "currency": {
+                                    "type": "string",
+                                    "description": "Price currency"
+                                }
+                            },
+                            "required": ["price","currency"]
+                        }
+                    },
+                    "name" : {
+                        "type": "string",
+                        "description": "Place name"
+                    },
+                    "isOpenedNow": {
+                        "type": "boolean",
+                        "description": "Boolean indicated if the place is openened at the moment of the request"
+                    },
+                    "images" : {
+                        "type": "array",
+                        "description": "Place images links",
+                        "items": {
+                            "type": "string",
+                            "description": "Image url"
+                        }
+                    },
+                    "coordinates": {
+                        "type": "object",
+                        "properties": {
+                            "latitude": {
+                                "type": "string",
+                                "description": "Location latitude"
+                            },
+                            "longitude": {
+                                "type": "string",
+                                "description": "Location longitude"
+                            },
+                            "fullAddress": {
+                                "type": "string",
+                                "description": "Location full address"
+                            }
+                        },
+                        "required": ["longitude","latitude","fullAddress"]
+                    },
+                    "categories" : {
+                        "type": "array",
+                        "description": "Elements categories from the registered categories on the applications",
+                        "items": {
+                            "type": "string",
+                            "description": "Category name"
+                        }
+                    },
+                    "callbackDatas" : {
+                        "type": "object",
+                        "description": "Object to return if the place need to be recognized in another request"
+                    },
+                    "comments" : {
+                        "type": "array",
+                        "description": "Comments on the place, mix between application comments and google maps comments",
+                        "items": {
+                            "$ref" : "#/components/schemas/comments"
+                        }
+                    },
+                    "weather" : {
+                        "$ref" : "#/components/schemas/weather"
+                    }
+                },
+                "required": ["prices","name","isOpenedNow","images","coordinates","categories","callbackDatas","comments","weather"]
+            },
+            "travelRoutes" : {
+                "type" : "object",
+                "description": "Travel route data's",
+                "properties": {
+                    "startDate" : {
+                        "type": "string",
+                        "description": "Travel route start date"
+                    },
+                    "endDate" : {
+                        "type": "string",
+                        "description": "Travel route end date"
+                    },
+                    "budget" : {
+                        "type": "number",
+                        "description": "Budget in euro"
+                    },
+                    "places" : {
+                        "description": "Places to visit",
+                        "type": "array",
+                        "items": {
+                            "$ref" : "#/components/schemas/placeDatas"
+                        }
+                    },
+                    "callbackDatas" : {
+                        "type": "object",
+                        "description": "Data to provide to if the travel route need to be recognized in another request"
+                    }
+                },
+                "required": ["startDate","endDate","places"]
+            },
+            "weather" : {
+                "description": "A zone weather data's",
+                "type": "object",
+                "properties": {
+                    "coordinates" : {
+                        "type": "object",
+                        "properties": {
+                            "latitude" : {
+                                "type": "string",
+                                "description": "Latitude"
+                            },
+                            "longitude": {
+                                "type": "string",
+                                "description": "Longitude"
+                            }
+                        },
+                        "required": ["latitude","longitude"]
+                    },
+                    "forecast" : {
+                        "type": "object",
+                        "properties": {
+                            "date" : {
+                                "type": "string",
+                                "description": "Values date"
+                            },
+                            "temperature": {
+                                "type": "object",
+                                "description": "Temperature data's",
+                                "properties": {
+                                    "temperature": {
+                                        "type": "string",
+                                        "description": "Temperature value"
+                                    },
+                                    "feltTemperature" : {
+                                        "type": "string",
+                                        "description": "Felt temperature value"
+                                    },
+                                    "measureUnit": {
+                                        "type": "string",
+                                        "description": "Temperature used measure unit"
+                                    }
+                                },
+                                "required": ["temperature","feltTemperature","measureUnit"]
+                            },
+                            "name" : {
+                                "type": "string",
+                                "description": "Associated name"
+                            },
+                            "sunrise": {
+                                "type": "string",
+                                "description": "Sunrise time"
+                            },
+                            "pressure": {
+                                "type": "object",
+                                "properties": {
+                                    "pressure": {
+                                        "type": "string",
+                                        "description": "Pressure value"
+                                    },
+                                    "measureUnit": {
+                                        "type": "string",
+                                        "description": "Pressure measure unit"
+                                    }
+                                },
+                                "required": ["pressure","measureUnit"],
+                                "nullable": true
+                            },
+                            "placeDescription" : {
+                                "type": "string",
+                                "description": "Place description"
+                            },
+                            "alert": {
+                                "type": "string",
+                                "description": "Alert description",
+                                "nullable": true
+                            }
+                        },
+                        "required": ["date","temperature","name","sunrise","pressure","placeDescription","alert"]
+                    },
+                    "pressure" : {
+                        "type": "object",
+                        "properties": {
+                            "pressure": {
+                                "type": "string",
+                                "description": "Pressure value"
+                            },
+                            "measureUnit": {
+                                "type": "string",
+                                "description": "Pressure measure unit"
+                            }
+                        },
+                        "required": ["pressure","measureUnit"]
+                    },
+                    "temperature": {
+                        "type": "object",
+                        "properties": {
+                            "temperature": {
+                                "type": "string",
+                                "description": "Temperature value"
+                            },
+                            "feltTemperature" : {
+                                "type": "string",
+                                "description": "Felt temperature value"
+                            },
+                            "measureUnit": {
+                                "type": "string",
+                                "description": "Temperature used measure unit"
+                            }
+                        },
+                        "required": ["temperature","feltTemperature","measureUnit"]
+                    }
+                },
+                "required": ["coordinates","forecast","pressure","temperature"]
+            }
+        }
+    }
+}

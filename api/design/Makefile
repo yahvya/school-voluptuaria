@@ -1,6 +1,6 @@
 # vars
 BUNDLE_FILE=./specification-bundle/bundle.json
-SPECIFICATION_BASE_FILE=./spefication-redaction/specification.json
+SPECIFICATION_BASE_FILE=./specification-redaction/specifications.json
 SPECIFICATION_HTML_PATH=../specification/html
 SPECIFICATION_POSTMAN_PATH=../specification/postman
 
