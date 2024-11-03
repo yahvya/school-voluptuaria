@@ -8,6 +8,7 @@ import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { EncryptService } from "../../app-security/services/encrypt.service"
+import { UserPayloadDatas } from "src/modules/app-security/data-contracts/user-payload.datas"
 
 /**
  * @brief Login service
@@ -58,21 +59,11 @@ export class UserLoginService {
     }
 
     /**
-     * @todo dont forget to remove this method
-     */
-    public test(): Promise<{ encryptionResult: string; iv: string }> {
-        return this.encryptService.encrypt({
-            toEncrypt: this.configService.getOrThrow("API_SECRET"),
-            secretKey: this.configService.getOrThrow("API_TOKEN_SECRET"),
-        })
-    }
-
-    /**
      * @brief generate the login token
      * @param payload datas
      * @returns {string} the token
      */
-    generateToken(payload: any): string {
+    generateToken(payload: UserPayloadDatas): string {
         return this.jwtService.sign(payload, {
             secret: this.configService.getOrThrow("JWT_SECRET"),
         })
@@ -81,11 +72,11 @@ export class UserLoginService {
     /**
      * @brief verify a token
      * @param token token
-     * @returns {any} service verification
+     * @returns {UserPayloadDatas} service verification
      */
-    validateToken(token: string): any {
+    validateToken(token: string): UserPayloadDatas {
         try {
-            return this.jwtService.verify(token)
+            return this.jwtService.verify<UserPayloadDatas>(token)
         } catch (error) {
             return null
         }

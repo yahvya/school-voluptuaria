@@ -214,8 +214,8 @@ font-style: italic;
   <li><a href="#userProfilePost"><code><span class="http-method">post</span> /user/profile</code></a></li>
   <li><a href="#userRecommandationsAuthPost"><code><span class="http-method">post</span> /user/recommandations/auth</code></a></li>
   <li><a href="#userRecommandationsNotAuthPost"><code><span class="http-method">post</span> /user/recommandations/not-auth</code></a></li>
-  <li><a href="#userTravelRoutesGenerateGet"><code><span class="http-method">get</span> /user/travel-routes/generate</code></a></li>
-  <li><a href="#userTravelRoutesGeneratePost"><code><span class="http-method">post</span> /user/travel-routes/generate</code></a></li>
+  <li><a href="#userTravelRoutesGenerateGet"><code><span class="http-method">get</span> /user/travel_routes/generate</code></a></li>
+  <li><a href="#userTravelRoutesGeneratePost"><code><span class="http-method">post</span> /user/travel_routes/generate</code></a></li>
   </ul>
 
   <h1><a name="Default">Default</a></h1>
@@ -243,7 +243,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -262,8 +262,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage",
-  "authenticationToken" : "authenticationToken"
+  "error_message" : "error_message",
+  "authentication_token" : "authentication_token"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -306,7 +306,7 @@ font-style: italic;
       <div class="param">lang (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Name of the lang file default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -325,9 +325,9 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "confirmationCode" : "confirmationCode",
-  "encryptionIv" : "encryptionIv",
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message",
+  "confirmation_code" : "confirmation_code",
+  "encryption_iv" : "encryption_iv"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -367,7 +367,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -386,8 +386,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage",
-  "authenticationToken" : "authenticationToken"
+  "error_message" : "error_message",
+  "authentication_token" : "authentication_token"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -415,7 +415,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -425,7 +425,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">paging (required)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination number default: null </div><div class="param">callbackDatas (required)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Pagination number default: null </div><div class="param">callback_datas (required)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Place callback data's default: null </div>
     </div>  <!-- field-items -->
@@ -442,20 +442,20 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
-  "rating" : 6.027456183070403,
-  "wroteAt" : "wroteAt",
-  "userDatas" : {
-    "fullname" : "fullname",
-    "profilePictureLink" : "profilePictureLink"
+  "user_datas" : {
+    "profile_picture_link" : "profile_picture_link",
+    "fullname" : "fullname"
   },
+  "wrote_at" : "wrote_at",
+  "rating" : 6.027456183070403,
   "comment" : "comment"
 }, {
-  "rating" : 6.027456183070403,
-  "wroteAt" : "wroteAt",
-  "userDatas" : {
-    "fullname" : "fullname",
-    "profilePictureLink" : "profilePictureLink"
+  "user_datas" : {
+    "profile_picture_link" : "profile_picture_link",
+    "fullname" : "fullname"
   },
+  "wrote_at" : "wrote_at",
+  "rating" : 6.027456183070403,
   "comment" : "comment"
 } ]</code></pre>
 
@@ -496,10 +496,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
-<div class="param">authenticationToken (required)</div>
+<div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
 
@@ -518,7 +518,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -558,10 +558,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
-<div class="param">authenticationToken (required)</div>
+<div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
 
@@ -580,7 +580,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -620,7 +620,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -639,7 +639,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage",
+  "error_message" : "error_message",
   "link" : "link"
 }</code></pre>
 
@@ -683,7 +683,7 @@ font-style: italic;
       <div class="param">lang (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Name of the lang file default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -702,8 +702,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage",
-  "authenticationToken" : "authenticationToken"
+  "error_message" : "error_message",
+  "authentication_token" : "authentication_token"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -746,7 +746,7 @@ font-style: italic;
       <div class="param">lang (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Name of the lang file default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -765,8 +765,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "confirmationCode" : "confirmationCode",
-  "errorMessage" : "errorMessage",
+  "error_message" : "error_message",
+  "confirmation_code" : "confirmation_code",
   "iv" : "iv"
 }</code></pre>
 
@@ -795,7 +795,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -805,7 +805,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">search (required)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Search string default: null </div><div class="param">minRating (required)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Search string default: null </div><div class="param">min_rating (required)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Minimum rating for on the place default: null </div>
     </div>  <!-- field-items -->
@@ -823,26 +823,26 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -854,29 +854,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -889,26 +889,26 @@ font-style: italic;
   } ]
 }, {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -920,29 +920,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -992,10 +992,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -1014,7 +1014,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1042,10 +1042,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
-<div class="param">authenticationToken (required)</div>
+<div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
 
@@ -1053,7 +1053,7 @@ font-style: italic;
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">toFetch (required)</div>
+      <div class="param">to_fetch (required)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Data's to fetch default: null </div>
     </div>  <!-- field-items -->
@@ -1070,39 +1070,40 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "identityDatas" : {
+  "identity_datas" : {
     "firstname" : "firstname",
     "birthdate" : "birthdate",
     "accountCreationDate" : "accountCreationDate",
     "gender" : 0.8008281904610115,
+    "profile_picture_link" : "profile_picture_link",
     "name" : "name",
     "phonenumber" : "phonenumber",
-    "id" : "id",
-    "profilePictureLink" : "profilePictureLink"
+    "id" : "id"
   },
-  "travelRoutes" : [ {
+  "travel_routes" : [ {
+    "end_date" : "end_date",
     "places" : [ {
       "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
       "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1114,29 +1115,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1149,26 +1150,26 @@ font-style: italic;
       } ]
     }, {
       "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
       "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1180,29 +1181,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1214,33 +1215,33 @@ font-style: italic;
         "currency" : "currency"
       } ]
     } ],
-    "endDate" : "endDate",
-    "callbackDatas" : "{}",
-    "startDate" : "startDate",
+    "callback_datas" : "{}",
+    "start_date" : "start_date",
     "budget" : 6.027456183070403
   }, {
+    "end_date" : "end_date",
     "places" : [ {
       "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
       "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1252,29 +1253,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1287,26 +1288,26 @@ font-style: italic;
       } ]
     }, {
       "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
       "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1318,29 +1319,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1352,34 +1353,166 @@ font-style: italic;
         "currency" : "currency"
       } ]
     } ],
-    "endDate" : "endDate",
-    "callbackDatas" : "{}",
-    "startDate" : "startDate",
+    "callback_datas" : "{}",
+    "start_date" : "start_date",
     "budget" : 6.027456183070403
   } ],
-  "visitedPlaces" : [ {
-    "placeDatas" : {
-      "images" : [ "images", "images" ],
-      "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+  "place_wish_list" : [ {
+    "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
+    "comments" : [ {
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
+      },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
+      "comment" : "comment"
+    }, {
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
+      },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
+      "comment" : "comment"
+    } ],
+    "name" : "name",
+    "is_opened_now" : true,
+    "coordinates" : {
+      "latitude" : "latitude",
+      "fullAddress" : "fullAddress",
+      "longitude" : "longitude"
+    },
+    "weather" : {
+      "coordinates" : {
+        "latitude" : "latitude",
+        "longitude" : "longitude"
+      },
+      "temperature" : {
+        "felt_temperature" : "felt_temperature",
+        "temperature" : "temperature",
+        "measure_unit" : "measure_unit"
+      },
+      "forecast" : {
+        "date" : "date",
+        "sunrise" : "sunrise",
+        "place_description" : "place_description",
+        "alert" : "alert",
+        "temperature" : {
+          "felt_temperature" : "felt_temperature",
+          "temperature" : "temperature",
+          "measure_unit" : "measure_unit"
         },
+        "name" : "name",
+        "pressure" : {
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
+        }
+      },
+      "pressure" : {
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
+      }
+    },
+    "categories" : [ "categories", "categories" ],
+    "prices" : [ {
+      "price" : 0.8008281904610115,
+      "currency" : "currency"
+    }, {
+      "price" : 0.8008281904610115,
+      "currency" : "currency"
+    } ]
+  }, {
+    "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
+    "comments" : [ {
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
+      },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
+      "comment" : "comment"
+    }, {
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
+      },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
+      "comment" : "comment"
+    } ],
+    "name" : "name",
+    "is_opened_now" : true,
+    "coordinates" : {
+      "latitude" : "latitude",
+      "fullAddress" : "fullAddress",
+      "longitude" : "longitude"
+    },
+    "weather" : {
+      "coordinates" : {
+        "latitude" : "latitude",
+        "longitude" : "longitude"
+      },
+      "temperature" : {
+        "felt_temperature" : "felt_temperature",
+        "temperature" : "temperature",
+        "measure_unit" : "measure_unit"
+      },
+      "forecast" : {
+        "date" : "date",
+        "sunrise" : "sunrise",
+        "place_description" : "place_description",
+        "alert" : "alert",
+        "temperature" : {
+          "felt_temperature" : "felt_temperature",
+          "temperature" : "temperature",
+          "measure_unit" : "measure_unit"
+        },
+        "name" : "name",
+        "pressure" : {
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
+        }
+      },
+      "pressure" : {
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
+      }
+    },
+    "categories" : [ "categories", "categories" ],
+    "prices" : [ {
+      "price" : 0.8008281904610115,
+      "currency" : "currency"
+    }, {
+      "price" : 0.8008281904610115,
+      "currency" : "currency"
+    } ]
+  } ],
+  "visited_places" : [ {
+    "place_datas" : {
+      "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
+      "comments" : [ {
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
+        },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1391,29 +1524,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1427,28 +1560,28 @@ font-style: italic;
     },
     "visitedAt" : "visitedAt"
   }, {
-    "placeDatas" : {
+    "place_datas" : {
       "images" : [ "images", "images" ],
+      "callback_datas" : "{}",
       "comments" : [ {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       }, {
-        "rating" : 6.027456183070403,
-        "wroteAt" : "wroteAt",
-        "userDatas" : {
-          "fullname" : "fullname",
-          "profilePictureLink" : "profilePictureLink"
+        "user_datas" : {
+          "profile_picture_link" : "profile_picture_link",
+          "fullname" : "fullname"
         },
+        "wrote_at" : "wrote_at",
+        "rating" : 6.027456183070403,
         "comment" : "comment"
       } ],
-      "isOpenedNow" : true,
-      "callbackDatas" : "{}",
       "name" : "name",
+      "is_opened_now" : true,
       "coordinates" : {
         "latitude" : "latitude",
         "fullAddress" : "fullAddress",
@@ -1460,29 +1593,29 @@ font-style: italic;
           "longitude" : "longitude"
         },
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "forecast" : {
           "date" : "date",
           "sunrise" : "sunrise",
+          "place_description" : "place_description",
           "alert" : "alert",
           "temperature" : {
-            "feltTemperature" : "feltTemperature",
+            "felt_temperature" : "felt_temperature",
             "temperature" : "temperature",
-            "measureUnit" : "measureUnit"
+            "measure_unit" : "measure_unit"
           },
           "name" : "name",
-          "placeDescription" : "placeDescription",
           "pressure" : {
-            "measureUnit" : "measureUnit",
-            "pressure" : "pressure"
+            "pressure" : "pressure",
+            "measure_unit" : "measure_unit"
           }
         },
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "categories" : [ "categories", "categories" ],
@@ -1495,139 +1628,6 @@ font-style: italic;
       } ]
     },
     "visitedAt" : "visitedAt"
-  } ],
-  "placeWishList" : [ {
-    "images" : [ "images", "images" ],
-    "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
-      },
-      "comment" : "comment"
-    }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
-      },
-      "comment" : "comment"
-    } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
-    "name" : "name",
-    "coordinates" : {
-      "latitude" : "latitude",
-      "fullAddress" : "fullAddress",
-      "longitude" : "longitude"
-    },
-    "weather" : {
-      "coordinates" : {
-        "latitude" : "latitude",
-        "longitude" : "longitude"
-      },
-      "temperature" : {
-        "feltTemperature" : "feltTemperature",
-        "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
-      },
-      "forecast" : {
-        "date" : "date",
-        "sunrise" : "sunrise",
-        "alert" : "alert",
-        "temperature" : {
-          "feltTemperature" : "feltTemperature",
-          "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
-        },
-        "name" : "name",
-        "placeDescription" : "placeDescription",
-        "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
-        }
-      },
-      "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
-      }
-    },
-    "categories" : [ "categories", "categories" ],
-    "prices" : [ {
-      "price" : 0.8008281904610115,
-      "currency" : "currency"
-    }, {
-      "price" : 0.8008281904610115,
-      "currency" : "currency"
-    } ]
-  }, {
-    "images" : [ "images", "images" ],
-    "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
-      },
-      "comment" : "comment"
-    }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
-      },
-      "comment" : "comment"
-    } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
-    "name" : "name",
-    "coordinates" : {
-      "latitude" : "latitude",
-      "fullAddress" : "fullAddress",
-      "longitude" : "longitude"
-    },
-    "weather" : {
-      "coordinates" : {
-        "latitude" : "latitude",
-        "longitude" : "longitude"
-      },
-      "temperature" : {
-        "feltTemperature" : "feltTemperature",
-        "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
-      },
-      "forecast" : {
-        "date" : "date",
-        "sunrise" : "sunrise",
-        "alert" : "alert",
-        "temperature" : {
-          "feltTemperature" : "feltTemperature",
-          "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
-        },
-        "name" : "name",
-        "placeDescription" : "placeDescription",
-        "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
-        }
-      },
-      "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
-      }
-    },
-    "categories" : [ "categories", "categories" ],
-    "prices" : [ {
-      "price" : 0.8008281904610115,
-      "currency" : "currency"
-    }, {
-      "price" : 0.8008281904610115,
-      "currency" : "currency"
-    } ]
   } ]
 }</code></pre>
 
@@ -1668,10 +1668,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -1690,7 +1690,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1730,10 +1730,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -1752,7 +1752,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1792,10 +1792,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -1814,8 +1814,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "imageUrl" : "imageUrl",
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message",
+  "imageUrl" : "imageUrl"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1855,10 +1855,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
-<div class="param">authenticationToken (required)</div>
+<div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
 
@@ -1877,8 +1877,8 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage",
-  "authenticationToken" : "authenticationToken"
+  "error_message" : "error_message",
+  "authentication_token" : "authentication_token"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -1918,10 +1918,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
-<div class="param">authenticationToken (required)</div>
+<div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
 
@@ -1941,26 +1941,26 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -1972,29 +1972,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -2007,26 +2007,26 @@ font-style: italic;
   } ]
 }, {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -2038,29 +2038,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -2110,7 +2110,7 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">voluptuariaAccessConfig (required)</div>
+      <div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -2130,26 +2130,26 @@ font-style: italic;
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -2161,29 +2161,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -2196,26 +2196,26 @@ font-style: italic;
   } ]
 }, {
   "images" : [ "images", "images" ],
+  "callback_datas" : "{}",
   "comments" : [ {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   }, {
-    "rating" : 6.027456183070403,
-    "wroteAt" : "wroteAt",
-    "userDatas" : {
-      "fullname" : "fullname",
-      "profilePictureLink" : "profilePictureLink"
+    "user_datas" : {
+      "profile_picture_link" : "profile_picture_link",
+      "fullname" : "fullname"
     },
+    "wrote_at" : "wrote_at",
+    "rating" : 6.027456183070403,
     "comment" : "comment"
   } ],
-  "isOpenedNow" : true,
-  "callbackDatas" : "{}",
   "name" : "name",
+  "is_opened_now" : true,
   "coordinates" : {
     "latitude" : "latitude",
     "fullAddress" : "fullAddress",
@@ -2227,29 +2227,29 @@ font-style: italic;
       "longitude" : "longitude"
     },
     "temperature" : {
-      "feltTemperature" : "feltTemperature",
+      "felt_temperature" : "felt_temperature",
       "temperature" : "temperature",
-      "measureUnit" : "measureUnit"
+      "measure_unit" : "measure_unit"
     },
     "forecast" : {
       "date" : "date",
       "sunrise" : "sunrise",
+      "place_description" : "place_description",
       "alert" : "alert",
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "name" : "name",
-      "placeDescription" : "placeDescription",
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "pressure" : {
-      "measureUnit" : "measureUnit",
-      "pressure" : "pressure"
+      "pressure" : "pressure",
+      "measure_unit" : "measure_unit"
     }
   },
   "categories" : [ "categories", "categories" ],
@@ -2278,7 +2278,7 @@ font-style: italic;
   <div class="method"><a name="userTravelRoutesGenerateGet"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/travel-routes/generate</code></pre></div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /user/travel_routes/generate</code></pre></div>
     <div class="method-summary">Provide some generated travel routes (<span class="nickname">userTravelRoutesGenerateGet</span>)</div>
     <div class="method-notes">Provide some generated travel routes</div>
 
@@ -2287,10 +2287,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -2298,9 +2298,9 @@ font-style: italic;
 
     <h3 class="field-label">Query parameters</h3>
     <div class="field-items">
-      <div class="param">startDate (required)</div>
+      <div class="param">start_date (required)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Expected start date default: null </div><div class="param">endDate (required)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Expected start date default: null </div><div class="param">end_date (required)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Expected end date default: null </div><div class="param">budget (required)</div>
 
@@ -2321,30 +2321,30 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>[ {
-  "endDate" : "endDate",
-  "callbackDatas" : "{}",
+  "end_date" : "end_date",
+  "callback_datas" : "{}",
   "proposals" : [ {
     "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
     "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
     "name" : "name",
+    "is_opened_now" : true,
     "coordinates" : {
       "latitude" : "latitude",
       "fullAddress" : "fullAddress",
@@ -2356,29 +2356,29 @@ font-style: italic;
         "longitude" : "longitude"
       },
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "forecast" : {
         "date" : "date",
         "sunrise" : "sunrise",
+        "place_description" : "place_description",
         "alert" : "alert",
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "name" : "name",
-        "placeDescription" : "placeDescription",
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "categories" : [ "categories", "categories" ],
@@ -2391,26 +2391,26 @@ font-style: italic;
     } ]
   }, {
     "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
     "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
     "name" : "name",
+    "is_opened_now" : true,
     "coordinates" : {
       "latitude" : "latitude",
       "fullAddress" : "fullAddress",
@@ -2422,29 +2422,29 @@ font-style: italic;
         "longitude" : "longitude"
       },
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "forecast" : {
         "date" : "date",
         "sunrise" : "sunrise",
+        "place_description" : "place_description",
         "alert" : "alert",
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "name" : "name",
-        "placeDescription" : "placeDescription",
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "categories" : [ "categories", "categories" ],
@@ -2456,33 +2456,33 @@ font-style: italic;
       "currency" : "currency"
     } ]
   } ],
-  "startDate" : "startDate",
+  "start_date" : "start_date",
   "budget" : 0.8008281904610115
 }, {
-  "endDate" : "endDate",
-  "callbackDatas" : "{}",
+  "end_date" : "end_date",
+  "callback_datas" : "{}",
   "proposals" : [ {
     "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
     "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
     "name" : "name",
+    "is_opened_now" : true,
     "coordinates" : {
       "latitude" : "latitude",
       "fullAddress" : "fullAddress",
@@ -2494,29 +2494,29 @@ font-style: italic;
         "longitude" : "longitude"
       },
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "forecast" : {
         "date" : "date",
         "sunrise" : "sunrise",
+        "place_description" : "place_description",
         "alert" : "alert",
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "name" : "name",
-        "placeDescription" : "placeDescription",
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "categories" : [ "categories", "categories" ],
@@ -2529,26 +2529,26 @@ font-style: italic;
     } ]
   }, {
     "images" : [ "images", "images" ],
+    "callback_datas" : "{}",
     "comments" : [ {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     }, {
-      "rating" : 6.027456183070403,
-      "wroteAt" : "wroteAt",
-      "userDatas" : {
-        "fullname" : "fullname",
-        "profilePictureLink" : "profilePictureLink"
+      "user_datas" : {
+        "profile_picture_link" : "profile_picture_link",
+        "fullname" : "fullname"
       },
+      "wrote_at" : "wrote_at",
+      "rating" : 6.027456183070403,
       "comment" : "comment"
     } ],
-    "isOpenedNow" : true,
-    "callbackDatas" : "{}",
     "name" : "name",
+    "is_opened_now" : true,
     "coordinates" : {
       "latitude" : "latitude",
       "fullAddress" : "fullAddress",
@@ -2560,29 +2560,29 @@ font-style: italic;
         "longitude" : "longitude"
       },
       "temperature" : {
-        "feltTemperature" : "feltTemperature",
+        "felt_temperature" : "felt_temperature",
         "temperature" : "temperature",
-        "measureUnit" : "measureUnit"
+        "measure_unit" : "measure_unit"
       },
       "forecast" : {
         "date" : "date",
         "sunrise" : "sunrise",
+        "place_description" : "place_description",
         "alert" : "alert",
         "temperature" : {
-          "feltTemperature" : "feltTemperature",
+          "felt_temperature" : "felt_temperature",
           "temperature" : "temperature",
-          "measureUnit" : "measureUnit"
+          "measure_unit" : "measure_unit"
         },
         "name" : "name",
-        "placeDescription" : "placeDescription",
         "pressure" : {
-          "measureUnit" : "measureUnit",
-          "pressure" : "pressure"
+          "pressure" : "pressure",
+          "measure_unit" : "measure_unit"
         }
       },
       "pressure" : {
-        "measureUnit" : "measureUnit",
-        "pressure" : "pressure"
+        "pressure" : "pressure",
+        "measure_unit" : "measure_unit"
       }
     },
     "categories" : [ "categories", "categories" ],
@@ -2594,7 +2594,7 @@ font-style: italic;
       "currency" : "currency"
     } ]
   } ],
-  "startDate" : "startDate",
+  "start_date" : "start_date",
   "budget" : 0.8008281904610115
 } ]</code></pre>
 
@@ -2614,7 +2614,7 @@ font-style: italic;
   <div class="method"><a name="userTravelRoutesGeneratePost"/>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /user/travel-routes/generate</code></pre></div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /user/travel_routes/generate</code></pre></div>
     <div class="method-summary">Register generated travel routes (<span class="nickname">userTravelRoutesGeneratePost</span>)</div>
     <div class="method-notes">Register generated travel routes</div>
 
@@ -2635,10 +2635,10 @@ font-style: italic;
 
     <h3 class="field-label">Request headers</h3>
     <div class="field-items">
-      <div class="param">authenticationToken (required)</div>
+      <div class="param">authentication_token (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Authentication token default: null </div>
-<div class="param">voluptuariaAccessConfig (required)</div>
+<div class="param">voluptuaria_access_config (required)</div>
 
       <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
 
@@ -2657,7 +2657,7 @@ font-style: italic;
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
-  "errorMessage" : "errorMessage"
+  "error_message" : "error_message"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -2696,7 +2696,7 @@ font-style: italic;
     <li><a href="#_register_voluptuaria_post_request"><code>_register_voluptuaria_post_request</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner"><code>_search_place_get_200_response_inner</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_comments_inner"><code>_search_place_get_200_response_inner_comments_inner</code> - </a></li>
-    <li><a href="#_search_place_get_200_response_inner_comments_inner_userDatas"><code>_search_place_get_200_response_inner_comments_inner_userDatas</code> - </a></li>
+    <li><a href="#_search_place_get_200_response_inner_comments_inner_user_datas"><code>_search_place_get_200_response_inner_comments_inner_user_datas</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_coordinates"><code>_search_place_get_200_response_inner_coordinates</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_prices_inner"><code>_search_place_get_200_response_inner_prices_inner</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_weather"><code>_search_place_get_200_response_inner_weather</code> - </a></li>
@@ -2706,12 +2706,12 @@ font-style: italic;
     <li><a href="#_search_place_get_200_response_inner_weather_forecast_temperature"><code>_search_place_get_200_response_inner_weather_forecast_temperature</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_weather_pressure"><code>_search_place_get_200_response_inner_weather_pressure</code> - </a></li>
     <li><a href="#_search_place_get_200_response_inner_weather_temperature"><code>_search_place_get_200_response_inner_weather_temperature</code> - </a></li>
-    <li><a href="#_search_place_get_voluptuariaAccessConfig_parameter"><code>_search_place_get_voluptuariaAccessConfig_parameter</code> - </a></li>
+    <li><a href="#_search_place_get_voluptuaria_access_config_parameter"><code>_search_place_get_voluptuaria_access_config_parameter</code> - </a></li>
     <li><a href="#_user_change_password_post_request"><code>_user_change_password_post_request</code> - </a></li>
     <li><a href="#_user_datas_get_200_response"><code>_user_datas_get_200_response</code> - </a></li>
-    <li><a href="#_user_datas_get_200_response_identityDatas"><code>_user_datas_get_200_response_identityDatas</code> - </a></li>
-    <li><a href="#_user_datas_get_200_response_travelRoutes_inner"><code>_user_datas_get_200_response_travelRoutes_inner</code> - </a></li>
-    <li><a href="#_user_datas_get_200_response_visitedPlaces_inner"><code>_user_datas_get_200_response_visitedPlaces_inner</code> - </a></li>
+    <li><a href="#_user_datas_get_200_response_identity_datas"><code>_user_datas_get_200_response_identity_datas</code> - </a></li>
+    <li><a href="#_user_datas_get_200_response_travel_routes_inner"><code>_user_datas_get_200_response_travel_routes_inner</code> - </a></li>
+    <li><a href="#_user_datas_get_200_response_visited_places_inner"><code>_user_datas_get_200_response_visited_places_inner</code> - </a></li>
     <li><a href="#_user_places_wish_list_update_post_200_response"><code>_user_places_wish_list_update_post_200_response</code> - </a></li>
     <li><a href="#_user_places_wish_list_update_post_request"><code>_user_places_wish_list_update_post_request</code> - </a></li>
     <li><a href="#_user_profile_image_post_200_response"><code>_user_profile_image_post_200_response</code> - </a></li>
@@ -2720,14 +2720,14 @@ font-style: italic;
     <li><a href="#_user_profile_post_request"><code>_user_profile_post_request</code> - </a></li>
     <li><a href="#_user_recommandations_auth_post_request"><code>_user_recommandations_auth_post_request</code> - </a></li>
     <li><a href="#_user_recommandations_not_auth_post_request"><code>_user_recommandations_not_auth_post_request</code> - </a></li>
-    <li><a href="#_user_recommandations_not_auth_post_request_userLocation"><code>_user_recommandations_not_auth_post_request_userLocation</code> - </a></li>
-    <li><a href="#_user_recommandations_not_auth_post_request_userSearches_inner"><code>_user_recommandations_not_auth_post_request_userSearches_inner</code> - </a></li>
+    <li><a href="#_user_recommandations_not_auth_post_request_user_location"><code>_user_recommandations_not_auth_post_request_user_location</code> - </a></li>
+    <li><a href="#_user_recommandations_not_auth_post_request_user_searches_inner"><code>_user_recommandations_not_auth_post_request_user_searches_inner</code> - </a></li>
     <li><a href="#_user_travel_routes_generate_get_200_response_inner"><code>_user_travel_routes_generate_get_200_response_inner</code> - </a></li>
     <li><a href="#_user_travel_routes_generate_post_200_response"><code>_user_travel_routes_generate_post_200_response</code> - </a></li>
     <li><a href="#_user_travel_routes_generate_post_request"><code>_user_travel_routes_generate_post_request</code> - </a></li>
     <li><a href="#comments"><code>comments</code> - </a></li>
-    <li><a href="#placeDatas"><code>placeDatas</code> - </a></li>
-    <li><a href="#travelRoutes"><code>travelRoutes</code> - </a></li>
+    <li><a href="#place_datas"><code>place_datas</code> - </a></li>
+    <li><a href="#travel_routes"><code>travel_routes</code> - </a></li>
     <li><a href="#weather"><code>weather</code> - </a></li>
   </ol>
 
@@ -2735,8 +2735,8 @@ font-style: italic;
     <h3><a name="_login_forgot_password_confirmaiton_post_200_response"><code>_login_forgot_password_confirmaiton_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
-<div class="param">authenticationToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New authentication token on success </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+<div class="param">authentication_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New authentication token on success </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2744,19 +2744,19 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">email </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User email </div>
-<div class="param">encryptedConfirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted confirmation code on success </div>
-<div class="param">encryptionIv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv on success in pair with confirmationCode </div>
-<div class="param">userConfirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The input confirmation code by user </div>
-<div class="param">newPassword </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User new password </div>
+<div class="param">encrypted_confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted confirmation code on success </div>
+<div class="param">encryption_iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv on success in pair with confirmation_code </div>
+<div class="param">user_confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The input confirmation code by user </div>
+<div class="param">new_password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User new password </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_login_forgot_password_post_200_response"><code>_login_forgot_password_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
-<div class="param">confirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted confirmation code on success </div>
-<div class="param">encryptionIv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv on success in pair with confirmationCode </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+<div class="param">confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted confirmation code on success </div>
+<div class="param">encryption_iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv on success in pair with confirmation_code </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2778,7 +2778,7 @@ font-style: italic;
     <h3><a name="_place_comments_post_200_response"><code>_place_comments_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The error message on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The error message on error </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2787,29 +2787,29 @@ font-style: italic;
     <div class="field-items">
       <div class="param">comment </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment text </div>
 <div class="param">rating </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Count of rating stars </div>
-<div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Place callback datas </div>
+<div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Place callback datas </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_place_like_status_post_200_response"><code>_place_like_status_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_place_like_status_post_request"><code>_place_like_status_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Place callback datas </div>
-<div class="param">likeState </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Like state. true to like or remove the previous like , false to dislike </div>
+      <div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Place callback datas </div>
+<div class="param">like_state </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Like state. true to like or remove the previous like , false to dislike </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_register_by_google_post_200_response"><code>_register_by_google_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
 <div class="param">link </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Redirection link to authenticate with google </div>
     </div>  <!-- field-items -->
   </div>
@@ -2817,15 +2817,15 @@ font-style: italic;
     <h3><a name="_register_by_google_post_request"><code>_register_by_google_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">redirectUrl </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The url to redirect on depends on the type of application. Have to be one of the registered urls </div>
+      <div class="param">redirect_url </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The url to redirect on depends on the type of application. Have to be one of the registered urls </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_register_confirmation_post_200_response"><code>_register_confirmation_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
-<div class="param">authenticationToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Authentication token </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+<div class="param">authentication_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Authentication token </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2836,17 +2836,17 @@ font-style: italic;
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User lastname </div>
 <div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User firstname </div>
 <div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User password </div>
-<div class="param">encryptedConfirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted code received on the initialization step </div>
-<div class="param">encryptionIv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv </div>
-<div class="param">userConfirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The user provided confirmation code </div>
+<div class="param">encrypted_confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted code received on the initialization step </div>
+<div class="param">encryption_iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv </div>
+<div class="param">user_confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The user provided confirmation code </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_register_voluptuaria_post_200_response"><code>_register_voluptuaria_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
-<div class="param">confirmationCode </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The encrypted confirmation code to send back on confirmation if success </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+<div class="param">confirmation_code </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The encrypted confirmation code to send back on confirmation if success </div>
 <div class="param">iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encryption iv to send back, in pair with the confirmation code if success </div>
     </div>  <!-- field-items -->
   </div>
@@ -2866,11 +2866,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">prices </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_prices_inner">array[_search_place_get_200_response_inner_prices_inner]</a></span> Prices </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Place name </div>
-<div class="param">isOpenedNow </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Boolean indicated if the place is openened at the moment of the request </div>
+<div class="param">is_opened_now </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Boolean indicated if the place is openened at the moment of the request </div>
 <div class="param">images </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> Place images links </div>
 <div class="param">coordinates </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_coordinates">_search_place_get_200_response_inner_coordinates</a></span>  </div>
 <div class="param">categories </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> Elements categories from the registered categories on the applications </div>
-<div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Object to return if the place need to be recognized in another request </div>
+<div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Object to return if the place need to be recognized in another request </div>
 <div class="param">comments </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner">array[_search_place_get_200_response_inner_comments_inner]</a></span> Comments on the place, mix between application comments and google maps comments </div>
 <div class="param">weather </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_weather">_search_place_get_200_response_inner_weather</a></span>  </div>
     </div>  <!-- field-items -->
@@ -2879,17 +2879,17 @@ font-style: italic;
     <h3><a name="_search_place_get_200_response_inner_comments_inner"><code>_search_place_get_200_response_inner_comments_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">userDatas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner_userDatas">_search_place_get_200_response_inner_comments_inner_userDatas</a></span>  </div>
+      <div class="param">user_datas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner_user_datas">_search_place_get_200_response_inner_comments_inner_user_datas</a></span>  </div>
 <div class="param">comment </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment string </div>
 <div class="param">rating </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Rating as count of stars </div>
-<div class="param">wroteAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment writing date </div>
+<div class="param">wrote_at </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment writing date </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_search_place_get_200_response_inner_comments_inner_userDatas"><code>_search_place_get_200_response_inner_comments_inner_userDatas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_search_place_get_200_response_inner_comments_inner_user_datas"><code>_search_place_get_200_response_inner_comments_inner_user_datas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">profilePictureLink </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User profile picture link </div>
+      <div class="param">profile_picture_link </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User profile picture link </div>
 <div class="param">fullname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User fullname </div>
     </div>  <!-- field-items -->
   </div>
@@ -2937,7 +2937,7 @@ font-style: italic;
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Associated name </div>
 <div class="param">sunrise </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Sunrise time </div>
 <div class="param">pressure </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_weather_forecast_pressure">_search_place_get_200_response_inner_weather_forecast_pressure</a></span>  </div>
-<div class="param">placeDescription </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Place description </div>
+<div class="param">place_description </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Place description </div>
 <div class="param">alert </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Alert description </div>
     </div>  <!-- field-items -->
   </div>
@@ -2946,7 +2946,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">pressure </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure value </div>
-<div class="param">measureUnit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure measure unit </div>
+<div class="param">measure_unit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure measure unit </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2954,8 +2954,8 @@ font-style: italic;
     <div class='model-description'>Temperature data's</div>
     <div class="field-items">
       <div class="param">temperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature value </div>
-<div class="param">feltTemperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Felt temperature value </div>
-<div class="param">measureUnit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature used measure unit </div>
+<div class="param">felt_temperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Felt temperature value </div>
+<div class="param">measure_unit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature used measure unit </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2963,7 +2963,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">pressure </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure value </div>
-<div class="param">measureUnit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure measure unit </div>
+<div class="param">measure_unit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Pressure measure unit </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -2971,12 +2971,12 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">temperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature value </div>
-<div class="param">feltTemperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Felt temperature value </div>
-<div class="param">measureUnit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature used measure unit </div>
+<div class="param">felt_temperature </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Felt temperature value </div>
+<div class="param">measure_unit </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Temperature used measure unit </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_search_place_get_voluptuariaAccessConfig_parameter"><code>_search_place_get_voluptuariaAccessConfig_parameter</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_search_place_get_voluptuaria_access_config_parameter"><code>_search_place_get_voluptuaria_access_config_parameter</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Encrypted token </div>
@@ -2987,23 +2987,23 @@ font-style: italic;
     <h3><a name="_user_change_password_post_request"><code>_user_change_password_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">oldPassword </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The old user password </div>
-<div class="param">newPassword </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New password </div>
-<div class="param">newPasswordConfirmation </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New password confirmation </div>
+      <div class="param">old_password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The old user password </div>
+<div class="param">new_password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New password </div>
+<div class="param">new_password_confirmation </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New password confirmation </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_user_datas_get_200_response"><code>_user_datas_get_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>The object will be indexed by the enumeration integer value and will contain as values the requested elements. Only the asked ones will be provided</div>
     <div class="field-items">
-      <div class="param">identityDatas </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_identityDatas">_user_datas_get_200_response_identityDatas</a></span>  </div>
-<div class="param">visitedPlaces </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_visitedPlaces_inner">array[_user_datas_get_200_response_visitedPlaces_inner]</a></span> User visited places </div>
-<div class="param">placeWishList </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">array[_search_place_get_200_response_inner]</a></span> User wanted places to visit </div>
-<div class="param">travelRoutes </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_travelRoutes_inner">array[_user_datas_get_200_response_travelRoutes_inner]</a></span> User registered travel routes </div>
+      <div class="param">identity_datas </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_identity_datas">_user_datas_get_200_response_identity_datas</a></span>  </div>
+<div class="param">visited_places </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_visited_places_inner">array[_user_datas_get_200_response_visited_places_inner]</a></span> User visited places </div>
+<div class="param">place_wish_list </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">array[_search_place_get_200_response_inner]</a></span> User wanted places to visit </div>
+<div class="param">travel_routes </div><div class="param-desc"><span class="param-type"><a href="#_user_datas_get_200_response_travel_routes_inner">array[_user_datas_get_200_response_travel_routes_inner]</a></span> User registered travel routes </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_user_datas_get_200_response_identityDatas"><code>_user_datas_get_200_response_identityDatas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_user_datas_get_200_response_identity_datas"><code>_user_datas_get_200_response_identity_datas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>User identity data's</div>
     <div class="field-items">
       <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User unique identifier </div>
@@ -3011,27 +3011,27 @@ font-style: italic;
 <div class="param">firstname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User last name </div>
 <div class="param">birthdate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User birthdate </div>
 <div class="param">phonenumber </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User phonenumber </div>
-<div class="param">profilePictureLink </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User profile picture access link </div>
+<div class="param">profile_picture_link </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User profile picture access link </div>
 <div class="param">accountCreationDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User account creation date </div>
 <div class="param">gender </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Enumeration as int for gender </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_user_datas_get_200_response_travelRoutes_inner"><code>_user_datas_get_200_response_travelRoutes_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_user_datas_get_200_response_travel_routes_inner"><code>_user_datas_get_200_response_travel_routes_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Travel route data's</div>
     <div class="field-items">
-      <div class="param">startDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route start date </div>
-<div class="param">endDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route end date </div>
+      <div class="param">start_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route start date </div>
+<div class="param">end_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route end date </div>
 <div class="param">budget (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Budget in euro </div>
 <div class="param">places </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">array[_search_place_get_200_response_inner]</a></span> Places to visit </div>
-<div class="param">callbackDatas (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Data to provide to if the travel route need to be recognized in another request </div>
+<div class="param">callback_datas (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Data to provide to if the travel route need to be recognized in another request </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_user_datas_get_200_response_visitedPlaces_inner"><code>_user_datas_get_200_response_visitedPlaces_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_user_datas_get_200_response_visited_places_inner"><code>_user_datas_get_200_response_visited_places_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">placeDatas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">_search_place_get_200_response_inner</a></span>  </div>
+      <div class="param">place_datas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">_search_place_get_200_response_inner</a></span>  </div>
 <div class="param">visitedAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Place visit time </div>
     </div>  <!-- field-items -->
   </div>
@@ -3039,21 +3039,21 @@ font-style: italic;
     <h3><a name="_user_places_wish_list_update_post_200_response"><code>_user_places_wish_list_update_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_user_places_wish_list_update_post_request"><code>_user_places_wish_list_update_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> The received place's callback datas </div>
+      <div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> The received place's callback datas </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_user_profile_image_post_200_response"><code>_user_profile_image_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
 <div class="param">imageUrl </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> The profile picture url on success </div>
     </div>  <!-- field-items -->
   </div>
@@ -3068,8 +3068,8 @@ font-style: italic;
     <h3><a name="_user_profile_post_200_response"><code>_user_profile_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
-<div class="param">authenticationToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New authentication token </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message on error </div>
+<div class="param">authentication_token </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> New authentication token </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3080,6 +3080,7 @@ font-style: italic;
 <div class="param">firstname (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User firstname </div>
 <div class="param">birthdate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User birthdate </div>
 <div class="param">phonenumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> User phonenumber </div>
+<div class="param">gender (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> User gender represented by shared enumeration value as int </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3087,7 +3088,7 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">paging </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Pagination number </div>
-<div class="param">userLocation </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_userLocation">_user_recommandations_not_auth_post_request_userLocation</a></span>  </div>
+<div class="param">user_location </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_user_location">_user_recommandations_not_auth_post_request_user_location</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -3095,12 +3096,12 @@ font-style: italic;
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">paging </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Pagination number </div>
-<div class="param">userLocation </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_userLocation">_user_recommandations_not_auth_post_request_userLocation</a></span>  </div>
-<div class="param">userSearches </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_userSearches_inner">array[_user_recommandations_not_auth_post_request_userSearches_inner]</a></span>  </div>
+<div class="param">user_location </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_user_location">_user_recommandations_not_auth_post_request_user_location</a></span>  </div>
+<div class="param">user_searches </div><div class="param-desc"><span class="param-type"><a href="#_user_recommandations_not_auth_post_request_user_searches_inner">array[_user_recommandations_not_auth_post_request_user_searches_inner]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_user_recommandations_not_auth_post_request_userLocation"><code>_user_recommandations_not_auth_post_request_userLocation</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_user_recommandations_not_auth_post_request_user_location"><code>_user_recommandations_not_auth_post_request_user_location</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">longitude </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Longitude </div>
@@ -3108,7 +3109,7 @@ font-style: italic;
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="_user_recommandations_not_auth_post_request_userSearches_inner"><code>_user_recommandations_not_auth_post_request_userSearches_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="_user_recommandations_not_auth_post_request_user_searches_inner"><code>_user_recommandations_not_auth_post_request_user_searches_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">search </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Search string </div>
@@ -3119,61 +3120,61 @@ font-style: italic;
     <h3><a name="_user_travel_routes_generate_get_200_response_inner"><code>_user_travel_routes_generate_get_200_response_inner</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">startDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Start date </div>
-<div class="param">endDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> End date </div>
+      <div class="param">start_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Start date </div>
+<div class="param">end_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> End date </div>
 <div class="param">budget </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Budget </div>
 <div class="param">proposals </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">array[_search_place_get_200_response_inner]</a></span>  </div>
-<div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Callback data's to provide on every requests </div>
+<div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Callback data's to provide on every requests </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_user_travel_routes_generate_post_200_response"><code>_user_travel_routes_generate_post_200_response</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">errorMessage </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message or null on error </div>
+      <div class="param">error_message </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Error message or null on error </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="_user_travel_routes_generate_post_request"><code>_user_travel_routes_generate_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">travelRoutes </div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
+      <div class="param">travel_routes </div><div class="param-desc"><span class="param-type"><a href="#object">array[Object]</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="comments"><code>comments</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">userDatas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner_userDatas">_search_place_get_200_response_inner_comments_inner_userDatas</a></span>  </div>
+      <div class="param">user_datas </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner_user_datas">_search_place_get_200_response_inner_comments_inner_user_datas</a></span>  </div>
 <div class="param">comment </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment string </div>
 <div class="param">rating </div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Rating as count of stars </div>
-<div class="param">wroteAt </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment writing date </div>
+<div class="param">wrote_at </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Comment writing date </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="placeDatas"><code>placeDatas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="place_datas"><code>place_datas</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">prices </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_prices_inner">array[_search_place_get_200_response_inner_prices_inner]</a></span> Prices </div>
 <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Place name </div>
-<div class="param">isOpenedNow </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Boolean indicated if the place is openened at the moment of the request </div>
+<div class="param">is_opened_now </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Boolean indicated if the place is openened at the moment of the request </div>
 <div class="param">images </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> Place images links </div>
 <div class="param">coordinates </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_coordinates">_search_place_get_200_response_inner_coordinates</a></span>  </div>
 <div class="param">categories </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span> Elements categories from the registered categories on the applications </div>
-<div class="param">callbackDatas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Object to return if the place need to be recognized in another request </div>
+<div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Object to return if the place need to be recognized in another request </div>
 <div class="param">comments </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_comments_inner">array[_search_place_get_200_response_inner_comments_inner]</a></span> Comments on the place, mix between application comments and google maps comments </div>
 <div class="param">weather </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner_weather">_search_place_get_200_response_inner_weather</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="travelRoutes"><code>travelRoutes</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="travel_routes"><code>travel_routes</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'>Travel route data's</div>
     <div class="field-items">
-      <div class="param">startDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route start date </div>
-<div class="param">endDate </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route end date </div>
+      <div class="param">start_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route start date </div>
+<div class="param">end_date </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Travel route end date </div>
 <div class="param">budget (optional)</div><div class="param-desc"><span class="param-type"><a href="#number">BigDecimal</a></span> Budget in euro </div>
 <div class="param">places </div><div class="param-desc"><span class="param-type"><a href="#_search_place_get_200_response_inner">array[_search_place_get_200_response_inner]</a></span> Places to visit </div>
-<div class="param">callbackDatas (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Data to provide to if the travel route need to be recognized in another request </div>
+<div class="param">callback_datas (optional)</div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Data to provide to if the travel route need to be recognized in another request </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

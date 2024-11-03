@@ -12,8 +12,8 @@ import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-passwo
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ConfigService } from "@nestjs/config"
 
-@UseGuards(VoluptuariaAuthGuard)
 @Controller("login")
+@UseGuards(VoluptuariaAuthGuard)
 export class UserLoginController {
     constructor(
         protected readonly userLoginService: UserLoginService,

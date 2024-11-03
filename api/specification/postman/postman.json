@@ -34,7 +34,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -95,7 +95,7 @@
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -151,7 +151,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -159,7 +159,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"encryptedConfirmationCode\": \"<string>\",\n \"encryptionIv\": \"<string>\",\n \"userConfirmationCode\": \"<string>\",\n \"newPassword\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\",\n \"new_password\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -202,7 +202,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -270,13 +270,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
@@ -284,7 +284,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"comment\": \"<string>\",\n \"rating\": \"<number>\",\n \"callbackDatas\": \"<string>\"\n}",
+                                        "raw": "{\n \"comment\": \"<string>\",\n \"rating\": \"<number>\",\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -332,13 +332,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
@@ -346,7 +346,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"callbackDatas\": \"<string>\",\n \"likeState\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\",\n \"like_state\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -395,7 +395,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -403,7 +403,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"redirectUrl\": \"<string>\"\n}",
+                                        "raw": "{\n \"redirect_url\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -457,7 +457,7 @@
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -465,7 +465,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encryptedConfirmationCode\": \"<string>\",\n \"encryptionIv\": \"<string>\",\n \"userConfirmationCode\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -519,7 +519,7 @@
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -569,7 +569,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -637,13 +637,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -651,7 +651,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"oldPassword\": \"<string>\",\n \"newPassword\": \"<string>\",\n \"newPasswordConfirmation\": \"<string>\"\n}",
+                                        "raw": "{\n \"old_password\": \"<string>\",\n \"new_password\": \"<string>\",\n \"new_password_confirmation\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -693,13 +693,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
@@ -727,7 +727,7 @@
                                         ],
                                         "query": [
                                             {
-                                                "key": "toFetch",
+                                                "key": "to_fetch",
                                                 "value": "",
                                                 "description": "Data's to fetch",
                                                 "disabled": false
@@ -761,13 +761,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -775,7 +775,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"callbackDatas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -824,13 +824,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -838,7 +838,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"callbackDatas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -887,13 +887,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
@@ -901,7 +901,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthdate\": \"<string>\",\n \"phonenumber\": \"<string>\"\n}",
+                                        "raw": "{\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthdate\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"gender\": \"<number>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -949,13 +949,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -1011,13 +1011,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
@@ -1025,7 +1025,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"paging\": \"<number>\",\n \"userLocation\": \"<string>\"\n}",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1074,7 +1074,7 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -1082,7 +1082,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"paging\": \"<number>\",\n \"userLocation\": \"<string>\",\n \"userSearches\": \"<string>\"\n}",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\",\n \"user_searches\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1110,7 +1110,7 @@
                             ]
                         },
 	                        {
-    "name": "/user/travel-routes/generate",
+    "name": "/user/travel_routes/generate",
                 "description": "Provide some generated travel routes",
                  "item": [
                             {
@@ -1125,13 +1125,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -1147,13 +1147,13 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/travel-routes/generate",
+                                        "raw": "{{baseUrl}}/user/travel_routes/generate",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "travel-routes",
+                                            "travel_routes",
                                             "generate"
                                         ],
                                         "variable": [
@@ -1191,7 +1191,7 @@
                             ]
                         },
 	                        {
-    "name": "/user/travel-routes/generate",
+    "name": "/user/travel_routes/generate",
                 "description": "Register generated travel routes",
                  "item": [
                             {
@@ -1212,13 +1212,13 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "authenticationToken",
+                                            "key": "authentication_token",
                                             "value": "",
                                             "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptuariaAccessConfig",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
                                             "description": "Voluptuaria api access configuration",
                                             "disabled": true
@@ -1226,7 +1226,7 @@
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"travelRoutes\": \"<string>\"\n}",
+                                        "raw": "{\n \"travel_routes\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1234,13 +1234,13 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/travel-routes/generate",
+                                        "raw": "{{baseUrl}}/user/travel_routes/generate",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "travel-routes",
+                                            "travel_routes",
                                             "generate"
                                         ],
                                         "variable": [
@@ -1262,7 +1262,17 @@
 			"key": "baseUrl",
 			"value": "http://127.0.0.1:8080",
 			"type": "string"
-        }
+        },
+		{
+			"key": "authentication_token",
+			"value": "&lt;To fill thanks to the testing module&gt;",
+			"type": "string"
+		},
+		{
+			"key": "voluptuaria_access_config",
+			"value": "&lt;To fill thanks to the testing module&gt;",
+			"type": "string"
+		}
 	]
 }
 

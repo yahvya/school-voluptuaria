@@ -12,7 +12,17 @@
     "servers": [
         {
             "description": "Test server",
-            "url": "http://127.0.0.1:8080"
+            "url": "http://127.0.0.1:8080",
+            "variables": {
+                "authentication_token": {
+                    "description": "An authentication token to use on requests",
+                    "default": "<To fill thanks to the testing module>"
+                },
+                "voluptuaria_access_config": {
+                    "description": "Voluptuaria access config (token + iv)",
+                    "default": "<To fill thanks to the testing module>"
+                }
+            }
         }
     ],
     "paths": {
@@ -31,7 +41,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -55,7 +65,7 @@
                         }
                     },
                     {
-                        "name": "minRating",
+                        "name": "min_rating",
                         "description": "Minimum rating for on the place",
                         "in": "query",
                         "required": true,
@@ -99,7 +109,7 @@
                                                 "type": "string",
                                                 "description": "Place name"
                                             },
-                                            "isOpenedNow": {
+                                            "is_opened_now": {
                                                 "type": "boolean",
                                                 "description": "Boolean indicated if the place is openened at the moment of the request"
                                             },
@@ -141,7 +151,7 @@
                                                     "description": "Category name"
                                                 }
                                             },
-                                            "callbackDatas": {
+                                            "callback_datas": {
                                                 "type": "object",
                                                 "description": "Object to return if the place need to be recognized in another request"
                                             },
@@ -151,11 +161,11 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "userDatas": {
+                                                        "user_datas": {
                                                             "type": "object",
                                                             "nullable": true,
                                                             "properties": {
-                                                                "profilePictureLink": {
+                                                                "profile_picture_link": {
                                                                     "type": "string",
                                                                     "description": "User profile picture link"
                                                                 },
@@ -165,7 +175,7 @@
                                                                 }
                                                             },
                                                             "required": [
-                                                                "profilePictureLink",
+                                                                "profile_picture_link",
                                                                 "fullname"
                                                             ]
                                                         },
@@ -177,7 +187,7 @@
                                                             "type": "number",
                                                             "description": "Rating as count of stars"
                                                         },
-                                                        "wroteAt": {
+                                                        "wrote_at": {
                                                             "type": "string",
                                                             "description": "Comment writing date"
                                                         }
@@ -185,8 +195,8 @@
                                                     "required": [
                                                         "comment",
                                                         "rating",
-                                                        "wroteAt",
-                                                        "userDatas"
+                                                        "wrote_at",
+                                                        "user_datas"
                                                     ]
                                                 }
                                             },
@@ -226,19 +236,19 @@
                                                                         "type": "string",
                                                                         "description": "Temperature value"
                                                                     },
-                                                                    "feltTemperature": {
+                                                                    "felt_temperature": {
                                                                         "type": "string",
                                                                         "description": "Felt temperature value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Temperature used measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "temperature",
-                                                                    "feltTemperature",
-                                                                    "measureUnit"
+                                                                    "felt_temperature",
+                                                                    "measure_unit"
                                                                 ]
                                                             },
                                                             "name": {
@@ -256,18 +266,18 @@
                                                                         "type": "string",
                                                                         "description": "Pressure value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Pressure measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "pressure",
-                                                                    "measureUnit"
+                                                                    "measure_unit"
                                                                 ],
                                                                 "nullable": true
                                                             },
-                                                            "placeDescription": {
+                                                            "place_description": {
                                                                 "type": "string",
                                                                 "description": "Place description"
                                                             },
@@ -283,7 +293,7 @@
                                                             "name",
                                                             "sunrise",
                                                             "pressure",
-                                                            "placeDescription",
+                                                            "place_description",
                                                             "alert"
                                                         ]
                                                     },
@@ -294,14 +304,14 @@
                                                                 "type": "string",
                                                                 "description": "Pressure value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Pressure measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "pressure",
-                                                            "measureUnit"
+                                                            "measure_unit"
                                                         ]
                                                     },
                                                     "temperature": {
@@ -311,19 +321,19 @@
                                                                 "type": "string",
                                                                 "description": "Temperature value"
                                                             },
-                                                            "feltTemperature": {
+                                                            "felt_temperature": {
                                                                 "type": "string",
                                                                 "description": "Felt temperature value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Temperature used measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "temperature",
-                                                            "feltTemperature",
-                                                            "measureUnit"
+                                                            "felt_temperature",
+                                                            "measure_unit"
                                                         ]
                                                     }
                                                 },
@@ -338,11 +348,11 @@
                                         "required": [
                                             "prices",
                                             "name",
-                                            "isOpenedNow",
+                                            "is_opened_now",
                                             "images",
                                             "coordinates",
                                             "categories",
-                                            "callbackDatas",
+                                            "callback_datas",
                                             "comments",
                                             "weather"
                                         ]
@@ -360,7 +370,7 @@
                 "description": "Provide the comments on a given place with pagination",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -393,7 +403,7 @@
                         }
                     },
                     {
-                        "name": "callbackDatas",
+                        "name": "callback_datas",
                         "description": "Place callback data's",
                         "required": true,
                         "in": "query",
@@ -412,11 +422,11 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "userDatas": {
+                                            "user_datas": {
                                                 "type": "object",
                                                 "nullable": true,
                                                 "properties": {
-                                                    "profilePictureLink": {
+                                                    "profile_picture_link": {
                                                         "type": "string",
                                                         "description": "User profile picture link"
                                                     },
@@ -426,7 +436,7 @@
                                                     }
                                                 },
                                                 "required": [
-                                                    "profilePictureLink",
+                                                    "profile_picture_link",
                                                     "fullname"
                                                 ]
                                             },
@@ -438,7 +448,7 @@
                                                 "type": "number",
                                                 "description": "Rating as count of stars"
                                             },
-                                            "wroteAt": {
+                                            "wrote_at": {
                                                 "type": "string",
                                                 "description": "Comment writing date"
                                             }
@@ -446,8 +456,8 @@
                                         "required": [
                                             "comment",
                                             "rating",
-                                            "wroteAt",
-                                            "userDatas"
+                                            "wrote_at",
+                                            "user_datas"
                                         ]
                                     }
                                 }
@@ -461,7 +471,7 @@
                 "description": "Post a comment on a given place",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -485,7 +495,7 @@
                         }
                     },
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -509,7 +519,7 @@
                                         "type": "number",
                                         "description": "Count of rating stars"
                                     },
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "Place callback datas"
                                     }
@@ -517,7 +527,7 @@
                                 "required": [
                                     "comment",
                                     "rating",
-                                    "callbackDatas"
+                                    "callback_datas"
                                 ]
                             }
                         }
@@ -531,14 +541,14 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "The error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -553,7 +563,7 @@
                 "description": "Set a user notice status like or remove like on a place",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -577,7 +587,7 @@
                         }
                     },
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -593,18 +603,18 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "Place callback datas"
                                     },
-                                    "likeState": {
+                                    "like_state": {
                                         "type": "boolean",
                                         "description": "Like state. true to like or remove the previous like , false to dislike"
                                     }
                                 },
                                 "required": [
-                                    "callbackDatas",
-                                    "likeState"
+                                    "callback_datas",
+                                    "like_state"
                                 ]
                             }
                         }
@@ -618,14 +628,14 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -649,7 +659,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -714,12 +724,12 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "confirmationCode": {
+                                        "confirmation_code": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "The encrypted confirmation code to send back on confirmation if success"
@@ -731,8 +741,8 @@
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "confirmationCode",
+                                        "error_message",
+                                        "confirmation_code",
                                         "iv"
                                     ]
                                 }
@@ -757,7 +767,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -803,15 +813,15 @@
                                         "type": "string",
                                         "description": "User password"
                                     },
-                                    "encryptedConfirmationCode": {
+                                    "encrypted_confirmation_code": {
                                         "type": "string",
                                         "description": "Encrypted code received on the initialization step"
                                     },
-                                    "encryptionIv": {
+                                    "encryption_iv": {
                                         "type": "string",
                                         "description": "Encryption iv"
                                     },
-                                    "userConfirmationCode": {
+                                    "user_confirmation_code": {
                                         "type": "string",
                                         "description": "The user provided confirmation code"
                                     }
@@ -821,9 +831,9 @@
                                     "name",
                                     "firstname",
                                     "password",
-                                    "encryptedConfirmationCode",
-                                    "encryptionIv",
-                                    "userConfirmationCode"
+                                    "encrypted_confirmation_code",
+                                    "encryption_iv",
+                                    "user_confirmation_code"
                                 ]
                             }
                         }
@@ -837,20 +847,20 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Authentication token"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "authenticationToken"
+                                        "error_message",
+                                        "authentication_token"
                                     ]
                                 }
                             }
@@ -865,7 +875,7 @@
                 "description": "Initialize the registration by google",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -895,13 +905,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "redirectUrl": {
+                                    "redirect_url": {
                                         "type": "string",
                                         "description": "The url to redirect on depends on the type of application. Have to be one of the registered urls"
                                     }
                                 },
                                 "required": [
-                                    "redirectUrl"
+                                    "redirect_url"
                                 ]
                             }
                         }
@@ -915,7 +925,7 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
@@ -928,7 +938,7 @@
                                     },
                                     "required": [
                                         "link",
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -943,7 +953,7 @@
                 "description": "Log the user",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -998,20 +1008,20 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error",
                                             "nullable": true
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type": "string",
                                             "description": "Authentication token",
                                             "nullable": true
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "authenticationToken"
+                                        "error_message",
+                                        "authentication_token"
                                     ]
                                 }
                             }
@@ -1035,7 +1045,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -1085,24 +1095,24 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error",
                                             "nullable": true
                                         },
-                                        "confirmationCode": {
+                                        "confirmation_code": {
                                             "type": "string",
                                             "description": "Encrypted confirmation code on success"
                                         },
-                                        "encryptionIv": {
+                                        "encryption_iv": {
                                             "type": "string",
-                                            "description": "Encryption iv on success in pair with confirmationCode"
+                                            "description": "Encryption iv on success in pair with confirmation_code"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "confirmationCode",
-                                        "encryptionIv"
+                                        "error_message",
+                                        "confirmation_code",
+                                        "encryption_iv"
                                     ]
                                 }
                             }
@@ -1117,7 +1127,7 @@
                 "description": "Confirm forgot password verification and update the password",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -1151,29 +1161,29 @@
                                         "type": "string",
                                         "description": "User email"
                                     },
-                                    "encryptedConfirmationCode": {
+                                    "encrypted_confirmation_code": {
                                         "type": "string",
                                         "description": "Encrypted confirmation code on success"
                                     },
-                                    "encryptionIv": {
+                                    "encryption_iv": {
                                         "type": "string",
-                                        "description": "Encryption iv on success in pair with confirmationCode"
+                                        "description": "Encryption iv on success in pair with confirmation_code"
                                     },
-                                    "userConfirmationCode": {
+                                    "user_confirmation_code": {
                                         "type": "string",
                                         "description": "The input confirmation code by user"
                                     },
-                                    "newPassword": {
+                                    "new_password": {
                                         "type": "string",
                                         "description": "User new password"
                                     }
                                 },
                                 "required": [
                                     "email",
-                                    "newPassword",
-                                    "userConfirmationCode",
-                                    "encryptedConfirmationCode",
-                                    "encryptionIv"
+                                    "new_password",
+                                    "user_confirmation_code",
+                                    "encrypted_confirmation_code",
+                                    "encryption_iv"
                                 ]
                             }
                         }
@@ -1187,20 +1197,20 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "New authentication token on success"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "authenticationToken"
+                                        "error_message",
+                                        "authentication_token"
                                     ]
                                 }
                             }
@@ -1215,7 +1225,7 @@
                 "description": "Provide user data's",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -1239,7 +1249,7 @@
                         }
                     },
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -1249,7 +1259,7 @@
                         }
                     },
                     {
-                        "name": "toFetch",
+                        "name": "to_fetch",
                         "required": true,
                         "in": "query",
                         "description": "Data's to fetch",
@@ -1271,7 +1281,7 @@
                                     "type": "object",
                                     "description": "The object will be indexed by the enumeration integer value and will contain as values the requested elements. Only the asked ones will be provided",
                                     "properties": {
-                                        "identityDatas": {
+                                        "identity_datas": {
                                             "type": "object",
                                             "description": "User identity data's",
                                             "properties": {
@@ -1297,7 +1307,7 @@
                                                     "description": "User phonenumber",
                                                     "nullable": true
                                                 },
-                                                "profilePictureLink": {
+                                                "profile_picture_link": {
                                                     "type": "string",
                                                     "description": "User profile picture access link"
                                                 },
@@ -1316,18 +1326,18 @@
                                                 "firstname",
                                                 "birthdate",
                                                 "phonenumber",
-                                                "profilePictureLink",
+                                                "profile_picture_link",
                                                 "accountCreationDate",
                                                 "gender"
                                             ]
                                         },
-                                        "visitedPlaces": {
+                                        "visited_places": {
                                             "type": "array",
                                             "description": "User visited places",
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "placeDatas": {
+                                                    "place_datas": {
                                                         "type": "object",
                                                         "properties": {
                                                             "prices": {
@@ -1355,7 +1365,7 @@
                                                                 "type": "string",
                                                                 "description": "Place name"
                                                             },
-                                                            "isOpenedNow": {
+                                                            "is_opened_now": {
                                                                 "type": "boolean",
                                                                 "description": "Boolean indicated if the place is openened at the moment of the request"
                                                             },
@@ -1397,7 +1407,7 @@
                                                                     "description": "Category name"
                                                                 }
                                                             },
-                                                            "callbackDatas": {
+                                                            "callback_datas": {
                                                                 "type": "object",
                                                                 "description": "Object to return if the place need to be recognized in another request"
                                                             },
@@ -1407,11 +1417,11 @@
                                                                 "items": {
                                                                     "type": "object",
                                                                     "properties": {
-                                                                        "userDatas": {
+                                                                        "user_datas": {
                                                                             "type": "object",
                                                                             "nullable": true,
                                                                             "properties": {
-                                                                                "profilePictureLink": {
+                                                                                "profile_picture_link": {
                                                                                     "type": "string",
                                                                                     "description": "User profile picture link"
                                                                                 },
@@ -1421,7 +1431,7 @@
                                                                                 }
                                                                             },
                                                                             "required": [
-                                                                                "profilePictureLink",
+                                                                                "profile_picture_link",
                                                                                 "fullname"
                                                                             ]
                                                                         },
@@ -1433,7 +1443,7 @@
                                                                             "type": "number",
                                                                             "description": "Rating as count of stars"
                                                                         },
-                                                                        "wroteAt": {
+                                                                        "wrote_at": {
                                                                             "type": "string",
                                                                             "description": "Comment writing date"
                                                                         }
@@ -1441,8 +1451,8 @@
                                                                     "required": [
                                                                         "comment",
                                                                         "rating",
-                                                                        "wroteAt",
-                                                                        "userDatas"
+                                                                        "wrote_at",
+                                                                        "user_datas"
                                                                     ]
                                                                 }
                                                             },
@@ -1482,19 +1492,19 @@
                                                                                         "type": "string",
                                                                                         "description": "Temperature value"
                                                                                     },
-                                                                                    "feltTemperature": {
+                                                                                    "felt_temperature": {
                                                                                         "type": "string",
                                                                                         "description": "Felt temperature value"
                                                                                     },
-                                                                                    "measureUnit": {
+                                                                                    "measure_unit": {
                                                                                         "type": "string",
                                                                                         "description": "Temperature used measure unit"
                                                                                     }
                                                                                 },
                                                                                 "required": [
                                                                                     "temperature",
-                                                                                    "feltTemperature",
-                                                                                    "measureUnit"
+                                                                                    "felt_temperature",
+                                                                                    "measure_unit"
                                                                                 ]
                                                                             },
                                                                             "name": {
@@ -1512,18 +1522,18 @@
                                                                                         "type": "string",
                                                                                         "description": "Pressure value"
                                                                                     },
-                                                                                    "measureUnit": {
+                                                                                    "measure_unit": {
                                                                                         "type": "string",
                                                                                         "description": "Pressure measure unit"
                                                                                     }
                                                                                 },
                                                                                 "required": [
                                                                                     "pressure",
-                                                                                    "measureUnit"
+                                                                                    "measure_unit"
                                                                                 ],
                                                                                 "nullable": true
                                                                             },
-                                                                            "placeDescription": {
+                                                                            "place_description": {
                                                                                 "type": "string",
                                                                                 "description": "Place description"
                                                                             },
@@ -1539,7 +1549,7 @@
                                                                             "name",
                                                                             "sunrise",
                                                                             "pressure",
-                                                                            "placeDescription",
+                                                                            "place_description",
                                                                             "alert"
                                                                         ]
                                                                     },
@@ -1550,14 +1560,14 @@
                                                                                 "type": "string",
                                                                                 "description": "Pressure value"
                                                                             },
-                                                                            "measureUnit": {
+                                                                            "measure_unit": {
                                                                                 "type": "string",
                                                                                 "description": "Pressure measure unit"
                                                                             }
                                                                         },
                                                                         "required": [
                                                                             "pressure",
-                                                                            "measureUnit"
+                                                                            "measure_unit"
                                                                         ]
                                                                     },
                                                                     "temperature": {
@@ -1567,19 +1577,19 @@
                                                                                 "type": "string",
                                                                                 "description": "Temperature value"
                                                                             },
-                                                                            "feltTemperature": {
+                                                                            "felt_temperature": {
                                                                                 "type": "string",
                                                                                 "description": "Felt temperature value"
                                                                             },
-                                                                            "measureUnit": {
+                                                                            "measure_unit": {
                                                                                 "type": "string",
                                                                                 "description": "Temperature used measure unit"
                                                                             }
                                                                         },
                                                                         "required": [
                                                                             "temperature",
-                                                                            "feltTemperature",
-                                                                            "measureUnit"
+                                                                            "felt_temperature",
+                                                                            "measure_unit"
                                                                         ]
                                                                     }
                                                                 },
@@ -1594,11 +1604,11 @@
                                                         "required": [
                                                             "prices",
                                                             "name",
-                                                            "isOpenedNow",
+                                                            "is_opened_now",
                                                             "images",
                                                             "coordinates",
                                                             "categories",
-                                                            "callbackDatas",
+                                                            "callback_datas",
                                                             "comments",
                                                             "weather"
                                                         ]
@@ -1609,12 +1619,12 @@
                                                     }
                                                 },
                                                 "required": [
-                                                    "placeDatas",
+                                                    "place_datas",
                                                     "visitedAt"
                                                 ]
                                             }
                                         },
-                                        "placeWishList": {
+                                        "place_wish_list": {
                                             "type": "array",
                                             "description": "User wanted places to visit",
                                             "items": {
@@ -1645,7 +1655,7 @@
                                                         "type": "string",
                                                         "description": "Place name"
                                                     },
-                                                    "isOpenedNow": {
+                                                    "is_opened_now": {
                                                         "type": "boolean",
                                                         "description": "Boolean indicated if the place is openened at the moment of the request"
                                                     },
@@ -1687,7 +1697,7 @@
                                                             "description": "Category name"
                                                         }
                                                     },
-                                                    "callbackDatas": {
+                                                    "callback_datas": {
                                                         "type": "object",
                                                         "description": "Object to return if the place need to be recognized in another request"
                                                     },
@@ -1697,11 +1707,11 @@
                                                         "items": {
                                                             "type": "object",
                                                             "properties": {
-                                                                "userDatas": {
+                                                                "user_datas": {
                                                                     "type": "object",
                                                                     "nullable": true,
                                                                     "properties": {
-                                                                        "profilePictureLink": {
+                                                                        "profile_picture_link": {
                                                                             "type": "string",
                                                                             "description": "User profile picture link"
                                                                         },
@@ -1711,7 +1721,7 @@
                                                                         }
                                                                     },
                                                                     "required": [
-                                                                        "profilePictureLink",
+                                                                        "profile_picture_link",
                                                                         "fullname"
                                                                     ]
                                                                 },
@@ -1723,7 +1733,7 @@
                                                                     "type": "number",
                                                                     "description": "Rating as count of stars"
                                                                 },
-                                                                "wroteAt": {
+                                                                "wrote_at": {
                                                                     "type": "string",
                                                                     "description": "Comment writing date"
                                                                 }
@@ -1731,8 +1741,8 @@
                                                             "required": [
                                                                 "comment",
                                                                 "rating",
-                                                                "wroteAt",
-                                                                "userDatas"
+                                                                "wrote_at",
+                                                                "user_datas"
                                                             ]
                                                         }
                                                     },
@@ -1772,19 +1782,19 @@
                                                                                 "type": "string",
                                                                                 "description": "Temperature value"
                                                                             },
-                                                                            "feltTemperature": {
+                                                                            "felt_temperature": {
                                                                                 "type": "string",
                                                                                 "description": "Felt temperature value"
                                                                             },
-                                                                            "measureUnit": {
+                                                                            "measure_unit": {
                                                                                 "type": "string",
                                                                                 "description": "Temperature used measure unit"
                                                                             }
                                                                         },
                                                                         "required": [
                                                                             "temperature",
-                                                                            "feltTemperature",
-                                                                            "measureUnit"
+                                                                            "felt_temperature",
+                                                                            "measure_unit"
                                                                         ]
                                                                     },
                                                                     "name": {
@@ -1802,18 +1812,18 @@
                                                                                 "type": "string",
                                                                                 "description": "Pressure value"
                                                                             },
-                                                                            "measureUnit": {
+                                                                            "measure_unit": {
                                                                                 "type": "string",
                                                                                 "description": "Pressure measure unit"
                                                                             }
                                                                         },
                                                                         "required": [
                                                                             "pressure",
-                                                                            "measureUnit"
+                                                                            "measure_unit"
                                                                         ],
                                                                         "nullable": true
                                                                     },
-                                                                    "placeDescription": {
+                                                                    "place_description": {
                                                                         "type": "string",
                                                                         "description": "Place description"
                                                                     },
@@ -1829,7 +1839,7 @@
                                                                     "name",
                                                                     "sunrise",
                                                                     "pressure",
-                                                                    "placeDescription",
+                                                                    "place_description",
                                                                     "alert"
                                                                 ]
                                                             },
@@ -1840,14 +1850,14 @@
                                                                         "type": "string",
                                                                         "description": "Pressure value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Pressure measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "pressure",
-                                                                    "measureUnit"
+                                                                    "measure_unit"
                                                                 ]
                                                             },
                                                             "temperature": {
@@ -1857,19 +1867,19 @@
                                                                         "type": "string",
                                                                         "description": "Temperature value"
                                                                     },
-                                                                    "feltTemperature": {
+                                                                    "felt_temperature": {
                                                                         "type": "string",
                                                                         "description": "Felt temperature value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Temperature used measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "temperature",
-                                                                    "feltTemperature",
-                                                                    "measureUnit"
+                                                                    "felt_temperature",
+                                                                    "measure_unit"
                                                                 ]
                                                             }
                                                         },
@@ -1884,28 +1894,28 @@
                                                 "required": [
                                                     "prices",
                                                     "name",
-                                                    "isOpenedNow",
+                                                    "is_opened_now",
                                                     "images",
                                                     "coordinates",
                                                     "categories",
-                                                    "callbackDatas",
+                                                    "callback_datas",
                                                     "comments",
                                                     "weather"
                                                 ]
                                             }
                                         },
-                                        "travelRoutes": {
+                                        "travel_routes": {
                                             "type": "array",
                                             "description": "User registered travel routes",
                                             "items": {
                                                 "type": "object",
                                                 "description": "Travel route data's",
                                                 "properties": {
-                                                    "startDate": {
+                                                    "start_date": {
                                                         "type": "string",
                                                         "description": "Travel route start date"
                                                     },
-                                                    "endDate": {
+                                                    "end_date": {
                                                         "type": "string",
                                                         "description": "Travel route end date"
                                                     },
@@ -1944,7 +1954,7 @@
                                                                     "type": "string",
                                                                     "description": "Place name"
                                                                 },
-                                                                "isOpenedNow": {
+                                                                "is_opened_now": {
                                                                     "type": "boolean",
                                                                     "description": "Boolean indicated if the place is openened at the moment of the request"
                                                                 },
@@ -1986,7 +1996,7 @@
                                                                         "description": "Category name"
                                                                     }
                                                                 },
-                                                                "callbackDatas": {
+                                                                "callback_datas": {
                                                                     "type": "object",
                                                                     "description": "Object to return if the place need to be recognized in another request"
                                                                 },
@@ -1996,11 +2006,11 @@
                                                                     "items": {
                                                                         "type": "object",
                                                                         "properties": {
-                                                                            "userDatas": {
+                                                                            "user_datas": {
                                                                                 "type": "object",
                                                                                 "nullable": true,
                                                                                 "properties": {
-                                                                                    "profilePictureLink": {
+                                                                                    "profile_picture_link": {
                                                                                         "type": "string",
                                                                                         "description": "User profile picture link"
                                                                                     },
@@ -2010,7 +2020,7 @@
                                                                                     }
                                                                                 },
                                                                                 "required": [
-                                                                                    "profilePictureLink",
+                                                                                    "profile_picture_link",
                                                                                     "fullname"
                                                                                 ]
                                                                             },
@@ -2022,7 +2032,7 @@
                                                                                 "type": "number",
                                                                                 "description": "Rating as count of stars"
                                                                             },
-                                                                            "wroteAt": {
+                                                                            "wrote_at": {
                                                                                 "type": "string",
                                                                                 "description": "Comment writing date"
                                                                             }
@@ -2030,8 +2040,8 @@
                                                                         "required": [
                                                                             "comment",
                                                                             "rating",
-                                                                            "wroteAt",
-                                                                            "userDatas"
+                                                                            "wrote_at",
+                                                                            "user_datas"
                                                                         ]
                                                                     }
                                                                 },
@@ -2071,19 +2081,19 @@
                                                                                             "type": "string",
                                                                                             "description": "Temperature value"
                                                                                         },
-                                                                                        "feltTemperature": {
+                                                                                        "felt_temperature": {
                                                                                             "type": "string",
                                                                                             "description": "Felt temperature value"
                                                                                         },
-                                                                                        "measureUnit": {
+                                                                                        "measure_unit": {
                                                                                             "type": "string",
                                                                                             "description": "Temperature used measure unit"
                                                                                         }
                                                                                     },
                                                                                     "required": [
                                                                                         "temperature",
-                                                                                        "feltTemperature",
-                                                                                        "measureUnit"
+                                                                                        "felt_temperature",
+                                                                                        "measure_unit"
                                                                                     ]
                                                                                 },
                                                                                 "name": {
@@ -2101,18 +2111,18 @@
                                                                                             "type": "string",
                                                                                             "description": "Pressure value"
                                                                                         },
-                                                                                        "measureUnit": {
+                                                                                        "measure_unit": {
                                                                                             "type": "string",
                                                                                             "description": "Pressure measure unit"
                                                                                         }
                                                                                     },
                                                                                     "required": [
                                                                                         "pressure",
-                                                                                        "measureUnit"
+                                                                                        "measure_unit"
                                                                                     ],
                                                                                     "nullable": true
                                                                                 },
-                                                                                "placeDescription": {
+                                                                                "place_description": {
                                                                                     "type": "string",
                                                                                     "description": "Place description"
                                                                                 },
@@ -2128,7 +2138,7 @@
                                                                                 "name",
                                                                                 "sunrise",
                                                                                 "pressure",
-                                                                                "placeDescription",
+                                                                                "place_description",
                                                                                 "alert"
                                                                             ]
                                                                         },
@@ -2139,14 +2149,14 @@
                                                                                     "type": "string",
                                                                                     "description": "Pressure value"
                                                                                 },
-                                                                                "measureUnit": {
+                                                                                "measure_unit": {
                                                                                     "type": "string",
                                                                                     "description": "Pressure measure unit"
                                                                                 }
                                                                             },
                                                                             "required": [
                                                                                 "pressure",
-                                                                                "measureUnit"
+                                                                                "measure_unit"
                                                                             ]
                                                                         },
                                                                         "temperature": {
@@ -2156,19 +2166,19 @@
                                                                                     "type": "string",
                                                                                     "description": "Temperature value"
                                                                                 },
-                                                                                "feltTemperature": {
+                                                                                "felt_temperature": {
                                                                                     "type": "string",
                                                                                     "description": "Felt temperature value"
                                                                                 },
-                                                                                "measureUnit": {
+                                                                                "measure_unit": {
                                                                                     "type": "string",
                                                                                     "description": "Temperature used measure unit"
                                                                                 }
                                                                             },
                                                                             "required": [
                                                                                 "temperature",
-                                                                                "feltTemperature",
-                                                                                "measureUnit"
+                                                                                "felt_temperature",
+                                                                                "measure_unit"
                                                                             ]
                                                                         }
                                                                     },
@@ -2183,34 +2193,34 @@
                                                             "required": [
                                                                 "prices",
                                                                 "name",
-                                                                "isOpenedNow",
+                                                                "is_opened_now",
                                                                 "images",
                                                                 "coordinates",
                                                                 "categories",
-                                                                "callbackDatas",
+                                                                "callback_datas",
                                                                 "comments",
                                                                 "weather"
                                                             ]
                                                         }
                                                     },
-                                                    "callbackDatas": {
+                                                    "callback_datas": {
                                                         "type": "object",
                                                         "description": "Data to provide to if the travel route need to be recognized in another request"
                                                     }
                                                 },
                                                 "required": [
-                                                    "startDate",
-                                                    "endDate",
+                                                    "start_date",
+                                                    "end_date",
                                                     "places"
                                                 ]
                                             }
                                         }
                                     },
                                     "required": [
-                                        "identityDatas",
-                                        "visitedPlaces",
-                                        "placeWishList",
-                                        "travelRoutes"
+                                        "identity_datas",
+                                        "visited_places",
+                                        "place_wish_list",
+                                        "travel_routes"
                                     ]
                                 }
                             }
@@ -2225,7 +2235,7 @@
                 "description": "Modify the user profile image or set it if there were no image",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -2235,7 +2245,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2283,7 +2293,7 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
@@ -2295,7 +2305,7 @@
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
+                                        "error_message",
                                         "imageUrl"
                                     ]
                                 }
@@ -2311,7 +2321,7 @@
                 "description": "Edit the user profile from the provided fields. The birthdate can only be update the first time.",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2335,7 +2345,7 @@
                         }
                     },
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -2365,9 +2375,12 @@
                                     "phonenumber": {
                                         "type": "string",
                                         "description": "User phonenumber"
+                                    },
+                                    "gender": {
+                                        "type": "number",
+                                        "description": "User gender represented by shared enumeration value as int"
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
                     }
@@ -2380,19 +2393,19 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type": "string",
                                             "description": "New authentication token"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage",
-                                        "authenticationToken"
+                                        "error_message",
+                                        "authentication_token"
                                     ]
                                 }
                             }
@@ -2407,7 +2420,7 @@
                 "description": "Update the user password",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -2417,7 +2430,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2446,23 +2459,23 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "oldPassword": {
+                                    "old_password": {
                                         "type": "string",
                                         "description": "The old user password"
                                     },
-                                    "newPassword": {
+                                    "new_password": {
                                         "type": "string",
                                         "description": "New password"
                                     },
-                                    "newPasswordConfirmation": {
+                                    "new_password_confirmation": {
                                         "type": "string",
                                         "description": "New password confirmation"
                                     }
                                 },
                                 "required": [
-                                    "oldPassword",
-                                    "newPassword",
-                                    "newPasswordConfirmation"
+                                    "old_password",
+                                    "new_password",
+                                    "new_password_confirmation"
                                 ]
                             }
                         }
@@ -2476,14 +2489,14 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -2498,7 +2511,7 @@
                 "description": "Add a place in the user wish list",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -2508,7 +2521,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2538,13 +2551,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "The received place's callback datas"
                                     }
                                 },
                                 "required": [
-                                    "callbackDatas"
+                                    "callback_datas"
                                 ]
                             }
                         }
@@ -2558,13 +2571,13 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -2577,7 +2590,7 @@
                 "description": "Delete a place in the user wish list",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -2587,7 +2600,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2617,13 +2630,13 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "The received place's callback datas"
                                     }
                                 },
                                 "required": [
-                                    "callbackDatas"
+                                    "callback_datas"
                                 ]
                             }
                         }
@@ -2637,13 +2650,13 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -2658,7 +2671,7 @@
                 "description": "Provide recommandations for unauthenticated user",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -2692,7 +2705,7 @@
                                         "type": "number",
                                         "description": "Pagination number"
                                     },
-                                    "userLocation": {
+                                    "user_location": {
                                         "type": "object",
                                         "properties": {
                                             "longitude": {
@@ -2709,7 +2722,7 @@
                                             "latitude"
                                         ]
                                     },
-                                    "userSearches": {
+                                    "user_searches": {
                                         "type": "array",
                                         "items": {
                                             "type": "object",
@@ -2732,8 +2745,8 @@
                                 },
                                 "required": [
                                     "paging",
-                                    "userLocation",
-                                    "userSearches"
+                                    "user_location",
+                                    "user_searches"
                                 ]
                             }
                         }
@@ -2774,7 +2787,7 @@
                                                 "type": "string",
                                                 "description": "Place name"
                                             },
-                                            "isOpenedNow": {
+                                            "is_opened_now": {
                                                 "type": "boolean",
                                                 "description": "Boolean indicated if the place is openened at the moment of the request"
                                             },
@@ -2816,7 +2829,7 @@
                                                     "description": "Category name"
                                                 }
                                             },
-                                            "callbackDatas": {
+                                            "callback_datas": {
                                                 "type": "object",
                                                 "description": "Object to return if the place need to be recognized in another request"
                                             },
@@ -2826,11 +2839,11 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "userDatas": {
+                                                        "user_datas": {
                                                             "type": "object",
                                                             "nullable": true,
                                                             "properties": {
-                                                                "profilePictureLink": {
+                                                                "profile_picture_link": {
                                                                     "type": "string",
                                                                     "description": "User profile picture link"
                                                                 },
@@ -2840,7 +2853,7 @@
                                                                 }
                                                             },
                                                             "required": [
-                                                                "profilePictureLink",
+                                                                "profile_picture_link",
                                                                 "fullname"
                                                             ]
                                                         },
@@ -2852,7 +2865,7 @@
                                                             "type": "number",
                                                             "description": "Rating as count of stars"
                                                         },
-                                                        "wroteAt": {
+                                                        "wrote_at": {
                                                             "type": "string",
                                                             "description": "Comment writing date"
                                                         }
@@ -2860,8 +2873,8 @@
                                                     "required": [
                                                         "comment",
                                                         "rating",
-                                                        "wroteAt",
-                                                        "userDatas"
+                                                        "wrote_at",
+                                                        "user_datas"
                                                     ]
                                                 }
                                             },
@@ -2901,19 +2914,19 @@
                                                                         "type": "string",
                                                                         "description": "Temperature value"
                                                                     },
-                                                                    "feltTemperature": {
+                                                                    "felt_temperature": {
                                                                         "type": "string",
                                                                         "description": "Felt temperature value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Temperature used measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "temperature",
-                                                                    "feltTemperature",
-                                                                    "measureUnit"
+                                                                    "felt_temperature",
+                                                                    "measure_unit"
                                                                 ]
                                                             },
                                                             "name": {
@@ -2931,18 +2944,18 @@
                                                                         "type": "string",
                                                                         "description": "Pressure value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Pressure measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "pressure",
-                                                                    "measureUnit"
+                                                                    "measure_unit"
                                                                 ],
                                                                 "nullable": true
                                                             },
-                                                            "placeDescription": {
+                                                            "place_description": {
                                                                 "type": "string",
                                                                 "description": "Place description"
                                                             },
@@ -2958,7 +2971,7 @@
                                                             "name",
                                                             "sunrise",
                                                             "pressure",
-                                                            "placeDescription",
+                                                            "place_description",
                                                             "alert"
                                                         ]
                                                     },
@@ -2969,14 +2982,14 @@
                                                                 "type": "string",
                                                                 "description": "Pressure value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Pressure measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "pressure",
-                                                            "measureUnit"
+                                                            "measure_unit"
                                                         ]
                                                     },
                                                     "temperature": {
@@ -2986,19 +2999,19 @@
                                                                 "type": "string",
                                                                 "description": "Temperature value"
                                                             },
-                                                            "feltTemperature": {
+                                                            "felt_temperature": {
                                                                 "type": "string",
                                                                 "description": "Felt temperature value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Temperature used measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "temperature",
-                                                            "feltTemperature",
-                                                            "measureUnit"
+                                                            "felt_temperature",
+                                                            "measure_unit"
                                                         ]
                                                     }
                                                 },
@@ -3013,11 +3026,11 @@
                                         "required": [
                                             "prices",
                                             "name",
-                                            "isOpenedNow",
+                                            "is_opened_now",
                                             "images",
                                             "coordinates",
                                             "categories",
-                                            "callbackDatas",
+                                            "callback_datas",
                                             "comments",
                                             "weather"
                                         ]
@@ -3035,7 +3048,7 @@
                 "description": "Provide recommandations for an authenticated user",
                 "parameters": [
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -3059,7 +3072,7 @@
                         }
                     },
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -3079,7 +3092,7 @@
                                         "type": "number",
                                         "description": "Pagination number"
                                     },
-                                    "userLocation": {
+                                    "user_location": {
                                         "type": "object",
                                         "properties": {
                                             "longitude": {
@@ -3099,7 +3112,7 @@
                                 },
                                 "required": [
                                     "paging",
-                                    "userLocation"
+                                    "user_location"
                                 ]
                             }
                         }
@@ -3140,7 +3153,7 @@
                                                 "type": "string",
                                                 "description": "Place name"
                                             },
-                                            "isOpenedNow": {
+                                            "is_opened_now": {
                                                 "type": "boolean",
                                                 "description": "Boolean indicated if the place is openened at the moment of the request"
                                             },
@@ -3182,7 +3195,7 @@
                                                     "description": "Category name"
                                                 }
                                             },
-                                            "callbackDatas": {
+                                            "callback_datas": {
                                                 "type": "object",
                                                 "description": "Object to return if the place need to be recognized in another request"
                                             },
@@ -3192,11 +3205,11 @@
                                                 "items": {
                                                     "type": "object",
                                                     "properties": {
-                                                        "userDatas": {
+                                                        "user_datas": {
                                                             "type": "object",
                                                             "nullable": true,
                                                             "properties": {
-                                                                "profilePictureLink": {
+                                                                "profile_picture_link": {
                                                                     "type": "string",
                                                                     "description": "User profile picture link"
                                                                 },
@@ -3206,7 +3219,7 @@
                                                                 }
                                                             },
                                                             "required": [
-                                                                "profilePictureLink",
+                                                                "profile_picture_link",
                                                                 "fullname"
                                                             ]
                                                         },
@@ -3218,7 +3231,7 @@
                                                             "type": "number",
                                                             "description": "Rating as count of stars"
                                                         },
-                                                        "wroteAt": {
+                                                        "wrote_at": {
                                                             "type": "string",
                                                             "description": "Comment writing date"
                                                         }
@@ -3226,8 +3239,8 @@
                                                     "required": [
                                                         "comment",
                                                         "rating",
-                                                        "wroteAt",
-                                                        "userDatas"
+                                                        "wrote_at",
+                                                        "user_datas"
                                                     ]
                                                 }
                                             },
@@ -3267,19 +3280,19 @@
                                                                         "type": "string",
                                                                         "description": "Temperature value"
                                                                     },
-                                                                    "feltTemperature": {
+                                                                    "felt_temperature": {
                                                                         "type": "string",
                                                                         "description": "Felt temperature value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Temperature used measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "temperature",
-                                                                    "feltTemperature",
-                                                                    "measureUnit"
+                                                                    "felt_temperature",
+                                                                    "measure_unit"
                                                                 ]
                                                             },
                                                             "name": {
@@ -3297,18 +3310,18 @@
                                                                         "type": "string",
                                                                         "description": "Pressure value"
                                                                     },
-                                                                    "measureUnit": {
+                                                                    "measure_unit": {
                                                                         "type": "string",
                                                                         "description": "Pressure measure unit"
                                                                     }
                                                                 },
                                                                 "required": [
                                                                     "pressure",
-                                                                    "measureUnit"
+                                                                    "measure_unit"
                                                                 ],
                                                                 "nullable": true
                                                             },
-                                                            "placeDescription": {
+                                                            "place_description": {
                                                                 "type": "string",
                                                                 "description": "Place description"
                                                             },
@@ -3324,7 +3337,7 @@
                                                             "name",
                                                             "sunrise",
                                                             "pressure",
-                                                            "placeDescription",
+                                                            "place_description",
                                                             "alert"
                                                         ]
                                                     },
@@ -3335,14 +3348,14 @@
                                                                 "type": "string",
                                                                 "description": "Pressure value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Pressure measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "pressure",
-                                                            "measureUnit"
+                                                            "measure_unit"
                                                         ]
                                                     },
                                                     "temperature": {
@@ -3352,19 +3365,19 @@
                                                                 "type": "string",
                                                                 "description": "Temperature value"
                                                             },
-                                                            "feltTemperature": {
+                                                            "felt_temperature": {
                                                                 "type": "string",
                                                                 "description": "Felt temperature value"
                                                             },
-                                                            "measureUnit": {
+                                                            "measure_unit": {
                                                                 "type": "string",
                                                                 "description": "Temperature used measure unit"
                                                             }
                                                         },
                                                         "required": [
                                                             "temperature",
-                                                            "feltTemperature",
-                                                            "measureUnit"
+                                                            "felt_temperature",
+                                                            "measure_unit"
                                                         ]
                                                     }
                                                 },
@@ -3379,11 +3392,11 @@
                                         "required": [
                                             "prices",
                                             "name",
-                                            "isOpenedNow",
+                                            "is_opened_now",
                                             "images",
                                             "coordinates",
                                             "categories",
-                                            "callbackDatas",
+                                            "callback_datas",
                                             "comments",
                                             "weather"
                                         ]
@@ -3395,13 +3408,13 @@
                 }
             }
         },
-        "/user/travel-routes/generate": {
+        "/user/travel_routes/generate": {
             "get": {
                 "summary": "Provide some generated travel routes",
                 "description": "Provide some generated travel routes",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -3411,7 +3424,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -3435,7 +3448,7 @@
                         }
                     },
                     {
-                        "name": "startDate",
+                        "name": "start_date",
                         "description": "Expected start date",
                         "required": true,
                         "in": "query",
@@ -3444,7 +3457,7 @@
                         }
                     },
                     {
-                        "name": "endDate",
+                        "name": "end_date",
                         "description": "Expected end date",
                         "required": true,
                         "in": "query",
@@ -3481,11 +3494,11 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "startDate": {
+                                            "start_date": {
                                                 "type": "string",
                                                 "description": "Start date"
                                             },
-                                            "endDate": {
+                                            "end_date": {
                                                 "type": "string",
                                                 "description": "End date"
                                             },
@@ -3523,7 +3536,7 @@
                                                             "type": "string",
                                                             "description": "Place name"
                                                         },
-                                                        "isOpenedNow": {
+                                                        "is_opened_now": {
                                                             "type": "boolean",
                                                             "description": "Boolean indicated if the place is openened at the moment of the request"
                                                         },
@@ -3565,7 +3578,7 @@
                                                                 "description": "Category name"
                                                             }
                                                         },
-                                                        "callbackDatas": {
+                                                        "callback_datas": {
                                                             "type": "object",
                                                             "description": "Object to return if the place need to be recognized in another request"
                                                         },
@@ -3575,11 +3588,11 @@
                                                             "items": {
                                                                 "type": "object",
                                                                 "properties": {
-                                                                    "userDatas": {
+                                                                    "user_datas": {
                                                                         "type": "object",
                                                                         "nullable": true,
                                                                         "properties": {
-                                                                            "profilePictureLink": {
+                                                                            "profile_picture_link": {
                                                                                 "type": "string",
                                                                                 "description": "User profile picture link"
                                                                             },
@@ -3589,7 +3602,7 @@
                                                                             }
                                                                         },
                                                                         "required": [
-                                                                            "profilePictureLink",
+                                                                            "profile_picture_link",
                                                                             "fullname"
                                                                         ]
                                                                     },
@@ -3601,7 +3614,7 @@
                                                                         "type": "number",
                                                                         "description": "Rating as count of stars"
                                                                     },
-                                                                    "wroteAt": {
+                                                                    "wrote_at": {
                                                                         "type": "string",
                                                                         "description": "Comment writing date"
                                                                     }
@@ -3609,8 +3622,8 @@
                                                                 "required": [
                                                                     "comment",
                                                                     "rating",
-                                                                    "wroteAt",
-                                                                    "userDatas"
+                                                                    "wrote_at",
+                                                                    "user_datas"
                                                                 ]
                                                             }
                                                         },
@@ -3650,19 +3663,19 @@
                                                                                     "type": "string",
                                                                                     "description": "Temperature value"
                                                                                 },
-                                                                                "feltTemperature": {
+                                                                                "felt_temperature": {
                                                                                     "type": "string",
                                                                                     "description": "Felt temperature value"
                                                                                 },
-                                                                                "measureUnit": {
+                                                                                "measure_unit": {
                                                                                     "type": "string",
                                                                                     "description": "Temperature used measure unit"
                                                                                 }
                                                                             },
                                                                             "required": [
                                                                                 "temperature",
-                                                                                "feltTemperature",
-                                                                                "measureUnit"
+                                                                                "felt_temperature",
+                                                                                "measure_unit"
                                                                             ]
                                                                         },
                                                                         "name": {
@@ -3680,18 +3693,18 @@
                                                                                     "type": "string",
                                                                                     "description": "Pressure value"
                                                                                 },
-                                                                                "measureUnit": {
+                                                                                "measure_unit": {
                                                                                     "type": "string",
                                                                                     "description": "Pressure measure unit"
                                                                                 }
                                                                             },
                                                                             "required": [
                                                                                 "pressure",
-                                                                                "measureUnit"
+                                                                                "measure_unit"
                                                                             ],
                                                                             "nullable": true
                                                                         },
-                                                                        "placeDescription": {
+                                                                        "place_description": {
                                                                             "type": "string",
                                                                             "description": "Place description"
                                                                         },
@@ -3707,7 +3720,7 @@
                                                                         "name",
                                                                         "sunrise",
                                                                         "pressure",
-                                                                        "placeDescription",
+                                                                        "place_description",
                                                                         "alert"
                                                                     ]
                                                                 },
@@ -3718,14 +3731,14 @@
                                                                             "type": "string",
                                                                             "description": "Pressure value"
                                                                         },
-                                                                        "measureUnit": {
+                                                                        "measure_unit": {
                                                                             "type": "string",
                                                                             "description": "Pressure measure unit"
                                                                         }
                                                                     },
                                                                     "required": [
                                                                         "pressure",
-                                                                        "measureUnit"
+                                                                        "measure_unit"
                                                                     ]
                                                                 },
                                                                 "temperature": {
@@ -3735,19 +3748,19 @@
                                                                             "type": "string",
                                                                             "description": "Temperature value"
                                                                         },
-                                                                        "feltTemperature": {
+                                                                        "felt_temperature": {
                                                                             "type": "string",
                                                                             "description": "Felt temperature value"
                                                                         },
-                                                                        "measureUnit": {
+                                                                        "measure_unit": {
                                                                             "type": "string",
                                                                             "description": "Temperature used measure unit"
                                                                         }
                                                                     },
                                                                     "required": [
                                                                         "temperature",
-                                                                        "feltTemperature",
-                                                                        "measureUnit"
+                                                                        "felt_temperature",
+                                                                        "measure_unit"
                                                                     ]
                                                                 }
                                                             },
@@ -3762,27 +3775,27 @@
                                                     "required": [
                                                         "prices",
                                                         "name",
-                                                        "isOpenedNow",
+                                                        "is_opened_now",
                                                         "images",
                                                         "coordinates",
                                                         "categories",
-                                                        "callbackDatas",
+                                                        "callback_datas",
                                                         "comments",
                                                         "weather"
                                                     ]
                                                 }
                                             },
-                                            "callbackDatas": {
+                                            "callback_datas": {
                                                 "type": "object",
                                                 "description": "Callback data's to provide on every requests"
                                             }
                                         },
                                         "required": [
-                                            "callbackDatas",
+                                            "callback_datas",
                                             "proposals",
                                             "budget",
-                                            "endDate",
-                                            "startDate"
+                                            "end_date",
+                                            "start_date"
                                         ]
                                     }
                                 }
@@ -3796,7 +3809,7 @@
                 "description": "Register generated travel routes",
                 "parameters": [
                     {
-                        "name": "authenticationToken",
+                        "name": "authentication_token",
                         "in": "header",
                         "description": "Authentication token",
                         "allowEmptyValue": false,
@@ -3806,7 +3819,7 @@
                         }
                     },
                     {
-                        "name": "voluptuariaAccessConfig",
+                        "name": "voluptuaria_access_config",
                         "in": "header",
                         "description": "Voluptuaria api access configuration",
                         "allowEmptyValue": false,
@@ -3836,7 +3849,7 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "travelRoutes": {
+                                    "travel_routes": {
                                         "type": "array",
                                         "items": {
                                             "type": "object",
@@ -3845,7 +3858,7 @@
                                     }
                                 },
                                 "required": [
-                                    "travelRoutes"
+                                    "travel_routes"
                                 ]
                             }
                         }
@@ -3859,14 +3872,14 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message or null on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -3878,8 +3891,8 @@
     },
     "components": {
         "parameters": {
-            "voluptuariaAccessConfig": {
-                "name": "voluptuariaAccessConfig",
+            "voluptuaria_access_config": {
+                "name": "voluptuaria_access_config",
                 "in": "header",
                 "description": "Voluptuaria api access configuration",
                 "allowEmptyValue": false,
@@ -3902,8 +3915,8 @@
                     ]
                 }
             },
-            "authenticationToken": {
-                "name": "authenticationToken",
+            "authentication_token": {
+                "name": "authentication_token",
                 "in": "header",
                 "description": "Authentication token",
                 "allowEmptyValue": false,
@@ -3912,8 +3925,8 @@
                     "type": "string"
                 }
             },
-            "notRequiredAuthenticationToken": {
-                "name": "authenticationToken",
+            "not_required_authentication_token": {
+                "name": "authentication_token",
                 "in": "header",
                 "description": "Authentication token",
                 "allowEmptyValue": false,
@@ -3936,11 +3949,11 @@
             "comments": {
                 "type": "object",
                 "properties": {
-                    "userDatas": {
+                    "user_datas": {
                         "type": "object",
                         "nullable": true,
                         "properties": {
-                            "profilePictureLink": {
+                            "profile_picture_link": {
                                 "type": "string",
                                 "description": "User profile picture link"
                             },
@@ -3950,7 +3963,7 @@
                             }
                         },
                         "required": [
-                            "profilePictureLink",
+                            "profile_picture_link",
                             "fullname"
                         ]
                     },
@@ -3962,7 +3975,7 @@
                         "type": "number",
                         "description": "Rating as count of stars"
                     },
-                    "wroteAt": {
+                    "wrote_at": {
                         "type": "string",
                         "description": "Comment writing date"
                     }
@@ -3970,11 +3983,11 @@
                 "required": [
                     "comment",
                     "rating",
-                    "wroteAt",
-                    "userDatas"
+                    "wrote_at",
+                    "user_datas"
                 ]
             },
-            "placeDatas": {
+            "place_datas": {
                 "type": "object",
                 "properties": {
                     "prices": {
@@ -4002,7 +4015,7 @@
                         "type": "string",
                         "description": "Place name"
                     },
-                    "isOpenedNow": {
+                    "is_opened_now": {
                         "type": "boolean",
                         "description": "Boolean indicated if the place is openened at the moment of the request"
                     },
@@ -4044,7 +4057,7 @@
                             "description": "Category name"
                         }
                     },
-                    "callbackDatas": {
+                    "callback_datas": {
                         "type": "object",
                         "description": "Object to return if the place need to be recognized in another request"
                     },
@@ -4054,11 +4067,11 @@
                         "items": {
                             "type": "object",
                             "properties": {
-                                "userDatas": {
+                                "user_datas": {
                                     "type": "object",
                                     "nullable": true,
                                     "properties": {
-                                        "profilePictureLink": {
+                                        "profile_picture_link": {
                                             "type": "string",
                                             "description": "User profile picture link"
                                         },
@@ -4068,7 +4081,7 @@
                                         }
                                     },
                                     "required": [
-                                        "profilePictureLink",
+                                        "profile_picture_link",
                                         "fullname"
                                     ]
                                 },
@@ -4080,7 +4093,7 @@
                                     "type": "number",
                                     "description": "Rating as count of stars"
                                 },
-                                "wroteAt": {
+                                "wrote_at": {
                                     "type": "string",
                                     "description": "Comment writing date"
                                 }
@@ -4088,8 +4101,8 @@
                             "required": [
                                 "comment",
                                 "rating",
-                                "wroteAt",
-                                "userDatas"
+                                "wrote_at",
+                                "user_datas"
                             ]
                         }
                     },
@@ -4129,19 +4142,19 @@
                                                 "type": "string",
                                                 "description": "Temperature value"
                                             },
-                                            "feltTemperature": {
+                                            "felt_temperature": {
                                                 "type": "string",
                                                 "description": "Felt temperature value"
                                             },
-                                            "measureUnit": {
+                                            "measure_unit": {
                                                 "type": "string",
                                                 "description": "Temperature used measure unit"
                                             }
                                         },
                                         "required": [
                                             "temperature",
-                                            "feltTemperature",
-                                            "measureUnit"
+                                            "felt_temperature",
+                                            "measure_unit"
                                         ]
                                     },
                                     "name": {
@@ -4159,18 +4172,18 @@
                                                 "type": "string",
                                                 "description": "Pressure value"
                                             },
-                                            "measureUnit": {
+                                            "measure_unit": {
                                                 "type": "string",
                                                 "description": "Pressure measure unit"
                                             }
                                         },
                                         "required": [
                                             "pressure",
-                                            "measureUnit"
+                                            "measure_unit"
                                         ],
                                         "nullable": true
                                     },
-                                    "placeDescription": {
+                                    "place_description": {
                                         "type": "string",
                                         "description": "Place description"
                                     },
@@ -4186,7 +4199,7 @@
                                     "name",
                                     "sunrise",
                                     "pressure",
-                                    "placeDescription",
+                                    "place_description",
                                     "alert"
                                 ]
                             },
@@ -4197,14 +4210,14 @@
                                         "type": "string",
                                         "description": "Pressure value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Pressure measure unit"
                                     }
                                 },
                                 "required": [
                                     "pressure",
-                                    "measureUnit"
+                                    "measure_unit"
                                 ]
                             },
                             "temperature": {
@@ -4214,19 +4227,19 @@
                                         "type": "string",
                                         "description": "Temperature value"
                                     },
-                                    "feltTemperature": {
+                                    "felt_temperature": {
                                         "type": "string",
                                         "description": "Felt temperature value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Temperature used measure unit"
                                     }
                                 },
                                 "required": [
                                     "temperature",
-                                    "feltTemperature",
-                                    "measureUnit"
+                                    "felt_temperature",
+                                    "measure_unit"
                                 ]
                             }
                         },
@@ -4241,24 +4254,24 @@
                 "required": [
                     "prices",
                     "name",
-                    "isOpenedNow",
+                    "is_opened_now",
                     "images",
                     "coordinates",
                     "categories",
-                    "callbackDatas",
+                    "callback_datas",
                     "comments",
                     "weather"
                 ]
             },
-            "travelRoutes": {
+            "travel_routes": {
                 "type": "object",
                 "description": "Travel route data's",
                 "properties": {
-                    "startDate": {
+                    "start_date": {
                         "type": "string",
                         "description": "Travel route start date"
                     },
-                    "endDate": {
+                    "end_date": {
                         "type": "string",
                         "description": "Travel route end date"
                     },
@@ -4297,7 +4310,7 @@
                                     "type": "string",
                                     "description": "Place name"
                                 },
-                                "isOpenedNow": {
+                                "is_opened_now": {
                                     "type": "boolean",
                                     "description": "Boolean indicated if the place is openened at the moment of the request"
                                 },
@@ -4339,7 +4352,7 @@
                                         "description": "Category name"
                                     }
                                 },
-                                "callbackDatas": {
+                                "callback_datas": {
                                     "type": "object",
                                     "description": "Object to return if the place need to be recognized in another request"
                                 },
@@ -4349,11 +4362,11 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "userDatas": {
+                                            "user_datas": {
                                                 "type": "object",
                                                 "nullable": true,
                                                 "properties": {
-                                                    "profilePictureLink": {
+                                                    "profile_picture_link": {
                                                         "type": "string",
                                                         "description": "User profile picture link"
                                                     },
@@ -4363,7 +4376,7 @@
                                                     }
                                                 },
                                                 "required": [
-                                                    "profilePictureLink",
+                                                    "profile_picture_link",
                                                     "fullname"
                                                 ]
                                             },
@@ -4375,7 +4388,7 @@
                                                 "type": "number",
                                                 "description": "Rating as count of stars"
                                             },
-                                            "wroteAt": {
+                                            "wrote_at": {
                                                 "type": "string",
                                                 "description": "Comment writing date"
                                             }
@@ -4383,8 +4396,8 @@
                                         "required": [
                                             "comment",
                                             "rating",
-                                            "wroteAt",
-                                            "userDatas"
+                                            "wrote_at",
+                                            "user_datas"
                                         ]
                                     }
                                 },
@@ -4424,19 +4437,19 @@
                                                             "type": "string",
                                                             "description": "Temperature value"
                                                         },
-                                                        "feltTemperature": {
+                                                        "felt_temperature": {
                                                             "type": "string",
                                                             "description": "Felt temperature value"
                                                         },
-                                                        "measureUnit": {
+                                                        "measure_unit": {
                                                             "type": "string",
                                                             "description": "Temperature used measure unit"
                                                         }
                                                     },
                                                     "required": [
                                                         "temperature",
-                                                        "feltTemperature",
-                                                        "measureUnit"
+                                                        "felt_temperature",
+                                                        "measure_unit"
                                                     ]
                                                 },
                                                 "name": {
@@ -4454,18 +4467,18 @@
                                                             "type": "string",
                                                             "description": "Pressure value"
                                                         },
-                                                        "measureUnit": {
+                                                        "measure_unit": {
                                                             "type": "string",
                                                             "description": "Pressure measure unit"
                                                         }
                                                     },
                                                     "required": [
                                                         "pressure",
-                                                        "measureUnit"
+                                                        "measure_unit"
                                                     ],
                                                     "nullable": true
                                                 },
-                                                "placeDescription": {
+                                                "place_description": {
                                                     "type": "string",
                                                     "description": "Place description"
                                                 },
@@ -4481,7 +4494,7 @@
                                                 "name",
                                                 "sunrise",
                                                 "pressure",
-                                                "placeDescription",
+                                                "place_description",
                                                 "alert"
                                             ]
                                         },
@@ -4492,14 +4505,14 @@
                                                     "type": "string",
                                                     "description": "Pressure value"
                                                 },
-                                                "measureUnit": {
+                                                "measure_unit": {
                                                     "type": "string",
                                                     "description": "Pressure measure unit"
                                                 }
                                             },
                                             "required": [
                                                 "pressure",
-                                                "measureUnit"
+                                                "measure_unit"
                                             ]
                                         },
                                         "temperature": {
@@ -4509,19 +4522,19 @@
                                                     "type": "string",
                                                     "description": "Temperature value"
                                                 },
-                                                "feltTemperature": {
+                                                "felt_temperature": {
                                                     "type": "string",
                                                     "description": "Felt temperature value"
                                                 },
-                                                "measureUnit": {
+                                                "measure_unit": {
                                                     "type": "string",
                                                     "description": "Temperature used measure unit"
                                                 }
                                             },
                                             "required": [
                                                 "temperature",
-                                                "feltTemperature",
-                                                "measureUnit"
+                                                "felt_temperature",
+                                                "measure_unit"
                                             ]
                                         }
                                     },
@@ -4536,24 +4549,24 @@
                             "required": [
                                 "prices",
                                 "name",
-                                "isOpenedNow",
+                                "is_opened_now",
                                 "images",
                                 "coordinates",
                                 "categories",
-                                "callbackDatas",
+                                "callback_datas",
                                 "comments",
                                 "weather"
                             ]
                         }
                     },
-                    "callbackDatas": {
+                    "callback_datas": {
                         "type": "object",
                         "description": "Data to provide to if the travel route need to be recognized in another request"
                     }
                 },
                 "required": [
-                    "startDate",
-                    "endDate",
+                    "start_date",
+                    "end_date",
                     "places"
                 ]
             },
@@ -4593,19 +4606,19 @@
                                         "type": "string",
                                         "description": "Temperature value"
                                     },
-                                    "feltTemperature": {
+                                    "felt_temperature": {
                                         "type": "string",
                                         "description": "Felt temperature value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Temperature used measure unit"
                                     }
                                 },
                                 "required": [
                                     "temperature",
-                                    "feltTemperature",
-                                    "measureUnit"
+                                    "felt_temperature",
+                                    "measure_unit"
                                 ]
                             },
                             "name": {
@@ -4623,18 +4636,18 @@
                                         "type": "string",
                                         "description": "Pressure value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Pressure measure unit"
                                     }
                                 },
                                 "required": [
                                     "pressure",
-                                    "measureUnit"
+                                    "measure_unit"
                                 ],
                                 "nullable": true
                             },
-                            "placeDescription": {
+                            "place_description": {
                                 "type": "string",
                                 "description": "Place description"
                             },
@@ -4650,7 +4663,7 @@
                             "name",
                             "sunrise",
                             "pressure",
-                            "placeDescription",
+                            "place_description",
                             "alert"
                         ]
                     },
@@ -4661,14 +4674,14 @@
                                 "type": "string",
                                 "description": "Pressure value"
                             },
-                            "measureUnit": {
+                            "measure_unit": {
                                 "type": "string",
                                 "description": "Pressure measure unit"
                             }
                         },
                         "required": [
                             "pressure",
-                            "measureUnit"
+                            "measure_unit"
                         ]
                     },
                     "temperature": {
@@ -4678,19 +4691,19 @@
                                 "type": "string",
                                 "description": "Temperature value"
                             },
-                            "feltTemperature": {
+                            "felt_temperature": {
                                 "type": "string",
                                 "description": "Felt temperature value"
                             },
-                            "measureUnit": {
+                            "measure_unit": {
                                 "type": "string",
                                 "description": "Temperature used measure unit"
                             }
                         },
                         "required": [
                             "temperature",
-                            "feltTemperature",
-                            "measureUnit"
+                            "felt_temperature",
+                            "measure_unit"
                         ]
                     }
                 },

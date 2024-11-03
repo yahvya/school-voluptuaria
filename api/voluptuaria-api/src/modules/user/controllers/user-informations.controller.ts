@@ -14,8 +14,8 @@ import { UserProfileResponseDatas } from "../data-contracts/user-informations/us
  * @brief user information's management controller
  */
 @Controller("user")
-// @UseGuards(VoluptuariaAuthGuard)
-// @UseGuards(JwtAuthGuard)
+@UseGuards(VoluptuariaAuthGuard)
+@UseGuards(JwtAuthGuard)
 export class UserInformationsController {
     constructor(
         protected readonly userInformationService: UserInformationsService,

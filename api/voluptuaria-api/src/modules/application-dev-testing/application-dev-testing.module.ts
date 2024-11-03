@@ -1,7 +1,8 @@
 import { Module } from "@nestjs/common"
 import { TestController } from "./controllers/test.controller"
-import { GoogleMapsPlaceModule } from "../google-maps-place/google-maps-place.module"
-import { SearchPlaceModule } from "../search-place/search-place.module"
+import { TypeOrmModule } from "@nestjs/typeorm"
+import { UserEntity } from "../database-module/entities/user.entity"
+import { UserModule } from "../user/user.module"
 
 /**
  * @brief application dev testing
@@ -9,7 +10,10 @@ import { SearchPlaceModule } from "../search-place/search-place.module"
  */
 @Module({
     controllers: [TestController],
-    imports: [GoogleMapsPlaceModule,SearchPlaceModule]
+    imports: [
+        TypeOrmModule.forFeature([UserEntity]),
+        UserModule
+    ]
 })
 export class ApplicationDevTestingModule {
 }

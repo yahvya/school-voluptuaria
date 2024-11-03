@@ -12,7 +12,17 @@
     "servers": [
         {
             "description": "Test server",
-            "url": "http://127.0.0.1:8080"
+            "url": "http://127.0.0.1:8080",
+            "variables": {
+                "authentication_token": {
+                    "description": "An authentication token to use on requests",
+                    "default": "<To fill thanks to the testing module>"
+                },
+                "voluptuaria_access_config": {
+                    "description": "Voluptuaria access config (token + iv)",
+                    "default": "<To fill thanks to the testing module>"
+                }
+            }
         }
     ],
     "paths": {
@@ -31,10 +41,10 @@
                         }
                     },
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "name" : "minRating",
+                        "name" : "min_rating",
                         "description": "Minimum rating for on the place",
                         "in" : "query",
                         "required": true,
@@ -51,7 +61,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/placeDatas"
+                                        "$ref": "#/components/schemas/place_datas"
                                     }
                                 }
                             }
@@ -66,7 +76,7 @@
                 "description" : "Provide the comments on a given place with pagination",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     },
                     {
                         "name" : "paging",
@@ -78,7 +88,7 @@
                         }
                     },
                     {
-                        "name": "callbackDatas",
+                        "name": "callback_datas",
                         "description": "Place callback data's",
                         "required": true,
                         "in": "query",
@@ -108,10 +118,10 @@
                 "description": "Post a comment on a given place",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "$ref" : "#/components/parameters/authenticationToken"
+                        "$ref" : "#/components/parameters/authentication_token"
                     }
                 ],
                 "requestBody": {
@@ -128,12 +138,12 @@
                                         "type": "number",
                                         "description": "Count of rating stars"
                                     },
-                                    "callbackDatas" : {
+                                    "callback_datas" : {
                                         "type": "object",
                                         "description": "Place callback datas"
                                     }
                                 },
-                                "required": ["comment","rating","callbackDatas"]
+                                "required": ["comment","rating","callback_datas"]
                             }
                         }
                     }
@@ -146,13 +156,13 @@
                                 "schema": {
                                     "type" : "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "The error message on error"
                                         }
                                     },
-                                    "required": ["errorMessage"]
+                                    "required": ["error_message"]
                                 }
                             }
                         }
@@ -166,10 +176,10 @@
                 "description": "Set a user notice status like or remove like on a place",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "$ref" : "#/components/parameters/authenticationToken"
+                        "$ref" : "#/components/parameters/authentication_token"
                     }
                 ],
                 "requestBody": {
@@ -178,16 +188,16 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas" : {
+                                    "callback_datas" : {
                                         "type" : "object",
                                         "description": "Place callback datas"
                                     },
-                                    "likeState" : {
+                                    "like_state" : {
                                         "type": "boolean",
                                         "description": "Like state. true to like or remove the previous like , false to dislike"
                                     }
                                 },
-                                "required": ["callbackDatas","likeState"]
+                                "required": ["callback_datas","like_state"]
                             }
                         }
                     }
@@ -200,13 +210,13 @@
                                 "schema" : {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         }
                                     },
-                                    "required": ["errorMessage"]
+                                    "required": ["error_message"]
                                 }
                             }
                         }
@@ -223,7 +233,7 @@
                         "$ref" : "#/components/parameters/lang"
                     },
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -262,12 +272,12 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "confirmationCode" : {
+                                        "confirmation_code" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "The encrypted confirmation code to send back on confirmation if success"
@@ -278,7 +288,7 @@
                                             "description": "Encryption iv to send back, in pair with the confirmation code if success"
                                         }
                                     },
-                                    "required": ["errorMessage","confirmationCode","iv"]
+                                    "required": ["error_message","confirmation_code","iv"]
                                 }
                             }
                         }
@@ -295,7 +305,7 @@
                         "$ref" : "#/components/parameters/lang"
                     },
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -320,20 +330,20 @@
                                         "type": "string",
                                         "description": "User password"
                                     },
-                                    "encryptedConfirmationCode" : {
+                                    "encrypted_confirmation_code" : {
                                         "type": "string",
                                         "description": "Encrypted code received on the initialization step"
                                     },
-                                    "encryptionIv": {
+                                    "encryption_iv": {
                                         "type": "string",
                                         "description": "Encryption iv"
                                     },
-                                    "userConfirmationCode" : {
+                                    "user_confirmation_code" : {
                                         "type": "string",
                                         "description" : "The user provided confirmation code"
                                     }
                                 },
-                                "required": ["email","name","firstname","password","encryptedConfirmationCode","encryptionIv","userConfirmationCode"]
+                                "required": ["email","name","firstname","password","encrypted_confirmation_code","encryption_iv","user_confirmation_code"]
                             }
                         }
                     }
@@ -346,18 +356,18 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description" : "Error message on error"
                                         },
-                                        "authenticationToken" : {
+                                        "authentication_token" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Authentication token"
                                         }
                                     },
-                                    "required": ["errorMessage","authenticationToken"]
+                                    "required": ["error_message","authentication_token"]
                                 }
                             }
                         }
@@ -371,7 +381,7 @@
                 "description" : "Initialize the registration by google",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -380,12 +390,12 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "redirectUrl": {
+                                    "redirect_url": {
                                         "type" : "string",
                                         "description": "The url to redirect on depends on the type of application. Have to be one of the registered urls"
                                     }
                                 },
-                                "required": ["redirectUrl"]
+                                "required": ["redirect_url"]
                             }
                         }
                     }
@@ -398,7 +408,7 @@
                                 "schema" : {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
@@ -409,7 +419,7 @@
                                             "description": "Redirection link to authenticate with google"
                                         }
                                     },
-                                    "required": ["link","errorMessage"]
+                                    "required": ["link","error_message"]
                                 }
                             }
                         }
@@ -423,7 +433,7 @@
                 "description" : "Log the user",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -454,18 +464,18 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "description": "Error message on error",
                                             "nullable": true
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type" : "string",
                                             "description": "Authentication token",
                                             "nullable": true
                                         }
                                     },
-                                    "required": ["errorMessage","authenticationToken"]
+                                    "required": ["error_message","authentication_token"]
                                 }
                             }
                         }
@@ -482,7 +492,7 @@
                         "$ref" : "#/components/parameters/lang"
                     },
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -509,21 +519,21 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "description": "Error message on error",
                                             "nullable": true
                                         },
-                                        "confirmationCode": {
+                                        "confirmation_code": {
                                             "type": "string",
                                             "description": "Encrypted confirmation code on success"
                                         },
-                                        "encryptionIv" : {
+                                        "encryption_iv" : {
                                             "type": "string",
-                                            "description": "Encryption iv on success in pair with confirmationCode"
+                                            "description": "Encryption iv on success in pair with confirmation_code"
                                         }
                                     },
-                                    "required": ["errorMessage","confirmationCode","encryptionIv"]
+                                    "required": ["error_message","confirmation_code","encryption_iv"]
                                 }
                             }
                         }
@@ -537,7 +547,7 @@
                 "description": "Confirm forgot password verification and update the password",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -550,24 +560,24 @@
                                         "type": "string",
                                         "description": "User email"
                                     },
-                                    "encryptedConfirmationCode": {
+                                    "encrypted_confirmation_code": {
                                         "type": "string",
                                         "description": "Encrypted confirmation code on success"
                                     },
-                                    "encryptionIv" : {
+                                    "encryption_iv" : {
                                         "type": "string",
-                                        "description": "Encryption iv on success in pair with confirmationCode"
+                                        "description": "Encryption iv on success in pair with confirmation_code"
                                     },
-                                    "userConfirmationCode": {
+                                    "user_confirmation_code": {
                                         "type": "string",
                                         "description": "The input confirmation code by user"
                                     },
-                                    "newPassword" : {
+                                    "new_password" : {
                                         "type" : "string",
                                         "description": "User new password"
                                     }
                                 },
-                                "required": ["email","newPassword","userConfirmationCode","encryptedConfirmationCode","encryptionIv"]
+                                "required": ["email","new_password","user_confirmation_code","encrypted_confirmation_code","encryption_iv"]
                             }
                         }
                     }
@@ -580,18 +590,18 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "authenticationToken" : {
+                                        "authentication_token" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "New authentication token on success"
                                         }
                                     },
-                                    "required": ["errorMessage","authenticationToken"]
+                                    "required": ["error_message","authentication_token"]
                                 }
                             }
                         }
@@ -605,13 +615,13 @@
                 "description": "Provide user data's",
                 "parameters": [
                     {
-                        "$ref" : "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref" : "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "$ref" : "#/components/parameters/authenticationToken"
+                        "$ref" : "#/components/parameters/authentication_token"
                     },
                     {
-                        "name": "toFetch",
+                        "name": "to_fetch",
                         "required": true,
                         "in": "query",
                         "description": "Data's to fetch",
@@ -633,7 +643,7 @@
                                     "type": "object",
                                     "description": "The object will be indexed by the enumeration integer value and will contain as values the requested elements. Only the asked ones will be provided",
                                     "properties": {
-                                        "identityDatas" : {
+                                        "identity_datas" : {
                                             "type": "object",
                                             "description": "User identity data's",
                                             "properties": {
@@ -659,7 +669,7 @@
                                                     "description": "User phonenumber",
                                                     "nullable": true
                                                 },
-                                                "profilePictureLink" : {
+                                                "profile_picture_link" : {
                                                     "type": "string",
                                                     "description": "User profile picture access link"
                                                 },
@@ -672,41 +682,41 @@
                                                     "description": "Enumeration as int for gender"
                                                 }
                                             },
-                                            "required": ["id","name","firstname","birthdate","phonenumber","profilePictureLink","accountCreationDate","gender"]
+                                            "required": ["id","name","firstname","birthdate","phonenumber","profile_picture_link","accountCreationDate","gender"]
                                         },
-                                        "visitedPlaces" : {
+                                        "visited_places" : {
                                             "type": "array",
                                             "description": "User visited places",
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
-                                                    "placeDatas" : {
-                                                        "$ref" : "#/components/schemas/placeDatas"
+                                                    "place_datas" : {
+                                                        "$ref" : "#/components/schemas/place_datas"
                                                     },
                                                     "visitedAt": {
                                                         "type": "string",
                                                         "description": "Place visit time"
                                                     }
                                                 },
-                                                "required": ["placeDatas","visitedAt"]
+                                                "required": ["place_datas","visitedAt"]
                                             }
                                         },
-                                        "placeWishList" : {
+                                        "place_wish_list" : {
                                             "type": "array",
                                             "description": "User wanted places to visit",
                                             "items": {
-                                                "$ref" : "#/components/schemas/placeDatas"
+                                                "$ref" : "#/components/schemas/place_datas"
                                             }
                                         },
-                                        "travelRoutes" : {
+                                        "travel_routes" : {
                                             "type": "array",
                                             "description" : "User registered travel routes",
                                             "items": {
-                                                "$ref" : "#/components/schemas/travelRoutes"
+                                                "$ref" : "#/components/schemas/travel_routes"
                                             }
                                         }   
                                     },
-                                    "required": ["identityDatas","visitedPlaces","placeWishList","travelRoutes"]
+                                    "required": ["identity_datas","visited_places","place_wish_list","travel_routes"]
                                 }
                             }
                         }
@@ -720,10 +730,10 @@
                 "description": "Modify the user profile image or set it if there were no image",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -748,7 +758,7 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
@@ -759,7 +769,7 @@
                                             "description": "The profile picture url on success"
                                         }
                                     },
-                                    "required": ["errorMessage","imageUrl"]
+                                    "required": ["error_message","imageUrl"]
                                 }
                             }
                         }
@@ -773,10 +783,10 @@
                 "description": "Edit the user profile from the provided fields. The birthdate can only be update the first time.",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     }
                 ],
                 "requestBody": {
@@ -799,9 +809,12 @@
                                     "phonenumber": {
                                         "type": "string",
                                         "description": "User phonenumber"
+                                    },
+                                    "gender": {
+                                        "type": "number",
+                                        "description": "User gender represented by shared enumeration value as int"
                                     }
-                                },
-                                "required": []
+                                }
                             }
                         }
                     }
@@ -814,17 +827,17 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage" : {
+                                        "error_message" : {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         },
-                                        "authenticationToken": {
+                                        "authentication_token": {
                                             "type": "string",
                                             "description": "New authentication token"
                                         }
                                     },
-                                    "required": ["errorMessage","authenticationToken"]
+                                    "required": ["error_message","authentication_token"]
                                 }
                             }
                         }
@@ -838,10 +851,10 @@
                 "description": "Update the user password",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -849,20 +862,20 @@
                         "application/json": {
                             "schema": {
                                 "properties": {
-                                    "oldPassword": {
+                                    "old_password": {
                                         "type": "string",
                                         "description": "The old user password"
                                     },
-                                    "newPassword": {
+                                    "new_password": {
                                         "type": "string",
                                         "description": "New password"
                                     },
-                                    "newPasswordConfirmation": {
+                                    "new_password_confirmation": {
                                         "type": "string",
                                         "description": "New password confirmation"
                                     }
                                 },
-                                "required": ["oldPassword","newPassword","newPasswordConfirmation"]
+                                "required": ["old_password","new_password","new_password_confirmation"]
                             }
                         }
                     }
@@ -875,14 +888,14 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message on error"
                                         }
                                     },
                                     "required": [
-                                        "errorMessage"
+                                        "error_message"
                                     ]
                                 }
                             }
@@ -897,10 +910,10 @@
                 "description": "Add a place in the user wish list",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -909,12 +922,12 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "The received place's callback datas"
                                     }
                                 },
-                                "required": ["callbackDatas"]
+                                "required": ["callback_datas"]
                             }
                         }
                     }
@@ -927,12 +940,12 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error"
                                         }
                                     },
-                                    "required": ["errorMessage"]
+                                    "required": ["error_message"]
                                 }
                             }
                         }
@@ -944,10 +957,10 @@
                 "description": "Delete a place in the user wish list",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -956,12 +969,12 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "callbackDatas": {
+                                    "callback_datas": {
                                         "type": "object",
                                         "description": "The received place's callback datas"
                                     }
                                 },
-                                "required": ["callbackDatas"]
+                                "required": ["callback_datas"]
                             }
                         }
                     }
@@ -974,12 +987,12 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "description": "Error message on error"
                                         }
                                     },
-                                    "required": ["errorMessage"]
+                                    "required": ["error_message"]
                                 }
                             }
                         }
@@ -993,7 +1006,7 @@
                 "description": "Provide recommandations for unauthenticated user",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -1006,7 +1019,7 @@
                                         "type": "number",
                                         "description": "Pagination number"
                                     },
-                                    "userLocation": {
+                                    "user_location": {
                                         "type": "object",
                                         "properties": {
                                             "longitude": {
@@ -1020,7 +1033,7 @@
                                         },
                                         "required": ["longitude","latitude"]
                                     },
-                                    "userSearches": {
+                                    "user_searches": {
                                         "type": "array",
                                         "items": {
                                             "type": "object",
@@ -1038,7 +1051,7 @@
                                         }
                                     }
                                 },
-                                "required": ["paging","userLocation","userSearches"]
+                                "required": ["paging","user_location","user_searches"]
                             }
                         }
                     }
@@ -1051,7 +1064,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/placeDatas"
+                                        "$ref": "#/components/schemas/place_datas"
                                     }
                                 }
                             }
@@ -1066,10 +1079,10 @@
                 "description": "Provide recommandations for an authenticated user",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     }
                 ],
                 "requestBody": {
@@ -1082,7 +1095,7 @@
                                         "type": "number",
                                         "description": "Pagination number"
                                     },
-                                    "userLocation": {
+                                    "user_location": {
                                         "type": "object",
                                         "properties": {
                                             "longitude": {
@@ -1097,7 +1110,7 @@
                                         "required": ["longitude","latitude"]
                                     }
                                 },
-                                "required": ["paging","userLocation"]
+                                "required": ["paging","user_location"]
                             }
                         }
                     }
@@ -1110,7 +1123,7 @@
                                 "schema": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/components/schemas/placeDatas"
+                                        "$ref": "#/components/schemas/place_datas"
                                     }
                                 }
                             }
@@ -1119,19 +1132,19 @@
                 }
             }
         },
-        "/user/travel-routes/generate": {
+        "/user/travel_routes/generate": {
             "get": {
                 "summary": "Provide some generated travel routes",
                 "description": "Provide some generated travel routes",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     },
                     {
-                        "name" : "startDate",
+                        "name" : "start_date",
                         "description": "Expected start date",
                         "required": true,
                         "in": "query",
@@ -1140,7 +1153,7 @@
                         } 
                     },
                     {
-                        "name" : "endDate",
+                        "name" : "end_date",
                         "description": "Expected end date",
                         "required": true,
                         "in": "query",
@@ -1177,11 +1190,11 @@
                                     "items": {
                                         "type": "object",
                                         "properties": {
-                                            "startDate": {
+                                            "start_date": {
                                                 "type": "string",
                                                 "description": "Start date"
                                             },
-                                            "endDate": {
+                                            "end_date": {
                                                 "type": "string",
                                                 "description": "End date"
                                             },
@@ -1192,15 +1205,15 @@
                                             "proposals": {
                                                 "type": "array",
                                                 "items": {
-                                                    "$ref": "#/components/schemas/placeDatas"
+                                                    "$ref": "#/components/schemas/place_datas"
                                                 }
                                             },
-                                            "callbackDatas": {
+                                            "callback_datas": {
                                                 "type": "object",
                                                 "description": "Callback data's to provide on every requests"
                                             }
                                         },
-                                        "required": ["callbackDatas","proposals","budget","endDate","startDate"]
+                                        "required": ["callback_datas","proposals","budget","end_date","start_date"]
                                     }
                                 }
                             }
@@ -1213,10 +1226,10 @@
                 "description": "Register generated travel routes",
                 "parameters": [
                     {
-                        "$ref": "#/components/parameters/authenticationToken"
+                        "$ref": "#/components/parameters/authentication_token"
                     },
                     {
-                        "$ref": "#/components/parameters/voluptuariaAccessConfig"
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
                     }
                 ],
                 "requestBody": {
@@ -1225,7 +1238,7 @@
                             "schema": {
                                 "type": "object",
                                 "properties": {
-                                    "travelRoutes": {
+                                    "travel_routes": {
                                         "type": "array",
                                         "items": {
                                             "type": "object",
@@ -1233,7 +1246,7 @@
                                         }
                                     }
                                 },
-                                "required": ["travelRoutes"]
+                                "required": ["travel_routes"]
                             }
                         }
                     }
@@ -1246,13 +1259,13 @@
                                 "schema": {
                                     "type": "object",
                                     "properties": {
-                                        "errorMessage": {
+                                        "error_message": {
                                             "type": "string",
                                             "nullable": true,
                                             "description": "Error message or null on error"
                                         }
                                     },
-                                    "required": ["errorMessage"]
+                                    "required": ["error_message"]
                                 }
                             }
                         }
@@ -1263,8 +1276,8 @@
     },
     "components": {
         "parameters": {
-            "voluptuariaAccessConfig" : {
-                "name": "voluptuariaAccessConfig",
+            "voluptuaria_access_config" : {
+                "name": "voluptuaria_access_config",
                 "in": "header",
                 "description": "Voluptuaria api access configuration",
                 "allowEmptyValue": false,
@@ -1284,8 +1297,8 @@
                     "required": ["token","iv"]
                 }
             },
-            "authenticationToken" : {
-                "name" : "authenticationToken",
+            "authentication_token" : {
+                "name" : "authentication_token",
                 "in" : "header",
                 "description": "Authentication token",
                 "allowEmptyValue": false,
@@ -1294,8 +1307,8 @@
                     "type": "string"
                 }
             },
-            "notRequiredAuthenticationToken" : {
-                "name" : "authenticationToken",
+            "not_required_authentication_token" : {
+                "name" : "authentication_token",
                 "in" : "header",
                 "description": "Authentication token",
                 "allowEmptyValue": false,
@@ -1318,11 +1331,11 @@
             "comments" : {
                 "type": "object",
                 "properties": {
-                    "userDatas" : {
+                    "user_datas" : {
                         "type": "object",
                         "nullable": true,
                         "properties": {
-                            "profilePictureLink" : {
+                            "profile_picture_link" : {
                                 "type": "string",
                                 "description": "User profile picture link"
                             },
@@ -1331,7 +1344,7 @@
                                 "description": "User fullname"
                             }
                         },
-                        "required": ["profilePictureLink","fullname"]
+                        "required": ["profile_picture_link","fullname"]
                     },
                     "comment" : {
                         "type": "string",
@@ -1341,14 +1354,14 @@
                         "type": "number",
                         "description": "Rating as count of stars"
                     },
-                    "wroteAt": {
+                    "wrote_at": {
                         "type": "string",
                         "description": "Comment writing date"
                     }
                 },
-                "required": ["comment","rating","wroteAt","userDatas"]
+                "required": ["comment","rating","wrote_at","user_datas"]
             },
-            "placeDatas" : {
+            "place_datas" : {
                 "type": "object",
                 "properties": {
                     "prices": {
@@ -1373,7 +1386,7 @@
                         "type": "string",
                         "description": "Place name"
                     },
-                    "isOpenedNow": {
+                    "is_opened_now": {
                         "type": "boolean",
                         "description": "Boolean indicated if the place is openened at the moment of the request"
                     },
@@ -1411,7 +1424,7 @@
                             "description": "Category name"
                         }
                     },
-                    "callbackDatas" : {
+                    "callback_datas" : {
                         "type": "object",
                         "description": "Object to return if the place need to be recognized in another request"
                     },
@@ -1426,17 +1439,17 @@
                         "$ref" : "#/components/schemas/weather"
                     }
                 },
-                "required": ["prices","name","isOpenedNow","images","coordinates","categories","callbackDatas","comments","weather"]
+                "required": ["prices","name","is_opened_now","images","coordinates","categories","callback_datas","comments","weather"]
             },
-            "travelRoutes" : {
+            "travel_routes" : {
                 "type" : "object",
                 "description": "Travel route data's",
                 "properties": {
-                    "startDate" : {
+                    "start_date" : {
                         "type": "string",
                         "description": "Travel route start date"
                     },
-                    "endDate" : {
+                    "end_date" : {
                         "type": "string",
                         "description": "Travel route end date"
                     },
@@ -1448,15 +1461,15 @@
                         "description": "Places to visit",
                         "type": "array",
                         "items": {
-                            "$ref" : "#/components/schemas/placeDatas"
+                            "$ref" : "#/components/schemas/place_datas"
                         }
                     },
-                    "callbackDatas" : {
+                    "callback_datas" : {
                         "type": "object",
                         "description": "Data to provide to if the travel route need to be recognized in another request"
                     }
                 },
-                "required": ["startDate","endDate","places"]
+                "required": ["start_date","end_date","places"]
             },
             "weather" : {
                 "description": "A zone weather data's",
@@ -1491,16 +1504,16 @@
                                         "type": "string",
                                         "description": "Temperature value"
                                     },
-                                    "feltTemperature" : {
+                                    "felt_temperature" : {
                                         "type": "string",
                                         "description": "Felt temperature value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Temperature used measure unit"
                                     }
                                 },
-                                "required": ["temperature","feltTemperature","measureUnit"]
+                                "required": ["temperature","felt_temperature","measure_unit"]
                             },
                             "name" : {
                                 "type": "string",
@@ -1517,15 +1530,15 @@
                                         "type": "string",
                                         "description": "Pressure value"
                                     },
-                                    "measureUnit": {
+                                    "measure_unit": {
                                         "type": "string",
                                         "description": "Pressure measure unit"
                                     }
                                 },
-                                "required": ["pressure","measureUnit"],
+                                "required": ["pressure","measure_unit"],
                                 "nullable": true
                             },
-                            "placeDescription" : {
+                            "place_description" : {
                                 "type": "string",
                                 "description": "Place description"
                             },
@@ -1535,7 +1548,7 @@
                                 "nullable": true
                             }
                         },
-                        "required": ["date","temperature","name","sunrise","pressure","placeDescription","alert"]
+                        "required": ["date","temperature","name","sunrise","pressure","place_description","alert"]
                     },
                     "pressure" : {
                         "type": "object",
@@ -1544,12 +1557,12 @@
                                 "type": "string",
                                 "description": "Pressure value"
                             },
-                            "measureUnit": {
+                            "measure_unit": {
                                 "type": "string",
                                 "description": "Pressure measure unit"
                             }
                         },
-                        "required": ["pressure","measureUnit"]
+                        "required": ["pressure","measure_unit"]
                     },
                     "temperature": {
                         "type": "object",
@@ -1558,16 +1571,16 @@
                                 "type": "string",
                                 "description": "Temperature value"
                             },
-                            "feltTemperature" : {
+                            "felt_temperature" : {
                                 "type": "string",
                                 "description": "Felt temperature value"
                             },
-                            "measureUnit": {
+                            "measure_unit": {
                                 "type": "string",
                                 "description": "Temperature used measure unit"
                             }
                         },
-                        "required": ["temperature","feltTemperature","measureUnit"]
+                        "required": ["temperature","felt_temperature","measure_unit"]
                     }
                 },
                 "required": ["coordinates","forecast","pressure","temperature"]

@@ -34,6 +34,9 @@ import { UserInformationsController } from "./controllers/user-informations.cont
         ForgotPasswordService,
         UserInformationsService,
     ],
+    exports: [
+        UserLoginService
+    ],
     controllers: [
         UserLoginController,
         UserRegistrationController,
