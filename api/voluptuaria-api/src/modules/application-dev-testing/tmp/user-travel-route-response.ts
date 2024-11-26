@@ -1,7 +1,6 @@
-import { Expose, Type } from "class-transformer"
+import { Type } from "class-transformer"
 import {
     IsArray,
-    IsBoolean,
     IsNotEmpty,
     IsNumber,
     IsObject,

@@ -3,6 +3,7 @@ import { AppModule } from "./app.module"
 import { ValidationPipe as CustomValidationPipe } from "./commons/pipes/validation.pipe"
 import { DtoExposeTransformInterceptor } from "./commons/interceptors/dto-expose-transform.interceptor"
 import { ValidationPipe } from "@nestjs/common"
+import "reflect-metadata";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule)

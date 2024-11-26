@@ -7,6 +7,8 @@ import { UserEntity } from "../../database-module/entities/user.entity"
 import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
+import { EncryptService } from "../../app-security/services/encrypt.service"
+import { UserPayloadDatas } from "src/modules/app-security/data-contracts/user-payload.datas"
 
 /**
  * @brief Login service
@@ -19,7 +21,9 @@ export class UserLoginService {
         protected readonly userRepository: Repository<UserEntity>,
         protected readonly hashService: HashService,
         protected readonly configService: ConfigService,
-    ) {}
+        protected readonly encryptService: EncryptService,
+    ) {
+    }
 
     /**
      * @brief try to log the user
@@ -48,7 +52,7 @@ export class UserLoginService {
             return response
         }
 
-        const payload = { email: user.email, password: user.password }
+        const payload = { email: user.email }
 
         response.authenticationToken = this.generateToken(payload)
         return response
@@ -59,7 +63,7 @@ export class UserLoginService {
      * @param payload datas
      * @returns {string} the token
      */
-    generateToken(payload: any): string {
+    generateToken(payload: UserPayloadDatas): string {
         return this.jwtService.sign(payload, {
             secret: this.configService.getOrThrow("JWT_SECRET"),
         })
@@ -68,27 +72,11 @@ export class UserLoginService {
     /**
      * @brief verify a token
      * @param token token
-     * @returns {any} service verification
+     * @returns {UserPayloadDatas} service verification
      */
-    validateToken(token: string): any {
+    validateToken(token: string): UserPayloadDatas {
         try {
-            return this.jwtService.verify(token)
-        } catch (error) {
-            return null
-        }
-    }
-
-    /**
-     * @brief Gets the hashed API token from the environment variables.
-     * @returns {string} The hashed API token.
-     */
-    async getHashedApiToken(apiToken: string): Promise<boolean> {
-        try {
-            const voluptuariaApiToken = await this.hashService.compare({
-                toCompare: this.configService.getOrThrow("API_TOKEN"),
-                hash: apiToken,
-            })
-            return voluptuariaApiToken
+            return this.jwtService.verify<UserPayloadDatas>(token)
         } catch (error) {
             return null
         }

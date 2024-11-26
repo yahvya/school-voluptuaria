@@ -1,33 +1,49 @@
-import {
-    Injectable,
-    CanActivate,
-    ExecutionContext,
-    UnauthorizedException,
-} from "@nestjs/common"
-import { UserLoginService } from "../../modules/user/services/user-login.service"
-import { Request } from "express"
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from "@nestjs/common"
+import { EncryptService } from "../../modules/app-security/services/encrypt.service"
+import { ConfigService } from "@nestjs/config"
+import { isObject } from "class-validator"
 
 /**
- * @brief Jwt token verification
+ * @brief Api token verification
  */
 @Injectable()
 export class VoluptuariaAuthGuard implements CanActivate {
-    constructor(private readonly UserLoginService: UserLoginService) {}
+    /**
+     * @brief access config key in headers 
+     */
+    static ACCESS_CONFIG_KEY:string = "voluptuaria_access_config"
+    
+    constructor(
+        private readonly encryptService: EncryptService,
+        protected readonly configService: ConfigService,
+    ) {
+    }
 
-    canActivate(context: ExecutionContext): boolean {
-        const request = context.switchToHttp().getRequest()
-        const voluptariaToken = request.headers["voluptaria-token"]
+    async canActivate(context: ExecutionContext): Promise<boolean> {
+        try{
+            const request = context.switchToHttp().getRequest()
 
-        if (voluptariaToken == null || voluptariaToken === "") {
+            if (!(VoluptuariaAuthGuard.ACCESS_CONFIG_KEY in request.headers))
+                throw new UnauthorizedException()
+
+            const config = JSON.parse(request.headers[VoluptuariaAuthGuard.ACCESS_CONFIG_KEY])
+
+            if(!isObject(config) || !("iv" in config) || !("token" in config))
+                throw new UnauthorizedException()
+            
+            const apiProvidedToken = await this.encryptService.decrypt({
+                iv: config["iv"] as string,
+                toDecrypt: config["token"] as string,
+                secretKey: this.configService.getOrThrow("API_TOKEN_SECRET")
+            })
+
+            if (this.configService.getOrThrow("API_SECRET") !== apiProvidedToken)
+                throw new UnauthorizedException()
+
+            return true
+        }
+        catch(_){
             throw new UnauthorizedException()
         }
-
-        const validApiToken = this.UserLoginService.getHashedApiToken()
-
-        if (validApiToken != voluptariaToken) {
-            throw new UnauthorizedException()
-        }
-
-        return true
     }
 }
