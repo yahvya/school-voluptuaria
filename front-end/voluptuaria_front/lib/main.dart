@@ -22,6 +22,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   @override
+  int _selectedIndex = 2; // Par défaut, la page d'accueil est sélectionnée
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Test',
@@ -168,7 +169,9 @@ class MyApp extends StatelessWidget {
             ],
             onIconTap: (index) {
               print('Icon $index tapped');
+              _selectedIndex = index;
             },
+            currentIndex: _selectedIndex, // Fournir le paramètre requis
           ),
         ),
       ),
