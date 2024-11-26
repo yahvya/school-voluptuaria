@@ -2,10 +2,7 @@ import { UserLoginService } from "../../../../modules/user/services/user-login.s
 import { Test } from "@nestjs/testing"
 import { UserModule } from "../../../../modules/user/user.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
-import {
-    Gender,
-    UserEntity,
-} from "../../../../modules/database-module/entities/user.entity"
+import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
 import { ConfigModule, ConfigService } from "@nestjs/config"
 import { AppSecurityModule } from "../../../../modules/app-security/app-security.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
@@ -108,6 +105,7 @@ describe("User.UserLoginService", () => {
             expect(response.authenticationToken).not.toBeNull()
         })
     })
+
 
     afterAll(async () => {
         await testUserRepository.remove(testUserEntity)

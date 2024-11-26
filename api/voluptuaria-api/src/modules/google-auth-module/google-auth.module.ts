@@ -7,4 +7,5 @@ import { GoogleAuthService } from "./services/google-auth.service"
     providers: [GoogleAuthService],
     exports: [GoogleAuthService],
 })
-export class GoogleAuthModule {}
+export class GoogleAuthModule {
+}

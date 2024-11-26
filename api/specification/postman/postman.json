@@ -2,10 +2,10 @@
 	"info": {
 		"name": "Voluptuaria Api",
 		"description": {
-		    "content": "Voluptuaria Api",
+		    "content": "Voluptuaria application's Api",
 		    "type": "text/markdown"
 		},
-		"version": "11.09.24",
+		"version": "1.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -17,7 +17,7 @@
                 "description": "Log the user",
                  "item": [
                             {
-                                "name": "Log the user",
+                                "name": "Log user",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -34,9 +34,9 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
@@ -69,10 +69,10 @@
                         },
 	                        {
     "name": "/login/forgot-password",
-                "description": "Validate the forgot password starting process",
+                "description": "Initialize forgot password process, validate data's and send confirmation mail",
                  "item": [
                             {
-                                "name": "Validate the forgot password starting process",
+                                "name": "Initialize forgot password process",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -95,9 +95,9 @@
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
@@ -124,17 +124,17 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "Validate the forgot password starting process"
+                                    "description": "Initialize forgot password process, validate data's and send confirmation mail"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/login/forgot-password/confirmation",
-                "description": "Confirm the forgot password verification and update password",
+    "name": "/login/forgot-password/confirmaiton",
+                "description": "Confirm forgot password verification and update the password",
                  "item": [
                             {
-                                "name": "Confirm the forgot password verification and update password",
+                                "name": "Confirm forgot password process",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -151,15 +151,15 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"user-confirmation-code\": \"<string>\",\n \"new-password\": \"<string>\",\n \"iv\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\",\n \"new_password\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -167,21 +167,21 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/login/forgot-password/confirmation",
+                                        "raw": "{{baseUrl}}/login/forgot-password/confirmaiton",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "login",
                                             "forgot-password",
-                                            "confirmation"
+                                            "confirmaiton"
                                         ],
                                         "variable": [
                                         ],
                                         "query": [
                                         ]
                                     },
-                                    "description": "Confirm the forgot password verification and update password"
+                                    "description": "Confirm forgot password verification and update the password"
                                 }
                             }
                             ]
@@ -191,7 +191,7 @@
                 "description": "Provide the comments on a given place with pagination",
                  "item": [
                             {
-                                "name": "Place comments",
+                                "name": "Get place comments",
                                 "request": {
                                     "method": "GET",
                                     "header": [
@@ -202,9 +202,9 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
@@ -237,8 +237,8 @@
                                             },
                                             {
                                                 "key": "callbackDatas",
-                                                "value": "callbackDatas_example",
-                                                "description": "The received callback datas from the place details - json string",
+                                                "value": "Object",
+                                                "description": "Place callback data's",
                                                 "disabled": false
                                             }
                                         ]
@@ -253,7 +253,7 @@
                 "description": "Post a comment on a given place",
                  "item": [
                             {
-                                "name": "Post a comment on a given place",
+                                "name": "Post a command on a place",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -270,15 +270,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication_token",
+                                            "value": "",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"comment\": \"<string>\",\n \"authentication-token\": \"<string>\"\n}",
+                                        "raw": "{\n \"comment\": \"<string>\",\n \"rating\": \"<number>\",\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -305,11 +311,11 @@
                             ]
                         },
 	                        {
-    "name": "/place/like",
-                "description": "Post the user notice on a place",
+    "name": "/place/like/status",
+                "description": "Set a user notice status like or remove like on a place",
                  "item": [
                             {
-                                "name": "Post the user notice on a place",
+                                "name": "Set a user notice status",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -326,15 +332,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication_token",
+                                            "value": "",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"callback-datas\": \"<string>\",\n \"authentication-token\": \"<string>\",\n \"like-state\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\",\n \"like_state\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -342,30 +354,87 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/place/like",
+                                        "raw": "{{baseUrl}}/place/like/status",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "place",
-                                            "like"
+                                            "like",
+                                            "status"
                                         ],
                                         "variable": [
                                         ],
                                         "query": [
                                         ]
                                     },
-                                    "description": "Post the user notice on a place"
+                                    "description": "Set a user notice status like or remove like on a place"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/register",
-                "description": "Validate user registration datas",
+    "name": "/register/by-google",
+                "description": "Initialize the registration by google",
                  "item": [
                             {
-                                "name": "Validate user registration datas",
+                                "name": "Initialize registration by google",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"redirect_url\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register/by-google",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register",
+                                            "by-google"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Initialize the registration by google"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/register/confirmation",
+                "description": "Try to confirm user registration",
+                 "item": [
+                            {
+                                "name": "User registration confirmation",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -388,183 +457,15 @@
                                             "disabled": true
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
-                                        "options": {
-                                            "raw": {
-                                                "language": "json"
-                                            }
-                                        }
-                                    },
-                                    "url": {
-                                        "raw": "{{baseUrl}}/register",
-                                        "host": [
-                                            "{{baseUrl}}"
-                                        ],
-                                        "path": [
-                                            "register"
-                                        ],
-                                        "variable": [
-                                        ],
-                                        "query": [
-                                        ]
-                                    },
-                                    "description": "Validate user registration datas"
-                                }
-                            }
-                            ]
-                        },
-	                        {
-    "name": "/register/by-google/confirmation",
-                "description": "Try to register the user from google datas",
-                 "item": [
-                            {
-                                "name": "Try to register the user from google datas",
-                                "request": {
-                                    "method": "POST",
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "Accept",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "voluptaria-token",
-                                            "value": "",
-                                            "description": "Application authentication token to confirm the application request",
-                                            "disabled": true
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "raw",
-                                        "raw": "{\n \"password\": \"<string>\",\n \"iv\": \"<string>\",\n \"datas\": \"<string>\"\n}",
-                                        "options": {
-                                            "raw": {
-                                                "language": "json"
-                                            }
-                                        }
-                                    },
-                                    "url": {
-                                        "raw": "{{baseUrl}}/register/by-google/confirmation",
-                                        "host": [
-                                            "{{baseUrl}}"
-                                        ],
-                                        "path": [
-                                            "register",
-                                            "by-google",
-                                            "confirmation"
-                                        ],
-                                        "variable": [
-                                        ],
-                                        "query": [
-                                        ]
-                                    },
-                                    "description": "Try to register the user from google datas"
-                                }
-                            }
-                            ]
-                        },
-	                        {
-    "name": "/register/by-gooogle",
-                "description": "provide the google authentication link",
-                 "item": [
-                            {
-                                "name": "Provide the google authentication link",
-                                "request": {
-                                    "method": "POST",
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "Accept",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "voluptaria-token",
-                                            "value": "",
-                                            "description": "Application authentication token to confirm the application request",
-                                            "disabled": true
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "raw",
-                                        "raw": "{\n \"redirectUri\": \"<string>\"\n}",
-                                        "options": {
-                                            "raw": {
-                                                "language": "json"
-                                            }
-                                        }
-                                    },
-                                    "url": {
-                                        "raw": "{{baseUrl}}/register/by-gooogle",
-                                        "host": [
-                                            "{{baseUrl}}"
-                                        ],
-                                        "path": [
-                                            "register",
-                                            "by-gooogle"
-                                        ],
-                                        "variable": [
-                                        ],
-                                        "query": [
-                                        ]
-                                    },
-                                    "description": "provide the google authentication link"
-                                }
-                            }
-                            ]
-                        },
-	                        {
-    "name": "/register/confirmation",
-                "description": "Confirm a user registration",
-                 "item": [
-                            {
-                                "name": "Confirm a user registration",
-                                "request": {
-                                    "method": "POST",
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "Accept",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "voluptaria-token",
-                                            "value": "",
-                                            "description": "Application authentication token to confirm the application request",
-                                            "disabled": true
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "raw",
-                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted-confirmation-code\": \"<string>\",\n \"iv\": \"<string>\",\n \"user-confirmation-code\": \"<string>\"\n}",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -585,17 +486,79 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "Confirm a user registration"
+                                    "description": "Try to confirm user registration"
+                                }
+                            }
+                            ]
+                        },
+	                        {
+    "name": "/register/voluptuaria",
+                "description": "Initialize user registration by validating data's and sending confirmation mail",
+                 "item": [
+                            {
+                                "name": "Initialize user registration",
+                                "request": {
+                                    "method": "POST",
+                                    "header": [
+                                        {
+                                            "key": "Content-Type",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "Accept",
+                                            "value": "application/json",
+                                            "description": "",
+                                            "disabled": false
+                                        },
+                                        {
+                                            "key": "lang",
+                                            "value": "",
+                                            "description": " Name of the lang file",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        }
+                                    ],
+                                    "body": {
+                                        "mode": "raw",
+                                        "raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
+                                        "options": {
+                                            "raw": {
+                                                "language": "json"
+                                            }
+                                        }
+                                    },
+                                    "url": {
+                                        "raw": "{{baseUrl}}/register/voluptuaria",
+                                        "host": [
+                                            "{{baseUrl}}"
+                                        ],
+                                        "path": [
+                                            "register",
+                                            "voluptuaria"
+                                        ],
+                                        "variable": [
+                                        ],
+                                        "query": [
+                                        ]
+                                    },
+                                    "description": "Initialize user registration by validating data's and sending confirmation mail"
                                 }
                             }
                             ]
                         },
 	                        {
     "name": "/search/place",
-                "description": "Search a touristic place",
+                "description": "Allow to search a place from a text",
                  "item": [
                             {
-                                "name": "Search",
+                                "name": "Search place",
                                 "request": {
                                     "method": "GET",
                                     "header": [
@@ -606,15 +569,9 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "User authentication jwt token if authenticated - allow to register user searches",
-                                            "disabled": true
-                                        },
-                                        {
-                                            "key": "voluptaria-token",
-                                            "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
@@ -640,24 +597,30 @@
                                         ],
                                         "query": [
                                             {
-                                                "key": "research",
-                                                "value": "research_example",
-                                                "description": "Research string",
+                                                "key": "search",
+                                                "value": "search_example",
+                                                "description": "Search string",
+                                                "disabled": false
+                                            },
+                                            {
+                                                "key": "minRating",
+                                                "value": "8.14",
+                                                "description": "Minimum rating for on the place",
                                                 "disabled": false
                                             }
                                         ]
                                     },
-                                    "description": "Search a touristic place"
+                                    "description": "Allow to search a place from a text"
                                 }
                             }
                             ]
                         },
 	                        {
     "name": "/user/change-password",
-                "description": "change the user password",
+                "description": "Update the user password",
                  "item": [
                             {
-                                "name": "Change the user password",
+                                "name": "Update the user password",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -674,15 +637,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"old-password\": \"<string>\",\n \"new-password\": \"<string>\",\n \"confirm-new-password\": \"<string>\"\n}",
+                                        "raw": "{\n \"old_password\": \"<string>\",\n \"new_password\": \"<string>\",\n \"new_password_confirmation\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -703,26 +672,20 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "change the user password"
+                                    "description": "Update the user password"
                                 }
                             }
                             ]
                         },
 	                        {
     "name": "/user/datas",
-                "description": "Provide user datas",
+                "description": "Provide user data's",
                  "item": [
                             {
-                                "name": "Provide user datas",
+                                "name": "Provide user data's",
                                 "request": {
-                                    "method": "POST",
+                                    "method": "GET",
                                     "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
                                         {
                                             "key": "Accept",
                                             "value": "application/json",
@@ -730,15 +693,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication_token",
+                                            "value": "",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"to-fetch\": \"<string>\"\n}",
+                                        "raw": "",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -757,65 +726,15 @@
                                         "variable": [
                                         ],
                                         "query": [
-                                        ]
-                                    },
-                                    "description": "Provide user datas"
-                                }
-                            }
-                            ]
-                        },
-	                        {
-    "name": "/user/load-social-profile",
-                "description": "Load user social profile from his social medias",
-                 "item": [
-                            {
-                                "name": "Load user social profile from his social medias",
-                                "request": {
-                                    "method": "POST",
-                                    "header": [
-                                        {
-                                            "key": "Content-Type",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "Accept",
-                                            "value": "application/json",
-                                            "description": "",
-                                            "disabled": false
-                                        },
-                                        {
-                                            "key": "voluptaria-token",
-                                            "value": "",
-                                            "description": "Application authentication token to confirm the application request",
-                                            "disabled": true
-                                        }
-                                    ],
-                                    "body": {
-                                        "mode": "raw",
-                                        "raw": "{\n \n}",
-                                        "options": {
-                                            "raw": {
-                                                "language": "json"
+                                            {
+                                                "key": "to_fetch",
+                                                "value": "",
+                                                "description": "Data's to fetch",
+                                                "disabled": false
                                             }
-                                        }
-                                    },
-                                    "url": {
-                                        "raw": "{{baseUrl}}/user/load-social-profile",
-                                        "host": [
-                                            "{{baseUrl}}"
-                                        ],
-                                        "path": [
-                                            "user",
-                                            "load-social-profile"
-                                        ],
-                                        "variable": [
-                                        ],
-                                        "query": [
                                         ]
                                     },
-                                    "description": "Load user social profile from his social medias"
+                                    "description": "Provide user data's"
                                 }
                             }
                             ]
@@ -842,15 +761,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -899,15 +824,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"callback-datas\": \"<string>\"\n}",
+                                        "raw": "{\n \"callback_datas\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -936,10 +867,10 @@
                         },
 	                        {
     "name": "/user/profile",
-                "description": "edit the user profil",
+                "description": "Edit the user profile from the provided fields. The birthdate can only be update the first time.",
                  "item": [
                             {
-                                "name": "Edit the user profil",
+                                "name": "Edit the user profile",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -956,15 +887,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication_token",
+                                            "value": "",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthday\": \"<string>\",\n \"phonenumber\": \"<string>\"\n}",
+                                        "raw": "{\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthdate\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"gender\": \"<number>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -985,17 +922,17 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "edit the user profil"
+                                    "description": "Edit the user profile from the provided fields. The birthdate can only be update the first time."
                                 }
                             }
                             ]
                         },
 	                        {
     "name": "/user/profile-image",
-                "description": "Change the user profile image",
+                "description": "Modify the user profile image or set it if there were no image",
                  "item": [
                             {
-                                "name": "Change the user profile image",
+                                "name": "Update the user profile image",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -1012,15 +949,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"authentication-token\": \"<string>\",\n \"image\": \"<string>\",\n \"name\": \"<string>\"\n}",
+                                        "raw": "{\n \"image\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1041,17 +984,17 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "Change the user profile image"
+                                    "description": "Modify the user profile image or set it if there were no image"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/user/recommendations/auth",
-                "description": "Provide the recommendations for a authenticated user",
+    "name": "/user/recommandations/auth",
+                "description": "Provide recommandations for an authenticated user",
                  "item": [
                             {
-                                "name": "userRecommendationsAuthPost",
+                                "name": "Provide recommandations for an authenticated user",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -1068,15 +1011,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "authentication_token",
+                                            "value": "",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"paging\": \"<number>\",\n \"token\": \"<string>\",\n \"user-location\": \"<string>\"\n}",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1084,13 +1033,13 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/recommendations/auth",
+                                        "raw": "{{baseUrl}}/user/recommandations/auth",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "recommendations",
+                                            "recommandations",
                                             "auth"
                                         ],
                                         "variable": [
@@ -1098,17 +1047,17 @@
                                         "query": [
                                         ]
                                     },
-                                    "description": "Provide the recommendations for a authenticated user"
+                                    "description": "Provide recommandations for an authenticated user"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/user/recommendations/noauth",
-                "description": "Provide the recommandations for a unauthenticated user",
+    "name": "/user/recommandations/not-auth",
+                "description": "Provide recommandations for unauthenticated user",
                  "item": [
                             {
-                                "name": "Provide the recommandations for a unauthenticated user",
+                                "name": "Provide recommandations for unauthenticated user",
                                 "request": {
                                     "method": "POST",
                                     "header": [
@@ -1125,15 +1074,15 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"paging\": \"<number>\",\n \"user-location\": \"<string>\",\n \"user-searches\": \"<string>\"\n}",
+                                        "raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\",\n \"user_searches\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1141,31 +1090,31 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/recommendations/noauth",
+                                        "raw": "{{baseUrl}}/user/recommandations/not-auth",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "recommendations",
-                                            "noauth"
+                                            "recommandations",
+                                            "not-auth"
                                         ],
                                         "variable": [
                                         ],
                                         "query": [
                                         ]
                                     },
-                                    "description": "Provide the recommandations for a unauthenticated user"
+                                    "description": "Provide recommandations for unauthenticated user"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/user/travel-routes/generated",
-                "description": "Provide some generated travel routes for a user",
+    "name": "/user/travel_routes/generate",
+                "description": "Provide some generated travel routes",
                  "item": [
                             {
-                                "name": "Provide some generated travel routes for a user",
+                                "name": "Provide some generated travel routes",
                                 "request": {
                                     "method": "GET",
                                     "header": [
@@ -1176,15 +1125,15 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
                                             "disabled": true
                                         },
                                         {
-                                            "key": "authentication-token",
+                                            "key": "voluptuaria_access_config",
                                             "value": "",
-                                            "description": "user jwt authentication token",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
@@ -1198,51 +1147,51 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/travel-routes/generated",
+                                        "raw": "{{baseUrl}}/user/travel_routes/generate",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "travel-routes",
-                                            "generated"
+                                            "travel_routes",
+                                            "generate"
                                         ],
                                         "variable": [
                                         ],
                                         "query": [
                                             {
                                                 "key": "startDate",
-                                                "value": "2013-10-20",
-                                                "description": "the expected start date",
+                                                "value": "startDate_example",
+                                                "description": "Expected start date",
                                                 "disabled": false
                                             },
                                             {
                                                 "key": "endDate",
-                                                "value": "2013-10-20",
-                                                "description": "the expected end date",
+                                                "value": "endDate_example",
+                                                "description": "Expected end date",
                                                 "disabled": false
                                             },
                                             {
                                                 "key": "budget",
                                                 "value": "8.14",
-                                                "description": "budget in euro",
+                                                "description": "Available budget in euro",
                                                 "disabled": false
                                             },
                                             {
                                                 "key": "zone",
                                                 "value": "zone_example",
-                                                "description": "Country, City names",
+                                                "description": "Country, City name",
                                                 "disabled": false
                                             }
                                         ]
                                     },
-                                    "description": "Provide some generated travel routes for a user"
+                                    "description": "Provide some generated travel routes"
                                 }
                             }
                             ]
                         },
 	                        {
-    "name": "/user/travel-routes/generated",
+    "name": "/user/travel_routes/generate",
                 "description": "Register generated travel routes",
                  "item": [
                             {
@@ -1263,15 +1212,21 @@
                                             "disabled": false
                                         },
                                         {
-                                            "key": "voluptaria-token",
+                                            "key": "authentication_token",
                                             "value": "",
-                                            "description": "Application authentication token to confirm the application request",
+                                            "description": "Authentication token",
+                                            "disabled": true
+                                        },
+                                        {
+                                            "key": "voluptuaria_access_config",
+                                            "value": "",
+                                            "description": "Voluptuaria api access configuration",
                                             "disabled": true
                                         }
                                     ],
                                     "body": {
                                         "mode": "raw",
-                                        "raw": "{\n \"travel-routes\": \"<string>\"\n}",
+                                        "raw": "{\n \"travel_routes\": \"<string>\"\n}",
                                         "options": {
                                             "raw": {
                                                 "language": "json"
@@ -1279,14 +1234,14 @@
                                         }
                                     },
                                     "url": {
-                                        "raw": "{{baseUrl}}/user/travel-routes/generated",
+                                        "raw": "{{baseUrl}}/user/travel_routes/generate",
                                         "host": [
                                             "{{baseUrl}}"
                                         ],
                                         "path": [
                                             "user",
-                                            "travel-routes",
-                                            "generated"
+                                            "travel_routes",
+                                            "generate"
                                         ],
                                         "variable": [
                                         ],
@@ -1305,12 +1260,17 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "{{host}}",
+			"value": "http://127.0.0.1:8080",
 			"type": "string"
         },
 		{
-			"key": "host",
-			"value": "https://127.0.0.1:8080",
+			"key": "authentication_token",
+			"value": "&lt;To fill thanks to the testing module&gt;",
+			"type": "string"
+		},
+		{
+			"key": "voluptuaria_access_config",
+			"value": "&lt;To fill thanks to the testing module&gt;",
 			"type": "string"
 		}
 	]
