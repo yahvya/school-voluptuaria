@@ -7,22 +7,9 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
     name: "places",
 })
 export class PlacesEntity {
-    @PrimaryGeneratedColumn("uuid", {
-        name: "id",
-    })
+    @PrimaryGeneratedColumn("uuid", {name: "id", })
     id: string
 
-    @Column({
-        name: "location_getter",
-        type: "json",
-        nullable: false,
-    })
+    @Column({name: "location_getter",type: "json", nullable: false,})
     locationGetter: any
-
-    @Column({
-        name: "categories",
-        type: "json",
-        nullable: false,
-    })
-    categories: any
 }

@@ -15,50 +15,16 @@ import { UserEntity } from "./user.entity"
     name: "social_profile",
 })
 export class SocialProfileEntity {
-    @PrimaryGeneratedColumn("uuid", {
-        name: "id",
-    })
+    @PrimaryGeneratedColumn("uuid", {name: "id",})
     id: string
 
-    @CreateDateColumn({
-        name: "crated_at",
-        type: "datetime",
-        nullable: false,
-    })
-    cratedAt: Date
+    @CreateDateColumn({name: "created_at", type: "datetime",nullable: false,})
+    createdAt: Date
 
-    @Column({
-        name: "liked_categories",
-        type: "json",
-        nullable: false,
-    })
-    likedCategories: any
-
-    @Column({
-        name: "unliked_categories",
-        type: "json",
-        nullable: false,
-    })
-    unlikedCategories: any
-
-    @Column({
-        name: "searched_categories",
-        type: "json",
-        nullable: false,
-    })
-    searchedCategories: any
-
-    @Column({
-        name: "user_id",
-        type: "varchar",
-        length: 36,
-        nullable: false,
-    })
+    @Column({ name: "user_id",type: "varchar", length: 36,nullable: false })
     userId: string
 
     @ManyToOne(() => UserEntity)
-    @JoinColumn({
-        name: "user_id",
-    })
+    @JoinColumn({ name: "user_id", })
     user: UserEntity
 }

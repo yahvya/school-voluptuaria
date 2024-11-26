@@ -26,7 +26,7 @@ CREATE TABLE places(
 
 CREATE TABLE social_profile(
    id VARCHAR(36) ,
-   crated_at DATETIME NOT NULL,
+   created_at DATETIME NOT NULL,
    user_id VARCHAR(36)  NOT NULL,
    PRIMARY KEY(id),
    FOREIGN KEY(user_id) REFERENCES app_users(id)
