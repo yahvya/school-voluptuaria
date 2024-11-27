@@ -60,6 +60,7 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: CustomNavigationBar(
+          currentIndex: 0,
           backgroundColor: upperBorderColor,
           borderRadius: 30.0,
           icons: [
