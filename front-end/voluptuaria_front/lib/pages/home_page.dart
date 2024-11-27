@@ -4,6 +4,7 @@ import 'package:voluptuaria_front/components/search_bar.dart';
 import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
+import 'package:voluptuaria_front/components/icon_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,13 +23,26 @@ class HomePage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: const Text(
-                'Lieux du jour',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'OpenSans'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Lieux du jour',
+                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
+                    ),
+                  ),
+                  Image.asset(
+                    'lib/resources/images/app-icon.png',
+                    width: 100.0,
+                    height: 100.0,
+                  ),
+                ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(0.0),
               child: Gallery(
                 imagePaths: [
                   'lib/resources/images/place1.jpg',
