@@ -8,10 +8,7 @@ import { UtilsModule } from "../../../../modules/utils/utils.module"
 import { MailModule } from "../../../../modules/mail-module/mail.module"
 import { DatabaseModule } from "../../../../modules/database-module/database.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
-import {
-    Gender,
-    UserEntity,
-} from "../../../../modules/database-module/entities/user.entity"
+import { Gender, UserEntity } from "../../../../modules/database-module/entities/user.entity"
 import { Repository } from "typeorm"
 import { HashService } from "../../../../modules/app-security/services/hash.service"
 

@@ -9,4 +9,5 @@ import { LangService } from "./services/lang.service"
     providers: [LangService],
     exports: [LangService],
 })
-export class LangModule {}
+export class LangModule {
+}

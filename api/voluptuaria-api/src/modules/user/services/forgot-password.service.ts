@@ -2,7 +2,9 @@ import { Injectable } from "@nestjs/common"
 import { ForgotPasswordDatas } from "../data-contracts/forgot-password/forgot-password.datas"
 import { ForgotPasswordResponseDatas } from "../data-contracts/forgot-password/forgot-password-response.datas"
 import { ForgotPasswordConfirmationDatas } from "../data-contracts/forgot-password/forgot-password-confirmation.datas"
-import { ForgotPasswordConfirmationResponseDatas } from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
+import {
+    ForgotPasswordConfirmationResponseDatas,
+} from "../data-contracts/forgot-password/forgot-password-confirmation-response.datas"
 import { InjectRepository } from "@nestjs/typeorm"
 import { UserEntity } from "../../database-module/entities/user.entity"
 import { Repository } from "typeorm"
@@ -27,7 +29,8 @@ export class ForgotPasswordService {
         protected readonly configService: ConfigService,
         protected readonly langService: LangService,
         protected readonly hashService: HashService,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief initialise forgot password step

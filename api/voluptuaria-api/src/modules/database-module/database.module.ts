@@ -16,8 +16,7 @@ import { ConfigService } from "@nestjs/config"
                     username: configService.getOrThrow("DATABASE_USER"),
                     password: configService.getOrThrow("DATABASE_PASSWORD"),
                     database: configService.getOrThrow("DATABASE_NAME"),
-                    synchronize:
-                        configService.getOrThrow("DATABASE_SYNC") === "true",
+                    synchronize: configService.getOrThrow("DATABASE_SYNC") === "true",
                     autoLoadEntities: true,
                 }
 
@@ -27,4 +26,5 @@ import { ConfigService } from "@nestjs/config"
     ],
 })
 @Global()
-export class DatabaseModule {}
+export class DatabaseModule {
+}

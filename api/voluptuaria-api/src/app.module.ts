@@ -25,4 +25,5 @@ import { join } from "path"
         ApplicationDevTestingModule,
     ],
 })
-export class AppModule {}
+export class AppModule {
+}

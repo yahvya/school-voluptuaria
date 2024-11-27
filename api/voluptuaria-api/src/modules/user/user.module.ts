@@ -34,10 +34,14 @@ import { UserInformationsController } from "./controllers/user-informations.cont
         ForgotPasswordService,
         UserInformationsService,
     ],
+    exports: [
+        UserLoginService
+    ],
     controllers: [
         UserLoginController,
         UserRegistrationController,
         UserInformationsController,
     ],
 })
-export class UserModule {}
+export class UserModule {
+}

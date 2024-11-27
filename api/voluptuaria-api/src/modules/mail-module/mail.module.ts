@@ -43,4 +43,5 @@ import { LangService } from "../lang-module/services/lang.service"
     providers: [],
 })
 @Global()
-export class MailModule {}
+export class MailModule {
+}

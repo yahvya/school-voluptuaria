@@ -12,9 +12,23 @@
         <lang-element key="error.bad-fields" value="Veuillez vérifier les informations saisies"/>
         <lang-element key="error.bad-confirmation-code" value="Code saisie incorrect"/>
         <lang-element key="error.account-already-exist" value="Ce compte existe déjà"/>
+        <lang-element key="error.invalid-token" value="Token invalid"/>
+        <lang-element key="error.matching-password"
+                      value="Présence de difference entre le mot de passe et la confirmation"/>
+        <lang-element key="error.same-password" value="Mot de passe similaire à l'ancien"/>
         <lang-element key="error.comments" value="Veuillez verifier le contenu de votre commentaire"/>
         <lang-element key="error.unrecognized-email-password" value="Email ou mot de passe incorrect"/>
     </error-level>
+
+    <message-level>
+        <lang-element key="message.load-preferences" value="Charger vos préférences"/>
+        <lang-element key="message.type-received-code" value="Veuillez saisir le code reçu"/>
+        <lang-element key="message.welcome-user-intro" value="Bienvenue sur notre plateforme Voluptuaria [Username]"/>
+        <lang-element key="message.welcome-user"
+                      value="Pour terminer votre inscription veuillez saisir le code ci-dessous"/>
+        <lang-element key="message.password-forgotten-intro"
+                      value="Mot de passe oublié ? Veuillez saisir le code ci-dessous."/>
+    </message-level>
 
     <application-level>
         <lang-element key="app.search-work" value="Recherche"/>
@@ -59,14 +73,4 @@
         <lang-element key="app.forgot-password" value="Mot de passe oublié"/>
         <lang-element key="app.confirmation-code" value="Code de confirmation"/>
     </application-level>
-
-    <message-level>
-        <lang-element key="message.load-preferences" value="Charger vos préférences"/>
-        <lang-element key="message.type-received-code" value="Veuillez saisir le code reçu"/>
-        <lang-element key="message.welcome-user-intro" value="Bienvenue sur notre plateforme Voluptuaria [Username]"/>
-        <lang-element key="message.welcome-user"
-                      value="Pour terminer votre inscription veuillez saisir le code ci-dessous"/>
-        <lang-element key="message.password-forgotten-intro"
-                      value="Mot de passe oublié ? Veuillez saisir le code ci-dessous."/>
-    </message-level>
 </lang>

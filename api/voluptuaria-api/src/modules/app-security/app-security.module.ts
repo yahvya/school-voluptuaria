@@ -10,4 +10,5 @@ import { HashService } from "./services/hash.service"
     exports: [EncryptService, HashService],
 })
 @Global()
-export class AppSecurityModule {}
+export class AppSecurityModule {
+}

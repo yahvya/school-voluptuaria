@@ -32,9 +32,8 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
     ): Promise<any> {
         const { name, emails } = profile
 
-        if (!name || !emails) {
+        if (!name || !emails)
             return done(new Error("Invalid profile structure"), null)
-        }
 
         const user = {
             email: emails[0].value,

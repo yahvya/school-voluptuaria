@@ -7,7 +7,8 @@ export class UserTravelRouteService {
     constructor(
         @InjectRepository(UserEntity)
         protected readonly userRepository: Repository<UserEntity>,
-    ) {}
+    ) {
+    }
 
     /**
      * @brief generate simple travel route by user.

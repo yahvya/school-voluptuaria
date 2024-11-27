@@ -36,7 +36,8 @@
         apps -> user:Résultat
         apps -> api: Requête
         api -> api_process: Demande de données
-        api_process -> api: Données
+        api_process -> apps: Données
+        api_process -> database: Enregistrement
         api -> apps: Réponse (données formatées)
         api -> database: Demande de données 
         database -> api: Données
