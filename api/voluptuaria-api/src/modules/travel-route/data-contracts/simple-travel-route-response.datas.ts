@@ -1,4 +1,5 @@
 import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsObject, IsString } from "class-validator"
+import { RecommandationsDatas } from "../../recommandations/data-contracts/recommandations.datas"
 
 /**
  * @brief Simple travel route datas
@@ -30,31 +31,7 @@ export class SimpleTravelRouteResponseDatas {
     @IsNotEmpty({
         always: true,
     })
-    public callback_datas: object
+    public callback_datas: object | null
 
-    @IsArray()
-    @IsNotEmpty({
-        always: true,
-    })
-    public proposal : ProposalDatas[]
-}
-
-/**
- * @brief Proposal data contract
- */
-class ProposalDatas {
-
-    @IsNotEmpty()
-    @IsNumber()
-    public order: number
-
-    @IsObject()
-    @IsNotEmpty({
-        always: true,
-    })
-    public place: object
-
-    @IsBoolean()
-    @IsNotEmpty()
-    public is_completed: boolean = false
+    public proposals : RecommandationsDatas[]
 }
