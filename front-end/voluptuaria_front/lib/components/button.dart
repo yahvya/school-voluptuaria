@@ -22,7 +22,7 @@ class CustomButton extends StatelessWidget {
     this.textColor = buttonTextColor,
     this.borderColor = upperBorderColor,
     this.fontSize = 24,
-    this.borderRadius = 20.0,
+    this.borderRadius = 32.0,
   }) : super(key: key);
 
   @override
