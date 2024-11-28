@@ -48,7 +48,7 @@ export class SimpleTravelRouteService {
                     userId: options.userId,
                     routeName : name,
                     start_date : start_date,
-                    endDate : end_date,
+                    end_date : end_date,
                     budget : budget,
                     proposals : proposals,
                 })
