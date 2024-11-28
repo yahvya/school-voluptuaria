@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_config/flutter_config.dart';
-import 'package:voluptuaria_front/services/get_search_place.dart';
 
 import 'components/navigation_bar.dart';
 
-import 'pages/testLoginpage.dart';
-
-
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await FlutterConfig.loadEnvVariables();
-
+void main() {
   runApp(MyApp());
 }
 
@@ -43,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: LoginPage(), // Test de la page
+        child: Text('Page ${_selectedIndex}'),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
