@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:voluptuaria_front/pages/login_page.dart';
+import 'package:voluptuaria_front/pages/registration_page.dart';
 import 'components/navigation_bar.dart';
+import 'pages/home_page.dart'; 
 
 void main() {
   runApp(MyApp());
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Test',
-      home: MainScreen(),
+      home: LoginPage(),
     );
   }
 }
@@ -28,6 +30,13 @@ class _MainScreenState extends State<MainScreen> {
     setState(() {
       _selectedIndex = index;
     });
+
+    if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    }
   }
 
   @override

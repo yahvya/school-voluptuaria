@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
 import 'package:voluptuaria_front/components/blur_background.dart';
 import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
@@ -120,24 +119,6 @@ class LoginPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 0,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
         ),
       ),
     );
