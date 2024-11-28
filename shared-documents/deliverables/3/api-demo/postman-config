@@ -1,0 +1,2187 @@
+{
+	"info": {
+		"_postman_id": "7ddc1857-57b4-4723-afe6-7aff138acbe3",
+		"name": "Voluptuaria Api",
+		"description": "Voluptuaria application's Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24559333"
+	},
+	"item": [
+		{
+			"name": "full routes",
+			"item": [
+				{
+					"name": "/login",
+					"item": [
+						{
+							"name": "Log user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								},
+								"description": "Log the user"
+							},
+							"response": []
+						}
+					],
+					"description": "Log the user"
+				},
+				{
+					"name": "/login/forgot-password",
+					"item": [
+						{
+							"name": "Initialize forgot password process",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login/forgot-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"forgot-password"
+									]
+								},
+								"description": "Initialize forgot password process, validate data's and send confirmation mail"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize forgot password process, validate data's and send confirmation mail"
+				},
+				{
+					"name": "/login/forgot-password/confirmaiton",
+					"item": [
+						{
+							"name": "Confirm forgot password process",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\",\n \"new_password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login/forgot-password/confirmaiton",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"forgot-password",
+										"confirmaiton"
+									]
+								},
+								"description": "Confirm forgot password verification and update the password"
+							},
+							"response": []
+						}
+					],
+					"description": "Confirm forgot password verification and update the password"
+				},
+				{
+					"name": "/place/comments",
+					"item": [
+						{
+							"name": "Get place comments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/place/comments?paging=8.14&callbackDatas=Object",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "paging",
+											"value": "8.14",
+											"description": "Pagination number"
+										},
+										{
+											"key": "callbackDatas",
+											"value": "Object",
+											"description": "Place callback data's"
+										}
+									]
+								},
+								"description": "Provide the comments on a given place with pagination"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide the comments on a given place with pagination"
+				},
+				{
+					"name": "/place/comments",
+					"item": [
+						{
+							"name": "Post a command on a place",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"comment\": \"<string>\",\n \"rating\": \"<number>\",\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/place/comments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"comments"
+									]
+								},
+								"description": "Post a comment on a given place"
+							},
+							"response": []
+						}
+					],
+					"description": "Post a comment on a given place"
+				},
+				{
+					"name": "/place/like/status",
+					"item": [
+						{
+							"name": "Set a user notice status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\",\n \"like_state\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/place/like/status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"like",
+										"status"
+									]
+								},
+								"description": "Set a user notice status like or remove like on a place"
+							},
+							"response": []
+						}
+					],
+					"description": "Set a user notice status like or remove like on a place"
+				},
+				{
+					"name": "/register/by-google",
+					"item": [
+						{
+							"name": "Initialize registration by google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"redirect_url\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/by-google",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"by-google"
+									]
+								},
+								"description": "Initialize the registration by google"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize the registration by google"
+				},
+				{
+					"name": "/register/confirmation",
+					"item": [
+						{
+							"name": "User registration confirmation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/confirmation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"confirmation"
+									]
+								},
+								"description": "Try to confirm user registration"
+							},
+							"response": []
+						}
+					],
+					"description": "Try to confirm user registration"
+				},
+				{
+					"name": "/register/voluptuaria",
+					"item": [
+						{
+							"name": "Initialize user registration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/voluptuaria",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"voluptuaria"
+									]
+								},
+								"description": "Initialize user registration by validating data's and sending confirmation mail"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize user registration by validating data's and sending confirmation mail"
+				},
+				{
+					"name": "/search/place",
+					"item": [
+						{
+							"name": "Search place",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/search/place?search=search_example&minRating=8.14",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search",
+										"place"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "search_example",
+											"description": "Search string"
+										},
+										{
+											"key": "minRating",
+											"value": "8.14",
+											"description": "Minimum rating for on the place"
+										}
+									]
+								},
+								"description": "Allow to search a place from a text"
+							},
+							"response": []
+						}
+					],
+					"description": "Allow to search a place from a text"
+				},
+				{
+					"name": "/user/change-password",
+					"item": [
+						{
+							"name": "Update the user password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"old_password\": \"<string>\",\n \"new_password\": \"<string>\",\n \"new_password_confirmation\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/change-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"change-password"
+									]
+								},
+								"description": "Update the user password"
+							},
+							"response": []
+						}
+					],
+					"description": "Update the user password"
+				},
+				{
+					"name": "/user/datas",
+					"item": [
+						{
+							"name": "Provide user data's",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/datas?to_fetch=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"datas"
+									],
+									"query": [
+										{
+											"key": "to_fetch",
+											"value": "",
+											"description": "Data's to fetch"
+										}
+									]
+								},
+								"description": "Provide user data's"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide user data's"
+				},
+				{
+					"name": "/user/places-wish-list/update",
+					"item": [
+						{
+							"name": "Delete a place in the user wish list",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/places-wish-list/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"places-wish-list",
+										"update"
+									]
+								},
+								"description": "Delete a place in the user wish list"
+							},
+							"response": []
+						}
+					],
+					"description": "Delete a place in the user wish list"
+				},
+				{
+					"name": "/user/places-wish-list/update",
+					"item": [
+						{
+							"name": "Add a place in the user wish list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/places-wish-list/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"places-wish-list",
+										"update"
+									]
+								},
+								"description": "Add a place in the user wish list"
+							},
+							"response": []
+						}
+					],
+					"description": "Add a place in the user wish list"
+				},
+				{
+					"name": "/user/profile",
+					"item": [
+						{
+							"name": "Edit the user profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthdate\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"gender\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"profile"
+									]
+								},
+								"description": "Edit the user profile from the provided fields. The birthdate can only be update the first time."
+							},
+							"response": []
+						}
+					],
+					"description": "Edit the user profile from the provided fields. The birthdate can only be update the first time."
+				},
+				{
+					"name": "/user/profile-image",
+					"item": [
+						{
+							"name": "Update the user profile image",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"image\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/profile-image",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"profile-image"
+									]
+								},
+								"description": "Modify the user profile image or set it if there were no image"
+							},
+							"response": []
+						}
+					],
+					"description": "Modify the user profile image or set it if there were no image"
+				},
+				{
+					"name": "/user/recommandations/auth",
+					"item": [
+						{
+							"name": "Provide recommandations for an authenticated user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/recommandations/auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"recommandations",
+										"auth"
+									]
+								},
+								"description": "Provide recommandations for an authenticated user"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide recommandations for an authenticated user"
+				},
+				{
+					"name": "/user/recommandations/not-auth",
+					"item": [
+						{
+							"name": "Provide recommandations for unauthenticated user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\",\n \"user_searches\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/recommandations/not-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"recommandations",
+										"not-auth"
+									]
+								},
+								"description": "Provide recommandations for unauthenticated user"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide recommandations for unauthenticated user"
+				},
+				{
+					"name": "/user/travel_routes/generate",
+					"item": [
+						{
+							"name": "Provide some generated travel routes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/travel_routes/generate?startDate=startDate_example&endDate=endDate_example&budget=8.14&zone=zone_example",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"travel_routes",
+										"generate"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "startDate_example",
+											"description": "Expected start date"
+										},
+										{
+											"key": "endDate",
+											"value": "endDate_example",
+											"description": "Expected end date"
+										},
+										{
+											"key": "budget",
+											"value": "8.14",
+											"description": "Available budget in euro"
+										},
+										{
+											"key": "zone",
+											"value": "zone_example",
+											"description": "Country, City name"
+										}
+									]
+								},
+								"description": "Provide some generated travel routes"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide some generated travel routes"
+				},
+				{
+					"name": "/user/travel_routes/generate",
+					"item": [
+						{
+							"name": "Register generated travel routes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"travel_routes\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/travel_routes/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"travel_routes",
+										"generate"
+									]
+								},
+								"description": "Register generated travel routes"
+							},
+							"response": []
+						}
+					],
+					"description": "Register generated travel routes"
+				}
+			]
+		},
+		{
+			"name": "version 0 routes",
+			"item": [
+				{
+					"name": "/login Copy",
+					"item": [
+						{
+							"name": "Log user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login"
+									]
+								},
+								"description": "Log the user"
+							},
+							"response": []
+						}
+					],
+					"description": "Log the user"
+				},
+				{
+					"name": "/login/forgot-password Copy",
+					"item": [
+						{
+							"name": "Initialize forgot password process",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login/forgot-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"forgot-password"
+									]
+								},
+								"description": "Initialize forgot password process, validate data's and send confirmation mail"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize forgot password process, validate data's and send confirmation mail"
+				},
+				{
+					"name": "/login/forgot-password/confirmaiton Copy",
+					"item": [
+						{
+							"name": "Confirm forgot password process",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\",\n \"new_password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/login/forgot-password/confirmaiton",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"login",
+										"forgot-password",
+										"confirmaiton"
+									]
+								},
+								"description": "Confirm forgot password verification and update the password"
+							},
+							"response": []
+						}
+					],
+					"description": "Confirm forgot password verification and update the password"
+				},
+				{
+					"name": "/register/by-google Copy",
+					"item": [
+						{
+							"name": "Initialize registration by google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"redirect_url\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/by-google",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"by-google"
+									]
+								},
+								"description": "Initialize the registration by google"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize the registration by google"
+				},
+				{
+					"name": "/register/confirmation Copy",
+					"item": [
+						{
+							"name": "User registration confirmation",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\",\n \"encrypted_confirmation_code\": \"<string>\",\n \"encryption_iv\": \"<string>\",\n \"user_confirmation_code\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/confirmation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"confirmation"
+									]
+								},
+								"description": "Try to confirm user registration"
+							},
+							"response": []
+						}
+					],
+					"description": "Try to confirm user registration"
+				},
+				{
+					"name": "/register/voluptuaria Copy",
+					"item": [
+						{
+							"name": "Initialize user registration",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "lang",
+										"value": "",
+										"description": " Name of the lang file",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"email\": \"<string>\",\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"password\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register/voluptuaria",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register",
+										"voluptuaria"
+									]
+								},
+								"description": "Initialize user registration by validating data's and sending confirmation mail"
+							},
+							"response": []
+						}
+					],
+					"description": "Initialize user registration by validating data's and sending confirmation mail"
+				},
+				{
+					"name": "/search/place Copy",
+					"item": [
+						{
+							"name": "Search place",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/search/place?search=search_example&minRating=8.14",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"search",
+										"place"
+									],
+									"query": [
+										{
+											"key": "search",
+											"value": "search_example",
+											"description": "Search string"
+										},
+										{
+											"key": "minRating",
+											"value": "8.14",
+											"description": "Minimum rating for on the place"
+										}
+									]
+								},
+								"description": "Allow to search a place from a text"
+							},
+							"response": []
+						}
+					],
+					"description": "Allow to search a place from a text"
+				},
+				{
+					"name": "/user/change-password Copy",
+					"item": [
+						{
+							"name": "Update the user password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"old_password\": \"<string>\",\n \"new_password\": \"<string>\",\n \"new_password_confirmation\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/change-password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"change-password"
+									]
+								},
+								"description": "Update the user password"
+							},
+							"response": []
+						}
+					],
+					"description": "Update the user password"
+				},
+				{
+					"name": "/user/datas Copy",
+					"item": [
+						{
+							"name": "Provide user data's",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/datas?to_fetch=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"datas"
+									],
+									"query": [
+										{
+											"key": "to_fetch",
+											"value": "",
+											"description": "Data's to fetch"
+										}
+									]
+								},
+								"description": "Provide user data's"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide user data's"
+				},
+				{
+					"name": "/user/profile Copy",
+					"item": [
+						{
+							"name": "Edit the user profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"name\": \"<string>\",\n \"firstname\": \"<string>\",\n \"birthdate\": \"<string>\",\n \"phonenumber\": \"<string>\",\n \"gender\": \"<number>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"profile"
+									]
+								},
+								"description": "Edit the user profile from the provided fields. The birthdate can only be update the first time."
+							},
+							"response": []
+						}
+					],
+					"description": "Edit the user profile from the provided fields. The birthdate can only be update the first time."
+				},
+				{
+					"name": "/user/profile-image Copy",
+					"item": [
+						{
+							"name": "Update the user profile image",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"image\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/profile-image",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"profile-image"
+									]
+								},
+								"description": "Modify the user profile image or set it if there were no image"
+							},
+							"response": []
+						}
+					],
+					"description": "Modify the user profile image or set it if there were no image"
+				}
+			]
+		},
+		{
+			"name": "missing routes",
+			"item": [
+				{
+					"name": "/place/comments Copy",
+					"item": [
+						{
+							"name": "Get place comments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/place/comments?paging=8.14&callbackDatas=Object",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "paging",
+											"value": "8.14",
+											"description": "Pagination number"
+										},
+										{
+											"key": "callbackDatas",
+											"value": "Object",
+											"description": "Place callback data's"
+										}
+									]
+								},
+								"description": "Provide the comments on a given place with pagination"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide the comments on a given place with pagination"
+				},
+				{
+					"name": "/place/comments Copy",
+					"item": [
+						{
+							"name": "Post a command on a place",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"comment\": \"<string>\",\n \"rating\": \"<number>\",\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/place/comments",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"comments"
+									]
+								},
+								"description": "Post a comment on a given place"
+							},
+							"response": []
+						}
+					],
+					"description": "Post a comment on a given place"
+				},
+				{
+					"name": "/place/like/status Copy",
+					"item": [
+						{
+							"name": "Set a user notice status",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\",\n \"like_state\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/place/like/status",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"place",
+										"like",
+										"status"
+									]
+								},
+								"description": "Set a user notice status like or remove like on a place"
+							},
+							"response": []
+						}
+					],
+					"description": "Set a user notice status like or remove like on a place"
+				},
+				{
+					"name": "/user/places-wish-list/update Copy",
+					"item": [
+						{
+							"name": "Delete a place in the user wish list",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/places-wish-list/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"places-wish-list",
+										"update"
+									]
+								},
+								"description": "Delete a place in the user wish list"
+							},
+							"response": []
+						}
+					],
+					"description": "Delete a place in the user wish list"
+				},
+				{
+					"name": "/user/places-wish-list/update Copy",
+					"item": [
+						{
+							"name": "Add a place in the user wish list",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"callback_datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/places-wish-list/update",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"places-wish-list",
+										"update"
+									]
+								},
+								"description": "Add a place in the user wish list"
+							},
+							"response": []
+						}
+					],
+					"description": "Add a place in the user wish list"
+				},
+				{
+					"name": "/user/recommandations/auth Copy",
+					"item": [
+						{
+							"name": "Provide recommandations for an authenticated user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/recommandations/auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"recommandations",
+										"auth"
+									]
+								},
+								"description": "Provide recommandations for an authenticated user"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide recommandations for an authenticated user"
+				},
+				{
+					"name": "/user/recommandations/not-auth Copy",
+					"item": [
+						{
+							"name": "Provide recommandations for unauthenticated user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"paging\": \"<number>\",\n \"user_location\": \"<string>\",\n \"user_searches\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/recommandations/not-auth",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"recommandations",
+										"not-auth"
+									]
+								},
+								"description": "Provide recommandations for unauthenticated user"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide recommandations for unauthenticated user"
+				},
+				{
+					"name": "/user/travel_routes/generate Copy",
+					"item": [
+						{
+							"name": "Provide some generated travel routes",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/travel_routes/generate?startDate=startDate_example&endDate=endDate_example&budget=8.14&zone=zone_example",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"travel_routes",
+										"generate"
+									],
+									"query": [
+										{
+											"key": "startDate",
+											"value": "startDate_example",
+											"description": "Expected start date"
+										},
+										{
+											"key": "endDate",
+											"value": "endDate_example",
+											"description": "Expected end date"
+										},
+										{
+											"key": "budget",
+											"value": "8.14",
+											"description": "Available budget in euro"
+										},
+										{
+											"key": "zone",
+											"value": "zone_example",
+											"description": "Country, City name"
+										}
+									]
+								},
+								"description": "Provide some generated travel routes"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide some generated travel routes"
+				},
+				{
+					"name": "/user/travel_routes/generate Copy",
+					"item": [
+						{
+							"name": "Register generated travel routes",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"travel_routes\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/user/travel_routes/generate",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"travel_routes",
+										"generate"
+									]
+								},
+								"description": "Register generated travel routes"
+							},
+							"response": []
+						}
+					],
+					"description": "Register generated travel routes"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8080",
+			"type": "string"
+		},
+		{
+			"key": "authentication_token",
+			"value": "&lt;To fill thanks to the testing module&gt;",
+			"type": "string"
+		},
+		{
+			"key": "voluptuaria_access_config",
+			"value": "&lt;To fill thanks to the testing module&gt;",
+			"type": "string"
+		}
+	]
+}
