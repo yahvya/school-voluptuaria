@@ -72,7 +72,7 @@ export class SimpleTravelRouteService {
     public async getTravelRouteByUserId(
         userId : string,
     ){
-        if (userId == null || userId == undefined){
+        if (userId === null){
             throw new BadRequestException('Name parameter is required');
         }
         else {

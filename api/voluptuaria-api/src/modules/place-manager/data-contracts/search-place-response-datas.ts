@@ -1,4 +1,4 @@
-import { IsArray, IsBoolean, IsNotEmpty, IsObject, IsString, ValidateNested } from "class-validator"
+import { IsArray, IsBoolean, IsNotEmpty, IsObject, IsString } from "class-validator"
 import { CoordinatesDatas } from "../../google-maps-place/data-contracts/coordinates.datas"
 import {CategoriesDatas} from "../../google-maps-place/data-contracts/categories.datas"
 import {ImagesDatas} from "../../google-maps-place/data-contracts/images.datas"
