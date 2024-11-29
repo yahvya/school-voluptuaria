@@ -1,4 +1,5 @@
 import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
+import { Expose } from "class-transformer"
 
 /**
  * @brief google registration confirmation datas
@@ -20,6 +21,7 @@ export class GoogleRegistrationConfirmationDatas {
 
     @IsString()
     @IsNotEmpty()
+    @Expose({name: "encryption_iv"})
     public iv: string
 
     @IsString()

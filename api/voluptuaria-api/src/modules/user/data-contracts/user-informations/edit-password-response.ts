@@ -4,6 +4,6 @@
 import { Expose } from "class-transformer"
 
 export class EditPasswordResponse {
-    @Expose({ name: "error-message" })
+    @Expose({ name: "error_message" })
     public errorMessage: string | null = null
 }

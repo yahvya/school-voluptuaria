@@ -28,14 +28,16 @@ describe("User.UserLoginService", () => {
                 TypeOrmModule.forFeature([UserEntity]),
                 JwtModule.registerAsync({
                     inject: [ConfigService],
-                    imports: [ConfigModule],
-                    useFactory: async (configService: ConfigService) => ({
-                        secret: configService.getOrThrow("JWT_SECRET"),
-                        signOptions: {
-                            expiresIn:
-                                configService.getOrThrow("JWT_EXPIRES_IN"),
-                        },
-                    }),
+                    useFactory: (configService: ConfigService) => {
+                        const options = {
+                            secret: configService.getOrThrow<string>("JWT_SECRET"),
+                            signOptions: {
+                                expiresIn: configService.getOrThrow("JWT_EXPIRES_IN"),
+                            }
+                        }
+
+                        return options
+                    }
                 }),
                 MailModule,
                 LangModule,

@@ -1,5 +1,5 @@
-import { IsArray, IsBoolean, IsNotEmpty, IsNumber, IsObject, IsString } from "class-validator"
-import { RecommandationsDatas } from "../../recommandations/data-contracts/recommandations.datas"
+import { IsNotEmpty, IsNumber, IsObject, IsString } from "class-validator"
+import { RecommandationsDatas } from "./recommandations.datas"
 
 /**
  * @brief Simple travel route datas

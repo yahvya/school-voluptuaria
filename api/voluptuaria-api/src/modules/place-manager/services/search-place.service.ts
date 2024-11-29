@@ -12,7 +12,7 @@ import { OpenWeatherMapService } from "../../openwheatermap/services/openweather
 export class SearchPlaceService {
     constructor(
         protected readonly googleMapsPlaceService: GoogleMapsPlaceService,
-        protected readonly openWeatherMapService: OpenWeatherMapService,
+        protected readonly openWeatherMapService: OpenWeatherMapService
     ) {
     }
 
@@ -23,16 +23,11 @@ export class SearchPlaceService {
      * @throws {Error} on error
      */
     public async searchPlace(options:{
-        searchPlaceData : SearchPlaceDatas
+        searchPlaceData : SearchPlaceDatas,
+        lang:string
     }): Promise<SearchPlaceResponseData[]> {
-        console.log("Données de recherche :", options.searchPlaceData); //
-
-        if(!(options.searchPlaceData.research)){
+        if(!(options.searchPlaceData.search)){
             throw new NotFoundException("Research equal null")
-        }
-
-        if(!(options.searchPlaceData.lang)){
-            throw new NotFoundException("lang equal null")
         }
 
         if(!(options.searchPlaceData.minRating)){
@@ -41,12 +36,10 @@ export class SearchPlaceService {
 
         try {
             const placeDatas : PlaceDatas[] = await this.googleMapsPlaceService.getPlacesDatasBySearch({
-                search : options.searchPlaceData.research,
-                lang : options.searchPlaceData.lang,
+                search : options.searchPlaceData.search,
+                lang : options.lang,
                 minRating : options.searchPlaceData.minRating
             })
-
-            console.log("Données de placeDatas :", placeDatas); //
 
             const responsePromises = placeDatas.map(async (place) => {
                 const weatherData =  await this.openWeatherMapService.getMeteoDatas({
@@ -79,7 +72,6 @@ export class SearchPlaceService {
             return responses;
         }
         catch (error){
-            console.error("Erreur lors de la recherche de lieu :", error);
             throw new NotFoundException("No research found")
         }
     }

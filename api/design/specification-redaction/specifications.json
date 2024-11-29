@@ -32,6 +32,15 @@
                 "description": "Allow to search a place from a text",
                 "parameters": [
                     {
+                        "name": "lang",
+                        "required": true,
+                        "description": "Lang name",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
                         "name" : "search",
                         "required": true,
                         "description": "Search string",
@@ -427,6 +436,66 @@
                 }
             }
         },
+        "/register-/by-google/confirmation": {
+            "post": {
+                "summary": "Confirm registration by google",
+                "description" : "Confirm the registration by google",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/voluptuaria_access_config"
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json" : {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "description": "Chosen password"
+                                    },
+                                    "iv": {
+                                        "type": "string",
+                                        "description": "Received iv in previous step"
+                                    },
+                                    "datas": {
+                                        "type": "string",
+                                        "description": "Received datas in previous step"
+                                    }
+                                },
+                                "required": ["password","iv","datas"]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200" : {
+                        "description": "Registration confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error_message" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description" : "Error message on error"
+                                        },
+                                        "authentication_token" : {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Authentication token"
+                                        }
+                                    },
+                                    "required": ["error_message","authentication_token"]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/login" : {
             "post" : {
                 "summary": "Log user",
@@ -541,7 +610,7 @@
                 }
             }
         },
-        "/login/forgot-password/confirmaiton" : {
+        "/login/forgot-password/confirmation" : {
             "post" : {
                 "summary": "Confirm forgot password process",
                 "description": "Confirm forgot password verification and update the password",

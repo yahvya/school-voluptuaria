@@ -34,7 +34,7 @@ export class UserRegistrationController {
      * @param lang lang file name
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      */
-    @Post()
+    @Post("/voluptuaria")
     @HttpCode(200)
     @UseGuards(VoluptuariaAuthGuard)
     public register(

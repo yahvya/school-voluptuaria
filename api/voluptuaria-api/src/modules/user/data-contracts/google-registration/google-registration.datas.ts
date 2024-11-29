@@ -6,6 +6,6 @@ import { Expose } from "class-transformer"
  */
 export class GoogleRegistrationDatas {
     @IsNotEmpty()
-    @Expose({ name: "redirect-uri" })
+    @Expose({ name: "redirect_url" })
     public redirectUri: string
 }

@@ -1,4 +1,5 @@
-import { IsNotEmpty, IsNumber, IsString } from "class-validator"
+import { IsNotEmpty, IsString } from "class-validator"
+import { Expose } from "class-transformer"
 
 
 /**
@@ -7,13 +8,10 @@ import { IsNotEmpty, IsNumber, IsString } from "class-validator"
 export class SearchPlaceDatas {
     @IsNotEmpty()
     @IsString()
-    public research:string
+    public search:string
 
     @IsNotEmpty()
     @IsString()
-    public lang : string
-
-    @IsNotEmpty()
-    @IsNumber()
+    @Expose({name: "min_rating"})
     public minRating: number
 }

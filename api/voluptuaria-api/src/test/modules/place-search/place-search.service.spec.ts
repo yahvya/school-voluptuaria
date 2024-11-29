@@ -1,9 +1,9 @@
-import { SearchPlaceService } from "../../../modules/search-place/services/search-place.service"
+import { SearchPlaceService } from "../../../modules/place-manager/services/search-place.service"
 import { GoogleMapsPlaceService } from "../../../modules/google-maps-place/services/google-maps-place.service"
 import { OpenWeatherMapService } from "../../../modules/openwheatermap/services/openweathermap.service"
 import { Test, TestingModule } from "@nestjs/testing"
 import { NotFoundException } from "@nestjs/common"
-import { SearchPlaceDatas } from "../../../modules/search-place/data-contracts/search-place-datas"
+import { SearchPlaceDatas } from "../../../modules/place-manager/data-contracts/search-place-datas"
 import { PlaceDatas } from "../../../modules/google-maps-place/data-contracts/place.datas"
 
 
@@ -44,7 +44,7 @@ describe("SearchPlaceService", () => {
         it("should throw NotFoundException if search string is empty", async () => {
             await expect(
                 searchPlaceService.searchPlace({
-                    searchPlaceData: { research: "", lang: "fr", minRating: 1 },
+                    searchPlaceData: { search: "", lang: "fr", minRating: 1 },
                 }),
             ).rejects.toThrow(NotFoundException);
         });
@@ -52,7 +52,7 @@ describe("SearchPlaceService", () => {
         it("should throw NotFoundException if lang is empty", async () => {
             await expect(
                 searchPlaceService.searchPlace({
-                    searchPlaceData: { research: "hotels", lang: "", minRating: 1 },
+                    searchPlaceData: { search: "hotels", lang: "", minRating: 1 },
                 }),
             ).rejects.toThrow(NotFoundException);
         });
@@ -60,7 +60,7 @@ describe("SearchPlaceService", () => {
         it("should throw NotFoundException if minRating is not provided", async () => {
             await expect(
                 searchPlaceService.searchPlace({
-                    searchPlaceData: { research: "hotels", lang: "fr", minRating: null },
+                    searchPlaceData: { search: "hotels", lang: "fr", minRating: null },
                 }),
             ).rejects.toThrow(NotFoundException);
         });
@@ -105,7 +105,7 @@ describe("SearchPlaceService", () => {
             jest.spyOn(openWeatherMapService, "getMeteoDatas").mockResolvedValue(mockWeatherData);
 
             const searchPlaceData: SearchPlaceDatas = {
-                research: "landmarks",
+                search: "landmarks",
                 lang: "fr",
                 minRating: 1,
             };
@@ -122,7 +122,7 @@ describe("SearchPlaceService", () => {
 
             await expect(
                 searchPlaceService.searchPlace({
-                    searchPlaceData: { research: "unknown", lang: "en", minRating: 5 },
+                    searchPlaceData: { search: "unknown", lang: "en", minRating: 5 },
                 }),
             ).rejects.toThrow(NotFoundException);
         });
@@ -132,7 +132,7 @@ describe("SearchPlaceService", () => {
 
             await expect(
                 searchPlaceService.searchPlace({
-                    searchPlaceData: { research: "hotels", lang: "en", minRating: 1 },
+                    searchPlaceData: { search: "hotels", lang: "en", minRating: 1 },
                 }),
             ).rejects.toThrow(NotFoundException);
         });

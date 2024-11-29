@@ -64,9 +64,7 @@ export class UserLoginService {
      * @returns {string} the token
      */
     generateToken(payload: UserPayloadDatas): string {
-        return this.jwtService.sign(payload, {
-            secret: this.configService.getOrThrow("JWT_SECRET"),
-        })
+        return this.jwtService.sign(payload)
     }
 
     /**
@@ -78,6 +76,7 @@ export class UserLoginService {
         try {
             return this.jwtService.verify<UserPayloadDatas>(token)
         } catch (error) {
+            console.log(error)
             return null
         }
     }

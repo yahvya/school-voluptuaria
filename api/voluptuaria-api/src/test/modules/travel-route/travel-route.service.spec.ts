@@ -1,4 +1,4 @@
-import { SimpleTravelRouteService } from "../../../modules/travel-route/services/simple-travel-route.sevice"
+import {SimpleTravelRouteService} from "../../../modules/recommendation/services/simple-travel-route.sevice"
 import { Repository } from "typeorm"
 import { TravelRoutesEntity } from "../../../modules/database-module/entities/travel-routes.entity"
 import { Test, TestingModule } from "@nestjs/testing"
@@ -6,18 +6,16 @@ import { getRepositoryToken } from "@nestjs/typeorm"
 import { PriceDatas } from "../../../modules/google-maps-place/data-contracts/price.datas"
 import { CoordinatesDatas } from "../../../modules/google-maps-place/data-contracts/coordinates.datas"
 import { CategoriesDatas } from "../../../modules/google-maps-place/data-contracts/categories.datas"
-import { PlaceComments } from "../../../modules/recommandations/data-contracts/place-comments.datas"
+import { PlaceComments } from "../../../modules/recommendation/data-contracts/place-comments.datas"
 import { OpenWeatherCoordinatesDatas } from "../../../modules/openwheatermap/data-contracts/open-weather-coordinates.datas"
 import { TemperatureDatas } from "../../../modules/openwheatermap/data-contracts/temperature.datas"
 import { PressureDatas } from "../../../modules/openwheatermap/data-contracts/pressure.datas"
 import { ForecastDatas } from "../../../modules/openwheatermap/data-contracts/forecast.datas"
 import { WeatherDatas } from "../../../modules/openwheatermap/data-contracts/weather.datas"
-import { RecommandationsDatas } from "../../../modules/recommandations/data-contracts/recommandations.datas"
+import { RecommandationsDatas } from "../../../modules/recommendation/data-contracts/recommandations.datas"
 import {
     SimpleTravelRouteResponseDatas
-} from "../../../modules/travel-route/data-contracts/simple-travel-route-response.datas"
-import { BadRequestException } from "@nestjs/common"
-import { UserEntity } from "../../../modules/database-module/entities/user.entity"
+} from "../../../modules/recommendation/data-contracts/simple-travel-route-response.datas"
 
 
 describe('SimpleTravelRouteService', () => {

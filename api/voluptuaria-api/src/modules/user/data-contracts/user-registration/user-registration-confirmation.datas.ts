@@ -8,7 +8,7 @@ import { Expose } from "class-transformer"
 export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
     @IsString()
     @IsNotEmpty()
-    @Expose({ name: "encrypted-confirmation-code" })
+    @Expose({ name: "encrypted_confirmation_code" })
     /**
      * @brief the sent encrypted confirmation code on the previous step
      */
@@ -16,6 +16,7 @@ export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
 
     @IsString()
     @IsNotEmpty()
+    @Expose({name: "encryption_iv"})
     /**
      * @brief encryption iv
      */
@@ -23,7 +24,7 @@ export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
 
     @IsString()
     @IsNotEmpty()
-    @Expose({ name: "user-confirmation-code" })
+    @Expose({ name: "user_confirmation_code" })
     /**
      * @brief provided confirmation code by the user
      */

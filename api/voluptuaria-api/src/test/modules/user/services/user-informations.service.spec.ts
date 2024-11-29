@@ -33,14 +33,16 @@ describe("User.UserInformationService", () => {
                 TypeOrmModule.forFeature([UserEntity]),
                 JwtModule.registerAsync({
                     inject: [ConfigService],
-                    imports: [ConfigModule],
-                    useFactory: async (configService: ConfigService) => ({
-                        secret: configService.getOrThrow("JWT_SECRET"),
-                        signOptions: {
-                            expiresIn:
-                                configService.getOrThrow("JWT_EXPIRES_IN"),
-                        },
-                    }),
+                    useFactory: (configService: ConfigService) => {
+                        const options = {
+                            secret: configService.getOrThrow<string>("JWT_SECRET"),
+                            signOptions: {
+                                expiresIn: configService.getOrThrow("JWT_EXPIRES_IN"),
+                            }
+                        }
+
+                        return options
+                    }
                 }),
                 MailModule,
                 LangModule,
@@ -77,10 +79,11 @@ describe("User.UserInformationService", () => {
         it("should update the password", async () => {
             const editResponse = await userInformationService.editPassword({
                 editPasswordData: {
-                    old_password : "password",
-                    new_password : "new_password",
-                    confirm_new_password : "new_password",
+                    oldPassword : "password",
+                    newPassword : "new_password",
+                    newPasswordConfirmation : "new_password",
                 },
+                authenticationToken: "provide_token"
             })
 
             expect(editResponse.errorMessage).toBeNull()
@@ -101,10 +104,11 @@ describe("User.UserInformationService", () => {
         it("should return the password isn't equal with the new password", async () => {
             const response = await userInformationService.editPassword({
                 editPasswordData: {
-                    old_password : "password",
-                    new_password : "new_password",
-                    confirm_new_password : "password",
+                    oldPassword : "password",
+                    newPassword : "new_password",
+                    newPasswordConfirmation : "password"
                 },
+                authenticationToken: "provide_token"
             })
 
             expect(response.errorMessage).toBe("error.matching-password")

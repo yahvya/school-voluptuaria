@@ -34,12 +34,13 @@ export class UserInformationsService {
      */
     public async updateUserProfileImage(options: {
         image: Express.Multer.File
-        profileImageDatas: UserProfileImageDatas
+        profileImageDatas: UserProfileImageDatas,
+        authenticationToken:string
     }): Promise<UserProfileImageResponseDatas> {
         const result = new UserProfileImageResponseDatas()
 
         try{
-            const {image,profileImageDatas} = options
+            const {image} = options
 
             // check image type
 
@@ -48,7 +49,7 @@ export class UserInformationsService {
                 return result
             }
 
-            const payload = await this.userLoginService.validateToken(profileImageDatas.authentication_token)
+            const payload = await this.userLoginService.validateToken(options.authenticationToken)
 
             if(payload === null){
                 result.errorMessage = "error.unrecognized-email-password"
@@ -107,16 +108,16 @@ export class UserInformationsService {
      */
 
     public async editPassword(options: {
-        editPasswordData: EditPasswordDatas
+        editPasswordData: EditPasswordDatas,
+        authenticationToken: string
     }): Promise<EditPasswordResponse> {
         const {
-            new_password,
-            confirm_new_password,
-            old_password,
-            authentication_token,
+            newPassword,
+            newPasswordConfirmation,
+            oldPassword
         } = options.editPasswordData
 
-        const payload  = await this.userLoginService.validateToken(authentication_token)
+        const payload  = await this.userLoginService.validateToken(options.authenticationToken)
 
         const user = await this.userRepository.findOneBy({
             email: payload.email,
@@ -131,7 +132,7 @@ export class UserInformationsService {
 
         //Verify if the old password matches the user's current password
         const oldPasswordMatch = await this.hashService.compare({
-            toCompare: old_password,
+            toCompare: oldPassword,
             hash: user.password,
         })
 
@@ -141,19 +142,18 @@ export class UserInformationsService {
         }
 
         // Check if new password and confirm password not match
-        if (new_password !== confirm_new_password) {
+        if (newPassword !== newPasswordConfirmation) {
             response.errorMessage = "error.matching-password"
             return response
         }
 
         try {
-            await this.userRepository.save({
-                user: user,
-                password: await this.hashService.hash({
-                    toHash: new_password,
-                    salt: 10,
-                }),
+            user.password = await this.hashService.hash({
+                toHash: newPassword,
+                salt: 10,
             })
+
+            await this.userRepository.save(user)
         } catch (_) {
             response.errorMessage = "error.technical"
         }
@@ -166,13 +166,13 @@ export class UserInformationsService {
      * @param options options
      * @returns {Promise<UserProfileResponseDatas>} response
      */
-    public async updateUserProfile(options: {userProfileDatas: UserProfileDatas}):Promise<UserProfileResponseDatas>{
-        const {authentication_token,firstname,name,phonenumber,birthday} = options.userProfileDatas
+    public async updateUserProfile(options: {userProfileDatas: UserProfileDatas,authenticationToken:string}):Promise<UserProfileResponseDatas>{
+        const {firstname,name,phonenumber,birthday} = options.userProfileDatas
         const result = new UserProfileResponseDatas()
 
         try{
             // find user
-            const payload = await this.userLoginService.validateToken(authentication_token)
+            const payload = await this.userLoginService.validateToken(options.authenticationToken)
 
             if(payload === null){
                 result.errorMessage = "error.unrecognized-email-password"

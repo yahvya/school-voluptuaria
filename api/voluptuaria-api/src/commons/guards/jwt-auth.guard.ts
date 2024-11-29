@@ -9,11 +9,11 @@ export class JwtAuthGuard implements CanActivate {
     /**
      * @brief authentication token key in headers
      */
-    static AUTHENTICATION_TOKEN_KEY:string = "authenticationToken"
-    
+    static AUTHENTICATION_TOKEN_KEY:string = "authentication_token"
+
     constructor(private readonly UserLoginService: UserLoginService) {
     }
-    
+
     canActivate(context: ExecutionContext): boolean {
         try{
             const request = context.switchToHttp().getRequest()
@@ -21,8 +21,8 @@ export class JwtAuthGuard implements CanActivate {
             if(!(JwtAuthGuard.AUTHENTICATION_TOKEN_KEY in request.headers))
                 throw new UnauthorizedException()
 
-            const validatedToken = this.UserLoginService.validateToken(request.headers[JwtAuthGuard.AUTHENTICATION_TOKEN_KEY]) 
-            
+            const validatedToken = this.UserLoginService.validateToken(request.headers[JwtAuthGuard.AUTHENTICATION_TOKEN_KEY])
+
             if (validatedToken === null)
                 throw new UnauthorizedException()
 

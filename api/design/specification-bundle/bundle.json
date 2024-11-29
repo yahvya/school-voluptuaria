@@ -32,6 +32,15 @@
                 "description": "Allow to search a place from a text",
                 "parameters": [
                     {
+                        "name": "lang",
+                        "required": true,
+                        "description": "Lang name",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
                         "name": "search",
                         "required": true,
                         "description": "Search string",
@@ -1121,7 +1130,7 @@
                 }
             }
         },
-        "/login/forgot-password/confirmaiton": {
+        "/login/forgot-password/confirmation": {
             "post": {
                 "summary": "Confirm forgot password process",
                 "description": "Confirm forgot password verification and update the password",

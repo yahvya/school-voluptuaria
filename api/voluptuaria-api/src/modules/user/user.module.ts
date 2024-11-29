@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { JwtModule, JwtService } from "@nestjs/jwt"
-import { ConfigModule, ConfigService } from "@nestjs/config"
+import { JwtModule } from "@nestjs/jwt"
+import {  ConfigService } from "@nestjs/config"
 import { UserRegistrationService } from "./services/user-registration.service"
 import { UserLoginService } from "./services/user-login.service"
 import { UserLoginController } from "./controllers/user-login.controller"
@@ -11,26 +11,31 @@ import { ForgotPasswordService } from "./services/forgot-password.service"
 import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 import { UserInformationsService } from "./services/user-informations.service"
 import { UserInformationsController } from "./controllers/user-informations.controller"
+import { TravelRouteController } from "./controllers/travel-route.controllers"
+import { RecommendationModule } from "../recommendation/recommendation.module"
 
 @Module({
     imports: [
         JwtModule.registerAsync({
             inject: [ConfigService],
-            imports: [ConfigModule],
-            useFactory: async (configService: ConfigService) => ({
-                secret: configService.getOrThrow("JWT_SECRET"),
-                signOptions: {
-                    expiresIn: configService.getOrThrow("JWT_EXPIRES_IN"),
-                },
-            }),
+            useFactory: (configService: ConfigService) => {
+                const options = {
+                    secret: configService.getOrThrow<string>("JWT_SECRET"),
+                    signOptions: {
+                        expiresIn: configService.getOrThrow("JWT_EXPIRES_IN"),
+                    }
+                }
+
+                return options
+            }
         }),
         TypeOrmModule.forFeature([UserEntity]),
         GoogleAuthModule,
+        RecommendationModule
     ],
     providers: [
         UserRegistrationService,
         UserLoginService,
-        JwtService,
         ForgotPasswordService,
         UserInformationsService,
     ],
@@ -41,6 +46,7 @@ import { UserInformationsController } from "./controllers/user-informations.cont
         UserLoginController,
         UserRegistrationController,
         UserInformationsController,
+        TravelRouteController
     ],
 })
 export class UserModule {

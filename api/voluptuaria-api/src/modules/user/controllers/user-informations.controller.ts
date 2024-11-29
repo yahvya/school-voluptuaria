@@ -1,4 +1,4 @@
-import { Body, Controller, HttpCode, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common"
+import { Body, Controller, Headers, HttpCode, Post, UploadedFile, UseGuards, UseInterceptors } from "@nestjs/common"
 import { FileInterceptor } from "@nestjs/platform-express"
 import { UserProfileImageDatas } from "../data-contracts/user-informations/user-profile-image.datas"
 import { UserProfileImageResponseDatas } from "../data-contracts/user-informations/user-profile-image-response.datas"
@@ -26,6 +26,7 @@ export class UserInformationsController {
      * @brief update user profile image
      * @param image new image
      * @param profileImageDatas form datas
+     * @param authenticationToken auth token
      */
     @Post("profile-image")
     @HttpCode(200)
@@ -33,35 +34,47 @@ export class UserInformationsController {
     public updateImage(
         @UploadedFile() image: Express.Multer.File,
         @Body() profileImageDatas: UserProfileImageDatas,
+        @Headers(JwtAuthGuard.AUTHENTICATION_TOKEN_KEY) authenticationToken: string
     ): Promise<UserProfileImageResponseDatas> {
         return this.userInformationService.updateUserProfileImage({
             image: image,
             profileImageDatas: profileImageDatas,
+            authenticationToken
         })
     }
 
     /**
      * @brief valide the user edit password
      * @param editPasswordData user password edit datas
+     * @param authenticationToken authentication token
      * @returns {EditPasswordResponse} validation results
      */
-    @Post()
+    @Post("/change-password")
     @HttpCode(200)
-    public edit_password(
+    public editPassword(
         @Body() editPasswordData: EditPasswordDatas,
+        @Headers(JwtAuthGuard.AUTHENTICATION_TOKEN_KEY) authenticationToken:string
     ): Promise<EditPasswordResponse> {
         return this.userInformationService.editPassword({
             editPasswordData: editPasswordData,
+            authenticationToken: authenticationToken
         })
     }
 
+    /**
+     * @brief update user profile
+     * @param userProfileDatas profile data
+     * @param authenticationToken authentication token
+     */
     @Post("profile")
     @HttpCode(200)
     public updateProfile(
+        @Headers(JwtAuthGuard.AUTHENTICATION_TOKEN_KEY) authenticationToken:string,
         @Body() userProfileDatas: UserProfileDatas
     ):Promise<UserProfileResponseDatas>{
         return this.userInformationService.updateUserProfile({
-            userProfileDatas: userProfileDatas
+            userProfileDatas: userProfileDatas,
+            authenticationToken
         })
     }
 }
