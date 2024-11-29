@@ -202,6 +202,7 @@ font-style: italic;
   <li><a href="#placeCommentsGet"><code><span class="http-method">get</span> /place/comments</code></a></li>
   <li><a href="#placeCommentsPost"><code><span class="http-method">post</span> /place/comments</code></a></li>
   <li><a href="#placeLikeStatusPost"><code><span class="http-method">post</span> /place/like/status</code></a></li>
+  <li><a href="#registerByGoogleConfirmationPost"><code><span class="http-method">post</span> /register-/by-google/confirmation</code></a></li>
   <li><a href="#registerByGooglePost"><code><span class="http-method">post</span> /register/by-google</code></a></li>
   <li><a href="#registerConfirmationPost"><code><span class="http-method">post</span> /register/confirmation</code></a></li>
   <li><a href="#registerVoluptuariaPost"><code><span class="http-method">post</span> /register/voluptuaria</code></a></li>
@@ -594,6 +595,66 @@ font-style: italic;
     <h4 class="field-label">200</h4>
     Post success state
         <a href="#_place_like_status_post_200_response">_place_like_status_post_200_response</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="registerByGoogleConfirmationPost"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /register-/by-google/confirmation</code></pre></div>
+    <div class="method-summary">Confirm registration by google (<span class="nickname">registerByGoogleConfirmationPost</span>)</div>
+    <div class="method-notes">Confirm the registration by google</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">_register__by_google_confirmation_post_request <a href="#_register__by_google_confirmation_post_request">_register__by_google_confirmation_post_request</a> (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      <div class="param">voluptuaria_access_config (required)</div>
+
+      <div class="param-desc"><span class="param-type">Header Parameter</span> &mdash; Voluptuaria api access configuration default: null </div>
+
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#_register_confirmation_post_200_response">_register_confirmation_post_200_response</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "error_message" : "error_message",
+  "authentication_token" : "authentication_token"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Registration confirmation
+        <a href="#_register_confirmation_post_200_response">_register_confirmation_post_200_response</a>
   </div> <!-- method -->
   <hr/>
   <div class="method"><a name="registerByGooglePost"/>
@@ -2691,6 +2752,7 @@ font-style: italic;
     <li><a href="#_place_comments_post_request"><code>_place_comments_post_request</code> - </a></li>
     <li><a href="#_place_like_status_post_200_response"><code>_place_like_status_post_200_response</code> - </a></li>
     <li><a href="#_place_like_status_post_request"><code>_place_like_status_post_request</code> - </a></li>
+    <li><a href="#_register__by_google_confirmation_post_request"><code>_register__by_google_confirmation_post_request</code> - </a></li>
     <li><a href="#_register_by_google_post_200_response"><code>_register_by_google_post_200_response</code> - </a></li>
     <li><a href="#_register_by_google_post_request"><code>_register_by_google_post_request</code> - </a></li>
     <li><a href="#_register_confirmation_post_200_response"><code>_register_confirmation_post_200_response</code> - </a></li>
@@ -2806,6 +2868,15 @@ font-style: italic;
     <div class="field-items">
       <div class="param">callback_datas </div><div class="param-desc"><span class="param-type"><a href="#">Object</a></span> Place callback datas </div>
 <div class="param">like_state </div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span> Like state. true to like or remove the previous like , false to dislike </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_register__by_google_confirmation_post_request"><code>_register__by_google_confirmation_post_request</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Chosen password </div>
+<div class="param">iv </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Received iv in previous step </div>
+<div class="param">datas </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Received datas in previous step </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

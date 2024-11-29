@@ -956,6 +956,94 @@
                 }
             }
         },
+        "/register-/by-google/confirmation": {
+            "post": {
+                "summary": "Confirm registration by google",
+                "description": "Confirm the registration by google",
+                "parameters": [
+                    {
+                        "name": "voluptuaria_access_config",
+                        "in": "header",
+                        "description": "Voluptuaria api access configuration",
+                        "allowEmptyValue": false,
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "token": {
+                                    "type": "string",
+                                    "description": "Encrypted token"
+                                },
+                                "iv": {
+                                    "type": "string",
+                                    "description": "Ecnryption iv"
+                                }
+                            },
+                            "required": [
+                                "token",
+                                "iv"
+                            ]
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string",
+                                        "description": "Chosen password"
+                                    },
+                                    "iv": {
+                                        "type": "string",
+                                        "description": "Received iv in previous step"
+                                    },
+                                    "datas": {
+                                        "type": "string",
+                                        "description": "Received datas in previous step"
+                                    }
+                                },
+                                "required": [
+                                    "password",
+                                    "iv",
+                                    "datas"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Registration confirmation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "error_message": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Error message on error"
+                                        },
+                                        "authentication_token": {
+                                            "type": "string",
+                                            "nullable": true,
+                                            "description": "Authentication token"
+                                        }
+                                    },
+                                    "required": [
+                                        "error_message",
+                                        "authentication_token"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/login": {
             "post": {
                 "summary": "Log user",
