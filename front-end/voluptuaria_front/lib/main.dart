@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'package:voluptuaria_front/pages/login_page.dart';
-//import 'package:voluptuaria_front/pages/registration_page.dart';
-import 'package:voluptuaria_front/pages/forgot_password_page.dart';
 import 'components/navigation_bar.dart';
 import 'pages/home_page.dart'; 
+import 'pages/forgot_password_confirmation_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Test',
-      home: ForgotPasswordPage(),
+      home: ForgotPasswordConfirmationPage(),
     );
   }
 }
