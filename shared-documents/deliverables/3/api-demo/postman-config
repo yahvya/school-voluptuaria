@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7ddc1857-57b4-4723-afe6-7aff138acbe3",
+		"_postman_id": "6849265a-0252-48dd-90dd-88404daa1775",
 		"name": "Voluptuaria Api",
 		"description": "Voluptuaria application's Api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "full routes",
+			"name": "Full routes",
 			"item": [
 				{
 					"name": "/login",
@@ -114,7 +114,7 @@
 					"description": "Initialize forgot password process, validate data's and send confirmation mail"
 				},
 				{
-					"name": "/login/forgot-password/confirmaiton",
+					"name": "/login/forgot-password/confirmation",
 					"item": [
 						{
 							"name": "Confirm forgot password process",
@@ -146,14 +146,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/login/forgot-password/confirmaiton",
+									"raw": "{{baseUrl}}/login/forgot-password/confirmation",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"login",
 										"forgot-password",
-										"confirmaiton"
+										"confirmation"
 									]
 								},
 								"description": "Confirm forgot password verification and update the password"
@@ -321,6 +321,56 @@
 						}
 					],
 					"description": "Set a user notice status like or remove like on a place"
+				},
+				{
+					"name": "/register-/by-google/confirmation",
+					"item": [
+						{
+							"name": "Confirm registration by google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"password\": \"<string>\",\n \"iv\": \"<string>\",\n \"datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register-/by-google/confirmation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register-",
+										"by-google",
+										"confirmation"
+									]
+								},
+								"description": "Confirm the registration by google"
+							},
+							"response": []
+						}
+					],
+					"description": "Confirm the registration by google"
 				},
 				{
 					"name": "/register/by-google",
@@ -494,6 +544,12 @@
 										"value": "application/json"
 									},
 									{
+										"key": "lang",
+										"value": "",
+										"description": "Lang name",
+										"disabled": true
+									},
+									{
 										"key": "voluptuaria_access_config",
 										"value": "",
 										"description": "Voluptuaria api access configuration",
@@ -610,7 +666,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/user/datas?to_fetch=",
+									"raw": "{{baseUrl}}/user/datas?toFetch=",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -620,7 +676,7 @@
 									],
 									"query": [
 										{
-											"key": "to_fetch",
+											"key": "toFetch",
 											"value": "",
 											"description": "Data's to fetch"
 										}
@@ -1085,7 +1141,7 @@
 			]
 		},
 		{
-			"name": "version 0 routes",
+			"name": "Version available routes",
 			"item": [
 				{
 					"name": "/login Copy",
@@ -1191,7 +1247,7 @@
 					"description": "Initialize forgot password process, validate data's and send confirmation mail"
 				},
 				{
-					"name": "/login/forgot-password/confirmaiton Copy",
+					"name": "/login/forgot-password/confirmation Copy",
 					"item": [
 						{
 							"name": "Confirm forgot password process",
@@ -1223,14 +1279,14 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/login/forgot-password/confirmaiton",
+									"raw": "{{baseUrl}}/login/forgot-password/confirmation",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"login",
 										"forgot-password",
-										"confirmaiton"
+										"confirmation"
 									]
 								},
 								"description": "Confirm forgot password verification and update the password"
@@ -1239,6 +1295,56 @@
 						}
 					],
 					"description": "Confirm forgot password verification and update the password"
+				},
+				{
+					"name": "/register-/by-google/confirmation Copy",
+					"item": [
+						{
+							"name": "Confirm registration by google",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n \"password\": \"<string>\",\n \"iv\": \"<string>\",\n \"datas\": \"<string>\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/register-/by-google/confirmation",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"register-",
+										"by-google",
+										"confirmation"
+									]
+								},
+								"description": "Confirm the registration by google"
+							},
+							"response": []
+						}
+					],
+					"description": "Confirm the registration by google"
 				},
 				{
 					"name": "/register/by-google Copy",
@@ -1412,6 +1518,12 @@
 										"value": "application/json"
 									},
 									{
+										"key": "lang",
+										"value": "",
+										"description": "Lang name",
+										"disabled": true
+									},
+									{
 										"key": "voluptuaria_access_config",
 										"value": "",
 										"description": "Voluptuaria api access configuration",
@@ -1501,55 +1613,6 @@
 						}
 					],
 					"description": "Update the user password"
-				},
-				{
-					"name": "/user/datas Copy",
-					"item": [
-						{
-							"name": "Provide user data's",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "voluptuaria_access_config",
-										"value": "",
-										"description": "Voluptuaria api access configuration",
-										"disabled": true
-									},
-									{
-										"key": "authentication_token",
-										"value": "",
-										"description": "Authentication token",
-										"disabled": true
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/user/datas?to_fetch=",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"user",
-										"datas"
-									],
-									"query": [
-										{
-											"key": "to_fetch",
-											"value": "",
-											"description": "Data's to fetch"
-										}
-									]
-								},
-								"description": "Provide user data's"
-							},
-							"response": []
-						}
-					],
-					"description": "Provide user data's"
 				},
 				{
 					"name": "/user/profile Copy",
@@ -1664,7 +1727,7 @@
 			]
 		},
 		{
-			"name": "missing routes",
+			"name": "Missing routes",
 			"item": [
 				{
 					"name": "/place/comments Copy",
@@ -1824,6 +1887,55 @@
 						}
 					],
 					"description": "Set a user notice status like or remove like on a place"
+				},
+				{
+					"name": "/user/datas Copy",
+					"item": [
+						{
+							"name": "Provide user data's",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "voluptuaria_access_config",
+										"value": "",
+										"description": "Voluptuaria api access configuration",
+										"disabled": true
+									},
+									{
+										"key": "authentication_token",
+										"value": "",
+										"description": "Authentication token",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/user/datas?toFetch=",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"user",
+										"datas"
+									],
+									"query": [
+										{
+											"key": "toFetch",
+											"value": "",
+											"description": "Data's to fetch"
+										}
+									]
+								},
+								"description": "Provide user data's"
+							},
+							"response": []
+						}
+					],
+					"description": "Provide user data's"
 				},
 				{
 					"name": "/user/places-wish-list/update Copy",
