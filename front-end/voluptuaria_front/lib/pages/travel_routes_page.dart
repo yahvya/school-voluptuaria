@@ -3,7 +3,6 @@ import 'package:voluptuaria_front/components/button.dart';
 import 'package:voluptuaria_front/components/select_box.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/path_card.dart';
-import 'package:voluptuaria_front/components/category_gallery.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
 
 class TravelRoutesPage extends StatelessWidget {
