@@ -6,8 +6,6 @@ import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
 import 'package:voluptuaria_front/components/profile_picture.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
-import 'package:voluptuaria_front/components/icon_button.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class UserEditProfilePage extends StatelessWidget {
   const UserEditProfilePage({Key? key}) : super(key: key);
