@@ -4,7 +4,6 @@ import 'package:voluptuaria_front/components/search_bar.dart';
 import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
-import 'package:voluptuaria_front/components/icon_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -74,7 +73,7 @@ class HomePage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
         child: CustomNavigationBar(
-          currentIndex: 0,
+          currentIndex: 2,
           backgroundColor: upperBorderColor,
           borderRadius: 30.0,
           icons: [

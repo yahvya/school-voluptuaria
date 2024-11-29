@@ -3,6 +3,7 @@ import 'package:voluptuaria_front/pages/user_wish_list_page.dart';
 import 'package:voluptuaria_front/pages/home_page.dart';
 import 'package:voluptuaria_front/pages/travel_routes_page.dart';
 import 'package:voluptuaria_front/pages/user_profile_page.dart';
+import 'package:voluptuaria_front/resources/themes/colors.dart';
 
 class CustomNavigationBar extends StatelessWidget {
   final Color backgroundColor;
@@ -65,7 +66,7 @@ class CustomNavigationBar extends StatelessWidget {
             child: Icon(
               icons[index],
               size: 35,
-              color: index == currentIndex ? Colors.blue : Colors.black,
+              color: index == currentIndex ? specialColor : Colors.black,
             ),
           );
         }),
