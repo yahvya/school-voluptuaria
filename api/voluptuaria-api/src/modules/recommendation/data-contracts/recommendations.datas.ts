@@ -2,14 +2,14 @@ import { IsBoolean, IsNotEmpty, IsString } from "class-validator"
 import { PriceDatas } from "../../google-maps-place/data-contracts/price.datas"
 import { CoordinatesDatas } from "../../google-maps-place/data-contracts/coordinates.datas"
 import { CategoriesDatas } from "../../google-maps-place/data-contracts/categories.datas"
-import { PlaceComments } from "./place-comments.datas"
+import { PlaceCommentsDatas } from "./place-comments.datas"
 import { WeatherDatas } from "../../openwheatermap/data-contracts/weather.datas"
 
 
 /**
  * @brief Recommandations data-contracts
  */
-export class RecommandationsDatas {
+export class RecommendationsDatas {
     @IsString({
         always: true,
     })
@@ -37,7 +37,7 @@ export class RecommandationsDatas {
 
     public callback_datas : object
 
-    public comments : PlaceComments[]
+    public comments : PlaceCommentsDatas[]
 
     public weather : WeatherDatas[]
 

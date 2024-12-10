@@ -6,13 +6,13 @@ import { getRepositoryToken } from "@nestjs/typeorm"
 import { PriceDatas } from "../../../modules/google-maps-place/data-contracts/price.datas"
 import { CoordinatesDatas } from "../../../modules/google-maps-place/data-contracts/coordinates.datas"
 import { CategoriesDatas } from "../../../modules/google-maps-place/data-contracts/categories.datas"
-import { PlaceComments } from "../../../modules/recommendation/data-contracts/place-comments.datas"
+import { PlaceCommentsDatas } from "../../../modules/recommendation/data-contracts/place-comments.datas"
 import { OpenWeatherCoordinatesDatas } from "../../../modules/openwheatermap/data-contracts/open-weather-coordinates.datas"
 import { TemperatureDatas } from "../../../modules/openwheatermap/data-contracts/temperature.datas"
 import { PressureDatas } from "../../../modules/openwheatermap/data-contracts/pressure.datas"
 import { ForecastDatas } from "../../../modules/openwheatermap/data-contracts/forecast.datas"
 import { WeatherDatas } from "../../../modules/openwheatermap/data-contracts/weather.datas"
-import { RecommandationsDatas } from "../../../modules/recommendation/data-contracts/recommandations.datas"
+import { RecommendationsDatas } from "../../../modules/recommendation/data-contracts/recommendations.datas"
 import {
     SimpleTravelRouteResponseDatas
 } from "../../../modules/recommendation/data-contracts/simple-travel-route-response.datas"
@@ -65,7 +65,7 @@ describe('SimpleTravelRouteService', () => {
                         } as CoordinatesDatas,
                         categories: [{ name: 'landmark' } as CategoriesDatas],
                         callback_datas: {},
-                        comments: [] as PlaceComments[],
+                        comments: [] as PlaceCommentsDatas[],
                         weather: [
                             {
                                 coordinates: {
@@ -85,7 +85,7 @@ describe('SimpleTravelRouteService', () => {
                                 temperature: { temperature: '20', feltTemperature: '18', measureUnit: 'C' } as TemperatureDatas
                             } as WeatherDatas
                         ]
-                    } as RecommandationsDatas],
+                    } as RecommendationsDatas],
                 } as SimpleTravelRouteResponseDatas,
                 name: 'Test Route',
                 userId: 'user-id-123',
@@ -123,7 +123,7 @@ describe('SimpleTravelRouteService', () => {
                         } as CoordinatesDatas,
                         categories: [{ name: 'landmark' } as CategoriesDatas],
                         callback_datas: {},
-                        comments: [] as PlaceComments[],
+                        comments: [] as PlaceCommentsDatas[],
                         weather: [
                             {
                                 coordinates: {
@@ -143,7 +143,7 @@ describe('SimpleTravelRouteService', () => {
                                 temperature: { temperature: '20', feltTemperature: '18', measureUnit: 'C' } as TemperatureDatas
                             } as WeatherDatas,
                         ]
-                    } as RecommandationsDatas],
+                    } as RecommendationsDatas],
                 } as SimpleTravelRouteResponseDatas,
                 name: 'Test Route',
                 userId: 'user-id-123',

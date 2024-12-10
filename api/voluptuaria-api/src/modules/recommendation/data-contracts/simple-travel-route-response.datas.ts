@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsNumber, IsObject, IsString } from "class-validator"
-import { RecommandationsDatas } from "./recommandations.datas"
+import { RecommendationsDatas } from "./recommendations.datas"
 
 /**
  * @brief Simple travel route datas
@@ -33,5 +33,5 @@ export class SimpleTravelRouteResponseDatas {
     })
     public callback_datas: object | null
 
-    public proposals : RecommandationsDatas[]
+    public proposals : RecommendationsDatas[]
 }
