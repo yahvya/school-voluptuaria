@@ -1,6 +1,6 @@
 import { Body, Controller, Get, HttpCode, Post } from "@nestjs/common"
 import { SimpleTravelRouteResponseDatas } from "../../recommendation/data-contracts/simple-travel-route-response.datas"
-import { SimpleTravelRouteService } from "../../recommendation/services/simple-travel-route.sevice"
+import { SimpleTravelRouteService } from "../../recommendation/services/simple-travel-route.service"
 
 /**
  * @brief travel route implementation controller

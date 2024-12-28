@@ -11,7 +11,7 @@ export class UserRecommendationCommentService{
 
     constructor(
         @InjectRepository(PlacesCommentsEntity)
-        protected readonly placeCommentsRepositoty : Repository<PlacesCommentsEntity>
+        protected readonly placeCommentsRepository : Repository<PlacesCommentsEntity>
     ) {
     }
 
@@ -33,7 +33,7 @@ export class UserRecommendationCommentService{
         }
         else{
             try {
-                await this.placeCommentsRepositoty.save({
+                await this.placeCommentsRepository.save({
                     userId : user_id,
                     placeId : place_id,
                     comment : comment,

@@ -1,4 +1,4 @@
-import {SimpleTravelRouteService} from "../../../modules/recommendation/services/simple-travel-route.sevice"
+import {SimpleTravelRouteService} from "../../../modules/recommendation/services/simple-travel-route.service"
 import { Repository } from "typeorm"
 import { TravelRoutesEntity } from "../../../modules/database-module/entities/travel-routes.entity"
 import { Test, TestingModule } from "@nestjs/testing"
