@@ -1,3 +1,0 @@
-## location-type Type
-
-`number`
