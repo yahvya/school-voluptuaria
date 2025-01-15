@@ -6,7 +6,7 @@ import { CategoriesEntity } from "./categories.entity"
  * @brief user social profile unliked categories
  */
 @Entity({name: "potential_unliked_categories"})
-export class LikedCategoriesEntity{
+export class UnLikedCategoriesEntity{
     @PrimaryColumn({name: "social_profile_id",type: "varchar",length: 36,})
     public socialProfileId: string
 

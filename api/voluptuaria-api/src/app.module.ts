@@ -10,6 +10,7 @@ import { ApplicationDevTestingModule } from "./modules/application-dev-testing/a
 import { ServeStaticModule } from "@nestjs/serve-static"
 import { join } from "path"
 import { PlaceManagerModule } from "./modules/place-manager/place-manager.module"
+import { RecommendationModule } from "./modules/recommendation/recommendation.module"
 
 @Module({
     imports: [
@@ -24,7 +25,8 @@ import { PlaceManagerModule } from "./modules/place-manager/place-manager.module
         AppSecurityModule,
         UtilsModule,
         ApplicationDevTestingModule,
-        PlaceManagerModule
+        PlaceManagerModule,
+        RecommendationModule
     ],
 })
 export class AppModule {

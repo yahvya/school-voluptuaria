@@ -6,6 +6,11 @@ import { UserRecommendationCommentService } from "./services/user-recommendation
 import { PlacesCommentsEntity } from "../database-module/entities/places-comments.entity"
 import { PlacesEntity } from "../database-module/entities/places.entity"
 import { UserEntity } from "../database-module/entities/user.entity"
+import { CategoriesEntity } from "../database-module/entities/categories.entity"
+import { LikedCategoriesEntity } from "../database-module/entities/liked-categories.entity"
+import { UserRecommendationLikeService } from "./services/user-recommendation-like.service"
+import { UnLikedCategoriesEntity } from "../database-module/entities/unliked-categories.entity"
+import { SocialProfileEntity } from "../database-module/entities/social-profile.entity"
 
 @Module({
     imports: [
@@ -13,10 +18,15 @@ import { UserEntity } from "../database-module/entities/user.entity"
             TravelRoutesEntity,
             PlacesCommentsEntity,
             PlacesEntity,
-            UserEntity
+            UserEntity,
+            SocialProfileEntity,
+            CategoriesEntity,
+            UnLikedCategoriesEntity,
+            LikedCategoriesEntity
+
         ])
     ],
-    providers: [SimpleTravelRouteService, UserRecommendationCommentService],
-    exports: [SimpleTravelRouteService, UserRecommendationCommentService],
+    providers: [SimpleTravelRouteService, UserRecommendationCommentService, UserRecommendationLikeService ],
+    exports: [SimpleTravelRouteService, UserRecommendationCommentService, UserRecommendationLikeService],
 })
 export class RecommendationModule{}
