@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode } from "@nestjs/common"
+import { Controller, Get, HttpCode, Query } from "@nestjs/common"
 import { ConfigService } from "@nestjs/config"
 import { InjectRepository } from "@nestjs/typeorm"
 import { UserEntity,Gender } from "src/modules/database-module/entities/user.entity"
@@ -7,6 +7,7 @@ import { Repository } from "typeorm"
 import * as fs from "node:fs"
 import { EncryptService } from "src/modules/app-security/services/encrypt.service"
 import { HashService } from "src/modules/app-security/services/hash.service"
+import { InstagramScrapingService } from "src/modules/instagram-module/services/instagram-scraping.service"
 
 @Controller("test")
 export class TestController {
@@ -16,7 +17,8 @@ export class TestController {
         protected readonly userLoginService: UserLoginService,
         protected readonly configService: ConfigService,
         protected readonly encryptService: EncryptService,
-        protected readonly hashService: HashService
+        protected readonly hashService: HashService,
+        protected readonly instagramScrapingService: InstagramScrapingService
     ){
     }
 
@@ -25,7 +27,8 @@ export class TestController {
     public list(){
         return {
             "/" : "Fourni la liste des routes de tests ainsi que leurs description",
-            "/init" : "Initialise les requis du projet pour tester (base de données, tokens et configurations ...)"
+            "/init" : "Initialise les requis du projet pour tester (base de données, tokens et configurations ...)",
+            "/instagram-scraping": "Test le scraping d'un profil Instagram (utiliser ?username=nom_utilisateur)"
         }
     }
 
@@ -69,6 +72,36 @@ export class TestController {
                 token: voluptuariaTokenEncryptResult.encryptionResult,
                 iv: voluptuariaTokenEncryptResult.iv
             },
+        }
+    }
+
+    @Get("instagram-scraping")
+    @HttpCode(200)
+    public async testInstagramScraping(
+        @Query('username') username: string = 'pascalthetrlol'
+    ) {
+        try {
+            console.log(`Début du scraping pour le profil: ${username}`);
+            const result = await this.instagramScrapingService.scrapeInstagramProfile(username);
+            
+            return {
+                success: true,
+                data: result,
+                metadata: {
+                    totalPosts: result.profile.totalPosts,
+                    analyzedPosts: result.profile.analyzedPosts,
+                    scrapingTime: new Date().toISOString()
+                }
+            };
+        } catch (error) {
+            return {
+                success: false,
+                error: error.message,
+                metadata: {
+                    username,
+                    timestamp: new Date().toISOString()
+                }
+            };
         }
     }
 }
