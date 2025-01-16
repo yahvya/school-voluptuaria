@@ -1,0 +1,11 @@
+{
+  "name": "api-insta",
+  "version": "1.0.0",
+  "description": "Instagram scraping with Puppeteer",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "puppeteer": "^24.1.0"
+  },
+  "type": "commonjs"
+}
