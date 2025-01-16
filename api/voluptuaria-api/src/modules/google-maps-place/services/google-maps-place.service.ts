@@ -284,4 +284,42 @@ export class GoogleMapsPlaceService{
 
         return result
     }
+
+    public async searchNearbyPlaces(options: {
+        location: {
+            latitude: number;
+            longitude: number;
+        };
+        radius?: number;
+        type?: string;
+        keyword?: string;
+    }): Promise<PlaceDatas[]> {
+        const requestUri = "https://places.googleapis.com/v1/places:searchNearby";
+        const headers = {
+            "X-Goog-Api-Key": this.configService.getOrThrow("GOOGLE_MAPS_PLACE_API_KEY"),
+            "X-Goog-FieldMask": "*",
+            "Content-Type": "application/json"
+        };
+
+        const body = {
+            locationRestriction: {
+                circle: {
+                    center: {
+                        latitude: options.location.latitude,
+                        longitude: options.location.longitude
+                    },
+                    radius: options.radius || 1000
+                }
+            },
+            rankPreference: "DISTANCE",
+            languageCode: this.langService.getGoogleMapCode()
+        };
+
+        try {
+            const response = await axios.post(requestUri, body, { headers });
+            return response.data.places.map(place => this.parsePlaceDatas({ placeDatas: place }));
+        } catch (error) {
+            throw new Error("Fail to load nearby places");
+        }
+    }
 }

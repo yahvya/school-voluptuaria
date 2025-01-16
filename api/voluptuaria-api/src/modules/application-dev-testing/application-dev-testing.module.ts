@@ -6,6 +6,7 @@ import { UserModule } from "../user/user.module"
 import { ConfigModule } from "@nestjs/config"
 import { AppSecurityModule } from "../app-security/app-security.module"
 import { InstagramModule } from "../instagram-module/instagram.module"
+import { PlaceRecommendationModule } from "../place-recommendation/place-recommendation.module"
 /**
  * @brief application dev testing
  * @todo remove at the end
@@ -17,7 +18,8 @@ import { InstagramModule } from "../instagram-module/instagram.module"
         UserModule,
         ConfigModule,
         AppSecurityModule,
-        InstagramModule
+        InstagramModule,
+        PlaceRecommendationModule,
     ]
 })
 export class ApplicationDevTestingModule {
