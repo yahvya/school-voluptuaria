@@ -1,6 +1,7 @@
 /// application routes
 class ApplicationRoutes {
   static const String HOME_PAGE = "home";
+  static const String HOME_SEARCH = "home.search";
   static const String LOGIN_PAGE = "login";
   static const String REGISTRATION_PAGE = "registration";
   static const String DETAILS_PAGE = "details";

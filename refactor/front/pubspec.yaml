@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   provider: ^6.1.2
   go_router: ^14.6.3
+  font_awesome_flutter: ^10.0.0
+  lottie: ^2.7.0
+  http: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -89,3 +92,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - lib/resources/images/
+    - lib/resources/animations/
+
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: lib/resources/fonts/OpenSans-Regular.ttf
+        - asset: lib/resources/fonts/OpenSans-Bold.ttf
+        - asset: lib/resources/fonts/OpenSans-SemiBold.ttf
+        - asset: lib/resources/fonts/OpenSans-Light.ttf

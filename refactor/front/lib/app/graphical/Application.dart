@@ -15,5 +15,4 @@ class Application extends StatelessWidget{
       routerConfig: _router
     );
   }
-
 }
