@@ -3,7 +3,7 @@
 <!ATTLIST lang french-name CDATA #REQUIRED>
 <!--lang name in the lang itself-->
 <!ATTLIST lang name CDATA #REQUIRED>
-<!--lang code for apis-->
+<!--lang api for apis-->
 <!ATTLIST lang google-map-code CDATA #REQUIRED>
 <!ATTLIST lang openweathermap-code CDATA #REQUIRED>
 

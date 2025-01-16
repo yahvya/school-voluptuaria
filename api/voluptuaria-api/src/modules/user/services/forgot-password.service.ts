@@ -56,7 +56,7 @@ export class ForgotPasswordService {
             return response
         }
 
-        // generate and send confirmation code
+        // generate and send confirmation api
         const confirmationCode = this.stringService.random({ length: 6 })
 
         if (
@@ -110,7 +110,7 @@ export class ForgotPasswordService {
             return response
         }
 
-        // check the confirmation code
+        // check the confirmation api
         const realConfirmationCode = await this.encryptService.decrypt({
             toDecrypt: encryptedConfirmationCode,
             iv: iv,
@@ -120,7 +120,7 @@ export class ForgotPasswordService {
         })
 
         if (userConfirmationCode !== realConfirmationCode) {
-            response.errorMessage = "error.bad-confirmation-code"
+            response.errorMessage = "error.bad-confirmation-api"
             return response
         }
 
@@ -139,7 +139,7 @@ export class ForgotPasswordService {
     }
 
     /**
-     * @brief send the confirmation code to the given email
+     * @brief send the confirmation api to the given email
      * @param options options
      * @returns {Promise<boolean>} send success
      */

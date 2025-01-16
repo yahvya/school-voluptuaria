@@ -10,7 +10,7 @@ export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
     @IsNotEmpty()
     @Expose({ name: "encrypted_confirmation_code" })
     /**
-     * @brief the sent encrypted confirmation code on the previous step
+     * @brief the sent encrypted confirmation api on the previous step
      */
     public encryptedConfirmationCode: string
 
@@ -26,7 +26,7 @@ export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
     @IsNotEmpty()
     @Expose({ name: "user_confirmation_code" })
     /**
-     * @brief provided confirmation code by the user
+     * @brief provided confirmation api by the user
      */
     public userConfirmationCode: string
 }
