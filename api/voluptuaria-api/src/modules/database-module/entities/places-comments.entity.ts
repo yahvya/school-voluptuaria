@@ -3,7 +3,7 @@ import {
     PrimaryColumn,
     ManyToOne,
     JoinColumn,
-    CreateDateColumn,
+    CreateDateColumn, Column,
 } from "typeorm"
 import { UserEntity } from "./user.entity"
 import { PlacesEntity } from "./places.entity"
@@ -18,6 +18,9 @@ export class PlacesCommentsEntity {
 
     @PrimaryColumn({ name: "place_id",type: "varchar",length: 36, })
     placeId: string
+
+    @Column({name:"comment",type:"varchar",length: 36,})
+    comment: string
 
     @CreateDateColumn({name: "commented_at",type: "datetime",nullable: false,})
     commentedAt: Date

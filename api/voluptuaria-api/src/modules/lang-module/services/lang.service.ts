@@ -25,12 +25,12 @@ export class LangService {
     protected frenchName: string | null
 
     /**
-     * @brief map code
+     * @brief map api
      */
     protected googleMapCode: string | null
 
     /**
-     * @brief open weather map code
+     * @brief open weather map api
      */
     protected openWeatherMapCode: string | null
 
@@ -146,8 +146,8 @@ export class LangService {
 
             // loading attributes
             this.frenchName = langFileContent.lang["french-name"]
-            this.googleMapCode = langFileContent.lang["google-map-code"]
-            this.openWeatherMapCode = langFileContent.lang["openweathermap-code"]
+            this.googleMapCode = langFileContent.lang["google-map-api"]
+            this.openWeatherMapCode = langFileContent.lang["openweathermap-api"]
             this.langName = langFileContent.lang.name
 
             return true
@@ -185,14 +185,14 @@ export class LangService {
     }
 
     /**
-     * @returns {string|null} google map translation code
+     * @returns {string|null} google map translation api
      */
     public getGoogleMapCode(): string | null {
         return this.googleMapCode
     }
 
     /**
-     * @returns {string|null} open weather map code
+     * @returns {string|null} open weather map api
      */
     public getOpenWeatherMapCode(): string | null {
         return this.openWeatherMapCode

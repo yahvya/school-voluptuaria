@@ -41,6 +41,6 @@ export class UserEntity{
     @CreateDateColumn({ name: "created_at", type: "datetime",nullable: false,})
     createdAt: Date
 
-    @Column({name: "gender",type: "tinyint",nullable: false,enum: Gender})
-    gender: number
+    @Column({ name: "gender", type: "enum", enum: Gender, nullable: false, })
+    gender: Gender;
 }

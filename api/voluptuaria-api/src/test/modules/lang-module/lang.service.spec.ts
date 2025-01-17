@@ -31,7 +31,7 @@ describe("LangModule.LangService", () => {
         },
         {
             lang: "french",
-            key: "app.confirmation-code",
+            key: "app.confirmation-api",
             expectedValue: "Code de confirmation",
             replaces: {},
         },

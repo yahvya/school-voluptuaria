@@ -130,7 +130,7 @@ export class UserRegistrationService {
             return response
         }
 
-        // check confirmation code
+        // check confirmation api
         const decryptedPassword = await this.encryptService.decrypt({
             toDecrypt: encryptedConfirmationCode,
             secretKey: await this.configService.getOrThrow(
@@ -140,7 +140,7 @@ export class UserRegistrationService {
         })
 
         if (userConfirmationCode !== decryptedPassword) {
-            response.errorMessage = "error.bad-confirmation-code"
+            response.errorMessage = "error.bad-confirmation-api"
             return response
         }
 
