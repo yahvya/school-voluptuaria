@@ -4,6 +4,7 @@ import 'package:voluptuaria_front/components/blur_background.dart';
 import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
+import 'package:voluptuaria_front/components/image_item.dart';
 
 class UserWishListPage extends StatelessWidget {
   const UserWishListPage({Key? key}) : super(key: key);
@@ -39,15 +40,42 @@ class UserWishListPage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(0.0),
-              child: Gallery(
-                imagePaths: [
-                  'lib/resources/images/place1.jpg',
-                  'lib/resources/images/place2.jpg',
-                  'lib/resources/images/place3.jpg',
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ImageItem(
+                      imagePath: 'lib/resources/images/place1.jpg',
+                      onTap: () {
+                        print('Tapped on place1');
+                      },
+                      width: double.infinity,
+                      height: 200.0,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ImageItem(
+                      imagePath: 'lib/resources/images/place2.jpg',
+                      onTap: () {
+                        print('Tapped on place2');
+                      },
+                      width: double.infinity,
+                      height: 200.0,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ImageItem(
+                      imagePath: 'lib/resources/images/place3.jpg',
+                      onTap: () {
+                        print('Tapped on place3');
+                      },
+                      width: double.infinity,
+                      height: 200.0,
+                    ),
+                  ),
                 ],
-                onPhotoTap: (imagePath) {
-                  print('Tapped on $imagePath');
-                },
               ),
             ),
 
