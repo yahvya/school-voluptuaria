@@ -1,0 +1,23 @@
+<!ELEMENT lang (error-level,message-level,application-level)>
+<!--lang name in French-->
+<!ATTLIST lang french-name CDATA #REQUIRED>
+<!--lang name in the lang itself-->
+<!ATTLIST lang name CDATA #REQUIRED>
+<!--lang api for apis-->
+<!ATTLIST lang google-map-code CDATA #REQUIRED>
+<!ATTLIST lang openweathermap-code CDATA #REQUIRED>
+
+<!--error lang elements-->
+<!ELEMENT error-level (lang-element*)>
+
+<!--message lang elements-->
+<!ELEMENT message-level (lang-element*)>
+
+<!--application lang elements-->
+<!ELEMENT application-level (lang-element*)>
+
+<!ELEMENT lang-element EMPTY>
+<!--lang element key-->
+<!ATTLIST lang-element key ID #REQUIRED>
+<!--lang element value-->
+<!ATTLIST lang-element value CDATA #REQUIRED>
