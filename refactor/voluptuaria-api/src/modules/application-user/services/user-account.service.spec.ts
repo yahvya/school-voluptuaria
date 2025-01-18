@@ -70,7 +70,7 @@ describe("Test user account service",() => {
         })
     })
 
-    afterAll(() => {
-        module.close()
+    afterAll(async () => {
+        await module.close()
     })
 })

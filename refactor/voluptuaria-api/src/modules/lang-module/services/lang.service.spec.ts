@@ -33,7 +33,7 @@ describe("Test lang service", () => {
         })
     })
 
-    afterAll(() => {
-        module.close()
+    afterAll(async () => {
+        await module.close()
     })
 })
