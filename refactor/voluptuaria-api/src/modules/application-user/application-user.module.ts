@@ -2,6 +2,7 @@ import { Module } from "@nestjs/common"
 import { TypeOrmModule } from "@nestjs/typeorm"
 import { UserEntity } from "../database/entities/user.entity"
 import { UserAccountService } from "./services/user-account.service"
+import { UserLoginService } from "./services/user-login.service"
 
 /**
  * Application user module
@@ -10,7 +11,7 @@ import { UserAccountService } from "./services/user-account.service"
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
     ],
-    providers: [UserAccountService],
-    exports: [UserAccountService]
+    providers: [UserAccountService,UserLoginService],
+    exports: [UserAccountService,UserLoginService]
 })
 export class ApplicationUserModule{}

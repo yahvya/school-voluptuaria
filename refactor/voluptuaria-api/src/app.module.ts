@@ -7,6 +7,7 @@ import { AppSecurityModule } from "./modules/app-security/app-security.module"
 import { ServeStaticModule } from "@nestjs/serve-static"
 import { join } from "path"
 import { JwtModule, JwtModuleAsyncOptions } from "@nestjs/jwt"
+import { ApplicationUserModule } from "./modules/application-user/application-user.module"
 
 /**
  * Application module
@@ -29,7 +30,8 @@ import { JwtModule, JwtModuleAsyncOptions } from "@nestjs/jwt"
         DatabaseModule,
         ToRemoveModule,
         UtilitiesModule,
-        AppSecurityModule
+        AppSecurityModule,
+        ApplicationUserModule
     ],
     controllers: [],
     providers: [],
