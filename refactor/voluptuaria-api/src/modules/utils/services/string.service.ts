@@ -11,10 +11,7 @@ export class StringService {
      * @param fromCharacters source to pick characters from
      * @returns {string} the generated string
      */
-    public random(
-        {length,fromCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@:;?"}:
-        {length:string,fromCharacters:string}
-    ): string {
+    public random({length,fromCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@:;?"}): string {
         let result: string = ""
 
         for(;length > 0; length--)

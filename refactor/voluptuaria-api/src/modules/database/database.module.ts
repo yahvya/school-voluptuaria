@@ -1,6 +1,13 @@
 import { Global, Module } from "@nestjs/common"
 import { TypeOrmModule, TypeOrmModuleOptions } from "@nestjs/typeorm"
 import { ConfigService } from "@nestjs/config"
+import { UserEntity } from "./entities/user.entity"
+import { UserCategoriesLikeStateEntity } from "./entities/user-categories-like-state.entity"
+import { SocialProfileEntity } from "./entities/social-profile.entity"
+import { RegisteredPlacesEntity } from "./entities/registered-places.entity"
+import { PlaceCategoriesEntity } from "./entities/place-categories.entity"
+import { UserCommentsEntity } from "./entities/user-comments.entity"
+import { TravelRoutesEntity } from "./entities/travel-routes.entity"
 
 /**
  * Application database module
@@ -18,7 +25,7 @@ import { ConfigService } from "@nestjs/config"
                 password: configService.getOrThrow("DATABASE_PASSWORD"),
                 database: configService.getOrThrow("DATABASE_NAME"),
                 synchronize: configService.getOrThrow("DATABASE_ENABLE_SYNC") === "true",
-                autoLoadEntities: true
+                entities: [UserEntity,UserCategoriesLikeStateEntity,SocialProfileEntity,RegisteredPlacesEntity,PlaceCategoriesEntity,UserCommentsEntity,TravelRoutesEntity]
             }) as TypeOrmModuleOptions,
         }),
     ],

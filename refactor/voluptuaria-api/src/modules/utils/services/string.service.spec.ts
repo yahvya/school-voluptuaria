@@ -18,7 +18,9 @@ describe("String service test",() => {
     describe("Test random string generation",() => {
         test.each([ [10],[0],[1],[3],[200] ])
         ("should generate strings with the provided length",(length:number) => {
-            expect(stringService.random({length: length}).length).toBe(length)
+            expect(() => {
+                expect(stringService.random({length: length}).length).toBe(length)
+            }).not.toThrow()
         })
 
         test.each([ ["abc",10],["tiu",30],["tuple",40] ])
@@ -26,7 +28,9 @@ describe("String service test",() => {
             const result = stringService.random({length: length,fromCharacters: sourceCharacters})
             const sourceCharactersList = sourceCharacters.split("")
 
-            expect(result.split("").every((resultChar) => sourceCharactersList.includes(resultChar))).toBe(true)
+            expect(() => {
+                expect(result.split("").every((resultChar) => sourceCharactersList.includes(resultChar))).toBe(true)
+            }).not.toThrow()
         })
     })
 })
