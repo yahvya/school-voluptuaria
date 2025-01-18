@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE lang SYSTEM "./rules.dtd">
+<lang
+    french-name="Français"
+    google-map-code="fr"
+    openweathermap-code="fr"
+    name="Français"
+>
+    <error-level>
+        <lang-element key="error.technical" value="Une erreur technique s'est produite"/>
+        <lang-element key="error.fill-fields" value="Veuillez remplir les champs requis"/>
+        <lang-element key="error.bad-fields" value="Veuillez vérifier les informations saisies"/>
+        <lang-element key="error.bad-confirmation-code" value="Code saisie incorrect"/>
+        <lang-element key="error.account-already-exist" value="Ce compte existe déjà"/>
+        <lang-element key="error.invalid-token" value="Token invalid"/>
+        <lang-element key="error.matching-password" value="Présence de difference entre le mot de passe et la confirmation"/>
+        <lang-element key="error.same-password" value="Mot de passe similaire à l'ancien"/>
+        <lang-element key="error.comments" value="Veuillez verifier le contenu de votre commentaire"/>
+        <lang-element key="error.unrecognized-email-password" value="Email ou mot de passe incorrect"/>
+    </error-level>
+
+    <message-level>
+        <lang-element key="message.load-preferences" value="Charger vos préférences"/>
+        <lang-element key="message.type-received-code" value="Veuillez saisir le code reçu"/>
+        <lang-element key="message.welcome-user-intro" value="Bienvenue sur notre plateforme Voluptuaria [Username]"/>
+        <lang-element key="message.welcome-user"
+                      value="Pour terminer votre inscription veuillez saisir le code ci-dessous"/>
+        <lang-element key="message.password-forgotten-intro"
+                      value="Mot de passe oublié ? Veuillez saisir le code ci-dessous."/>
+    </message-level>
+
+    <application-level>
+        <lang-element key="app.search-work" value="Recherche"/>
+        <lang-element key="app.categories-work" value="Catégories"/>
+        <lang-element key="app.day-place" value="Lieux du jour"/>
+        <lang-element key="app.records" value="Enregistrements"/>
+        <lang-element key="app.home" value="Accueil"/>
+        <lang-element key="app.travel-routes" value="Itinéraires de voyage"/>
+        <lang-element key="app.goto" value="M'y rendre"/>
+        <lang-element key="app.opened" value="Ouvert"/>
+        <lang-element key="app.closed" value="Fermé"/>
+        <lang-element key="app.price" value="Tarif"/>
+        <lang-element key="app.weather.weather-forecast" value="Prévisions méteo"/>
+        <lang-element key="app.weather.pressure" value="Pression"/>
+        <lang-element key="app.weather.temperature" value="Température"/>
+        <lang-element key="app.weather.description" value="Description"/>
+        <lang-element key="app.weather.sunrise" value="Lever du soleil"/>
+        <lang-element key="app.weather.alert" value="Alerte"/>
+        <lang-element key="app.reviews" value="Commentaires"/>
+        <lang-element key="app.write-comment" value="Écrire un commentaire"/>
+        <lang-element key="app.your-comment" value="Votre commentaire"/>
+        <lang-element key="app.action.post" value="Poster"/>
+        <lang-element key="app.action.modify" value="Modifier"/>
+        <lang-element key="app.action.delete" value="Supprimer"/>
+        <lang-element key="app.action.details" value="Détails"/>
+        <lang-element key="app.action.save" value="Enregistrer"/>
+        <lang-element key="app.action.login" value="Connexion"/>
+        <lang-element key="app.action.confirm" value="Confirmation"/>
+        <lang-element key="app.action.registration" value="Inscription"/>
+        <lang-element key="app.action.register-myself" value="Je m'inscris"/>
+        <lang-element key="app.action.end" value="Terminer"/>
+        <lang-element key="app.action.generate-travel-route" value="Générer un parcours"/>
+        <lang-element key="app.user-profile" value="Profil utilisateur"/>
+        <lang-element key="app.profile.email" value="E-mail"/>
+        <lang-element key="app.profile.birthdate" value="Date de naissance"/>
+        <lang-element key="app.profile.name" value="Nom"/>
+        <lang-element key="app.profile.firstname" value="Prénom"/>
+        <lang-element key="app.profile.phonenumber" value="Numéro de téléphone"/>
+        <lang-element key="app.your-informations" value="Your informations"/>
+        <lang-element key="app.social-medias" value="Réseaux sociaux"/>
+        <lang-element key="app.current-travel-routes" value="Parcours en cours"/>
+        <lang-element key="app.forgot-password" value="Mot de passe oublié"/>
+        <lang-element key="app.confirmation-code" value="Code de confirmation"/>
+    </application-level>
+</lang>

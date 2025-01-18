@@ -1,0 +1,197 @@
+import { Injectable } from "@nestjs/common"
+import { LangServiceException } from "../exceptions/lang-service.exception"
+import * as fs from "node:fs"
+import { ConfigService } from "@nestjs/config"
+import { XMLParser } from "fast-xml-parser"
+
+/**
+ * @brief lang files and lang manager service
+ */
+@Injectable()
+export class LangService {
+    /**
+     * @brief the current loaded lang filename
+     */
+    protected currentLang: string | null
+
+    /**
+     * @brief lang values
+     */
+    protected langValues: Record<string, string>
+
+    /**
+     * @brief lang name in French
+     */
+    protected frenchName: string | null
+
+    /**
+     * @brief map api
+     */
+    protected googleMapCode: string | null
+
+    /**
+     * @brief open weather map api
+     */
+    protected openWeatherMapCode: string | null
+
+    /**
+     * @brief lang name in the lang
+     */
+    protected langName: string | null
+
+    constructor(protected readonly configService: ConfigService) {
+        this.currentLang = null
+        this.langValues = {}
+        this.langName = null
+        this.openWeatherMapCode = null
+        this.googleMapCode = null
+        this.frenchName = null
+    }
+
+    /**
+     * Provide the translated value of the given key from the given lang
+     * @param langFileName lang file name without the .xml extension
+     * @param key lang key
+     * @param replaces replace map index with the generic name and the replacement value
+     * @returns {string} the translated value
+     * @throws {LangServiceException} in case of error
+     */
+    public translation({langFileName,key,replaces}): string {
+        if (!this.loadLangFile({ langFileName: langFileName }))
+            throw new LangServiceException("Fail to load lang file")
+
+        if (!(key in this.langValues))
+            throw new LangServiceException(`Unknown lang key <${key}>`)
+
+        return replaces !== undefined
+            ? this.replaceElements({
+                replaces: replaces,
+                str: this.langValues[key],
+            })
+            : this.langValues[key]
+    }
+
+    /**
+     * Replaces generic elements in the string
+     * @param replaces replace map
+     * @param str base string
+     * @returns {string} the modified string
+     */
+    protected replaceElements({replaces,str}): string {
+        let modifiedString = str
+
+        for (const key in replaces) {
+            const regex = new RegExp(`\\[${key}\\]`, "g")
+
+            modifiedString = modifiedString.replace(
+                regex,
+                replaces[key],
+            )
+        }
+
+        return modifiedString
+    }
+
+    /**
+     * Load a lang file in the service
+     * @param
+     * @returns {boolean} load success
+     * @throws {Error} on error
+     */
+    public loadLangFile({ langFileName }): boolean {
+        if (
+            this.currentLang !== null &&
+            langFileName === this.currentLang
+        )
+            return true
+
+        try {
+            const langSupposedFilePath = `${this.configService.getOrThrow("LANG_FILES_DIRECTORY_PATH")}/${langFileName}.xml`
+
+            if (!fs.existsSync(langSupposedFilePath))
+                return false
+
+            // parsing xml file
+            const langXml = fs.readFileSync(langSupposedFilePath)
+            const parser = new XMLParser({
+                ignoreAttributes: false,
+                attributeNamePrefix: "",
+                ignoreDeclaration: true,
+                ignorePiTags: true,
+                parseAttributeValue: true,
+            })
+
+            // loading content
+            const langFileContent = parser.parse(langXml)
+            const keysToRead = [
+                "error-level",
+                "application-level",
+                "message-level",
+            ]
+
+            this.langValues = {}
+            this.currentLang = langFileName
+
+            keysToRead.forEach((key) => {
+                const langElements: Array<any> =
+                    langFileContent.lang[key]["lang-element"]
+
+                langElements.forEach(
+                    (langElement) =>  (this.langValues[langElement.key] = langElement.value),
+                )
+            })
+
+            // loading attributes
+            this.frenchName = langFileContent.lang["french-name"]
+            this.googleMapCode = langFileContent.lang["google-map-api"]
+            this.openWeatherMapCode = langFileContent.lang["openweathermap-api"]
+            this.langName = langFileContent.lang.name
+
+            return true
+        } catch (_) {
+            return false
+        }
+    }
+
+    /**
+     * @returns {string} lang name
+     */
+    public getLangName(): string {
+        return this.langName
+    }
+
+    /**
+     * @returns {string|null} lang name
+     */
+    public getCurrentLang(): string | null {
+        return this.currentLang
+    }
+
+    /**
+     * @returns {Record<string, string>} lang values
+     */
+    public getLangValues(): Record<string, string> {
+        return this.langValues
+    }
+
+    /**
+     * @returns {string|null} lang name in French
+     */
+    public getFrenchName(): string | null {
+        return this.frenchName
+    }
+
+    /**
+     * @returns {string|null} google map translation api
+     */
+    public getGoogleMapCode(): string | null {
+        return this.googleMapCode
+    }
+
+    /**
+     * @returns {string|null} open weather map api
+     */
+    public getOpenWeatherMapCode(): string | null {
+        return this.openWeatherMapCode
+    }
+}
