@@ -1,13 +1,14 @@
 import { LangService } from "./lang.service"
-import { Test } from "@nestjs/testing"
+import { Test, TestingModule } from "@nestjs/testing"
 import { LangModule } from "../lang.module"
 import { AppModule } from "../../../app.module"
 
 describe("Test lang service", () => {
     let langService: LangService
+    let module: TestingModule
 
     beforeAll(async () => {
-        const module = await Test.createTestingModule({
+        module = await Test.createTestingModule({
             imports: [AppModule,LangModule]
         }).compile()
 
@@ -30,5 +31,9 @@ describe("Test lang service", () => {
                 })).toBe(expectedValue)
             }).not.toThrow()
         })
+    })
+
+    afterAll(() => {
+        module.close()
     })
 })
