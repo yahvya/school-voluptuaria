@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:voluptuaria_front/components/application-navbar.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/search_bar.dart';
 import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +16,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: CustomSearchBar(),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,7 +44,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(0.0),
               child: Gallery(
-                imagePaths: [
+                imagePaths: const [
                   'lib/resources/images/place1.jpg',
                   'lib/resources/images/place2.jpg',
                   'lib/resources/images/place3.jpg',
@@ -72,21 +73,7 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 2,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(),
       ),
     );
   }

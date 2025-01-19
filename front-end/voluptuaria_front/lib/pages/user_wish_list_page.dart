@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/blur_background.dart';
-import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
 import 'package:voluptuaria_front/components/image_item.dart';
+import '../components/application-navbar.dart';
 
 class UserWishListPage extends StatelessWidget {
-  const UserWishListPage({Key? key}) : super(key: key);
+  const UserWishListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +33,7 @@ class UserWishListPage extends StatelessWidget {
                 ],
               ),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -94,11 +94,11 @@ class UserWishListPage extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('Musée du louvre', 
+                            const Text('Musée du louvre',
                               style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold')
                             ),
                             IconButton(
-                              icon: Icon(Icons.favorite_border),
+                              icon: const Icon(Icons.favorite_border),
                               onPressed: () {
                                 print('Favorite button pressed');
                               },
@@ -106,8 +106,8 @@ class UserWishListPage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text('18 rue de test, Paris France', 
@@ -115,8 +115,8 @@ class UserWishListPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text('Ouvert', 
@@ -149,21 +149,7 @@ class UserWishListPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 1,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(),
       ),
     );
   }

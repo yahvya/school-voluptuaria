@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/components/button.dart';
 import 'package:voluptuaria_front/components/select_box.dart';
-import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/path_card.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
+import '../components/application-navbar.dart';
 
 class TravelRoutesPage extends StatelessWidget {
-  const TravelRoutesPage({Key? key}) : super(key: key);
+  const TravelRoutesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +16,7 @@ class TravelRoutesPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: CustomButton(text: 'Generer un parcours', fontSize: 25.0, borderRadius: 20.0, onPressed: () {}),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -100,21 +100,7 @@ class TravelRoutesPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 3,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(),
       ),
     );
   }

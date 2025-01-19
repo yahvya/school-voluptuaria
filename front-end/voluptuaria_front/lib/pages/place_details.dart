@@ -14,7 +14,7 @@ import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/write_comment.dart';
 
 class PlaceDetailsPage extends StatelessWidget {
-  const PlaceDetailsPage({Key? key}) : super(key: key);
+  const PlaceDetailsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +133,7 @@ class PlaceDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -173,7 +173,7 @@ class PlaceDetailsPage extends StatelessWidget {
                     inf2: 10,
                     weatherIcon: Icons.air)
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -183,7 +183,7 @@ class PlaceDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Align(
                 alignment: Alignment.centerLeft,
@@ -198,7 +198,7 @@ class PlaceDetailsPage extends StatelessWidget {
                 )
               ),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.all(16.0),
               child: Align(
                   alignment: Alignment.centerLeft,

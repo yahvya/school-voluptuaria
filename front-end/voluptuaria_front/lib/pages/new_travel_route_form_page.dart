@@ -5,8 +5,10 @@ import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/navigation_bar.dart';
 
+import '../components/application-navbar.dart';
+
 class NewTravelRouteFormPage extends StatelessWidget {
-  const NewTravelRouteFormPage({Key? key}) : super(key: key);
+  const NewTravelRouteFormPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
                         width: 100.0,
                         height: 100.0,
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -46,7 +48,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -56,7 +58,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -66,7 +68,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -76,7 +78,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomButton(
@@ -97,21 +99,7 @@ class NewTravelRouteFormPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 0,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(),
       ),
     );
   }
