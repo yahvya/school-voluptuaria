@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common"
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
-import { Repository } from "typeorm"
 import { UserEntity } from "../../database/entities/user.entity"
 import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { JwtService } from "@nestjs/jwt"
 import { UserLoginStoredDto } from "../data-contracts/user-login-stored.dto"
+import { UserAccountService } from "./user-account.service"
 
 /**
  * Application user login service
@@ -15,10 +15,10 @@ import { UserLoginStoredDto } from "../data-contracts/user-login-stored.dto"
 export class UserLoginService{
     constructor(
         @InjectRepository(UserEntity)
-        private readonly userRepository: Repository<UserEntity>,
         private readonly hashService: HashService,
         private readonly configService: ConfigService,
-        private readonly jwtService: JwtService
+        private readonly jwtService: JwtService,
+        private readonly userAccountService: UserAccountService
     ) {}
 
     /**
@@ -31,7 +31,7 @@ export class UserLoginService{
 
         try{
             // find the account
-            const foundedAccount = await this.userRepository.findOneBy({email: requestDto.email})
+            const foundedAccount = await this.userAccountService.findUserFromEmail({email: requestDto.email})
 
             if(foundedAccount === null){
                 response.error = "Unrecognized email"

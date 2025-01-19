@@ -28,4 +28,6 @@ export class UserAccountDto{
 
     @Expose({name: "profile_picture_link"})
     public profilePictureLink ?:string = null
+
+    public password: string
 }

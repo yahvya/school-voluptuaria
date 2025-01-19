@@ -53,7 +53,8 @@ export class UserAccountService{
             birthdate: userEntity.birthdate,
             email: userEntity.email,
             profilePictureLink: profilePictureLink,
-            phoneNumber: userEntity.phoneNumber
+            phoneNumber: userEntity.phoneNumber,
+            password: userEntity.password
         })
 
         return userAccountDto
