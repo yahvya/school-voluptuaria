@@ -33,6 +33,36 @@ export class UserAccountService{
     }
 
     /**
+     * Create user from the entity
+     * @param userEntity user entity
+     * @return {Promise<boolean>} insert success
+     */
+    public async createUserFromEntity({userEntity}):Promise<boolean>{
+        try{
+            await this.userRepository.insert(userEntity)
+            return true
+        }
+        catch (_){
+            return false
+        }
+    }
+
+    /**
+     * Update user from the entity
+     * @param userEntity user entity
+     * @return {Promise<boolean>} update success
+     */
+    public async updateUserFromEntity({userEntity}):Promise<boolean>{
+        try{
+            await this.userRepository.save(userEntity)
+            return true
+        }
+        catch (_){
+            return false
+        }
+    }
+
+    /**
      * Convert a user entity to a user account data contract
      * @param userEntity user entity
      * @return {UserAccountDto} created dto

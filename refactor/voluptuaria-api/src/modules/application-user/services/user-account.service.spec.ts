@@ -70,6 +70,26 @@ describe("Test user account service",() => {
         })
     })
 
+    describe("Test user registration",() => {
+        it("should not create an existing user",async () => {
+            testUserEntity.id = undefined
+            testUserEntity = await userRepository.save(testUserEntity)
+            expect(await userAccountService.createUserFromEntity({userEntity: testUserEntity})).toBe(false)
+            await userRepository.delete({email: testUserEntity.email})
+        })
+
+        it("should create a new account",async () => {
+            const clonedUser = Object.assign(new UserEntity(),testUserEntity)
+
+            clonedUser.email = "new_email@email.com"
+            clonedUser.id = undefined
+
+            expect(await userAccountService.createUserFromEntity({userEntity: clonedUser})).toBe(true)
+            expect(await userRepository.findOneBy({email: clonedUser.email})).not.toBe(null)
+            await userRepository.delete({email: clonedUser.email})
+        })
+    })
+
     afterAll(async () => {
         await module.close()
     })

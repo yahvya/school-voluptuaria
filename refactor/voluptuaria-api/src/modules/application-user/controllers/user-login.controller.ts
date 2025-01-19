@@ -1,4 +1,4 @@
-import { Body, Controller, Injectable, Post, UseGuards } from "@nestjs/common"
+import { Body, Controller, HttpCode, Injectable, Post, UseGuards } from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
@@ -24,6 +24,7 @@ export class UserLoginController{
      * @return {Promise<UserLoginResponseDto>} response
      */
     @Post("try")
+    @HttpCode(200)
     public login(@Body() requestBody: UserLoginRequestDto):Promise<UserLoginResponseDto>{
         return this.userLoginService.logUser({requestDto: requestBody})
     }

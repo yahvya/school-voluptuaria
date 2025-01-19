@@ -45,7 +45,7 @@ describe("Test user login service", () => {
             const result = await userLoginService.logUser({requestDto: requestDto})
 
             expect(result).toBeInstanceOf(UserLoginResponseDto)
-            expect(result.error).toBe("Unrecognized email")
+            expect(result.error).toBe("error.bad-fields")
             expect(result.authenticationToken).toBe(null)
         })
 
@@ -57,7 +57,7 @@ describe("Test user login service", () => {
             const result = await userLoginService.logUser({requestDto: requestDto})
 
             expect(result).toBeInstanceOf(UserLoginResponseDto)
-            expect(result.error).toBe("Bad password")
+            expect(result.error).toBe("error.bad-fields")
             expect(result.authenticationToken).toBe(null)
         })
 

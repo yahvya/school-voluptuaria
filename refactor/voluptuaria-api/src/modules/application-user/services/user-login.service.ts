@@ -14,7 +14,6 @@ import { UserAccountService } from "./user-account.service"
 @Injectable()
 export class UserLoginService{
     constructor(
-        @InjectRepository(UserEntity)
         private readonly hashService: HashService,
         private readonly configService: ConfigService,
         private readonly jwtService: JwtService,
@@ -34,13 +33,13 @@ export class UserLoginService{
             const foundedAccount = await this.userAccountService.findUserFromEmail({email: requestDto.email})
 
             if(foundedAccount === null){
-                response.error = "Unrecognized email"
+                response.error = "error.bad-fields"
                 return response
             }
 
             // check credentials validity
             if(!await this.hashService.compare({toCompare: requestDto.password,hash: foundedAccount.password})){
-                response.error = "Bad password"
+                response.error = "error.bad-fields"
                 return response
             }
 
@@ -48,14 +47,14 @@ export class UserLoginService{
             const authenticationToken = this.buildTokenFromUserEntity({userEntity: foundedAccount})
 
             if(authenticationToken === null){
-                response.error = "An error occurred during the login process"
+                response.error = "error.technical"
                 return response
             }
 
             response.authenticationToken = authenticationToken
         }
         catch(_){
-            response.error = "An error occurred during the login process"
+            response.error = "error.technical"
         }
 
         return response

@@ -8,6 +8,7 @@ import { ServeStaticModule } from "@nestjs/serve-static"
 import { join } from "path"
 import { JwtModule, JwtModuleAsyncOptions } from "@nestjs/jwt"
 import { ApplicationUserModule } from "./modules/application-user/application-user.module"
+import { MailModule } from "./modules/mail-module/mail.module"
 
 /**
  * Application module
@@ -31,7 +32,8 @@ import { ApplicationUserModule } from "./modules/application-user/application-us
         ToRemoveModule,
         UtilitiesModule,
         AppSecurityModule,
-        ApplicationUserModule
+        ApplicationUserModule,
+        MailModule
     ],
     controllers: [],
     providers: [],
