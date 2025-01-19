@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/app/configs/application-routes.dart';
 import 'package:go_router/go_router.dart';
 
-import '../components/navigation_bar.dart';
+import 'navigation_bar.dart';
 import '../resources/themes/colors.dart';
 
 /// application navbar
