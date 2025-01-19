@@ -6,7 +6,12 @@ import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final bool autoFocusSearch;
+
+  const HomePage({
+    super.key,
+    this.autoFocusSearch = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: CustomSearchBar(),
+          child: CustomSearchBar(autofocus: autoFocusSearch),
         ),
         automaticallyImplyLeading: false,
       ),
@@ -30,7 +35,9 @@ class HomePage extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Lieux du jour',
-                      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
+                      style: TextStyle(fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'OpenSans-SemiBold'),
                     ),
                   ),
                   Image.asset(
@@ -58,10 +65,14 @@ class HomePage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: CategoryGallery(
                 items: [
-                  CategoryItem(imagePath: 'lib/resources/images/restaurant.jpg', categoryName: 'Restaurants'),
-                  CategoryItem(imagePath: 'lib/resources/images/hotel.jpeg', categoryName: 'Hotels'),
-                  CategoryItem(imagePath: 'lib/resources/images/shop.jpg', categoryName: 'Shop'),
-                  CategoryItem(imagePath: 'lib/resources/images/museum.jpg', categoryName: 'Musée'),
+                  CategoryItem(imagePath: 'lib/resources/images/restaurant.jpg',
+                      categoryName: 'Restaurants'),
+                  CategoryItem(imagePath: 'lib/resources/images/hotel.jpeg',
+                      categoryName: 'Hotels'),
+                  CategoryItem(imagePath: 'lib/resources/images/shop.jpg',
+                      categoryName: 'Shop'),
+                  CategoryItem(imagePath: 'lib/resources/images/museum.jpg',
+                      categoryName: 'Musée'),
                 ],
                 onImageTap: (category) {
                   print('Tapped on $category');

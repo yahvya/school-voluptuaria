@@ -2,6 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/app/configs/application-routes.dart';
 import 'package:go_router/go_router.dart';
+import 'package:voluptuaria_front/pages/travel_routes_page.dart';
+import 'package:voluptuaria_front/pages/user_wish_list_page.dart';
+import 'package:voluptuaria_front/pages/place_details.dart';
 
 import '../../pages/home_page.dart';
 import '../../pages/login_page.dart';
@@ -20,7 +23,7 @@ class Application extends StatelessWidget{
       GoRoute(
           path: "/home/search",
           name: ApplicationRoutes.HOME_SEARCH,
-          builder: (context,state) => HomePage()
+          builder: (context,state) => HomePage(autoFocusSearch: true)
       ),
       GoRoute(
           path: "/login",
@@ -32,20 +35,16 @@ class Application extends StatelessWidget{
           name: ApplicationRoutes.REGISTRATION_PAGE,
           builder: (context,state) => RegistrationPage()
       ),
-      /*
       GoRoute(
           path: "/details",
           name: ApplicationRoutes.DETAILS_PAGE,
-          builder: (context,state) =>
+          builder: (context,state) => PlaceDetailsPage()
       ),
-      */
-      /*
       GoRoute(
           path: "/favorites",
           name: ApplicationRoutes.FAVORITES_PAGES,
-          builder: (context,state) =>
+          builder: (context,state) => UserWishListPage()
       ),
-      */
       GoRoute(
           path: "/profile",
           name: ApplicationRoutes.USER_PROFILE_PAGE,
@@ -56,13 +55,11 @@ class Application extends StatelessWidget{
           name: ApplicationRoutes.USER_PROFILE_EDIT,
           builder: (context,state) => UserProfilePage()
       ),
-      /*
       GoRoute(
           path: "/travel-routes",
           name: ApplicationRoutes.TRAVEL_ROUTES_PAGE,
-          builder: (context,state) => ()
+          builder: (context,state) => TravelRoutesPage()
       ),
-      */
       /*
       GoRoute(
           path: "/travel-routes/details",
@@ -90,7 +87,7 @@ class Application extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _router
+      routerConfig: _router,
     );
   }
 }
