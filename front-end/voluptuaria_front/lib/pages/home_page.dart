@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:voluptuaria_front/components/application-navbar.dart';
-import 'package:voluptuaria_front/resources/themes/colors.dart';
 import 'package:voluptuaria_front/components/search_bar.dart';
 import 'package:voluptuaria_front/components/gallery.dart';
 import 'package:voluptuaria_front/components/category_gallery.dart';
@@ -84,7 +83,7 @@ class HomePage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ApplicationNavbar(),
+        child: ApplicationNavbar(initialIndex: autoFocusSearch ? 0 : 2),
       ),
     );
   }

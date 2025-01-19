@@ -100,7 +100,7 @@ class TravelRoutesPage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ApplicationNavbar(),
+        child: ApplicationNavbar(initialIndex: 3),
       ),
     );
   }
