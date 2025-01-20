@@ -13,10 +13,14 @@ import {
 } from "../data-contracts/user-classic-registration-confirmation-request.dto"
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
 import { StringService } from "../../utils/services/string.service"
+import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
+import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
+import { ConfigService } from "@nestjs/config"
 
 describe("User registration service test", () => {
     let userRegistrationService:UserRegistrationService
     let app: TestingModule
+    let configService: ConfigService
     let testUserEntity: UserEntity
     let userRepository: Repository<UserEntity>
     let mailServiceMock
@@ -43,6 +47,7 @@ describe("User registration service test", () => {
             .compile()
 
         userRegistrationService = app.get(UserRegistrationService)
+        configService = app.get(ConfigService)
         userRepository = app.get(getRepositoryToken(UserEntity))
 
         testUserEntity = new UserEntity()
@@ -160,6 +165,34 @@ describe("User registration service test", () => {
                 expect(createdUserFromDb).toBeInstanceOf(UserEntity)
 
                 await userRepository.remove(createdUserFromDb)
+            }).not.toThrow()
+        })
+    })
+
+    describe("Test user google registration initialisation",() => {
+        it("should refuse init due to bad provided link",async () => {
+            await expect(async () => {
+                const requestDto = new UserGoogleRegistrationInitRequestDto()
+                requestDto.redirectUri = "bad_uri"
+
+                const result = await userRegistrationService.initGoogleRegistration({requestDto: requestDto})
+
+                expect(result).toBeInstanceOf(UserGoogleRegistrationInitResponseDto)
+                expect(result.error).toBe("error.bad-fields")
+                expect(result.link).toBe(null)
+            }).not.toThrow()
+        })
+
+        it("should refuse init due to bad provided link",async () => {
+            await expect(async () => {
+                const requestDto = new UserGoogleRegistrationInitRequestDto()
+                requestDto.redirectUri = configService.getOrThrow("API_GOOGLE_CALLBACK_URL")
+
+                const result = await userRegistrationService.initGoogleRegistration({requestDto: requestDto})
+
+                expect(result).toBeInstanceOf(UserGoogleRegistrationInitResponseDto)
+                expect(result.error).toBe(null)
+                expect(result.link).not.toBe(null)
             }).not.toThrow()
         })
     })

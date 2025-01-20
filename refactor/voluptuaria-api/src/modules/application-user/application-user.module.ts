@@ -7,6 +7,7 @@ import { UserLoginController } from "./controllers/user-login.controller"
 import { UserRegistrationController } from "./controllers/user-registration.controller"
 import { UserRegistrationService } from "./services/user-registration.service"
 import { LangModule } from "../lang-module/lang.module"
+import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 
 /**
  * Application user module
@@ -15,7 +16,8 @@ import { LangModule } from "../lang-module/lang.module"
     controllers: [UserLoginController,UserRegistrationController],
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
-        LangModule
+        LangModule,
+        GoogleAuthModule
     ],
     providers: [UserAccountService,UserLoginService,UserRegistrationService],
     exports: [UserAccountService,UserLoginService,UserRegistrationService]

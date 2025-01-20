@@ -14,6 +14,9 @@ import {
 } from "../data-contracts/user-classic-registration-confirmation-request.dto"
 import { HashService } from "../../app-security/services/hash.service"
 import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
+import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
+import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
+import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
 
 /**
  * User registration service
@@ -28,7 +31,8 @@ export class UserRegistrationService{
         private mailService: MailerService,
         private langService: LangService,
         private userLoginService: UserLoginService,
-        private hashService: HashService
+        private hashService: HashService,
+        private googleAuthService: GoogleAuthService
     ) {}
 
     /**
@@ -119,6 +123,47 @@ export class UserRegistrationService{
         }
 
         return response
+    }
+
+    /**
+     * Init the google registration process
+     * @param requestDto request
+     * @return {UserGoogleRegistrationInitResponseDto} response with the built redirection uri
+     */
+    public initGoogleRegistration(
+        {requestDto}:
+        {requestDto:UserGoogleRegistrationInitRequestDto}
+    ): UserGoogleRegistrationInitResponseDto{
+        const response = new UserGoogleRegistrationInitResponseDto()
+
+        try{
+            if (!this.isGoogleRedirectUriValid({uri: requestDto.redirectUri})) {
+                response.error = "error.bad-fields"
+                return response
+            }
+
+            response.link = this.googleAuthService.generateAuthUrl({
+                redirectUri: this.configService.getOrThrow("API_GOOGLE_CALLBACK_URL"),
+                state: Buffer.from(requestDto.redirectUri).toString("base64"),
+            })
+        }
+        catch (_){
+            response.error = "error.technical"
+        }
+
+        return response
+    }
+
+    /**
+     * Check if the redirect uri is valid for the application
+     * @param uri uri to verify
+     * @return {boolean} if the uri is valid
+     */
+    protected isGoogleRedirectUriValid(
+        {uri}:
+        {uri: string}
+    ): boolean {
+        return uri === this.configService.get("API_GOOGLE_CALLBACK_URL")
     }
 
     /**

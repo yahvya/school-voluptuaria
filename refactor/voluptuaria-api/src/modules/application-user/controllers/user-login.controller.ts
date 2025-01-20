@@ -3,7 +3,7 @@ import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.g
 import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
 import { UserLoginService } from "../services/user-login.service"
-import { ApiHeader } from "@nestjs/swagger"
+import { ApiHeader, ApiResponse } from "@nestjs/swagger"
 
 /**
  * User login controller
@@ -25,6 +25,10 @@ export class UserLoginController{
      */
     @Post("try")
     @HttpCode(200)
+    @ApiResponse({
+        status: 200,
+        type: UserLoginResponseDto
+    })
     public login(@Body() requestBody: UserLoginRequestDto):Promise<UserLoginResponseDto>{
         return this.userLoginService.logUser({requestDto: requestBody})
     }
