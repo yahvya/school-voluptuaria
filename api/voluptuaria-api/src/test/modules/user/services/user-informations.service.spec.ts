@@ -51,9 +51,9 @@ describe("User.UserInformationService", () => {
             ],
         }).compile()
 
-        const hashService: HashService = moduleRef.get<HashService>(HashService)
+        const hashService: HashService = moduleRef.get(HashService)
 
-        testUserRepository = moduleRef.get<Repository<UserEntity>>(
+        testUserRepository = moduleRef.get(
             getRepositoryToken(UserEntity),
         )
 

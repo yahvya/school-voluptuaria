@@ -3,7 +3,7 @@ import { Expose } from "class-transformer"
 /**
  * User registration response data contract
  */
-export class UserRegistrationResponseDto{
+export class UserClassicRegistrationResponseDto {
     public error?:string = null
 
     @Expose({name: "confirmation_code"})

@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common"
 import { UserAccountService } from "./user-account.service"
-import { UserRegistrationResponseDto } from "../data-contracts/user-registration-response.dto"
+import { UserClassicRegistrationResponseDto } from "../data-contracts/user-classic-registration-response.dto"
 import { EncryptionService } from "../../app-security/services/encryption.service"
 import { StringService } from "../../utils/services/string.service"
 import { ConfigService } from "@nestjs/config"
@@ -25,10 +25,10 @@ export class UserRegistrationService{
      * Register a user with voluptuaria logic
      * @param lang lang name
      * @param requestDto request data contract
-     * @return {Promise<UserRegistrationResponseDto>} response
+     * @return {Promise<UserClassicRegistrationResponseDto>} response
      */
-    public async registerUser({lang,requestDto}):Promise<UserRegistrationResponseDto>{
-        const response = new UserRegistrationResponseDto()
+    public async registerUser({lang,requestDto}):Promise<UserClassicRegistrationResponseDto>{
+        const response = new UserClassicRegistrationResponseDto()
 
         try{
             // check if user already exist
@@ -94,7 +94,6 @@ export class UserRegistrationService{
 
             return true
         } catch (_) {
-            console.log(_)
             return false
         }
     }
