@@ -16,7 +16,7 @@ describe("Test hash service", () => {
     describe("Test hash", () => {
         test.each([
             ["to hash 1",10],
-            ["to hash 2",16],
+            ["to hash 2",11],
             ["to hash 3",5]
         ])
         ("should return a string, to hash : %s - salt : %d",async (toHash:string,salt:number) => {
