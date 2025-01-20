@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common"
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
-import { UserEntity } from "../../database/entities/user.entity"
-import { InjectRepository } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { JwtService } from "@nestjs/jwt"
 import { UserLoginStoredDto } from "../data-contracts/user-login-stored.dto"
 import { UserAccountService } from "./user-account.service"
+import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
+import { UserEntity } from "../../database/entities/user.entity"
 
 /**
  * Application user login service
@@ -25,7 +25,10 @@ export class UserLoginService{
      * @param requestDto request dto
      * @return {Promise<UserLoginResponseDto>} request response
      */
-    public async logUser({requestDto}):Promise<UserLoginResponseDto>{
+    public async logUser(
+        {requestDto}:
+        {requestDto:UserLoginRequestDto}
+    ):Promise<UserLoginResponseDto>{
         const response = new UserLoginResponseDto()
 
         try{
@@ -44,7 +47,7 @@ export class UserLoginService{
             }
 
             // build response
-            const authenticationToken = this.buildTokenFromUserEntity({userEntity: foundedAccount})
+            const authenticationToken = this.buildTokenFromUserEntity({userEntity: foundedAccount as UserEntity})
 
             if(authenticationToken === null){
                 response.error = "error.technical"
@@ -65,7 +68,10 @@ export class UserLoginService{
      * @param userEntity user entity
      * @return {string|null} built token
      */
-    public buildTokenFromUserEntity({userEntity}):string|null{
+    public buildTokenFromUserEntity(
+        {userEntity}:
+        {userEntity:UserEntity}
+    ):string|null{
         try{
             const userLoginStored = new UserLoginStoredDto()
             userLoginStored.email = userEntity.email

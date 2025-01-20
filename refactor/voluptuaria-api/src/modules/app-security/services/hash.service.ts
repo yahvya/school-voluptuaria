@@ -13,7 +13,10 @@ export class HashService {
      * @returns {Promise<string>} the hashed string
      * @attention use bcrypt algorithm
      */
-    public async hash({toHash,salt = 10}): Promise<string> {
+    public async hash(
+        {toHash,salt = 10}:
+        {toHash:string,salt?:number}
+    ): Promise<string> {
         return await bcrypt.hash(toHash, salt)
     }
 
@@ -23,7 +26,10 @@ export class HashService {
      * @param hash hash
      * @returns {Promise<boolean>} if are the same
      */
-    public async compare({toCompare,hash}): Promise<boolean> {
+    public async compare(
+        {toCompare,hash}:
+        {toCompare:string,hash:string}
+    ): Promise<boolean> {
         return await bcrypt.compare(toCompare,hash)
     }
 }

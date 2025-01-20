@@ -52,7 +52,7 @@ describe("Test user account service",() => {
         })
 
         it("should return a user account dto",async () => {
-            await expect(userAccountService.findUserFromEmail({email: testUserEntity.email})).resolves.toBeInstanceOf(UserAccountDto)
+            await expect(userAccountService.findUserFromEmail({email: testUserEntity.email})).resolves.toBeInstanceOf(UserEntity)
         })
 
         it("should return null as the account doesn't exist",async () => {
@@ -84,7 +84,7 @@ describe("Test user account service",() => {
             clonedUser.email = "new_email@email.com"
             clonedUser.id = undefined
 
-            expect(await userAccountService.createUserFromEntity({userEntity: clonedUser})).toBe(true)
+            expect(await userAccountService.createUserFromEntity({userEntity: clonedUser})).toBeInstanceOf(UserEntity)
             expect(await userRepository.findOneBy({email: clonedUser.email})).not.toBe(null)
             await userRepository.delete({email: clonedUser.email})
         })

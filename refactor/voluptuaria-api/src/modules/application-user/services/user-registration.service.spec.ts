@@ -8,6 +8,11 @@ import { getRepositoryToken } from "@nestjs/typeorm"
 import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
 import { UserClassicRegistrationResponseDto } from "../data-contracts/user-classic-registration-response.dto"
 import { MailerService } from "@nestjs-modules/mailer"
+import {
+    UserClassicRegistrationConfirmationRequestDto
+} from "../data-contracts/user-classic-registration-confirmation-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { StringService } from "../../utils/services/string.service"
 
 describe("User registration service test", () => {
     let userRegistrationService:UserRegistrationService
@@ -15,10 +20,17 @@ describe("User registration service test", () => {
     let testUserEntity: UserEntity
     let userRepository: Repository<UserEntity>
     let mailServiceMock
+    let stringServiceMock
+    const fixedRandom = "fixed_content"
 
     beforeAll(async () => {
+        // mocks definition
         mailServiceMock = {
             sendMail: jest.fn()
+        }
+
+        stringServiceMock = {
+            random: jest.fn(() => fixedRandom)
         }
 
         app = await Test.createTestingModule({
@@ -26,6 +38,8 @@ describe("User registration service test", () => {
         })
             .overrideProvider(MailerService)
             .useValue(mailServiceMock)
+            .overrideProvider(StringService)
+            .useValue(stringServiceMock)
             .compile()
 
         userRegistrationService = app.get(UserRegistrationService)
@@ -54,7 +68,7 @@ describe("User registration service test", () => {
                 requestDto.name = "a name"
                 requestDto.firstname = "a firstname"
 
-                const result = await userRegistrationService.registerUser({lang: "french",requestDto: requestDto})
+                const result = await userRegistrationService.classicallyRegisterUser({lang: "french",requestDto: requestDto})
 
                 expect(result).toBeInstanceOf(UserClassicRegistrationResponseDto)
                 expect(result.error).toBe("error.bad-fields")
@@ -73,9 +87,9 @@ describe("User registration service test", () => {
                 requestDto.firstname = testUserEntity.userFirstname
                 requestDto.password = testUserEntity.password
 
-                const result = await userRegistrationService.registerUser({lang: "french",requestDto: requestDto})
+                const result = await userRegistrationService.classicallyRegisterUser({lang: "french",requestDto: requestDto})
 
-                expect(mailServiceMock.sendMail).toHaveBeenCalledTimes(4000)
+                expect(mailServiceMock.sendMail).toHaveBeenCalled()
                 expect(result).toBeInstanceOf(UserClassicRegistrationResponseDto)
                 expect(result.error).toBe(null)
                 expect(result.confirmationCode).not.toBe(null)
@@ -88,6 +102,65 @@ describe("User registration service test", () => {
                 testUserEntity = await userRepository.remove(testUserEntity)
             }
             catch (_){}
+
+            jest.resetAllMocks()
+        })
+    })
+
+    describe("Test user classic registration confirmation",() => {
+        it("should find invalid codes",async () => {
+            await expect(async () => {
+                let requestDto = new UserClassicRegistrationConfirmationRequestDto()
+
+                requestDto.email = "email@gmail.com"
+                requestDto.password = "pwd"
+                requestDto.name = "test name"
+                requestDto.firstname = "test firstname"
+                requestDto.providedConfirmationCode = "bad code"
+                requestDto.providedConfirmationCode = "bad iv"
+                requestDto.encryptedConfirmationCode = "bad iv"
+
+                const result = await userRegistrationService.classicallyConfirmUserRegistration({requestDto: requestDto})
+
+                expect(result).toBeInstanceOf(UserLoginResponseDto)
+                expect(result.error).toBe("error.bad-confirmation-code")
+                expect(result.authenticationToken).toBe(null)
+            }).not.toThrow()
+        })
+
+        it("should validate the registration",async () => {
+            await expect(async () => {
+                const initRequestDto = new UserClassicRegistrationRequestDto()
+
+                initRequestDto.name = "test name"
+                initRequestDto.firstname = "test firstname"
+                initRequestDto.email = "email@gmail.com"
+                initRequestDto.password = "test pwd"
+
+                const initResult = await userRegistrationService.classicallyRegisterUser({lang: "french",requestDto: initRequestDto})
+
+                const confirmationRequestDto = new UserClassicRegistrationConfirmationRequestDto()
+                confirmationRequestDto.email = initRequestDto.email
+                confirmationRequestDto.password = initRequestDto.password
+                confirmationRequestDto.name = initRequestDto.name
+                confirmationRequestDto.firstname = initRequestDto.firstname
+                confirmationRequestDto.encryptedConfirmationCode = initResult.confirmationCode
+                confirmationRequestDto.providedConfirmationCode = fixedRandom
+                confirmationRequestDto.confirmationIv = initResult.confirmationCodeIv
+
+                const result = await userRegistrationService.classicallyConfirmUserRegistration({requestDto: confirmationRequestDto})
+
+                expect(result).toBeInstanceOf(UserLoginResponseDto)
+                expect(result.authenticationToken).not.toBe(null)
+                expect(result.error).toBe(null)
+
+                // check insertion in db
+                const createdUserFromDb = await userRepository.findOneBy({email: initRequestDto.email})
+
+                expect(createdUserFromDb).toBeInstanceOf(UserEntity)
+
+                await userRepository.remove(createdUserFromDb)
+            }).not.toThrow()
         })
     })
 

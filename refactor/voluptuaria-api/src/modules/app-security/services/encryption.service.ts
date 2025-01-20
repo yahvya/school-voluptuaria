@@ -13,7 +13,10 @@ export class EncryptionService {
      * @param secretKey secret key
      * @returns {Promise<{encryptionResult:string,iv:string}>} the encryption datas
      */
-    public async encrypt({toEncrypt,secretKey}): Promise<{encryptionResult: string,iv: string}> {
+    public async encrypt(
+        {toEncrypt,secretKey}:
+        {toEncrypt: string,secretKey: string}
+    ): Promise<{encryptionResult: string,iv: string}> {
         const iv = randomBytes(16)
         const key = (await promisify(scrypt)(secretKey,"salt",32,)) as Buffer
         const cipher = createCipheriv("aes-256-ctr", key, iv)
@@ -34,7 +37,10 @@ export class EncryptionService {
      * @param iv encryption iv
      * @returns {Promise<string|null>} the decrypted string or null on error
      */
-    public async decrypt({toDecrypt,secretKey,iv}): Promise<string | null> {
+    public async decrypt(
+        {toDecrypt,secretKey,iv}:
+        {toDecrypt: string,secretKey:string ,iv:string}
+    ): Promise<string | null> {
         try {
             const baseIv = Buffer.from(iv, "base64")
             const encryptedBuffer = Buffer.from(toDecrypt, "base64")

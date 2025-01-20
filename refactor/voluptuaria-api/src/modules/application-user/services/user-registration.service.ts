@@ -6,6 +6,14 @@ import { StringService } from "../../utils/services/string.service"
 import { ConfigService } from "@nestjs/config"
 import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
+import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginService } from "./user-login.service"
+import { UserEntity } from "../../database/entities/user.entity"
+import {
+    UserClassicRegistrationConfirmationRequestDto
+} from "../data-contracts/user-classic-registration-confirmation-request.dto"
+import { HashService } from "../../app-security/services/hash.service"
+import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
 
 /**
  * User registration service
@@ -18,7 +26,9 @@ export class UserRegistrationService{
         private stringUtilityService: StringService,
         private configService: ConfigService,
         private mailService: MailerService,
-        private langService: LangService
+        private langService: LangService,
+        private userLoginService: UserLoginService,
+        private hashService: HashService
     ) {}
 
     /**
@@ -27,7 +37,10 @@ export class UserRegistrationService{
      * @param requestDto request data contract
      * @return {Promise<UserClassicRegistrationResponseDto>} response
      */
-    public async registerUser({lang,requestDto}):Promise<UserClassicRegistrationResponseDto>{
+    public async classicallyRegisterUser(
+        {lang,requestDto}:
+        {lang: string,requestDto: UserClassicRegistrationRequestDto}
+    ):Promise<UserClassicRegistrationResponseDto>{
         const response = new UserClassicRegistrationResponseDto()
 
         try{
@@ -42,7 +55,7 @@ export class UserRegistrationService{
             // generate confirmation code
             const confirmationCode = this.stringUtilityService.random({length: 7})
             const encryptedConfirmationCodeResult = await this.encryptionService.encrypt({
-                secretKey: this.configService.get("SECURITY_ENCRYPTION_SECRET"),
+                secretKey: this.configService.getOrThrow("SECURITY_ENCRYPTION_SECRET"),
                 toEncrypt: confirmationCode
             })
 
@@ -54,6 +67,52 @@ export class UserRegistrationService{
 
             response.confirmationCode = encryptedConfirmationCodeResult.encryptionResult
             response.confirmationCodeIv = encryptedConfirmationCodeResult.iv
+        }
+        catch (_){
+            response.error = "error.technical"
+        }
+
+        return response
+    }
+
+    /**
+     * Confirm a user registration with voluptuaria logic and try to log him
+     * @param requestDto requestDto
+     * @return {Promise<UserLoginResponseDto>} login data
+     */
+    public async classicallyConfirmUserRegistration(
+        {requestDto}:
+        {requestDto: UserClassicRegistrationConfirmationRequestDto}
+    ):Promise<UserLoginResponseDto>{
+        const response = new UserLoginResponseDto()
+        try{
+            // check the confirmation code validity
+            const realDecryptedConfirmationCode = await this.encryptionService.decrypt({
+                toDecrypt: requestDto.encryptedConfirmationCode,
+                iv: requestDto.confirmationIv,
+                secretKey: this.configService.getOrThrow("SECURITY_ENCRYPTION_SECRET")
+            })
+
+            if(requestDto.providedConfirmationCode !== realDecryptedConfirmationCode){
+                response.error = "error.bad-confirmation-code"
+                return response
+            }
+
+            // create new user
+            let newUserEntity = new UserEntity()
+
+            newUserEntity.userFirstname = requestDto.firstname
+            newUserEntity.userName = requestDto.name
+            newUserEntity.email = requestDto.email
+            newUserEntity.password = await this.hashService.hash({toHash: requestDto.password})
+
+            if(!await this.userAccountService.createUserFromEntity({userEntity: newUserEntity})){
+                response.error = "error.technical"
+                return response
+            }
+
+            // log the user
+            response.authenticationToken = this.userLoginService.buildTokenFromUserEntity({userEntity: newUserEntity})
         }
         catch (_){
             response.error = "error.technical"

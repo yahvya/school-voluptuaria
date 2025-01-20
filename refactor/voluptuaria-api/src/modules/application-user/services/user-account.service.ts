@@ -19,13 +19,13 @@ export class UserAccountService{
     /**
      * Try to find a user form the linked email
      * @param email linked email
-     * @return {Promise<UserAccountDto|null>} promise of the converted account dto or null on error or not found
+     * @return {Promise<UserEntity|null>} promise of the converted account dto or null on error or not found
      */
-    public async findUserFromEmail({email}):Promise<UserAccountDto|null> {
+    public async findUserFromEmail({email}):Promise<UserEntity|null> {
         try{
             const potentielFoundedUser = await this.userRepository.findOneBy({email: email})
 
-            return potentielFoundedUser != null ? this.fromEntityToDto({userEntity: potentielFoundedUser}) : null
+            return potentielFoundedUser != null ? potentielFoundedUser : null
         }
         catch (_){
             return null
@@ -35,12 +35,17 @@ export class UserAccountService{
     /**
      * Create user from the entity
      * @param userEntity user entity
-     * @return {Promise<boolean>} insert success
+     * @return {Promise<UserEntity|boolean>} insert success or object
      */
-    public async createUserFromEntity({userEntity}):Promise<boolean>{
+    public async createUserFromEntity(
+        {userEntity}:
+        {userEntity:UserEntity}
+    ):Promise<UserEntity|false>{
         try{
-            await this.userRepository.insert(userEntity)
-            return true
+            if(await this.userRepository.findOneBy({email: userEntity.email}) !== null)
+                return false
+
+            return await this.userRepository.save(userEntity)
         }
         catch (_){
             return false
@@ -50,12 +55,14 @@ export class UserAccountService{
     /**
      * Update user from the entity
      * @param userEntity user entity
-     * @return {Promise<boolean>} update success
+     * @return {Promise<UserEntity,boolean>} update success or object
      */
-    public async updateUserFromEntity({userEntity}):Promise<boolean>{
+    public async updateUserFromEntity(
+        {userEntity}:
+        {userEntity: UserEntity}
+    ):Promise<UserEntity|false>{
         try{
-            await this.userRepository.save(userEntity)
-            return true
+            return await this.userRepository.save(userEntity)
         }
         catch (_){
             return false
@@ -67,7 +74,10 @@ export class UserAccountService{
      * @param userEntity user entity
      * @return {UserAccountDto} created dto
      */
-    public fromEntityToDto({userEntity}):UserAccountDto{
+    public fromEntityToDto(
+        {userEntity}:
+        {userEntity:UserEntity}
+    ):UserAccountDto{
         const apiLink :string = this.configurationService.get<string>("API_WEBSITE_LINK")
         const profilePicturesSubLink :string = this.configurationService.get<string>("API_PROFILE_PICTURES_SUB_LINK")
 
