@@ -85,7 +85,7 @@ export class UserRegistrationController{
     @HttpCode(200)
     @UseGuards(AuthGuard("google"))
     public async googleRegistrationConfirmUri(@Query("state") state: string,@Res() res: Response,): Promise<any> {
-        const uri = await this.userRegistrationS
+        const uri = await this.userRegistrationService.manageGoogleRegistrationRedirect({state: state})
         if (uri === null)
             return "An error occurred during the process"
 
