@@ -17,6 +17,10 @@ import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classi
 import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
 import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
 import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
+import {
+    UserGoogleRegistrationFinalProcessRequestDto
+} from "../data-contracts/user-google-registration-final-process-request.dto"
+import { GoogleAuthResponse } from "../../google-auth-module/data-contracts/google-auth-response"
 
 /**
  * User registration service
@@ -176,6 +180,65 @@ export class UserRegistrationService{
         catch(_){
             return null
         }
+    }
+
+    /**
+     * Process google registration final process and log the created user
+     * @param requestDto request data contract
+     * @return
+     */
+    public async processGoogleRegistrationFinalProcess(
+        {requestDto}:
+        {requestDto:UserGoogleRegistrationFinalProcessRequestDto}
+    ):Promise<UserLoginResponseDto>{
+        const response = new UserLoginResponseDto()
+
+        try{
+            // load provided data by google
+            const decryptedRegistrationData = await this.encryptionService.decrypt({
+                secretKey: this.configService.getOrThrow("SECURITY_GOOGLE_REGISTRATION_ENCRYPTION_SECRET"),
+                iv: requestDto.iv,
+                toDecrypt: requestDto.datas
+            })
+
+            const userDatasFromGoogle = JSON.parse(decryptedRegistrationData) as GoogleAuthResponse
+
+            // check account existence
+            if(await this.userAccountService.findUserFromEmail({email: userDatasFromGoogle.email}) !== null){
+                response.error = "error.account-already-exist"
+                return response
+            }
+
+            // create user account
+            let newUserEntity = new UserEntity()
+
+            newUserEntity.userFirstname = userDatasFromGoogle.firstname
+            newUserEntity.userName = userDatasFromGoogle.name
+            newUserEntity.email = userDatasFromGoogle.email
+            newUserEntity.password = await this.hashService.hash({toHash: requestDto.password})
+
+            const result = await this.userAccountService.createUserFromEntity({userEntity: newUserEntity})
+
+            if(result === false){
+                response.error = "error.technical"
+                return response
+            }
+
+            newUserEntity = result as UserEntity
+
+            // log user
+            response.authenticationToken = this.userLoginService.buildTokenFromUserEntity({userEntity: newUserEntity})
+
+            if(response.authenticationToken === null){
+                response.error = "error.technical"
+                return response
+            }
+        }
+        catch(_){
+            response.error = "error.technical"
+        }
+
+        return response
     }
 
     /**

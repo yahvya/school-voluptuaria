@@ -13,6 +13,9 @@ import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-go
 import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
 import { AuthGuard } from "@nestjs/passport"
 import { Response } from "express"
+import {
+    UserGoogleRegistrationFinalProcessRequestDto
+} from "../data-contracts/user-google-registration-final-process-request.dto"
 
 /**
  * User registration controller
@@ -66,7 +69,9 @@ export class UserRegistrationController{
     */
     @Post("by-google")
     @HttpCode(200)
-    //@UseGuards(VoluptuariaAuthGuard)
+    @UseGuards(VoluptuariaAuthGuard)
+    @ApiHeader({name: "voluptuaria_token",description: "Voluptuaria token"})
+    @ApiHeader({name: "voluptuaria_token_iv",description: "Voluptuaria token iv"})
     @ApiResponse({
         status: 200,
         type: UserGoogleRegistrationInitResponseDto
@@ -79,7 +84,7 @@ export class UserRegistrationController{
      * Confirm google redirection
      * @param state Added state in the datas
      * @param res response
-     * @returns {any} registration confirmation
+     * @returns {Promise<any>} registration confirmation
      */
     @Get("by-google/redirect")
     @HttpCode(200)
@@ -90,5 +95,17 @@ export class UserRegistrationController{
             return "An error occurred during the process"
 
         return res.redirect(uri)
+    }
+
+    /**
+     * Confirm user registration from Google
+     * @param requestDto confirmation datas
+     * @returns {Promise<>} confirmation result
+     */
+    @Post("by-google/confirmation")
+    @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
+    public async confirmGoogleRegistration(@Body() requestDto: UserGoogleRegistrationFinalProcessRequestDto): Promise<UserLoginResponseDto> {
+        return this.userRegistrationService.processGoogleRegistrationFinalProcess({requestDto: requestDto})
     }
 }
