@@ -6,10 +6,12 @@ class CategoryGallery extends StatefulWidget {
   final List<CategoryItem> items;
   final Color backgroundColor;
   final double borderRadius;
+  final String title;
   final Function(String) onImageTap;
 
   CategoryGallery({
     required this.items,
+    this.title = 'Catégories',
     this.backgroundColor = upperBackgroundColor,
     this.borderRadius = 16.0,
     required this.onImageTap,
@@ -52,7 +54,7 @@ class _CategoryGalleryState extends State<CategoryGallery> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Catégories',
+            widget.title,
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,

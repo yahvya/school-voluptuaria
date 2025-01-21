@@ -42,6 +42,8 @@ class CustomTextField extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
           child: TextField(
             style: TextStyle(fontSize: fontSize),
+            maxLines: null, 
+            keyboardType: TextInputType.multiline,
             decoration: InputDecoration(
               hintText: placeholder,
               hintStyle: TextStyle(color: placeholderColor.withOpacity(0.5)),
