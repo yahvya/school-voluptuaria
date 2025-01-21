@@ -105,6 +105,10 @@ export class UserRegistrationController{
     @Post("by-google/confirmation")
     @HttpCode(200)
     @UseGuards(VoluptuariaAuthGuard)
+    @ApiResponse({
+        status: 200,
+        type: UserGoogleRegistrationFinalProcessRequestDto
+    })
     public async confirmGoogleRegistration(@Body() requestDto: UserGoogleRegistrationFinalProcessRequestDto): Promise<UserLoginResponseDto> {
         return this.userRegistrationService.processGoogleRegistrationFinalProcess({requestDto: requestDto})
     }

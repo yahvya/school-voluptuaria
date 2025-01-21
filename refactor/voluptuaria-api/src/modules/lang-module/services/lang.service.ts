@@ -56,7 +56,10 @@ export class LangService {
      * @returns {string} the translated value
      * @throws {LangServiceException} in case of error
      */
-    public translation({langFileName,key,replaces}): string {
+    public translation(
+        {langFileName,key,replaces}:
+        {langFileName:string,key:string,replaces?: Record<string,string>}
+    ): string {
         if (!this.loadLangFile({ langFileName: langFileName }))
             throw new LangServiceException("Fail to load lang file")
 
