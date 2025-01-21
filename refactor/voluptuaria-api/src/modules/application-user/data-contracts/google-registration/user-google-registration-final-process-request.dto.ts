@@ -3,7 +3,7 @@ import { Expose } from "class-transformer"
 import { ApiProperty } from "@nestjs/swagger"
 
 /**
- * Google registration final process request data contract
+ * Google classic-registration final process request data contract
  */
 export class UserGoogleRegistrationFinalProcessRequestDto{
     @IsString({always: true,})

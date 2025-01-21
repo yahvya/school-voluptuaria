@@ -1,21 +1,21 @@
 import { Injectable } from "@nestjs/common"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import { JwtService } from "@nestjs/jwt"
-import { UserLoginStoredDto } from "../data-contracts/user-login-stored.dto"
+import { UserLoginStoredDto } from "../data-contracts/login/user-login-stored.dto"
 import { UserAccountService } from "./user-account.service"
-import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
+import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.dto"
 import { UserEntity } from "../../database/entities/user.entity"
-import { UserForgotPasswordInitRequestDto } from "../data-contracts/user-forgot-password-init-request.dto"
-import { UserForgotPasswordInitResponseDto } from "../data-contracts/user-forgot-password-init-response.dto"
+import { UserForgotPasswordInitRequestDto } from "../data-contracts/forgot-password/user-forgot-password-init-request.dto"
+import { UserForgotPasswordInitResponseDto } from "../data-contracts/forgot-password/user-forgot-password-init-response.dto"
 import { StringService } from "../../utils/services/string.service"
 import { EncryptionService } from "../../app-security/services/encryption.service"
 import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
 import {
     UserForgotPasswordConfirmationRequestDto
-} from "../data-contracts/user-forgot-password-confirmation-request.dto"
+} from "../data-contracts/forgot-password/user-forgot-password-confirmation-request.dto"
 
 /**
  * Application user login service

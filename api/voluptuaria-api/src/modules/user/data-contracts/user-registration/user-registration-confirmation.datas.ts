@@ -3,7 +3,7 @@ import { IsNotEmpty, IsString } from "class-validator"
 import { Expose } from "class-transformer"
 
 /**
- * @brief user registration confirmation form datas
+ * @brief user classic-registration confirmation form datas
  */
 export class UserRegistrationConfirmationDatas extends UserRegistrationDatas {
     @IsString()

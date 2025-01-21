@@ -5,10 +5,10 @@ import { Test, TestingModule } from "@nestjs/testing"
 import { AppModule } from "../../../app.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
-import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { request } from "express"
-import { UserForgotPasswordInitRequestDto } from "../data-contracts/user-forgot-password-init-request.dto"
+import { UserForgotPasswordInitRequestDto } from "../data-contracts/forgot-password/user-forgot-password-init-request.dto"
 
 describe("Test user login service", () => {
     let userLoginService:UserLoginService

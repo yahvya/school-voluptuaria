@@ -1,29 +1,29 @@
 import { Injectable } from "@nestjs/common"
 import { UserAccountService } from "./user-account.service"
-import { UserClassicRegistrationResponseDto } from "../data-contracts/user-classic-registration-response.dto"
+import { UserClassicRegistrationResponseDto } from "../data-contracts/classic-registration/user-classic-registration-response.dto"
 import { EncryptionService } from "../../app-security/services/encryption.service"
 import { StringService } from "../../utils/services/string.service"
 import { ConfigService } from "@nestjs/config"
 import { MailerService } from "@nestjs-modules/mailer"
 import { LangService } from "../../lang-module/services/lang.service"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { UserLoginService } from "./user-login.service"
 import { UserEntity } from "../../database/entities/user.entity"
 import {
     UserClassicRegistrationConfirmationRequestDto
-} from "../data-contracts/user-classic-registration-confirmation-request.dto"
+} from "../data-contracts/classic-registration/user-classic-registration-confirmation-request.dto"
 import { HashService } from "../../app-security/services/hash.service"
-import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
-import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
-import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
+import { UserClassicRegistrationRequestDto } from "../data-contracts/classic-registration/user-classic-registration-request.dto"
+import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/google-registration/user-google-registration-init-request.dto"
+import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/google-registration/user-google-registration-init-response.dto"
 import { GoogleAuthService } from "../../google-auth-module/services/google-auth.service"
 import {
     UserGoogleRegistrationFinalProcessRequestDto
-} from "../data-contracts/user-google-registration-final-process-request.dto"
+} from "../data-contracts/google-registration/user-google-registration-final-process-request.dto"
 import { GoogleAuthResponse } from "../../google-auth-module/data-contracts/google-auth-response"
 
 /**
- * User registration service
+ * User classic-registration service
  */
 @Injectable()
 export class UserRegistrationService{
@@ -84,7 +84,7 @@ export class UserRegistrationService{
     }
 
     /**
-     * Confirm a user registration with voluptuaria logic and try to log him
+     * Confirm a user classic-registration with voluptuaria logic and try to log him
      * @param requestDto requestDto
      * @return {Promise<UserLoginResponseDto>} login data
      */
@@ -130,7 +130,7 @@ export class UserRegistrationService{
     }
 
     /**
-     * Init the Google registration process
+     * Init the Google classic-registration process
      * @param requestDto request
      * @return {UserGoogleRegistrationInitResponseDto} response with the built redirection uri
      */
@@ -183,7 +183,7 @@ export class UserRegistrationService{
     }
 
     /**
-     * Process google registration final process and log the created user
+     * Process google classic-registration final process and log the created user
      * @param requestDto request data contract
      * @return
      */
@@ -261,7 +261,7 @@ export class UserRegistrationService{
                         Username: `${name} ${firstname}`,
                     },
                 }),
-                template: "registration-confirmation.hbs",
+                template: "classic-registration-confirmation.hbs",
                 context: {
                     confirmationCode: confirmationCode,
                     appName: this.configService.getOrThrow("APPLICATION_NAME"),

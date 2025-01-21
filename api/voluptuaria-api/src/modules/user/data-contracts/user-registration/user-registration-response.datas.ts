@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer"
 
 /**
- * @brief User registration validation response
+ * @brief User classic-registration validation response
  */
 export class UserRegistrationResponseDatas {
     @Expose({ name: "error_message" })

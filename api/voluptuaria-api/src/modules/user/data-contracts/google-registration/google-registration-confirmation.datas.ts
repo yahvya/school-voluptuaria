@@ -2,7 +2,7 @@ import { IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
 import { Expose } from "class-transformer"
 
 /**
- * @brief google registration confirmation datas
+ * @brief google classic-registration confirmation datas
  */
 export class GoogleRegistrationConfirmationDatas {
     @IsString({

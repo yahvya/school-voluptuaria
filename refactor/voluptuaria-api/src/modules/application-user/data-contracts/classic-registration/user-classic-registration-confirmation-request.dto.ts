@@ -4,7 +4,7 @@ import { ApiProperty } from "@nestjs/swagger"
 import { Expose } from "class-transformer"
 
 /**
- * User classic registration request data contract
+ * User classic classic-registration request data contract
  */
 export class UserClassicRegistrationConfirmationRequestDto extends UserClassicRegistrationRequestDto{
     @IsNotEmpty({message: "Invalid request"})

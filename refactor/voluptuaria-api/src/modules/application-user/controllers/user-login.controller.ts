@@ -1,14 +1,14 @@
 import { Body, Controller, HttpCode, Injectable, Post, UseGuards,Headers } from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
-import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { UserLoginService } from "../services/user-login.service"
 import { ApiHeader, ApiResponse } from "@nestjs/swagger"
-import { UserForgotPasswordInitRequestDto } from "../data-contracts/user-forgot-password-init-request.dto"
-import { UserForgotPasswordInitResponseDto } from "../data-contracts/user-forgot-password-init-response.dto"
+import { UserForgotPasswordInitRequestDto } from "../data-contracts/forgot-password/user-forgot-password-init-request.dto"
+import { UserForgotPasswordInitResponseDto } from "../data-contracts/forgot-password/user-forgot-password-init-response.dto"
 import {
     UserForgotPasswordConfirmationRequestDto
-} from "../data-contracts/user-forgot-password-confirmation-request.dto"
+} from "../data-contracts/forgot-password/user-forgot-password-confirmation-request.dto"
 
 /**
  * User login controller

@@ -1,5 +1,5 @@
 import { Expose } from "class-transformer"
-import { UserGender } from "../../database/entities/user.entity"
+import { UserGender } from "../../../database/entities/user.entity"
 
 /**
  * User account exportable data

@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer"
 
 /**
- * @brief google registration response datas
+ * @brief google classic-registration response datas
  */
 export class GoogleRegistrationResponseDatas {
     @Expose({ name: "error_message" })

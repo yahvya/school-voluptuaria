@@ -3,7 +3,7 @@ import { AppModule } from "../../../app.module"
 import { UserAccountService } from "./user-account.service"
 import { UserEntity, UserGender } from "../../database/entities/user.entity"
 import { ApplicationUserModule } from "../application-user.module"
-import { UserAccountDto } from "../data-contracts/user-account.dto"
+import { UserAccountDto } from "../data-contracts/account-management/user-account.dto"
 import { Repository } from "typeorm"
 import { getRepositoryToken } from "@nestjs/typeorm"
 
@@ -70,7 +70,7 @@ describe("Test user account service",() => {
         })
     })
 
-    describe("Test user registration",() => {
+    describe("Test user classic-registration",() => {
         it("should not create an existing user",async () => {
             testUserEntity.id = undefined
             testUserEntity = await userRepository.save(testUserEntity)
