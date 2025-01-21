@@ -9,12 +9,13 @@ import { UserRegistrationService } from "./services/user-registration.service"
 import { LangModule } from "../lang-module/lang.module"
 import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 import { UserAccountManagementService } from "./services/user-account-management.service"
+import { UserAccountManagementController } from "./controllers/user-account-management.controller"
 
 /**
  * Application user module
  */
 @Module({
-    controllers: [UserLoginController,UserRegistrationController],
+    controllers: [UserLoginController,UserRegistrationController,UserAccountManagementController],
     imports: [
         TypeOrmModule.forFeature([UserEntity]),
         LangModule,

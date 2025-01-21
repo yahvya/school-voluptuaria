@@ -25,7 +25,7 @@ export class UserProfileUpdateRequestDto{
     @ApiProperty({description:"User gender",enum: UserGender})
     public gender?: UserGender = null
 
-    @ApiProperty({name: "profile_picture_image",description:"User new profile picture image"})
+    @ApiProperty({name: "profile_picture_image",description:"User new profile picture image",format: "binary",type:"string"})
     @Expose({name: "profile_picture_image"})
     public profilePictureImage?: Express.Multer.File = null
 }

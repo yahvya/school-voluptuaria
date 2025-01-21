@@ -13,7 +13,6 @@ import {
 /**
  * User login controller
  */
-@Injectable()
 @Controller("user/login")
 @UseGuards(VoluptuariaAuthGuard)
 @ApiHeader({name: "voluptuaria_token",description: "Voluptuaria token"})
