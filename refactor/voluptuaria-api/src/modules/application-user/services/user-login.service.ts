@@ -141,6 +141,22 @@ export class UserLoginService{
     }
 
     /**
+     * Verify token
+     * @param token
+     */
+    public verifyToken(
+        {token}:
+        {token:string}
+    ):UserLoginStoredDto|null{
+        try{
+            return Object.assign(new UserLoginStoredDto(),this.jwtService.verify(token))
+        }
+        catch (_){
+            return null
+        }
+    }
+
+    /**
      * Send the confirmation code to the given email
      * @param email user email
      * @param confirmationCode confirmation code

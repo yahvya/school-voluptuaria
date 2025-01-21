@@ -8,6 +8,7 @@ import { UserRegistrationController } from "./controllers/user-registration.cont
 import { UserRegistrationService } from "./services/user-registration.service"
 import { LangModule } from "../lang-module/lang.module"
 import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
+import { UserAccountManagementService } from "./services/user-account-management.service"
 
 /**
  * Application user module
@@ -19,7 +20,7 @@ import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
         LangModule,
         GoogleAuthModule
     ],
-    providers: [UserAccountService,UserLoginService,UserRegistrationService],
-    exports: [UserAccountService,UserLoginService,UserRegistrationService]
+    providers: [UserAccountService,UserLoginService,UserRegistrationService,UserAccountManagementService],
+    exports: [UserAccountService,UserLoginService,UserRegistrationService,UserAccountManagementService]
 })
 export class ApplicationUserModule{}

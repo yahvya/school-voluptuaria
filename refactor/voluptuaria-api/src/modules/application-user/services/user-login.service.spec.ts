@@ -9,6 +9,7 @@ import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.
 import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { request } from "express"
 import { UserForgotPasswordInitRequestDto } from "../data-contracts/forgot-password/user-forgot-password-init-request.dto"
+import { UserLoginStoredDto } from "../data-contracts/login/user-login-stored.dto"
 
 describe("Test user login service", () => {
     let userLoginService:UserLoginService
@@ -105,6 +106,17 @@ describe("Test user login service", () => {
 
                 await userRepository.remove(testUserEntity)
             })
+        })
+    })
+
+    describe("Test token management",() => {
+        it("should not be the same token",async () => {
+            const token = userLoginService.buildTokenFromUserEntity({userEntity: testUserEntity})
+            expect(token).not.toBe(null)
+
+            const verifyResult = userLoginService.verifyToken({token: token})
+            expect(verifyResult).toBeInstanceOf(UserLoginStoredDto)
+            expect(verifyResult.email).toBe(testUserEntity.email)
         })
     })
 
