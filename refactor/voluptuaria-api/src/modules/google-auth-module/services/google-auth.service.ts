@@ -16,9 +16,9 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
 
     constructor(private configService: ConfigService) {
         super({
-            clientID: configService.getOrThrow("GOOGLE_CLIENT_ID"),
-            clientSecret: configService.getOrThrow("GOOGLE_CLIENT_SECRET"),
-            callbackURL: configService.getOrThrow("GOOGLE_CALLBACK_URL"),
+            clientID: configService.getOrThrow("API_GOOGLE_CLIENT_ID"),
+            clientSecret: configService.getOrThrow("API_GOOGLE_CLIENT_SECRET"),
+            callbackURL: configService.getOrThrow("API_GOOGLE_CALLBACK_URL"),
             scope: ["email", "profile"],
         })
     }
@@ -67,11 +67,9 @@ export class GoogleAuthService extends PassportStrategy(Strategy, "google") {
         {redirectUri,state}:
         {redirectUri: string,state: string|null}
     ): string {
-        const baseAuthUrl = this.configService.getOrThrow(
-            "GOOGLE_AUTH_BASE_URI",
-        )
+        const baseAuthUrl = this.configService.getOrThrow("API_GOOGLE_AUTH_BASE_URI",)
         const params = new URLSearchParams({
-            client_id: this.configService.getOrThrow("GOOGLE_CLIENT_ID"),
+            client_id: this.configService.getOrThrow("API_GOOGLE_CLIENT_ID"),
             redirect_uri: redirectUri,
             response_type: "code",
             scope: ["email", "profile"].join(" "),

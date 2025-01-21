@@ -1,4 +1,4 @@
-import { Body, Controller, Headers, HttpCode, Post, UseGuards } from "@nestjs/common"
+import { Body, Controller, Get, Headers, HttpCode, Post, Query, Res, UseGuards } from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ApiHeader, ApiResponse } from "@nestjs/swagger"
 import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
@@ -11,6 +11,8 @@ import {
 import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
 import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
 import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
+import { AuthGuard } from "@nestjs/passport"
+import { Response } from "express"
 
 /**
  * User registration controller
@@ -57,6 +59,7 @@ export class UserRegistrationController{
     public registrationConfirmation(@Body() requestDto:UserClassicRegistrationConfirmationRequestDto): Promise<UserLoginResponseDto> {
         return this.userRegistrationService.classicallyConfirmUserRegistration({requestDto: requestDto})
     }
+
     /**
      * Start the Google registration process
      * @returns {UserGoogleRegistrationInitResponseDto} response
@@ -70,5 +73,22 @@ export class UserRegistrationController{
     })
     public startRegistrationFromGoogle(@Body() requestDto:UserGoogleRegistrationInitRequestDto): UserGoogleRegistrationInitResponseDto {
         return this.userRegistrationService.initGoogleRegistration({requestDto: requestDto})
+    }
+
+    /**
+     * Confirm google redirection
+     * @param state Added state in the datas
+     * @param res response
+     * @returns {any} registration confirmation
+     */
+    @Get("by-google/redirect")
+    @HttpCode(200)
+    @UseGuards(AuthGuard("google"))
+    public async googleRegistrationConfirmUri(@Query("state") state: string,@Res() res: Response,): Promise<any> {
+        const uri = await this.userRegistrationS
+        if (uri === null)
+            return "An error occurred during the process"
+
+        return res.redirect(uri)
     }
 }

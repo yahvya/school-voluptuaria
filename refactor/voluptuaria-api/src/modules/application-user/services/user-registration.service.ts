@@ -126,7 +126,7 @@ export class UserRegistrationService{
     }
 
     /**
-     * Init the google registration process
+     * Init the Google registration process
      * @param requestDto request
      * @return {UserGoogleRegistrationInitResponseDto} response with the built redirection uri
      */
@@ -137,11 +137,6 @@ export class UserRegistrationService{
         const response = new UserGoogleRegistrationInitResponseDto()
 
         try{
-            if (!this.isGoogleRedirectUriValid({uri: requestDto.redirectUri})) {
-                response.error = "error.bad-fields"
-                return response
-            }
-
             response.link = this.googleAuthService.generateAuthUrl({
                 redirectUri: this.configService.getOrThrow("API_GOOGLE_CALLBACK_URL"),
                 state: Buffer.from(requestDto.redirectUri).toString("base64"),
@@ -155,15 +150,32 @@ export class UserRegistrationService{
     }
 
     /**
-     * Check if the redirect uri is valid for the application
-     * @param uri uri to verify
-     * @return {boolean} if the uri is valid
+     * Manage google redirection catching
+     * @param state past state
+     * @return {Promise<string|null>}
      */
-    protected isGoogleRedirectUriValid(
-        {uri}:
-        {uri: string}
-    ): boolean {
-        return uri === this.configService.get("API_GOOGLE_CALLBACK_URL")
+    public async manageGoogleRegistrationRedirect(
+        {state}:
+        {state:string}
+    ):Promise<string|null>{
+        try{
+            const redirectUri = Buffer.from(state, "base64").toString()
+
+            const encryptionResult = await this.encryptionService.encrypt({
+                toEncrypt: JSON.stringify(this.googleAuthService.getUserDatas()),
+                secretKey: this.configService.getOrThrow("SECURITY_GOOGLE_REGISTRATION_ENCRYPTION_SECRET"),
+            })
+
+            const params = new URLSearchParams({
+                iv: encryptionResult.iv,
+                datas: encryptionResult.encryptionResult,
+            })
+
+            return `${redirectUri}?${params.toString()}`
+        }
+        catch(_){
+            return null
+        }
     }
 
     /**
