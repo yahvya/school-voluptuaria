@@ -1,9 +1,10 @@
-import { Injectable } from "@nestjs/common"
+import { forwardRef, Inject, Injectable } from "@nestjs/common"
 import { RegisteredPlacesEntity } from "../../database/entities/registered-places.entity"
 import { RebuiltRegisteredPlaceDto } from "../data-contracts/rebuilt-registered-place.dto"
 import { IdSource } from "../../../configs/interfaces/id-getter.config"
 import { GoogleMapsPlaceLoadableService } from "../../google-maps-place/utils/google-maps-place-loadable.service"
 import { RebuiltRegisteredPlaceCommentDto } from "../data-contracts/rebuilt-registered-place-comment.dto"
+import { ConfigService } from "@nestjs/config"
 
 /**
  * Place rebuild service
@@ -11,7 +12,8 @@ import { RebuiltRegisteredPlaceCommentDto } from "../data-contracts/rebuilt-regi
 @Injectable()
 export class PlaceRebuiltService {
     constructor(
-        private readonly googleMapsPlaceLoadableService : GoogleMapsPlaceLoadableService
+        private readonly googleMapsPlaceLoadableService : GoogleMapsPlaceLoadableService,
+        private readonly configService: ConfigService,
     ) {}
 
     /**
@@ -33,7 +35,7 @@ export class PlaceRebuiltService {
                     if(loadedPlaceData === null)
                         return null
 
-                    return this.buildResultFrom({data: loadedPlaceData,registeredPlaceEntity: registeredPlaceEntity})
+                    return this.buildResultFrom({loadedPlaceData: loadedPlaceData,registeredPlaceEntity: registeredPlaceEntity})
                 default:
                     return null;
             }
@@ -51,7 +53,7 @@ export class PlaceRebuiltService {
      */
     private buildResultFrom(
         {loadedPlaceData,registeredPlaceEntity}:
-        {data:Record<any, any>,registeredPlaceEntity:RegisteredPlacesEntity}
+        {loadedPlaceData:Record<any, any>,registeredPlaceEntity:RegisteredPlacesEntity}
     ):RebuiltRegisteredPlaceDto{
         const result = new RebuiltRegisteredPlaceDto()
 
@@ -65,9 +67,24 @@ export class PlaceRebuiltService {
             placeRebuiltComment.comment = comment.comment
             placeRebuiltComment.countOfStars = comment.countOfStars
 
+            if(comment.byUser.profilePicturePath !== null)
+                placeRebuiltComment.userProfilePictureLink = this.buildProfilePictureLink({profilePicturePath: comment.byUser.profilePicturePath})
+
             return placeRebuiltComment
         })
 
         return result
+    }
+
+    /**
+     * Build profile picture path
+     * @param profilePicturePath path from db
+     * @return {string} built path
+     */
+    public buildProfilePictureLink(
+        {profilePicturePath}:
+        {profilePicturePath:string}
+    ):string{
+        return `${this.configService.getOrThrow("API_WEBSITE_LINK")}/${this.configService.getOrThrow("API_PROFILE_PICTURES_SUB_LINK")}/${profilePicturePath}`
     }
 }

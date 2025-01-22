@@ -23,4 +23,8 @@ export class RebuiltRegisteredPlaceCommentDto{
     @ApiResponseProperty()
     @Expose({name:"by_user_firstname"})
     public byUserFirstname: string
+
+    @ApiResponseProperty()
+    @Expose({name: "user_profile_picture_link"})
+    public userProfilePictureLink?:string = null
 }

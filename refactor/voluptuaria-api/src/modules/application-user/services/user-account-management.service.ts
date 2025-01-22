@@ -14,6 +14,7 @@ import { RegisteredPlacesEntity } from "../../database/entities/registered-place
 import { InjectRepository } from "@nestjs/typeorm"
 import { UserWishListGetResponseDto } from "../data-contracts/account-management/user-wish-list-get-response.dto"
 import { PlaceRebuiltService } from "../../utils/services/place-rebuilt.service"
+import { UserAccountDto } from "../data-contracts/account-management/user-account.dto"
 
 /**
  * User account management service
@@ -29,6 +30,44 @@ export class UserAccountManagementService{
         private readonly registeredPlacesRepository: Repository<RegisteredPlacesEntity>,
         private readonly placeRebuiltService: PlaceRebuiltService
     ) {}
+
+    /**
+     * Get account data
+     * @param authenticationToken authentication token
+     * @return {Promise<UserAccountDto>} user account
+     */
+    public async getAccountData(
+        {authenticationToken}:
+        {authenticationToken:string}
+    ):Promise<UserAccountDto>{
+        const userEntity = await this.extractUserFromAuthenticationToken({authenticationToken: authenticationToken})
+
+        const userAccountDto = new UserAccountDto()
+
+        userAccountDto.email = userEntity.email
+        userAccountDto.id = userEntity.id
+        userAccountDto.userFirstname = userEntity.userFirstname
+        userAccountDto.userName = userEntity.userName
+        userAccountDto.phoneNumber = userEntity.phoneNumber
+        userAccountDto.birthdate = userEntity.birthdate
+        userAccountDto.accountCreationDate = userEntity.accountCreationDate
+        userAccountDto.gender = userEntity.gender
+        userAccountDto.profilePictureLink = this.buildProfilePictureLink({profilePicturePath: userEntity.profilePicturePath})
+
+        return userAccountDto
+    }
+
+    /**
+     * Build profile picture path
+     * @param profilePicturePath path from db
+     * @return {string} built path
+     */
+    public buildProfilePictureLink(
+        {profilePicturePath}:
+        {profilePicturePath:string}
+    ):string{
+        return `${this.configService.getOrThrow("API_WEBSITE_LINK")}/${this.configService.getOrThrow("API_PROFILE_PICTURES_SUB_LINK")}/${profilePicturePath}`
+    }
 
     /**
      * Update user profile datas
@@ -101,6 +140,7 @@ export class UserAccountManagementService{
             response.authenticationToken = this.userLoginService.buildTokenFromUserEntity({userEntity: foundedUserEntity})
         }
         catch (_){
+            console.log(_)
             response.error = "error.technical"
         }
 

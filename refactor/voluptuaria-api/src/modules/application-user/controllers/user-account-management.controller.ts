@@ -19,6 +19,7 @@ import { FileInterceptor } from "@nestjs/platform-express"
 import { UserWishListUpdateResponseDto } from "../data-contracts/account-management/user-wish-list-update-response.dto"
 import { UserWishListUpdateRequestDto } from "../data-contracts/account-management/user-wish-list-update-request.dto"
 import { UserWishListGetResponseDto } from "../data-contracts/account-management/user-wish-list-get-response.dto"
+import { UserAccountDto } from "../data-contracts/account-management/user-account.dto"
 
 /**
  * User account management controller
@@ -48,7 +49,7 @@ export class UserAccountManagementController{
     })
     @ApiConsumes('multipart/form-data')
     @UseInterceptors(FileInterceptor('profile_picture_image'))
-    public updateProfileData(@Body() requestDto: UserProfileUpdateRequestDto,@Headers("authentication_token") authenticationToken,@UploadedFile("profile_picture_image") profilePictureImage?:Express.Multer.File):Promise<UserLoginResponseDto>{
+    public updateProfileData(@Body() requestDto: UserProfileUpdateRequestDto,@Headers("authentication_token") authenticationToken,@UploadedFile() profilePictureImage?:Express.Multer.File):Promise<UserLoginResponseDto>{
         requestDto.profilePictureImage = profilePictureImage
 
         return this.userAccountManagementService.updateUserAccountProfileData({
@@ -75,7 +76,7 @@ export class UserAccountManagementController{
     /**
      * Get user wish list
      * @param authenticationToken authentication token
-     * @return Promise<{UserWishListGetResponseDto}> response
+     * @return {Promise<{UserWishListGetResponseDto>} response
      */
     @Get("/wish-list")
     @HttpCode(200)
@@ -85,5 +86,20 @@ export class UserAccountManagementController{
     })
     public getUserWishList(@Headers("authentication_token") authenticationToken:string):Promise<UserWishListGetResponseDto>{
         return this.userAccountManagementService.getWishList({authenticationToken: authenticationToken})
+    }
+
+    /**
+     * Provide user account data
+     * @param authenticationToken authentication token
+     * @return {Promise<UserAccountDto>} response
+     */
+    @Get("/")
+    @HttpCode(200)
+    @ApiResponse({
+        status: 200,
+        type: UserAccountDto
+    })
+    public getUserData(@Headers("authentication_token") authenticationToken:string):Promise<UserAccountDto>{
+        return this.userAccountManagementService.getAccountData({authenticationToken: authenticationToken})
     }
 }
