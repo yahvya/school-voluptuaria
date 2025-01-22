@@ -1,5 +1,6 @@
-import { CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
+import { CreateDateColumn, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { UserEntity } from "./user.entity"
+import { UserCategoriesLikeStateEntity } from "./user-categories-like-state.entity"
 
 /**
  * Application user's social profiles
@@ -12,6 +13,9 @@ export class SocialProfileEntity{
     @CreateDateColumn({name: "created_at",nullable: false,type: "datetime"})
     public createdAt: Date
 
-    @OneToMany(() => UserEntity,(user:UserEntity) => user.userSocialProfiles)
+    @ManyToOne(() => UserEntity,(user:UserEntity) => user.userSocialProfiles)
     public user: UserEntity
+
+    @OneToMany(() => UserCategoriesLikeStateEntity,(categoryLike:UserCategoriesLikeStateEntity) => categoryLike.socialProfile)
+    public categoriesLikeState: UserCategoriesLikeStateEntity[]
 }

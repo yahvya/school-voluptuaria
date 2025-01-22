@@ -1,5 +1,6 @@
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
-import { UserEntity } from "./user.entity"
+import { PlaceCategoriesEntity } from "./place-categories.entity"
+import { SocialProfileEntity } from "./social-profile.entity"
 
 /**
  * Application users like state on categories
@@ -12,6 +13,9 @@ export class UserCategoriesLikeStateEntity{
     @Column({name: "count_state",nullable: false,type: "integer"})
     public countState: number = 0
 
-    @ManyToOne(() => UserEntity,(user: UserEntity) => user.categoriesLikeState)
-    public user: UserEntity
+    @ManyToOne(() => SocialProfileEntity,(socialProfile: SocialProfileEntity) => socialProfile.categoriesLikeState)
+    public socialProfile: SocialProfileEntity
+
+    @ManyToOne(() => PlaceCategoriesEntity)
+    public category: PlaceCategoriesEntity
 }

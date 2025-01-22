@@ -47,11 +47,8 @@ export class UserEntity{
     @Column({name: "profile_picture_path",nullable: true,type: "varchar",length: 255})
     public profilePicturePath: string = null
 
-    @OneToMany(() => SocialProfileEntity,(socialProfile:SocialProfileEntity) => socialProfile.user)
+    @OneToMany(() => SocialProfileEntity,(socialProfile:SocialProfileEntity) => socialProfile.user,{eager: true})
     public userSocialProfiles: SocialProfileEntity[]
-
-    @OneToMany(() => UserCategoriesLikeStateEntity,(categoryLikeState:UserCategoriesLikeStateEntity) => categoryLikeState.user)
-    public categoriesLikeState: UserCategoriesLikeStateEntity[]
 
     @ManyToMany(() => RegisteredPlacesEntity)
     @JoinTable({name: "user_wish_list",joinColumn: {name: "user_id"},inverseJoinColumn: {name: "place_id"}})

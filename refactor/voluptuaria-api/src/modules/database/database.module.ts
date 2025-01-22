@@ -25,7 +25,7 @@ import { TravelRoutesEntity } from "./entities/travel-routes.entity"
                 password: configService.getOrThrow("DATABASE_PASSWORD"),
                 database: configService.getOrThrow("DATABASE_NAME"),
                 synchronize: configService.getOrThrow("DATABASE_ENABLE_SYNC") === "true",
-                entities: [UserEntity,UserCategoriesLikeStateEntity,SocialProfileEntity,RegisteredPlacesEntity,PlaceCategoriesEntity,UserCommentsEntity,TravelRoutesEntity]
+                entities: [UserEntity,UserCategoriesLikeStateEntity,SocialProfileEntity,RegisteredPlacesEntity,PlaceCategoriesEntity,UserCommentsEntity,TravelRoutesEntity,]
             }) as TypeOrmModuleOptions,
         }),
     ],
