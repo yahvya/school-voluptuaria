@@ -7,10 +7,10 @@ import { UserLoginController } from "./controllers/user-login.controller"
 import { UserRegistrationController } from "./controllers/user-registration.controller"
 import { UserRegistrationService } from "./services/user-registration.service"
 import { LangModule } from "../lang-module/lang.module"
-import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 import { UserAccountManagementService } from "./services/user-account-management.service"
 import { UserAccountManagementController } from "./controllers/user-account-management.controller"
 import { RegisteredPlacesEntity } from "../database/entities/registered-places.entity"
+import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 
 /**
  * Application user module

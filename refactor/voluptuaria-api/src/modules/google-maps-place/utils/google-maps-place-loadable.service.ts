@@ -7,7 +7,7 @@ import { GoogleMapsPlaceService } from "../services/google-maps-place.service"
  * Google maps loader
  */
 @Injectable()
-export class GoogleMapsPlaceLoadable implements LoadableFromLocationGetter{
+export class GoogleMapsPlaceLoadableService implements LoadableFromLocationGetter{
     constructor(
         private readonly googleMapsPlaceService: GoogleMapsPlaceService
     ) {}

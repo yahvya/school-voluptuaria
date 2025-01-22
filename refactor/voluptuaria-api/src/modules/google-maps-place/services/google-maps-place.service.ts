@@ -11,6 +11,10 @@ import { OpenweathermapService } from "../../openweathermap/services/openweather
 import { RegisteredPlacesEntity, RegistrablePlaceManager } from "../../database/entities/registered-places.entity"
 import { GoogleMapsPlaceIdBuilder } from "../utils/google-maps-place-id-builder"
 import { GoogleMapsPlaceLocationBuilder } from "./google-maps-place-location-builder"
+import { Repository } from "typeorm"
+import { InjectRepository } from "@nestjs/typeorm"
+import { PlaceCategoriesEntity } from "../../database/entities/place-categories.entity"
+import { GoogleMapsPlaceCategoriesDto } from "../data-contracts/google-maps-place-categories.dto"
 
 /**
  * Google Maps place service
@@ -20,7 +24,11 @@ export class GoogleMapsPlaceService implements RegistrablePlaceManager{
     constructor(
         private readonly configService:ConfigService,
         private readonly langService:LangService,
-        private readonly openweathermapService: OpenweathermapService
+        private readonly openweathermapService: OpenweathermapService,
+        @InjectRepository(RegisteredPlacesEntity)
+        private readonly registeredPlaceRepository: Repository<RegisteredPlacesEntity>,
+        @InjectRepository(PlaceCategoriesEntity)
+        private readonly placeCategoriesRepository: Repository<PlaceCategoriesEntity>,
     ) {}
 
     /**
@@ -203,7 +211,13 @@ export class GoogleMapsPlaceService implements RegistrablePlaceManager{
         if(!("types" in placeDatas))
             throw new Error("No types found")
 
-        resultPlaceDatas.categories = placeDatas.types
+        resultPlaceDatas.categories = placeDatas.types.map(type => {
+            console.log(type)
+            const categoryDto = new GoogleMapsPlaceCategoriesDto()
+            categoryDto.name = type
+
+            return categoryDto
+        })
 
         // comments
         resultPlaceDatas.comments = []
@@ -256,6 +270,8 @@ export class GoogleMapsPlaceService implements RegistrablePlaceManager{
             longitude: resultPlaceDatas.coordinate.longitude,
             latitude: resultPlaceDatas.coordinate.latitude
         })
+
+        await this.registerEntity({mapsData: resultPlaceDatas})
 
         return resultPlaceDatas
     }
@@ -322,6 +338,65 @@ export class GoogleMapsPlaceService implements RegistrablePlaceManager{
         }
 
         return result
+    }
+
+    /**
+     * Register the provided place if not already registered
+     * @param mapsData map data
+     * @return {Promise<RegisteredPlacesEntity>} result
+     */
+    private async registerEntity(
+        {mapsData}:
+        {mapsData:GoogleMapsPlaceDto}
+    ):Promise<RegisteredPlacesEntity|null>{
+        try{
+            // check if already exist
+            const idBuilder = new GoogleMapsPlaceIdBuilder()
+            idBuilder.setRequiredData(mapsData)
+            const storedFormatInDb = idBuilder.buildIdData()
+
+            const foundedOne = await this.registeredPlaceRepository
+                .createQueryBuilder()
+                .where("JSON_EXTRACT(id_getter,'$.source') = :source",{"source": storedFormatInDb.source})
+                .getOne()
+
+            if(foundedOne !== null)
+                return null
+
+            const registeredPlace = new RegisteredPlacesEntity()
+            registeredPlace.categories = []
+
+            // save categories in db
+            for (const categoryDto of mapsData.categories) {
+                const categoryName = categoryDto.name
+
+                // check if category exist and save it in list
+                let categoryEntity = await this.placeCategoriesRepository.findOneBy({categoryName: categoryName})
+
+                if(categoryEntity !== null){
+                    registeredPlace.categories.push(categoryEntity)
+                    continue
+                }
+
+                // create the new category
+                categoryEntity = new PlaceCategoriesEntity()
+                categoryEntity.categoryName = categoryName
+
+                registeredPlace.categories.push(await this.placeCategoriesRepository.save(categoryEntity))
+            }
+
+            // create place in db
+            const locationBuilder = new GoogleMapsPlaceLocationBuilder()
+            locationBuilder.setRequiredData(mapsData)
+
+            registeredPlace.idGetter = storedFormatInDb
+            registeredPlace.locationConfig = locationBuilder.buildLocationData()
+
+            return this.registeredPlaceRepository.save(registeredPlace)
+        }
+        catch (_){
+            return null
+        }
     }
 
     generateEntity(fromData: GoogleMapsPlaceDto): RegisteredPlacesEntity {
