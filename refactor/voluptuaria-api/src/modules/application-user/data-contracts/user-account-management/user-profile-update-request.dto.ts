@@ -8,11 +8,6 @@ import { IsStrongPassword } from "class-validator"
  */
 export class UserProfileUpdateRequestDto{
     @ApiProperty({description: "New password"})
-    @IsStrongPassword({
-        minLength: 8,
-        minSymbols: 1,
-        minUppercase: 1
-    })
     public password ?:string = null
 
     @ApiProperty({description: "Birthdate, can only be update one time"})
