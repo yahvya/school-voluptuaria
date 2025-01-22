@@ -21,4 +21,12 @@ describe("Test google maps place api service",() => {
             }).not.toThrow()
         })
     })
+
+    describe("Test id search",() => {
+        it("should find element",async () => {
+            await expect(async () => {
+                await googleMapPlaceService.loadFromId({accessId: "ChIJqWmwk-QP5kcRvy7gWLBr5AI",lang: "french"})
+            }).not.toThrow()
+        })
+    })
 })

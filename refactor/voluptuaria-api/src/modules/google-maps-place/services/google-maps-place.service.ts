@@ -7,6 +7,7 @@ import { GoogleMapsPlaceReviewDto } from "../data-contracts/google-maps-place-re
 import { GoogleMapsPlaceAccessibilityDto } from "../data-contracts/google-maps-place-accessibility.dto"
 import { GoogleMapsPlaceImageDto } from "../data-contracts/google-maps-place-image.dto"
 import { ConfigService } from "@nestjs/config"
+import { OpenweathermapService } from "../../openweathermap/services/openweathermap.service"
 
 /**
  * Google Maps place service
@@ -15,15 +16,39 @@ import { ConfigService } from "@nestjs/config"
 export class GoogleMapsPlaceService{
     constructor(
         private readonly configService:ConfigService,
-        private readonly langService:LangService
+        private readonly langService:LangService,
+        private readonly openweathermapService: OpenweathermapService
     ) {}
 
-    public loadPropositionsFromPaging(){
+    /**
+     * Load a place data from id
+     * @param accessId access id
+     * @param lang lang
+     * @return {Promise<GoogleMapsPlaceDto>} response
+     */
+    public async loadFromId(
+        {accessId,lang}:
+        {accessId:string,lang:string}
+    ):Promise<GoogleMapsPlaceDto|null>{
+        try{
+            if(!this.langService.loadLangFile({langFileName: lang}))
+                return null
 
-    }
+            const requestUri = `https://places.googleapis.com/v1/places/${accessId}`
+            const apiKey = this.configService.getOrThrow("API_GOOGLE_MAPS_PLACE_API_KEY")
 
-    public loadFromId(){
+            const response = await axios.get(requestUri,{
+                params: {
+                    key: apiKey,
+                    fields: "*"
+                }
+            })
 
+            return this.parsePlaceDatas({placeDatas: response.data,lang: lang})
+        }
+        catch(_){
+            return null
+        }
     }
 
     /**
@@ -66,31 +91,37 @@ export class GoogleMapsPlaceService{
             if(!("places" in datas))
                 throw new Error()
 
-            return datas.places.map((place) => this.parsePlaceDatas({placeDatas: place}))
+            return datas.places.map(async (place) => await this.parsePlaceDatas({placeDatas: place,lang: lang}))
         }
         catch (_){
             return []
         }
     }
 
-    public loadByCategories(){
-
-    }
-
-    public loadByPrompt(){
-
+    /**
+     * Search elements by  categories
+     * @param categories categories to look for
+     * @param lang
+     * @param minRating
+     */
+    public async loadByCategories(
+        {categories,lang,minRating}:
+        {categories:string[],lang:string,minRating:number}
+    ):Promise<GoogleMapsPlaceDto[]>{
+        return this.loadUserTextSearch({search: categories.join(" or "),lang: lang,minRating: minRating})
     }
 
     /**
      * Parse place datas
      * @param placeDatas place data
-     * @returns {GoogleMapsPlaceDto} place datas
+     * @param lang lang
+     * @returns {Promise<GoogleMapsPlaceDto>} place datas
      * @throws {Error} on error
      */
-    protected parsePlaceDatas(
-        {placeDatas}:
-        {placeDatas: Record<string,any>}
-    ):GoogleMapsPlaceDto{
+    protected async parsePlaceDatas(
+        {placeDatas,lang}:
+        {placeDatas: Record<string,any>,lang:string}
+    ):Promise<GoogleMapsPlaceDto>{
         const resultPlaceDatas = new GoogleMapsPlaceDto()
 
         // opened now
@@ -213,6 +244,13 @@ export class GoogleMapsPlaceService{
             resultPlaceDatas.accessibility.canAccessEntrance = "wheelchairAccessibleEntrance" in placeDatas.accessibilityOptions ? placeDatas.accessibilityOptions.wheelchairAccessibleEntrance : false
             resultPlaceDatas.accessibility.canAccessRestPlace = "wheelchairAccessibleRestroom" in placeDatas.accessibilityOptions ? placeDatas.accessibilityOptions.wheelchairAccessibleRestroom : false
         }
+
+        // load weather data
+        resultPlaceDatas.weatherData = await this.openweathermapService.getWeatherDataOf({
+            lang: lang,
+            longitude: resultPlaceDatas.coordinate.longitude,
+            latitude: resultPlaceDatas.coordinate.latitude
+        })
 
         return resultPlaceDatas
     }

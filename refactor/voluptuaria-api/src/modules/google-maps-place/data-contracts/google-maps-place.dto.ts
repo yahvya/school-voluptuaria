@@ -8,6 +8,7 @@ import { GoogleMapsPlaceImageDto } from "./google-maps-place-image.dto"
 import { GoogleMapsPlacePricesDto } from "./google-maps-place-prices.dto"
 import { ApiResponseProperty } from "@nestjs/swagger"
 import { Expose } from "class-transformer"
+import { OpenweathermapDto } from "../../openweathermap/data-contracts/openweathermap.dto"
 
 /**
  * Google Maps place api data contract
@@ -61,4 +62,8 @@ export class GoogleMapsPlaceDto{
     @ApiResponseProperty()
     @Expose({name: "opening_hours"})
     public openingHours: GoogleMapsPlaceOpeningHoursDto[]
+
+    @ApiResponseProperty()
+    @Expose({name: "weather_data"})
+    public weatherData: OpenweathermapDto
 }

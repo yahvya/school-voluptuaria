@@ -322,7 +322,7 @@ export class UserRegistrationService {
                         Username: `${name} ${firstname}`,
                     },
                 }),
-                template: "classic-registration-confirmation.hbs",
+                template: "classic-classic-registration-confirmation.hbs",
                 context: {
                     confirmationCode: confirmationCode,
                     appName: this.configService.getOrThrow("APPLICATION_NAME"),
