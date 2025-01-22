@@ -3,6 +3,7 @@ import { RegisteredPlacesEntity } from "../../database/entities/registered-place
 import { RebuiltRegisteredPlaceDto } from "../data-contracts/rebuilt-registered-place.dto"
 import { IdSource } from "../../../configs/interfaces/id-getter.config"
 import { GoogleMapsPlaceLoadableService } from "../../google-maps-place/utils/google-maps-place-loadable.service"
+import { RebuiltRegisteredPlaceCommentDto } from "../data-contracts/rebuilt-registered-place-comment.dto"
 
 /**
  * Place rebuild service
@@ -13,6 +14,11 @@ export class PlaceRebuiltService {
         private readonly googleMapsPlaceLoadableService : GoogleMapsPlaceLoadableService
     ) {}
 
+    /**
+     * Rebuilt from db data
+     * @param registeredPlaceEntity entity
+     * @return {Promise<RebuiltRegisteredPlaceDto|null>} result
+     */
     public async fromRegisteredToData(
         {registeredPlaceEntity}:
         {registeredPlaceEntity:RegisteredPlacesEntity}
@@ -27,12 +33,7 @@ export class PlaceRebuiltService {
                     if(loadedPlaceData === null)
                         return null
 
-                    const result = new RebuiltRegisteredPlaceDto()
-
-                    result.dbId = registeredPlaceEntity.id
-                    result.data = loadedPlaceData
-
-                    return result
+                    return this.buildResultFrom({data: loadedPlaceData,registeredPlaceEntity: registeredPlaceEntity})
                 default:
                     return null;
             }
@@ -40,5 +41,33 @@ export class PlaceRebuiltService {
         catch (_){
             return null
         }
+    }
+
+    /**
+     * Build rebuilt result
+     * @param loadedPlaceData loaded place data
+     * @param registeredPlaceEntity from entity
+     * @return {RebuiltRegisteredPlaceDto} result
+     */
+    private buildResultFrom(
+        {loadedPlaceData,registeredPlaceEntity}:
+        {data:Record<any, any>,registeredPlaceEntity:RegisteredPlacesEntity}
+    ):RebuiltRegisteredPlaceDto{
+        const result = new RebuiltRegisteredPlaceDto()
+
+        result.dbId = registeredPlaceEntity.id
+        result.data = loadedPlaceData
+        result.websiteComments = registeredPlaceEntity.comments.map((comment) => {
+            const placeRebuiltComment = new RebuiltRegisteredPlaceCommentDto()
+
+            placeRebuiltComment.byUserName = comment.byUser.userName
+            placeRebuiltComment.byUserFirstname = comment.byUser.userFirstname
+            placeRebuiltComment.comment = comment.comment
+            placeRebuiltComment.countOfStars = comment.countOfStars
+
+            return placeRebuiltComment
+        })
+
+        return result
     }
 }

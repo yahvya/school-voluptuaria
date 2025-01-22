@@ -1,7 +1,8 @@
-import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { IdGetter } from "../../../configs/interfaces/id-getter.config"
 import { LocationGetterConfig } from "../../../configs/interfaces/location-getter.config"
 import { PlaceCategoriesEntity } from "./place-categories.entity"
+import { UserCommentsEntity } from "./user-comments.entity"
 
 /**
  * Application extracted and registered places from apis
@@ -23,6 +24,9 @@ export class RegisteredPlacesEntity{
     @ManyToMany(() => PlaceCategoriesEntity)
     @JoinTable({name: "registered_places_categories",joinColumn: {name: "place_id"},inverseJoinColumn: {name: "category_id"}})
     public categories: PlaceCategoriesEntity[]
+
+    @OneToMany(() => UserCommentsEntity,(userComment:UserCommentsEntity) => userComment.forPlace)
+    public comments: UserCommentsEntity[]
 }
 
 /**
