@@ -4,8 +4,7 @@ import 'package:encrypt/encrypt.dart' as encryptService;
 import 'package:crypto/crypto.dart';
 import 'dart:math';
 
-class EncryptionService {
-  /// Encrypt the given element
+class EncryptionUtil {
   Future<Map<String, String>> encrypt({
     required String toEncrypt,
     required String secretKey,
@@ -23,7 +22,6 @@ class EncryptionService {
     };
   }
 
-  /// Decrypt the given element
   Future<String?> decrypt({
     required String toDecrypt,
     required String secretKey,
@@ -46,7 +44,6 @@ class EncryptionService {
     }
   }
 
-  /// Derive a 256-bit key using PBKDF2
   Future<Uint8List> _deriveKey(String password, String salt) async {
     final key = pbkdf2(
       utf8.encode(password) as Uint8List,
@@ -57,7 +54,6 @@ class EncryptionService {
     return key;
   }
 
-  /// Generate random bytes of a given length
   Uint8List _generateRandomBytes(int length) {
     final random = Random.secure();
     return Uint8List.fromList(
@@ -65,7 +61,6 @@ class EncryptionService {
     );
   }
 
-  /// PBKDF2 implementation
   Uint8List pbkdf2(Uint8List password, Uint8List salt, int iterations, int length) {
     final hmac = Hmac(sha256, password);
     var result = Uint8List(length);
