@@ -66,4 +66,7 @@ export class GoogleMapsPlaceDto{
     @ApiResponseProperty()
     @Expose({name: "weather_data"})
     public weatherData: OpenweathermapDto
+
+    @ApiResponseProperty()
+    public lang:string
 }

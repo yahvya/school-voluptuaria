@@ -24,3 +24,10 @@ export class RegisteredPlacesEntity{
     @JoinTable({name: "registered_places_categories",joinColumn: {name: "place_id"},inverseJoinColumn: {name: "category_id"}})
     public categories: PlaceCategoriesEntity[]
 }
+
+/**
+ * Mark an element as registrable
+ */
+export interface RegistrablePlaceManager{
+    generateEntity(fromData: any): RegisteredPlacesEntity
+}

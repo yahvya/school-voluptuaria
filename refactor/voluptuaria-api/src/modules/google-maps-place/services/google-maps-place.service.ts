@@ -8,12 +8,15 @@ import { GoogleMapsPlaceAccessibilityDto } from "../data-contracts/google-maps-p
 import { GoogleMapsPlaceImageDto } from "../data-contracts/google-maps-place-image.dto"
 import { ConfigService } from "@nestjs/config"
 import { OpenweathermapService } from "../../openweathermap/services/openweathermap.service"
+import { RegisteredPlacesEntity, RegistrablePlaceManager } from "../../database/entities/registered-places.entity"
+import { GoogleMapsPlaceIdBuilder } from "../utils/google-maps-place-id-builder"
+import { GoogleMapsPlaceLocationBuilder } from "./google-maps-place-location-builder"
 
 /**
  * Google Maps place service
  */
 @Injectable()
-export class GoogleMapsPlaceService{
+export class GoogleMapsPlaceService implements RegistrablePlaceManager{
     constructor(
         private readonly configService:ConfigService,
         private readonly langService:LangService,
@@ -245,6 +248,8 @@ export class GoogleMapsPlaceService{
             resultPlaceDatas.accessibility.canAccessRestPlace = "wheelchairAccessibleRestroom" in placeDatas.accessibilityOptions ? placeDatas.accessibilityOptions.wheelchairAccessibleRestroom : false
         }
 
+        resultPlaceDatas.lang = lang
+
         // load weather data
         resultPlaceDatas.weatherData = await this.openweathermapService.getWeatherDataOf({
             lang: lang,
@@ -317,5 +322,19 @@ export class GoogleMapsPlaceService{
         }
 
         return result
+    }
+
+    generateEntity(fromData: GoogleMapsPlaceDto): RegisteredPlacesEntity {
+        const entity = new RegisteredPlacesEntity()
+        const idBuilder = new GoogleMapsPlaceIdBuilder()
+        const locationBuilder = new GoogleMapsPlaceLocationBuilder()
+
+        idBuilder.setRequiredData(fromData)
+        entity.idGetter = idBuilder.buildIdData()
+
+        locationBuilder.setRequiredData(fromData)
+        entity.locationConfig = locationBuilder.buildLocationData()
+
+        return entity
     }
 }
