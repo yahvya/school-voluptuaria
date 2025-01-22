@@ -1,4 +1,14 @@
-import { Body, Controller, UploadedFile, UseGuards, Headers, HttpCode, Post, UseInterceptors } from "@nestjs/common"
+import {
+    Body,
+    Controller,
+    UploadedFile,
+    UseGuards,
+    Headers,
+    HttpCode,
+    Post,
+    UseInterceptors,
+    Get,
+} from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ApplicationAuthenticationGuard } from "../../../commons/guards/application-authentication.guard"
 import { ApiConsumes, ApiHeader, ApiResponse } from "@nestjs/swagger"
@@ -8,6 +18,7 @@ import { UserAccountManagementService } from "../services/user-account-managemen
 import { FileInterceptor } from "@nestjs/platform-express"
 import { UserWishListUpdateResponseDto } from "../data-contracts/account-management/user-wish-list-update-response.dto"
 import { UserWishListUpdateRequestDto } from "../data-contracts/account-management/user-wish-list-update-request.dto"
+import { UserWishListGetResponseDto } from "../data-contracts/account-management/user-wish-list-get-response.dto"
 
 /**
  * User account management controller
@@ -59,5 +70,20 @@ export class UserAccountManagementController{
     })
     public updateWishList(@Body() requestDto:UserWishListUpdateRequestDto,@Headers("authentication_token") authenticationToken:string):Promise<UserWishListUpdateResponseDto>{
         return this.userAccountManagementService.updateUserWishList({requestDto:requestDto,authenticationToken: authenticationToken})
+    }
+
+    /**
+     * Get user wish list
+     * @param authenticationToken authentication token
+     * @return Promise<{UserWishListGetResponseDto}> response
+     */
+    @Get("/wish-list")
+    @HttpCode(200)
+    @ApiResponse({
+        status: 200,
+        type: UserWishListGetResponseDto
+    })
+    public getUserWishList(@Headers("authentication_token") authenticationToken:string):Promise<UserWishListGetResponseDto>{
+        return this.userAccountManagementService.getWishList({authenticationToken: authenticationToken})
     }
 }

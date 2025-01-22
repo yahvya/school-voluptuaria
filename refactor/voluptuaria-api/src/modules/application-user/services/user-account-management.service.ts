@@ -12,6 +12,8 @@ import { UserEntity } from "../../database/entities/user.entity"
 import { Repository } from "typeorm"
 import { RegisteredPlacesEntity } from "../../database/entities/registered-places.entity"
 import { InjectRepository } from "@nestjs/typeorm"
+import { UserWishListGetResponseDto } from "../data-contracts/account-management/user-wish-list-get-response.dto"
+import { PlaceRebuiltService } from "../../utils/services/place-rebuilt.service"
 
 /**
  * User account management service
@@ -24,7 +26,8 @@ export class UserAccountManagementService{
         private readonly hashService: HashService,
         private readonly configService: ConfigService,
         @InjectRepository(RegisteredPlacesEntity)
-        private readonly registeredPlacesRepository: Repository<RegisteredPlacesEntity>
+        private readonly registeredPlacesRepository: Repository<RegisteredPlacesEntity>,
+        private readonly placeRebuiltService: PlaceRebuiltService
     ) {}
 
     /**
@@ -146,6 +149,41 @@ export class UserAccountManagementService{
             console.log(_)
             response.error = "error.technical"
         }
+
+        return response
+    }
+
+    /**
+     * Provide user wish list
+     * @param authenticationToken authentication token
+     * @return {Promise<UserWishListGetResponseDto>} response
+     */
+    public async getWishList(
+        {authenticationToken}:
+        {authenticationToken:string}
+    ):Promise<UserWishListGetResponseDto>{
+        const response  = new UserWishListGetResponseDto()
+        response.placesData = []
+
+        try{
+            // get user
+            const userEntity = await this.extractUserFromAuthenticationToken({authenticationToken: authenticationToken})
+
+            if(userEntity === null)
+                return response
+
+            // transform wish list to elements
+            if(userEntity.wishList === undefined)
+                userEntity.wishList = []
+
+            for(const placeData of userEntity.wishList){
+                const rebuiltResult = await this.placeRebuiltService.fromRegisteredToData({registeredPlaceEntity: placeData})
+
+                if(rebuiltResult !== null)
+                    response.placesData.push(rebuiltResult)
+            }
+        }
+        catch (_){}
 
         return response
     }
