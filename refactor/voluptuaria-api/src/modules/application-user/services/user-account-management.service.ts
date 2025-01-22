@@ -233,7 +233,7 @@ export class UserAccountManagementService{
      * @param authenticationToken authentication token
      * @return {Promise<UserEntity|null>} user or null on not found
      */
-    private async extractUserFromAuthenticationToken(
+    public async extractUserFromAuthenticationToken(
         {authenticationToken}:
         {authenticationToken:string}
     ):Promise<UserEntity|null>{
