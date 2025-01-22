@@ -7,8 +7,19 @@ import 'package:front/components/custom_text_field.dart';
 import 'package:front/components/button.dart';
 import 'package:front/components/profile_picture.dart';
 
-class UserEditProfilePage extends StatelessWidget {
+class UserEditProfilePage extends StatefulWidget {
   const UserEditProfilePage({Key? key}) : super(key: key);
+  @override
+  State<UserEditProfilePage> createState() => _UserEditProfilePage();
+}
+
+class _UserEditProfilePage extends State<UserEditProfilePage>{
+
+  final _nameController = TextEditingController();
+  final _firstnameController = TextEditingController();
+  final _telephoneController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _birthdayContoller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +99,9 @@ class UserEditProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _emailController,
                           placeholder: 'Email',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -98,7 +111,9 @@ class UserEditProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _birthdayContoller,
                           placeholder: 'Date de naissance',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -108,7 +123,9 @@ class UserEditProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _nameController,
                           placeholder: 'Nom',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -118,7 +135,9 @@ class UserEditProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _firstnameController,
                           placeholder: 'Prénom',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -128,7 +147,9 @@ class UserEditProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _telephoneController,
                           placeholder: 'Téléphone',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),

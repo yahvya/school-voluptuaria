@@ -9,8 +9,15 @@ import 'package:front/components/profile_picture.dart';
 import 'package:front/components/icon_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class UserProfilePage extends StatelessWidget {
+class UserProfilePage extends StatefulWidget {
   const UserProfilePage({Key? key}) : super(key: key);
+  @override
+  State<UserProfilePage> createState() => _UserProfilePage();
+}
+class _UserProfilePage extends State<UserProfilePage>{
+
+  final _emailController = TextEditingController();
+  final _birthdayContoller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +97,9 @@ class UserProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _emailController,
                           placeholder: 'email@example.com',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -100,7 +109,9 @@ class UserProfilePage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _birthdayContoller,
                           placeholder: '07/12/2000',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),

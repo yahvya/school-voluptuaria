@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:front/app/configs/application-routes.dart';
+import 'package:front/pages/registration_confirmation_page.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../pages/home_page.dart';
@@ -10,7 +11,7 @@ import '../../pages/user_profile_page.dart';
 
 class Application extends StatelessWidget{
   final _router = GoRouter(
-    initialLocation: "/",
+    initialLocation: "/register",
     routes: [
       GoRoute(
         path: "/",
@@ -31,6 +32,11 @@ class Application extends StatelessWidget{
           path: "/register",
           name: ApplicationRoutes.REGISTRATION_PAGE,
           builder: (context,state) => RegistrationPage()
+      ),
+      GoRoute(
+          path: "/registerConfirm",
+          name: ApplicationRoutes.REGISTRATION_CONFIRMATION_PAGE,
+          builder: (context,state) => RegistrationConfirmationPage()
       ),
       /*
       GoRoute(

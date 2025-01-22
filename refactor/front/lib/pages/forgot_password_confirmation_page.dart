@@ -5,8 +5,17 @@ import 'package:front/components/blur_background.dart';
 import 'package:front/components/custom_text_field.dart';
 import 'package:front/components/button.dart';
 
-class ForgotPasswordConfirmationPage extends StatelessWidget {
+class ForgotPasswordConfirmationPage extends StatefulWidget {
   const ForgotPasswordConfirmationPage({Key? key}) : super(key: key);
+
+  @override
+  State<ForgotPasswordConfirmationPage> createState() => _ForgotPasswordConfirmationPage();
+}
+
+class _ForgotPasswordConfirmationPage extends State<ForgotPasswordConfirmationPage>{
+
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +72,9 @@ class ForgotPasswordConfirmationPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _emailController,
                           placeholder: 'Code de confirmation',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -73,7 +84,9 @@ class ForgotPasswordConfirmationPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
                           backgroundColor: backgroundColor,
+                          controller: _passwordController,
                           placeholder: 'Nouveau mot de passe',
+                          obscureText: true,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
