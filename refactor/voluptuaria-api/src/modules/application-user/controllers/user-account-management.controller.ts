@@ -59,6 +59,26 @@ export class UserAccountManagementController{
     }
 
     /**
+     * Update profile data
+     * @param requestDto request dto
+     * @param authenticationToken authentication token
+     * @return {Promise<UserLoginResponseDto>} response
+     */
+    @Post("/update/no-image")
+    @HttpCode(200)
+    @ApiResponse({
+        status: 200,
+        type: UserLoginResponseDto
+    })
+    public updateProfileDataNoImage(@Body() requestDto: UserProfileUpdateRequestDto,@Headers("authentication_token") authenticationToken):Promise<UserLoginResponseDto>{
+
+        return this.userAccountManagementService.updateUserAccountProfileData({
+            requestDto: requestDto,
+            authenticationToken: authenticationToken
+        })
+    }
+
+    /**
      * Update user wish list
      * @param requestDto request dto
      * @param authenticationToken authentication token
