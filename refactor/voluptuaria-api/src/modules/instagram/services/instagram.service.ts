@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common"
 import { InstagramPostsDto } from "../data-contract/instagram-posts.dto"
 import * as puppeteer from "puppeteer"
 import { ConfigService } from "@nestjs/config"
+import nlp from 'compromise'
 
 /**
  * Instagram service
@@ -23,7 +24,7 @@ export class InstagramService{
     ):Promise<InstagramPostsDto[]>{
         try{
             const browser = await puppeteer.launch({
-                headless: true,
+                headless: false,
                 defaultViewport: null,
                 args: [
                     '--no-sandbox',
@@ -49,6 +50,7 @@ export class InstagramService{
             })
             await page.setUserAgent("Mozilla/5.0 (Macintosh Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
             await page.setViewport({ width: 1920, height: 1080 })
+
             await this.loginToInstagram({page: page });
             await page.goto(`https://www.instagram.com/${userPseudo}/`, {
                 waitUntil: 'networkidle0',
@@ -72,10 +74,10 @@ export class InstagramService{
             }
 
             await browser.close()
-
-            return posts
+            return []
         }
         catch (_){
+            console.log(_)
             return []
         }
     }
@@ -203,5 +205,27 @@ export class InstagramService{
                 return null
             }
         })
+    }
+
+    /**
+     * Extract potential places data from posts
+     * @param postsData posts
+     * @return {string[]} words
+     */
+    public extractPotentielUsefulTourismStrings(
+        {postsData}:
+        {postsData:InstagramPostsDto[]}
+    ):string[]{
+        const words:string[] = []
+
+        postsData.forEach((post) => {
+            words.push(...nlp(post.location).places())
+            words.push(...nlp(post.caption).places())
+            post.hashtags.forEach(hashtag => {
+                words.push(...nlp(hashtag).places())
+            })
+        })
+
+        return words
     }
 }
