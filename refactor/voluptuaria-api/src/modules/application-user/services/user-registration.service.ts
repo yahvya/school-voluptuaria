@@ -78,6 +78,7 @@ export class UserRegistrationService{
         }
         catch (_){
             response.error = "error.technical"
+            console.log(_)
         }
 
         return response

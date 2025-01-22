@@ -8,6 +8,8 @@ class CustomTextField extends StatelessWidget {
   final double borderRadius;
   final double fontSize;
   final Color placeholderColor;
+  final TextEditingController controller;
+  final bool obscureText;
 
   CustomTextField({
     this.labelText,
@@ -16,7 +18,10 @@ class CustomTextField extends StatelessWidget {
     this.borderRadius = 16.0,
     this.fontSize = 20.0,
     this.placeholderColor = primaryText,
+    required this.controller,
+    required this.obscureText,
   });
+
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +46,8 @@ class CustomTextField extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
           child: TextField(
+            controller: controller,  // Passer le contrôleur ici
+            obscureText: obscureText,  // Passer la visibilité ici
             style: TextStyle(fontSize: fontSize),
             decoration: InputDecoration(
               hintText: placeholder,

@@ -4,9 +4,76 @@ import 'package:front/resources/themes/colors.dart';
 import 'package:front/components/blur_background.dart';
 import 'package:front/components/custom_text_field.dart';
 import 'package:front/components/button.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class RegistrationConfirmationPage extends StatelessWidget {
+import '../apis/service/registrationService.dart';
+import '../app/configs/application-routes.dart';
+
+class RegistrationConfirmationPage extends StatefulWidget {
   const RegistrationConfirmationPage({Key? key}) : super(key: key);
+
+  @override
+  State<RegistrationConfirmationPage> createState() => _RegistrationConfirmationPage();
+}
+
+class _RegistrationConfirmationPage extends State<RegistrationConfirmationPage>{
+
+  final _codeController = TextEditingController();
+
+  String? name;
+  String? firstname;
+  String? email;
+  String? password;
+  String? confirmationCode;
+  String? confirmationCodeIv;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();  // Charger les informations utilisateur
+  }
+
+  Future<void> _loadUserData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString('name');
+      firstname = prefs.getString('firstname');
+      email = prefs.getString('email');
+      password = prefs.getString('password');
+      confirmationCode = prefs.getString('confirmationCode');
+      confirmationCodeIv = prefs.getString('confirmationCodeIv');
+    });
+  }
+
+
+  // Fonction de confirmation d'enregistrement
+  Future<void> _confirmRegistration() async {
+    final  RegistrationService _confirmationService = RegistrationService();
+    try {
+      // Vérifiez si les données sont chargées
+      if (name == null || email == null || firstname == null || password == null || confirmationCode == null || confirmationCodeIv == null) {
+        throw Exception('Données manquantes');
+      }
+
+      final code = _codeController.text;
+
+      // Appel à l'API de confirmation avec l'email et le code
+      final response = await _confirmationService.confirmRegistration(name!,firstname!,email!, password!, confirmationCode!, confirmationCodeIv!, code);
+
+      // Afficher un message de succès
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Inscription réussie')),
+      );
+
+      GoRouter.of(context).pushNamed(ApplicationRoutes.HOME_PAGE);
+    } catch (e) {
+      // Afficher un message d'erreur si la confirmation échoue
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Erreur: $e')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,8 +129,10 @@ class RegistrationConfirmationPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
+                          controller: _codeController,
                           backgroundColor: backgroundColor,
                           placeholder: 'Code de confirmation',
+                          obscureText: false,
                           fontSize: 16.0,
                           borderRadius: 12.0,
                         ),
@@ -88,9 +157,7 @@ class RegistrationConfirmationPage extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomButton(
                           text: 'Confirmer',
-                          onPressed: () {
-                            print('Connexion button pressed');
-                          },
+                          onPressed: _confirmRegistration
                         ),
                       ),
                     ],

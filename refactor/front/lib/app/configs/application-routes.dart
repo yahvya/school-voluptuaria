@@ -12,4 +12,5 @@ class ApplicationRoutes {
   static const String TRAVEL_ROUTES_PAGE_DETAILS = "travel-routes.details";
   static const String TRAVEL_ROUTES_CREATE = "travel-routes.new";
   static const String FORGOT_PASSWORD_PAGE = "forgot-password";
+  static const String REGISTRATION_CONFIRMATION_PAGE = "registrationConfirm";
 }
