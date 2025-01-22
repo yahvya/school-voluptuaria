@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:voluptuaria_front/utils/encryption-util.dart';
+import 'package:voluptuaria_front/utils/encryption_utils.dart';
 
 void main() {
   final encryptionUtil = EncryptionUtil();
