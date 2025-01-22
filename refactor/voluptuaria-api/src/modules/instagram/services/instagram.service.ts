@@ -219,10 +219,11 @@ export class InstagramService{
         const words:string[] = []
 
         postsData.forEach((post) => {
-            words.push(...nlp(post.location).places())
-            words.push(...nlp(post.caption).places())
+            nlp(post.location).places().forEach(place => words.push(place.toString()))
+            nlp(post.caption).places().forEach(place => words.push(place.toString()))
+
             post.hashtags.forEach(hashtag => {
-                words.push(...nlp(hashtag).places())
+                nlp(hashtag).places().forEach(place => words.push(place.toString()))
             })
         })
 
