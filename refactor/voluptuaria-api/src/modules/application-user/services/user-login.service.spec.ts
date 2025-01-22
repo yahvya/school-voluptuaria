@@ -5,8 +5,11 @@ import { Test, TestingModule } from "@nestjs/testing"
 import { AppModule } from "../../../app.module"
 import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm"
 import { HashService } from "../../app-security/services/hash.service"
-import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
+import { request } from "express"
+import { UserForgotPasswordInitRequestDto } from "../data-contracts/forgot-password/user-forgot-password-init-request.dto"
+import { UserLoginStoredDto } from "../data-contracts/login/user-login-stored.dto"
 
 describe("Test user login service", () => {
     let userLoginService:UserLoginService
@@ -74,8 +77,54 @@ describe("Test user login service", () => {
         })
     })
 
+    describe("Test forgot password initialisation process",() => {
+        it("should not found the account",async () => {
+            await expect(async () => {
+                const requestDto = new UserForgotPasswordInitRequestDto()
+                requestDto.email = "bad_email@email.com"
+
+                const result = await userLoginService.initForgotPasswordProcess({requestDto: requestDto,lang: "french"})
+
+                expect(result.encryptionIv).toBe(null)
+                expect(result.encryptedConfirmationCode).toBe(null)
+                expect(result.error).toBe("error.unrecognized-email-password")
+            }).not.toThrow()
+        })
+
+        it("should send the confirmation message",async () => {
+            await expect(async () => {
+                testUserEntity = await userRepository.save(testUserEntity)
+
+                const requestDto = new UserForgotPasswordInitRequestDto()
+                requestDto.email = testUserEntity.email
+
+                const result = await userLoginService.initForgotPasswordProcess({requestDto: requestDto,lang: "french"})
+
+                expect(result.encryptionIv).not.toBe(null)
+                expect(result.encryptedConfirmationCode).not.toBe(null)
+                expect(result.error).toBe(null)
+
+                await userRepository.remove(testUserEntity)
+            })
+        })
+    })
+
+    describe("Test token management",() => {
+        it("should not be the same token",async () => {
+            const token = userLoginService.buildTokenFromUserEntity({userEntity: testUserEntity})
+            expect(token).not.toBe(null)
+
+            const verifyResult = userLoginService.verifyToken({token: token})
+            expect(verifyResult).toBeInstanceOf(UserLoginStoredDto)
+            expect(verifyResult.email).toBe(testUserEntity.email)
+        })
+    })
+
     afterAll(async () => {
-        await userRepository.remove(testUserEntity)
+        try{
+            await userRepository.remove(testUserEntity)
+        }
+        catch (_){}
         await module.close()
     })
 })

@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger"
 import { IsEmail, IsStrongPassword } from "class-validator"
 
 /**
- * User voluptuaria classic registration request data contract
+ * User voluptuaria classic classic-registration request data contract
  */
 export class UserClassicRegistrationRequestDto {
     @ApiProperty({description: "User name"})

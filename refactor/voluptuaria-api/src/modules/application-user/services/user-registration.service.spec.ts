@@ -5,19 +5,19 @@ import { ApplicationUserModule } from "../application-user.module"
 import { UserEntity, UserGender } from "../../database/entities/user.entity"
 import { Repository } from "typeorm"
 import { getRepositoryToken } from "@nestjs/typeorm"
-import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
-import { UserClassicRegistrationResponseDto } from "../data-contracts/user-classic-registration-response.dto"
+import { UserClassicRegistrationRequestDto } from "../data-contracts/classic-registration/user-classic-registration-request.dto"
+import { UserClassicRegistrationResponseDto } from "../data-contracts/classic-registration/user-classic-registration-response.dto"
 import { MailerService } from "@nestjs-modules/mailer"
 import {
     UserClassicRegistrationConfirmationRequestDto
-} from "../data-contracts/user-classic-registration-confirmation-request.dto"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
+} from "../data-contracts/classic-registration/user-classic-registration-confirmation-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
 import { StringService } from "../../utils/services/string.service"
-import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
-import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
+import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/google-registration/user-google-registration-init-request.dto"
+import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/google-registration/user-google-registration-init-response.dto"
 import { ConfigService } from "@nestjs/config"
 
-describe("User registration service test", () => {
+describe("User classic-registration service test", () => {
     let userRegistrationService:UserRegistrationService
     let app: TestingModule
     let configService: ConfigService
@@ -60,7 +60,7 @@ describe("User registration service test", () => {
         await app.init()
     })
 
-    describe("Test user classic registration initialisation",() => {
+    describe("Test user classic classic-registration initialisation",() => {
         beforeEach(async () => {
             testUserEntity = await userRepository.save(testUserEntity)
         })
@@ -112,7 +112,7 @@ describe("User registration service test", () => {
         })
     })
 
-    describe("Test user classic registration confirmation",() => {
+    describe("Test user classic classic-registration confirmation",() => {
         it("should find invalid codes",async () => {
             await expect(async () => {
                 let requestDto = new UserClassicRegistrationConfirmationRequestDto()
@@ -133,7 +133,7 @@ describe("User registration service test", () => {
             }).not.toThrow()
         })
 
-        it("should validate the registration",async () => {
+        it("should validate the classic-registration",async () => {
             await expect(async () => {
                 const initRequestDto = new UserClassicRegistrationRequestDto()
 
@@ -169,7 +169,7 @@ describe("User registration service test", () => {
         })
     })
 
-    describe("Test user google registration initialisation",() => {
+    describe("Test user google classic-registration initialisation",() => {
         it("should refuse init due to bad provided link",async () => {
             await expect(async () => {
                 const requestDto = new UserGoogleRegistrationInitRequestDto()

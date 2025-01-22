@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import { UserAccountDto } from "../data-contracts/user-account.dto"
+import { UserAccountDto } from "../data-contracts/account-management/user-account.dto"
 import { ConfigService } from "@nestjs/config"
 import { InjectRepository } from "@nestjs/typeorm"
 import { UserEntity } from "../../database/entities/user.entity"

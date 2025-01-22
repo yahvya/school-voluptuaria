@@ -56,7 +56,10 @@ export class LangService {
      * @returns {string} the translated value
      * @throws {LangServiceException} in case of error
      */
-    public translation({langFileName,key,replaces}): string {
+    public translation(
+        {langFileName,key,replaces}:
+        {langFileName:string,key:string,replaces?: Record<string,string>}
+    ): string {
         if (!this.loadLangFile({ langFileName: langFileName }))
             throw new LangServiceException("Fail to load lang file")
 
@@ -143,8 +146,8 @@ export class LangService {
 
             // loading attributes
             this.frenchName = langFileContent.lang["french-name"]
-            this.googleMapCode = langFileContent.lang["google-map-api"]
-            this.openWeatherMapCode = langFileContent.lang["openweathermap-api"]
+            this.googleMapCode = langFileContent.lang["google-map-code"]
+            this.openWeatherMapCode = langFileContent.lang["openweathermap-code"]
             this.langName = langFileContent.lang.name
 
             return true

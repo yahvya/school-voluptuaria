@@ -28,7 +28,7 @@ import {
 import { GoogleAuthResponse } from "../../google-auth-module/data-contracts/google-auth-response"
 
 /**
- * @brief User registration service.
+ * @brief User classic-registration service.
  */
 @Injectable()
 export class UserRegistrationService {
@@ -47,8 +47,8 @@ export class UserRegistrationService {
     }
 
     /**
-     * @brief Validate user registration datas.
-     * @param options registration options
+     * @brief Validate user classic-registration datas.
+     * @param options classic-registration options
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      * @throws {Error} in case of error
      */
@@ -231,7 +231,7 @@ export class UserRegistrationService {
     }
 
     /**
-     * @brief confirmation google registration by creating account
+     * @brief confirmation google classic-registration by creating account
      * @param options options
      * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
      */
@@ -322,7 +322,7 @@ export class UserRegistrationService {
                         Username: `${name} ${firstname}`,
                     },
                 }),
-                template: "registration-confirmation.hbs",
+                template: "classic-registration-confirmation.hbs",
                 context: {
                     confirmationCode: confirmationCode,
                     appName: this.configService.getOrThrow("APPLICATION_NAME"),

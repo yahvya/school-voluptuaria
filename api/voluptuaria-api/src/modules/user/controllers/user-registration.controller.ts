@@ -19,7 +19,7 @@ import {
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 
 /**
- * @brief Manage users registration process.
+ * @brief Manage users classic-registration process.
  */
 @Controller("register")
 export class UserRegistrationController {
@@ -29,8 +29,8 @@ export class UserRegistrationController {
     }
 
     /**
-     * @brief Validate user registration datas.
-     * @param userRegistrationDatas User registration datas.
+     * @brief Validate user classic-registration datas.
+     * @param userRegistrationDatas User classic-registration datas.
      * @param lang lang file name
      * @returns {UserRegistrationResponseDatas} Validation's Result.
      */
@@ -66,7 +66,7 @@ export class UserRegistrationController {
     }
 
     /**
-     * @brief start the Google registration process
+     * @brief start the Google classic-registration process
      * @returns {GoogleRegistrationResponseDatas} response
      */
     @Post("by-google")
@@ -81,10 +81,10 @@ export class UserRegistrationController {
     }
 
     /**
-     * @brief confirm google registration
+     * @brief confirm google classic-registration
      * @param state added state in the datas
      * @param res response
-     * @returns {} registration confirmation
+     * @returns {} classic-registration confirmation
      */
     @Get("by-google/redirect")
     @HttpCode(200)
@@ -108,7 +108,7 @@ export class UserRegistrationController {
     }
 
     /**
-     * @brief confirm user registration from Google
+     * @brief confirm user classic-registration from Google
      * @param registrationConfirmationDatas confirmation datas
      * @returns {Promise<UserRegistrationConfirmationResponseDatas>} confirmation result
      */

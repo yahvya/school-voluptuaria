@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, IsString, IsStrongPassword } from "class-validator"
 
 /**
- * @brief User registration form datas.
+ * @brief User classic-registration form datas.
  */
 export class UserRegistrationDatas {
     @IsString({

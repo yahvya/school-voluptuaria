@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, UseGuards } from "@nestjs/common"
+import { Controller, Get, HttpCode, Query, UseGuards } from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ApplicationAuthenticationGuard } from "../../../commons/guards/application-authentication.guard"
 
@@ -19,5 +19,10 @@ export class TestController{
     @UseGuards(ApplicationAuthenticationGuard)
     public testAuthenticationGuard():string{
         return "ok"
+    }
+
+    @Get("google-redirection")
+    public test(@Query() q: any) {
+        return q
     }
 }

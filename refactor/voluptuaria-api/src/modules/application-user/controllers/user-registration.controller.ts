@@ -1,30 +1,33 @@
 import { Body, Controller, Get, Headers, HttpCode, Post, Query, Res, UseGuards } from "@nestjs/common"
 import { VoluptuariaAuthGuard } from "../../../commons/guards/voluptuaria-auth.guard"
 import { ApiHeader, ApiResponse } from "@nestjs/swagger"
-import { UserClassicRegistrationRequestDto } from "../data-contracts/user-classic-registration-request.dto"
-import { UserClassicRegistrationResponseDto } from "../data-contracts/user-classic-registration-response.dto"
+import { UserClassicRegistrationRequestDto } from "../data-contracts/classic-registration/user-classic-registration-request.dto"
+import { UserClassicRegistrationResponseDto } from "../data-contracts/classic-registration/user-classic-registration-response.dto"
 import { UserRegistrationService } from "../services/user-registration.service"
-import { UserLoginRequestDto } from "../data-contracts/user-login-request.dto"
+import { UserLoginRequestDto } from "../data-contracts/login/user-login-request.dto"
 import {
     UserClassicRegistrationConfirmationRequestDto
-} from "../data-contracts/user-classic-registration-confirmation-request.dto"
-import { UserLoginResponseDto } from "../data-contracts/user-login-response.dto"
-import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/user-google-registration-init-response.dto"
-import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/user-google-registration-init-request.dto"
+} from "../data-contracts/classic-registration/user-classic-registration-confirmation-request.dto"
+import { UserLoginResponseDto } from "../data-contracts/login/user-login-response.dto"
+import { UserGoogleRegistrationInitResponseDto } from "../data-contracts/google-registration/user-google-registration-init-response.dto"
+import { UserGoogleRegistrationInitRequestDto } from "../data-contracts/google-registration/user-google-registration-init-request.dto"
 import { AuthGuard } from "@nestjs/passport"
 import { Response } from "express"
+import {
+    UserGoogleRegistrationFinalProcessRequestDto
+} from "../data-contracts/google-registration/user-google-registration-final-process-request.dto"
 
 /**
- * User registration controller
+ * User classic-registration controller
  */
-@Controller("user/registration")
+@Controller("user/classic-registration")
 export class UserRegistrationController{
     constructor(
         private readonly userRegistrationService: UserRegistrationService
     ) {}
 
     /**
-     * Init the voluptuaria basic registration process
+     * Init the voluptuaria basic classic-registration process
      * @param requestDto request dto
      * @param lang lang
      * @return {Promise<UserClassicRegistrationResponseDto>} response
@@ -43,7 +46,7 @@ export class UserRegistrationController{
     }
 
     /**
-     * Confirm the voluptuaria basic registration process
+     * Confirm the voluptuaria basic classic-registration process
      * @param requestDto request dto
      * @return {Promise<UserLoginRequestDto>} response
      */
@@ -61,12 +64,14 @@ export class UserRegistrationController{
     }
 
     /**
-     * Start the Google registration process
+     * Start the Google classic-registration process
      * @returns {UserGoogleRegistrationInitResponseDto} response
     */
     @Post("by-google")
     @HttpCode(200)
-    //@UseGuards(VoluptuariaAuthGuard)
+    @UseGuards(VoluptuariaAuthGuard)
+    @ApiHeader({name: "voluptuaria_token",description: "Voluptuaria token"})
+    @ApiHeader({name: "voluptuaria_token_iv",description: "Voluptuaria token iv"})
     @ApiResponse({
         status: 200,
         type: UserGoogleRegistrationInitResponseDto
@@ -79,7 +84,7 @@ export class UserRegistrationController{
      * Confirm google redirection
      * @param state Added state in the datas
      * @param res response
-     * @returns {any} registration confirmation
+     * @returns {Promise<any>} classic-registration confirmation
      */
     @Get("by-google/redirect")
     @HttpCode(200)
@@ -90,5 +95,21 @@ export class UserRegistrationController{
             return "An error occurred during the process"
 
         return res.redirect(uri)
+    }
+
+    /**
+     * Confirm user classic-registration from Google
+     * @param requestDto confirmation datas
+     * @returns {Promise<>} confirmation result
+     */
+    @Post("by-google/confirmation")
+    @HttpCode(200)
+    @UseGuards(VoluptuariaAuthGuard)
+    @ApiResponse({
+        status: 200,
+        type: UserGoogleRegistrationFinalProcessRequestDto
+    })
+    public async confirmGoogleRegistration(@Body() requestDto: UserGoogleRegistrationFinalProcessRequestDto): Promise<UserLoginResponseDto> {
+        return this.userRegistrationService.processGoogleRegistrationFinalProcess({requestDto: requestDto})
     }
 }

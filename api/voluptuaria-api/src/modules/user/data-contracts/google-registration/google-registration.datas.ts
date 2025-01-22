@@ -2,7 +2,7 @@ import { IsNotEmpty } from "class-validator"
 import { Expose } from "class-transformer"
 
 /**
- * @brief google registration init datas
+ * @brief google classic-registration init datas
  */
 export class GoogleRegistrationDatas {
     @IsNotEmpty()

@@ -2,7 +2,7 @@ import { Expose } from "class-transformer"
 import { ApiResponseProperty } from "@nestjs/swagger"
 
 /**
- * User registration response data contract
+ * User classic-registration response data contract
  */
 export class UserClassicRegistrationResponseDto {
     @ApiResponseProperty()
