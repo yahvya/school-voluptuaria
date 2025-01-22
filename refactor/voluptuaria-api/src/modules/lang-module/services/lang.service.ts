@@ -146,8 +146,8 @@ export class LangService {
 
             // loading attributes
             this.frenchName = langFileContent.lang["french-name"]
-            this.googleMapCode = langFileContent.lang["google-map-api"]
-            this.openWeatherMapCode = langFileContent.lang["openweathermap-api"]
+            this.googleMapCode = langFileContent.lang["google-map-code"]
+            this.openWeatherMapCode = langFileContent.lang["openweathermap-code"]
             this.langName = langFileContent.lang.name
 
             return true
