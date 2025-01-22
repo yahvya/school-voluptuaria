@@ -9,6 +9,7 @@ import { join } from "path"
 import { JwtModule, JwtModuleAsyncOptions } from "@nestjs/jwt"
 import { ApplicationUserModule } from "./modules/application-user/application-user.module"
 import { MailModule } from "./modules/mail-module/mail.module"
+import { ApplicationRecommandationModule } from "./modules/application-recommandation/application-recommandation.module"
 
 /**
  * Application module
@@ -33,7 +34,8 @@ import { MailModule } from "./modules/mail-module/mail.module"
         UtilitiesModule,
         AppSecurityModule,
         ApplicationUserModule,
-        MailModule
+        MailModule,
+        ApplicationRecommandationModule
     ],
     controllers: [],
     providers: [],

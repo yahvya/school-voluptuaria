@@ -21,6 +21,26 @@ import { GoogleMapsPlaceCategoriesDto } from "../data-contracts/google-maps-plac
  */
 @Injectable()
 export class GoogleMapsPlaceService implements RegistrablePlaceManager{
+    static TYPES_LIST = [
+        "amusement_park",
+        "aquarium",
+        "art_gallery",
+        "bakery",
+        "bar",
+        "cafe",
+        "casino",
+        "church",
+        "museum",
+        "night_club",
+        "park",
+        "restaurant",
+        "shopping_mall",
+        "spa",
+        "stadium",
+        "tourist_attraction",
+        "zoo"
+    ]
+
     constructor(
         private readonly configService:ConfigService,
         private readonly langService:LangService,
