@@ -5,24 +5,19 @@ import 'package:voluptuaria_front/components/blur_background.dart';
 import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
 import 'package:voluptuaria_front/components/profile_picture.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
 import 'package:voluptuaria_front/components/icon_button.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../components/application-navbar.dart';
+
 class UserProfilePage extends StatelessWidget {
-  const UserProfilePage({Key? key}) : super(key: key);
+  const UserProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            print('Icon button pressed');
-          },
-          icon: const Icon(Icons.arrow_back),
-          iconSize: 30.0,
-        ),
+        automaticallyImplyLeading: false,
         title: const Text(
           'Profil utilisateur',
           style: TextStyle(
@@ -40,19 +35,19 @@ class UserProfilePage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  SizedBox(width: 40.0),
-                  ProfilePicture(
+                  const SizedBox(width: 40.0),
+                  const ProfilePicture(
                     size: 128,
                     imagePath: 'lib/resources/images/profileImage.jpg',
                   ),
-                  SizedBox(width: 32.0),
+                  const SizedBox(width: 32.0),
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         'John Doe',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 8.0),
+                      const SizedBox(height: 8.0),
                       SizedBox(
                         width: 160,
                         height: 40,
@@ -69,7 +64,7 @@ class UserProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: BlurBackground(
@@ -80,12 +75,12 @@ class UserProfilePage extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Column(
                     children: [
-                      SizedBox(height: 16.0),
-                      Text(
+                      const SizedBox(height: 16.0),
+                      const Text(
                         'Vos informations',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -95,7 +90,7 @@ class UserProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -105,14 +100,14 @@ class UserProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: IconButton(
                           onPressed: () {
                             print('Icon button pressed');
                           },
-                          icon: Icon(Icons.info_sharp),
+                          icon: const Icon(Icons.info_sharp),
                         ),
                       ),
                     ],
@@ -120,7 +115,7 @@ class UserProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: BlurBackground(
@@ -131,12 +126,12 @@ class UserProfilePage extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Column(
                     children: [
-                      SizedBox(height: 16.0),
-                      Text(
+                      const SizedBox(height: 16.0),
+                      const Text(
                         'Réseaux sociaux',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Row(
@@ -151,7 +146,7 @@ class UserProfilePage extends StatelessWidget {
                                 print('Facebook button pressed');
                               },
                             ),
-                            SizedBox(width: 16.0),
+                            const SizedBox(width: 16.0),
                             CustomIconButton(
                               icon: FontAwesomeIcons.instagram,
                               size: 75.0,
@@ -174,21 +169,7 @@ class UserProfilePage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 0,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(initialIndex: 4),
       ),
     );
   }

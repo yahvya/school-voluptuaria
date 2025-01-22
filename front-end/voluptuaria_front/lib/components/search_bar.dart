@@ -9,6 +9,7 @@ class CustomSearchBar extends StatelessWidget {
   final IconData leftIcon;
   final String hintText;
   final double borderRadius;
+  final bool autofocus;
 
   CustomSearchBar({
     this.backgroundColor = upperBackgroundColor,
@@ -18,6 +19,7 @@ class CustomSearchBar extends StatelessWidget {
     this.leftIcon = Icons.search,
     this.hintText = 'Recherche',
     this.borderRadius = 20.0,
+    this.autofocus = false,
   });
 
   @override
@@ -36,6 +38,7 @@ class CustomSearchBar extends StatelessWidget {
           Expanded(
             // Expanded permet au TextField de prendre tout l'espace restant
             child: TextField(
+              autofocus: autofocus,
               style: TextStyle(color: textColor, fontSize: textSize),
               decoration: InputDecoration(
                 hintText: hintText,

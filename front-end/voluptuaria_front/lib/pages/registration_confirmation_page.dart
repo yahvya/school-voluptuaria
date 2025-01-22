@@ -6,7 +6,7 @@ import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
 
 class RegistrationConfirmationPage extends StatelessWidget {
-  const RegistrationConfirmationPage({Key? key}) : super(key: key);
+  const RegistrationConfirmationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +29,15 @@ class RegistrationConfirmationPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 32.0),
-            Padding(
+            const SizedBox(height: 32.0),
+            const Padding(
               padding: const EdgeInsets.all(0.0),
               child: Text(
                       'Voluptuaria',
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
                     ),
             ),
-            SizedBox(height: 32.0),
+            const SizedBox(height: 32.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: BlurBackground(
@@ -54,11 +54,11 @@ class RegistrationConfirmationPage extends StatelessWidget {
                         height: 100.0,
                       ),
                       SizedBox(height: 32.0),
-                      Text(
+                      const Text(
                       'Veuillez saisir le code reçu',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -68,12 +68,12 @@ class RegistrationConfirmationPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       GestureDetector(
                         onTap: () {
                           print('Forgot password clicked');
                         },
-                        child: Text(
+                        child: const Text(
                           "Connexion?",
                           style: TextStyle(
                             fontFamily: 'OpenSans-Regular',
@@ -83,7 +83,7 @@ class RegistrationConfirmationPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomButton(

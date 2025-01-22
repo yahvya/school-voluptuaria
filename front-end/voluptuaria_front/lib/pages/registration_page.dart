@@ -31,15 +31,15 @@ class RegistrationPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 16.0),
-            Padding(
+            const SizedBox(height: 16.0),
+            const Padding(
               padding: const EdgeInsets.all(0.0),
               child: Text(
                       'Voluptuaria',
                       style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
                     ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: BlurBackground(
@@ -55,7 +55,7 @@ class RegistrationPage extends StatelessWidget {
                         width: 100.0,
                         height: 100.0,
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -65,7 +65,7 @@ class RegistrationPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -75,7 +75,7 @@ class RegistrationPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -85,7 +85,7 @@ class RegistrationPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -95,12 +95,12 @@ class RegistrationPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       GestureDetector(
                         onTap: () {
                           print('Forgot password clicked');
                         },
-                        child: Text(
+                        child: const Text(
                           "Je m'inscris?",
                           style: TextStyle(
                             fontFamily: 'OpenSans-Regular',
@@ -110,12 +110,12 @@ class RegistrationPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       GestureDetector(
                         onTap: () {
                           print('Forgot password clicked');
                         },
-                        child: Text(
+                        child: const Text(
                           'Mot de passe oublié?',
                           style: TextStyle(
                             fontFamily: 'OpenSans-Regular',
@@ -125,7 +125,7 @@ class RegistrationPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomButton(
@@ -135,7 +135,7 @@ class RegistrationPage extends StatelessWidget {
                           },
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: Row(
@@ -150,7 +150,7 @@ class RegistrationPage extends StatelessWidget {
                                 print('Facebook button pressed');
                               },
                             ),
-                            SizedBox(width: 16.0),
+                            const SizedBox(width: 16.0),
                             CustomIconButton(
                               icon: FontAwesomeIcons.google,
                               size: 50.0,

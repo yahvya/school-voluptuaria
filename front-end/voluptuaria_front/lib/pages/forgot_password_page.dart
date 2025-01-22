@@ -6,7 +6,7 @@ import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
-  const ForgotPasswordPage({Key? key}) : super(key: key);
+  const ForgotPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class ForgotPasswordPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 32.0),
-            Padding(
+            const SizedBox(height: 32.0),
+            const Padding(
               padding: const EdgeInsets.all(0.0),
               child: Text(
                       'Voluptuaria',
@@ -54,11 +54,11 @@ class ForgotPasswordPage extends StatelessWidget {
                         height: 100.0,
                       ),
                       SizedBox(height: 32.0),
-                      Text(
+                      const Text(
                       'Veuillez saisir l’email associé au compte',
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -68,12 +68,12 @@ class ForgotPasswordPage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       GestureDetector(
                         onTap: () {
                           print('Forgot password clicked');
                         },
-                        child: Text(
+                        child: const Text(
                           "Connexion?",
                           style: TextStyle(
                             fontFamily: 'OpenSans-Regular',
@@ -83,7 +83,7 @@ class ForgotPasswordPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      SizedBox(height: 32.0),
+                      const SizedBox(height: 32.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomButton(

@@ -5,10 +5,10 @@ import 'package:voluptuaria_front/components/blur_background.dart';
 import 'package:voluptuaria_front/components/custom_text_field.dart';
 import 'package:voluptuaria_front/components/button.dart';
 import 'package:voluptuaria_front/components/profile_picture.dart';
-import 'package:voluptuaria_front/components/navigation_bar.dart';
+import '../components/application-navbar.dart';
 
 class UserEditProfilePage extends StatelessWidget {
-  const UserEditProfilePage({Key? key}) : super(key: key);
+  const UserEditProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,15 +38,15 @@ class UserEditProfilePage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  SizedBox(width: 40.0),
-                  ProfilePicture(
+                  const SizedBox(width: 40.0),
+                  const ProfilePicture(
                     size: 128,
                     imagePath: 'lib/resources/images/profileImage.jpg',
                   ),
-                  SizedBox(width: 32.0),
+                  const SizedBox(width: 32.0),
                   Column(
                     children: [
-                      Text(
+                      const Text(
                         'John Doe',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold'),
                       ),
@@ -67,7 +67,7 @@ class UserEditProfilePage extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: BlurBackground(
@@ -78,12 +78,12 @@ class UserEditProfilePage extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   child: Column(
                     children: [
-                      SizedBox(height: 16.0),
-                      Text(
+                      const SizedBox(height: 16.0),
+                      const Text(
                         'Vos informations',
                         style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, fontFamily: 'OpenSans-SemiBold'),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -93,7 +93,7 @@ class UserEditProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -103,7 +103,7 @@ class UserEditProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -113,7 +113,7 @@ class UserEditProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -123,7 +123,7 @@ class UserEditProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: CustomTextField(
@@ -133,14 +133,14 @@ class UserEditProfilePage extends StatelessWidget {
                           borderRadius: 12.0,
                         ),
                       ),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16.0),
                         child: IconButton(
                           onPressed: () {
                             print('Icon button pressed');
                           },
-                          icon: Icon(Icons.info_sharp),
+                          icon: const Icon(Icons.info_sharp),
                         ),
                       ),
                     ],
@@ -153,21 +153,7 @@ class UserEditProfilePage extends StatelessWidget {
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomNavigationBar(
-          currentIndex: 0,
-          backgroundColor: upperBorderColor,
-          borderRadius: 30.0,
-          icons: [
-            Icons.search,
-            Icons.bookmark_border,
-            Icons.home_outlined,
-            Icons.place_outlined,
-            Icons.person_outline,
-          ],
-          onIconTap: (index) {
-            print('Icon $index tapped');
-          },
-        ),
+        child: ApplicationNavbar(initialIndex: 4),
       ),
     );
   }
