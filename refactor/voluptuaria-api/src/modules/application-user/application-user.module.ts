@@ -10,6 +10,7 @@ import { LangModule } from "../lang-module/lang.module"
 import { GoogleAuthModule } from "../google-auth-module/google-auth.module"
 import { UserAccountManagementService } from "./services/user-account-management.service"
 import { UserAccountManagementController } from "./controllers/user-account-management.controller"
+import { RegisteredPlacesEntity } from "../database/entities/registered-places.entity"
 
 /**
  * Application user module
@@ -17,7 +18,7 @@ import { UserAccountManagementController } from "./controllers/user-account-mana
 @Module({
     controllers: [UserLoginController,UserRegistrationController,UserAccountManagementController],
     imports: [
-        TypeOrmModule.forFeature([UserEntity]),
+        TypeOrmModule.forFeature([UserEntity,RegisteredPlacesEntity]),
         LangModule,
         GoogleAuthModule
     ],

@@ -6,6 +6,8 @@ import { UserLoginResponseDto } from "../data-contracts/login/user-login-respons
 import { UserProfileUpdateRequestDto } from "../data-contracts/user-account-management/user-profile-update-request.dto"
 import { UserAccountManagementService } from "../services/user-account-management.service"
 import { FileInterceptor } from "@nestjs/platform-express"
+import { UserWishListUpdateResponseDto } from "../data-contracts/account-management/user-wish-list-update-response.dto"
+import { UserWishListUpdateRequestDto } from "../data-contracts/account-management/user-wish-list-update-request.dto"
 
 /**
  * User account management controller
@@ -42,5 +44,20 @@ export class UserAccountManagementController{
             requestDto: requestDto,
             authenticationToken: authenticationToken
         })
+    }
+
+    /**
+     * Update user wish list
+     * @param requestDto request dto
+     * @param authenticationToken authentication token
+     */
+    @Post("/wish-list/update")
+    @HttpCode(200)
+    @ApiResponse({
+        status: 200,
+        type: UserWishListUpdateResponseDto
+    })
+    public updateWishList(@Body() requestDto:UserWishListUpdateRequestDto,@Headers("authentication_token") authenticationToken:string):Promise<UserWishListUpdateResponseDto>{
+        return this.userAccountManagementService.updateUserWishList({requestDto:requestDto,authenticationToken: authenticationToken})
     }
 }

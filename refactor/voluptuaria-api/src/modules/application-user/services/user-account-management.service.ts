@@ -6,6 +6,12 @@ import { UserAccountService } from "./user-account.service"
 import { HashService } from "../../app-security/services/hash.service"
 import { ConfigService } from "@nestjs/config"
 import * as fs from "node:fs"
+import { UserWishListUpdateRequestDto } from "../data-contracts/account-management/user-wish-list-update-request.dto"
+import { UserWishListUpdateResponseDto } from "../data-contracts/account-management/user-wish-list-update-response.dto"
+import { UserEntity } from "../../database/entities/user.entity"
+import { Repository } from "typeorm"
+import { RegisteredPlacesEntity } from "../../database/entities/registered-places.entity"
+import { InjectRepository } from "@nestjs/typeorm"
 
 /**
  * User account management service
@@ -16,7 +22,9 @@ export class UserAccountManagementService{
         private readonly userLoginService: UserLoginService,
         private readonly userAccountService: UserAccountService,
         private readonly hashService: HashService,
-        private readonly configService: ConfigService
+        private readonly configService: ConfigService,
+        @InjectRepository(RegisteredPlacesEntity)
+        private readonly registeredPlacesRepository: Repository<RegisteredPlacesEntity>
     ) {}
 
     /**
@@ -32,14 +40,7 @@ export class UserAccountManagementService{
 
         try{
             // get the linked account
-            const userData = this.userLoginService.verifyToken({token: authenticationToken})
-
-            if(userData === null){
-                response.error = "error.unrecognized-email-password"
-                return response
-            }
-
-            let foundedUserEntity = await this.userAccountService.findUserFromEmail({email: userData.email})
+            const foundedUserEntity = await this.extractUserFromAuthenticationToken({authenticationToken: authenticationToken})
 
             if(foundedUserEntity === null){
                 response.error = "error.unrecognized-email-password"
@@ -97,10 +98,77 @@ export class UserAccountManagementService{
             response.authenticationToken = this.userLoginService.buildTokenFromUserEntity({userEntity: foundedUserEntity})
         }
         catch (_){
+            response.error = "error.technical"
+        }
+
+        return response
+    }
+
+    /**
+     * Update user wish list
+     * @param requestDto request dto
+     * @param authenticationToken authentication token
+     * @return {Promise<UserWishListUpdateResponseDto>} response success
+     */
+    public async updateUserWishList(
+        {requestDto,authenticationToken}:
+        {requestDto:UserWishListUpdateRequestDto,authenticationToken:string}
+    ):Promise<UserWishListUpdateResponseDto>{
+        const response = new UserWishListUpdateResponseDto()
+
+        try{
+            // get the linked account
+            const foundedUserEntity = await this.extractUserFromAuthenticationToken({authenticationToken: authenticationToken})
+
+            if(foundedUserEntity === null){
+                response.error = "error.unrecognized-email-password"
+                return response
+            }
+
+            // update user wishlist
+            if(foundedUserEntity.wishList === undefined)
+                foundedUserEntity.wishList = []
+
+            // remove elements
+            foundedUserEntity.wishList = foundedUserEntity.wishList.filter(registeredPlace => requestDto.placesId.includes(registeredPlace.id))
+
+            // add new elements
+            const wishListPlaceIds = foundedUserEntity.wishList.map(registeredPlace => registeredPlace.id)
+            for(const placeId of requestDto.placesId){
+                if(!wishListPlaceIds.includes(placeId))
+                    foundedUserEntity.wishList.push(await this.registeredPlacesRepository.findOneBy({id: placeId}))
+            }
+
+            if(await this.userAccountService.updateUserFromEntity({userEntity: foundedUserEntity}) === false)
+                response.error = "error.technical"
+        }
+        catch (_){
             console.log(_)
             response.error = "error.technical"
         }
 
         return response
+    }
+
+    /**
+     * Extract user data from authentication token
+     * @param authenticationToken authentication token
+     * @return {Promise<UserEntity|null>} user or null on not found
+     */
+    private async extractUserFromAuthenticationToken(
+        {authenticationToken}:
+        {authenticationToken:string}
+    ):Promise<UserEntity|null>{
+        try{
+            const userData = this.userLoginService.verifyToken({token: authenticationToken})
+
+            if(userData === null)
+                return null
+
+            return await this.userAccountService.findUserFromEmail({email: userData.email})
+        }
+        catch (_){
+            return null
+        }
     }
 }
