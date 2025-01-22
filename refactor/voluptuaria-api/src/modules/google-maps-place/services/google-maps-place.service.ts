@@ -18,12 +18,35 @@ export class GoogleMapsPlaceService{
         private readonly langService:LangService
     ) {}
 
-    public loadPropositionsFromPaging(){
+    /**
+     * Load a place data from id
+     * @param accessId access id
+     * @param lang lang
+     * @return {Promise<GoogleMapsPlaceDto>} response
+     */
+    public async loadFromId(
+        {accessId,lang}:
+        {accessId:string,lang:string}
+    ):Promise<GoogleMapsPlaceDto|null>{
+        try{
+            if(!this.langService.loadLangFile({langFileName: lang}))
+                return null
 
-    }
+            const requestUri = `https://places.googleapis.com/v1/places/${accessId}`
+            const apiKey = this.configService.getOrThrow("API_GOOGLE_MAPS_PLACE_API_KEY")
 
-    public loadFromId(){
+            const response = await axios.get(requestUri,{
+                params: {
+                    key: apiKey,
+                    fields: "*"
+                }
+            })
 
+            return this.parsePlaceDatas({placeDatas: response.data})
+        }
+        catch(_){
+            return null
+        }
     }
 
     /**
