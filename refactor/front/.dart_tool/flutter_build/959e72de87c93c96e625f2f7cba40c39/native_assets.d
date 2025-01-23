@@ -1,0 +1,1 @@
+ C:\\Users\\yahay\\Desktop\\documents\\ecole\\fac\\master\\master-2-dev-web-mobile-fullstack\\projet-non-alternant\\repo\\refactor\\front\\.dart_tool\\flutter_build\\959e72de87c93c96e625f2f7cba40c39\\native_assets.yaml: 
